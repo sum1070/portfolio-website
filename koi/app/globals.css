@@ -3,32 +3,45 @@
 :root {
   --black: #171717;
   --white: #ffffff;
-  --milky-white: #FEFAF3;
-  --pale-purple1: #E5D5FD;
-  --pale-purple0: #C4B9F9;
-  --pale-purple2: #F3E9FD;
-  --nice-purple1: #544D85;
-  --nice-purple2: #746BA6;
-  --sky-blue: #A9E8F2;
-}
-
-@theme inline {
-  --color-background: var(--white);
-  --color-foreground: var(--black);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --milky-white: #fefaf3;
+  --pale-purple0: #f3e9fd;
+  --pale-purple1: #e5d5fd;
+  --pale-purple2: #c4b9f9;
+  --purple0: #8e61ff;
+  --nice-purple0: #544d85;
+  --nice-purple1: #746ba6;
+  --green-lake: #0fc1a1;
+  --sky-blue: #a9e8f2;
+  --pink1: #fcb0ff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --white: #E2C9FF;
-    --black: #544D85;
+    --white: #e2c9ff;
+    --black: #544d85;
   }
 }
 
+@layer base {
+  html,
+  body {
+    /* idk wuts this */
+    /* @apply dark:bg-trueGray-900; */
+    @apply min-h-screen;
+  }
+}
+
+/* my cute cute pastel bg */
 body {
-  background: var(--white);
-  color: var(--black);
+  background: 
+    radial-gradient(at 6% 8%, #ccb8ff 0%, transparent 50%),
+    radial-gradient(at 95% 75%, #fed6ff 0%, transparent 50%),
+    radial-gradient(at 92% 27%, #a9e8f2 0%, transparent 50%),
+    radial-gradient(at 52% 100%, #a9e8f2 0%, transparent 50%),
+    radial-gradient(at 9% 88%, #c4b9f9 0%, transparent 50%), #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   padding: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-mono);
 }
