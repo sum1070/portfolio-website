@@ -32,8 +32,8 @@
 
 /* my cute cute pastel bg */
 body {
-  background: radial-gradient(at 6% 8%, var(--color-purple1) 0%, transparent 50%),
-    radial-gradient(at 95% 75%, var(--color-pink2) 0%, transparent 50%),
+  background: radial-gradient(at 6% 8%, var(--color-purple0) 0%, transparent 50%),
+    radial-gradient(at 95% 75%, var(--color-pink1) 0%, transparent 50%),
     radial-gradient(at 92% 27%, var(--color-sky-blue) 0%, transparent 50%),
     radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
     radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 50%);
