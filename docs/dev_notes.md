@@ -23,13 +23,9 @@ npx create-next-app@latest
 
 ## Development
 
-### File Structure
+<!-- ### File Structure -->
 
-* `app/` Components and logic
-  * `app/lib/` Utility functions
-  * `app/api/` API
-  * `app/ui/` UI components
-* `public/` Static assets
+<!-- TODO -->
 
 ### Rendering
 
