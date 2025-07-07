@@ -1,44 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --black: #171717;
-  --white: #ffffff;
-  --milky-white: #fefaf3;
-  --pale-purple0: #f3e9fd;
-  --pale-purple1: #e5d5fd;
-  --pale-purple2: #c4b9f9;
-  --purple0: #8e61ff;
-  --nice-purple0: #544d85;
-  --nice-purple1: #746ba6;
-  --green-lake: #0fc1a1;
-  --sky-blue: #a9e8f2;
-  --pink1: #fcb0ff;
-}
+@theme {
+  --color-black: #171717;
+  --color-white: #ffffff;
+  --color-milky-white: #fefaf3;
+  --color-pale-purple0: #f3e9fd;
+  --color-pale-purple1: #e5d5fd;
+  --color-pale-purple2: #c4b9f9;
+  --color-purple0: #8e61ff;
+  --color-purple1: #ccb8ff;
+  --color-nice-purple0: #544d85;
+  --color-nice-purple1: #746ba6;
+  --color-green-lake: #0fc1a1;
+  --color-sky-blue: #a9e8f2;
+  --color-pink1: #fcb0ff;
+  --color-pink2: #fed6ff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --white: #e2c9ff;
-    --black: #544d85;
-  }
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 @layer base {
   html,
   body {
-    /* idk wuts this */
-    /* @apply dark:bg-trueGray-900; */
     @apply min-h-screen;
   }
 }
 
 /* my cute cute pastel bg */
 body {
-  background: 
-    radial-gradient(at 6% 8%, #ccb8ff 0%, transparent 50%),
-    radial-gradient(at 95% 75%, #fed6ff 0%, transparent 50%),
-    radial-gradient(at 92% 27%, #a9e8f2 0%, transparent 50%),
-    radial-gradient(at 52% 100%, #a9e8f2 0%, transparent 50%),
-    radial-gradient(at 9% 88%, #c4b9f9 0%, transparent 50%), #ffffff;
+  background: radial-gradient(at 6% 8%, var(--color-purple1) 0%, transparent 50%),
+    radial-gradient(at 95% 75%, var(--color-pink2) 0%, transparent 50%),
+    radial-gradient(at 92% 27%, var(--color-sky-blue) 0%, transparent 50%),
+    radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
+    radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 50%);
+  background-color: var(--color-milky-white);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
