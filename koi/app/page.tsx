@@ -3,7 +3,10 @@ import { Test } from "./test";
 
 export default function Home() {
   return (
-    // <Hero />
-    <Test />
+    // <>
+    // </>
+    <Hero />
+
+    // <Test />
   );
 }
