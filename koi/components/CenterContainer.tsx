@@ -11,9 +11,9 @@ export function CenterContainer(props: Readonly<ContainerProps>) {
       className={`container
         flex items-center justify-center text-center
         h-screen px-4
-        mx-auto 
-        max-w-2xl 
-        py-32  
+        mx-auto
+        max-w-2xl
+        py-32
         relative isolate
         sm:py-48
         lg:py-56 lg:px-8
