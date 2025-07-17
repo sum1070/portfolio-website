@@ -49,28 +49,32 @@ import styles from "./Hero.module.css";
 </div>
 ```
 
+### CSS Issues
+
+The CSS implementation is simple and kinda works, but the cursor blinking timing is slightly off. Would rather create a Typewriter component which allows more flexibility if I have to spend time fixing the CSS.
+
 ## Typescript implementation
-
-CSS implementation is simple but the cursor blinking timing is slightly off. Would rather create a Typewriter component if I have to spend time fixing the CSS.
-
-Relevant code located in `components/Animation/Typewriter/`: `Typewriter.tsx` and `Cursor.tsx`.
 
 ## Usage
 
 ```tsx
-import Typewriter from "./Typewriter";
+// components/Hero/Hero.tsx
+import { Typewriter } from "../Animation/Typewriter/Typewriter";
+
+// Default usage: render the children
+<Typewriter className="styles...">Some text. i.e. the children</Typewriter>;
+
+// Can also pass the string as a prop:
+<Typewriter text="Some text." className="styles..." />;
 ```
 
-By default, it will render the content inside the component (children):
+## How it works
 
-```tsx
-<Typewriter className="styles...">
-  Some text.
-</Typewriter>;
-```
+### `useEffect`
 
-or pass the string as a prop:
+This hook is triggered whenever `currentIndex, textToType, speed` changes. A checking is performed to stop the effect if the full string is already typed out.
 
-```tsx
-<Typewriter text="Some text." className="styles..."/>;
-```
+It contains:
+
+- a timer (`setTimeout`) that updates the state to append the next character for display and increments the `currentIndex`.
+- a cleanup function `clearTimeout` to reset the timer to avoid overlapping timeouts.
