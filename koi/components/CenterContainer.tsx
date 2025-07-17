@@ -10,7 +10,8 @@ export function CenterContainer(props: Readonly<ContainerProps>) {
     <div
       className={`container
         flex items-center justify-center text-center
-        h-screen px-4
+        h-screen 
+        px-4
         mx-auto
         max-w-2xl
         py-32

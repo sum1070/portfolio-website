@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {inter} from './fonts';
+import {inter, titilliumWeb} from './fonts';
 
 export const metadata: Metadata = {
   title: "koi",
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={titilliumWeb.className}>
       <body>
         {children}
       </body>
