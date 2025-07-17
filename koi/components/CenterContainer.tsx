@@ -13,7 +13,6 @@ export function CenterContainer(props: Readonly<ContainerProps>) {
         h-screen 
         px-4
         mx-auto
-        max-w-2xl
         py-32
         relative isolate
         sm:py-48
