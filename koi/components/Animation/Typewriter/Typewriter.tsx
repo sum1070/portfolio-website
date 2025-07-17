@@ -37,9 +37,10 @@ export function Typewriter({
       return;
     }
 
+    // append the next char after speed ms
     const timer = setTimeout(() => {
       setDisplayedText((prev) => prev + textToType[currentIndex]);
-      setCurrentIndex((prev) => prev + 1); // trigger next useEffect
+      setCurrentIndex((prev) => prev + 1); // increment index
     }, speed);
 
     return () => clearTimeout(timer);
