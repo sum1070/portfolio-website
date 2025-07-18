@@ -1,12 +1,8 @@
-'use client';
+import { Bar } from "./Bar";
 
-import { CenterContainer } from '@/components/CenterContainer';
-import { Bar } from '@/components/Hero/deco/Bar';
-
-export function Test() {
-
+export const BackgroundDeco = () => {
     return (
-        <>
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
             <Bar
                 width="500px"
                 length="80px"
@@ -14,6 +10,6 @@ export function Test() {
                 y="80%"
                 rotate="135deg"
             />
-        </>
+        </div>
     );
-}
+};
