@@ -1,6 +1,6 @@
 import { CenterContainer } from "@/components/CenterContainer";
-import ScrollDown from "../Animation/ScrollArrow/ScrollDown";
-import { Typewriter } from "../Animation/Typewriter/Typewriter";
+import ScrollDown from "../Animated/ScrollArrow/ScrollDown";
+import { Typewriter } from "../Animated/Typewriter/Typewriter";
 import { BackgroundDeco } from "./BackgroundDeco";
 
 export const Hero = () => {

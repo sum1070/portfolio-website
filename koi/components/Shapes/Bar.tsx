@@ -14,15 +14,20 @@ interface BarProps {
 
 export function Bar({
     className = '',
-    startColor = 'var(--color-Mauve)',
-    endColor = 'var(--color-sky-blue)',
+    startColor = '',
+    endColor = '',
     width = '200px',
     length = '20px',
     rotate = '0deg',
     opacity = 1,
     x = '0px',
     y = '0px',
-}: BarProps) {
+}: Readonly<BarProps>) {
+
+    if (!startColor && !endColor) {
+        startColor = 'var(--color-Mauve)';
+        endColor = 'var(--color-sky-blue)';
+    }
     const barStyle: React.CSSProperties = {
         position: 'absolute',
         width,
