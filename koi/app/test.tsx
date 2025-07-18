@@ -1,7 +1,7 @@
 'use client';
 
 import { CenterContainer } from '@/components/CenterContainer';
-import { Bar } from '@/components/Hero/deco/Bar';
+import { Bar } from '@/components/Shapes/Bar';
 
 export function Test() {
 

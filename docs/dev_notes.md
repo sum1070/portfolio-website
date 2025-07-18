@@ -7,7 +7,7 @@
 
 ### Installation
 
-[Next.js docs](https://nextjs.org/docs/app/getting-started/installation).
+See Next.js [docs](https://nextjs.org/docs/app/getting-started/installation).
 
 ```powershell
 npx create-next-app@latest
@@ -29,14 +29,16 @@ npx create-next-app@latest
 
 ### Rendering
 
-* Client-side rendering (CSR)
-  * Files not in `app/` or starting with *client directives*: `'use client';`
-  * e.g. Event listeners, states, use effects
-* Server-side rendering (SSR)
+* **Client**-side rendering (CSR)
+  * Front-end
+  * e.g. Event listeners, states, use effects, APIs
+  * Files outside `app/` or starting with *client directives*: `'use client';`
+* **Server**-side rendering (SSR)
+  * Back-end
   * e.g. Data fetching, static components like side bar
 
 ### Useful shortcuts
 
 * React Arrow Function Component Export: `rafce`
 
-<!-- ### Used Components Library -->
+<!-- ## Deployment -->
