@@ -1,4 +1,4 @@
-import { Bar } from "./Bar";
+import { Bar } from "../Shapes/Bar";
 
 export const BackgroundDeco = () => {
     return (
