@@ -2,18 +2,15 @@
 
 import { CenterContainer } from '@/components/CenterContainer';
 import { Bar } from '@/components/Shapes/Bar';
+import { BarCircle } from '@/components/Shapes/BarCircle';
 
 export function Test() {
 
     return (
         <>
-            <Bar
-                width="500px"
-                length="80px"
-                x="70%"
-                y="80%"
-                rotate="135deg"
-            />
+
+give up
+
         </>
     );
 }
