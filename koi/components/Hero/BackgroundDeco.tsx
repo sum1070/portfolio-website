@@ -1,8 +1,9 @@
 import { Bar } from "../Shapes/Bar";
+import { LineCircle } from "../Shapes/LineCircle";
 
 export const BackgroundDeco = () => {
     return (
-        <>
+        <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
             {/* Bar */}
             <Bar
                 width="500px"
@@ -38,6 +39,10 @@ export const BackgroundDeco = () => {
                 y="10%"
                 rotate="135deg"
             />
-        </>
+            {/* Circle */}
+            <div className="absolute bottom-0 left-0">
+                <LineCircle size="200px" className="mx-auto" />
+            </div>
+        </div>
     );
 };
