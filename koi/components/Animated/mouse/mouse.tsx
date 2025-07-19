@@ -58,12 +58,12 @@ export default function MouseAnimated() {
 
 
 
-    // --- Particles ---
+    // --- Particles Setting ---
     function createParticle() {
       return {
         x: mouse.x,
         y: mouse.y,
-        size: Math.random() * 10 + 1,
+        size: Math.random() * 14 + 1,
         speedX: Math.random() * 3 - 1,
         speedY: Math.random() * 3 - 1,
         color: `hsla(${hue},100%, 82%, 0.7)`,
@@ -110,7 +110,7 @@ export default function MouseAnimated() {
             const p2 = particles[j];
             const dx = p.x - p2.x, dy = p.y - p2.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            // Draw lines with distance and connection limit
+            // --- Lines Setting ---
             if (dist < 80 && connectionsCount < 4) {
               ctx.beginPath();
               ctx.strokeStyle = p.color;
@@ -122,7 +122,7 @@ export default function MouseAnimated() {
             }
           }
         }
-  
+
         // clear small or dead particles
         if (p.size <= 0.2 || p.life <= 0) {
           particles.splice(i, 1);
@@ -160,7 +160,7 @@ export default function MouseAnimated() {
         position: "fixed",
         top: 0,
         left: 0,
-        zIndex: 0,
+        zIndex: -1, // make it behind other content
         pointerEvents: "none",
       }}
     />
