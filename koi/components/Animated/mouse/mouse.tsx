@@ -8,20 +8,22 @@ export default function MouseAnimated() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // initialise canvas
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
     let particles: any[] = [], hue = 0, frame = 0;
 
     function resize() {
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      console.log("Canvas resized:", canvas.width, canvas.height);
     }
     resize();
 
     const mouse = { x: 0, y: 0 };
 
+    // --------- Events listener functions ---------
     function click(e: MouseEvent) {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
@@ -36,8 +38,16 @@ export default function MouseAnimated() {
       if (frame % 2 === 0) for (let i = 0; i < 7; i++) particles.push(createParticle());
     }
 
+    // Create particle
     function createParticle() {
-      return { x: mouse.x, y: mouse.y, size: Math.random() * 15 + 1, speedX: Math.random() * 3 - 1.5, speedY: Math.random() * 3 - 1.5, color: `hsl(${hue},100%,50%)` };
+      return {
+        x: mouse.x,
+        y: mouse.y,
+        size: Math.random() * 15 + 1,
+        speedX: Math.random() * 3 - 1.5,
+        speedY: Math.random() * 3 - 1.5,
+        color: `hsl(${hue},100%,50%)`,
+      };
     }
 
     function handleParticles() {
@@ -78,8 +88,8 @@ export default function MouseAnimated() {
     }
 
     window.addEventListener("resize", resize);
-window.addEventListener("mousemove", move);
-window.addEventListener("click", click);
+    window.addEventListener("mousemove", move);
+    window.addEventListener("click", click);
 
 
     animate();
