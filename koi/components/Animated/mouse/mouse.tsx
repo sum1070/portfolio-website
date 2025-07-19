@@ -38,7 +38,7 @@ export default function MouseAnimated() {
       if (frame % 2 === 0) for (let i = 0; i < 7; i++) particles.push(createParticle());
     }
 
-    // Create particle
+    // --- Particles ---
     function createParticle() {
       return {
         x: mouse.x,
@@ -46,19 +46,23 @@ export default function MouseAnimated() {
         size: Math.random() * 15 + 1,
         speedX: Math.random() * 3 - 1.5,
         speedY: Math.random() * 3 - 1.5,
-        color: `hsl(${hue},100%,50%)`,
+        color: `hsl(${hue},100%, 82%)`, // rainbow hue changes
       };
     }
 
     function handleParticles() {
       particles.forEach((p, i) => {
+        // update particle position
         p.x += p.speedX; p.y += p.speedY;
         if (p.size > 0.2) p.size -= 0.1;
+
+        // draw particle
         ctx.fillStyle = p.color;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
-
+        
+        // draw lines between particles
         for (let j = i; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x, dy = p.y - p2.y;
@@ -74,17 +78,18 @@ export default function MouseAnimated() {
           }
         }
 
-        if (p.size <= 0.3) particles.splice(i, 1);
+        // remove small particles
+        if (p.size <= 0.4) particles.splice(i, 1);
       });
     }
 
     let animationId: number;
     function animate() {
       if (!canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
       handleParticles();
       frame++;
-      animationId = requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate); // recursive call
     }
 
     window.addEventListener("resize", resize);
@@ -92,7 +97,7 @@ export default function MouseAnimated() {
     window.addEventListener("click", click);
 
 
-    animate();
+    animate(); 
 
     return () => {
       window.removeEventListener("resize", resize);
