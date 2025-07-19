@@ -5,9 +5,9 @@ import { BackgroundDeco } from "./BackgroundDeco";
 
 export const Hero = () => {
   return (
-    <>
+    <div className="">
     <BackgroundDeco />
-    <CenterContainer className="min-h-screen ">
+    <CenterContainer className="min-h-screen relative z-10">
       <div className="text-center text-nice-purple0 ">
         <h1 className="text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold">
           Lorem, ipsum.
@@ -23,7 +23,7 @@ export const Hero = () => {
         </div>
       </div>
     </CenterContainer>
-    </>
+    </div>
   );
 }
 
