@@ -1,26 +1,53 @@
 @import "tailwindcss";
+/* Removed invalid JS/TS import statement */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-black: #171717;
+  --color-white: #ffffff;
+  --color-milky-white: #fefaf3;
+  --color-pale-purple0: #f3e9fd;
+  --color-pale-purple1: #e5d5fd;
+  --color-pale-purple2: #c4b9f9;
+  --color-purple0: #8e61ff;
+  --color-purple1: #ccb8ff;
+  --color-nice-purple0: #544d85;
+  --color-nice-purple1: #746ba6;
+  --color-green-lake: #0fc1a1;
+  --color-sky-blue: #a9e8f2;
+  --color-pink1: #fcb0ff;
+  --color-pink2: #fed6ff;
+  --color-Mauve: #E2BAFF;
+
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font-titillium-web: "Titillium Web", sans-serif;
+  --font-fraunces: "Fraunces", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #E2C9FF;
-    --foreground: #544D85;
+@layer base {
+  html,
+  body {
+    @apply min-h-screen;
   }
 }
 
+/* my cute cute pastel bg */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(
+      at 6% 8%,
+      var(--color-purple0) 0%,
+      transparent 50%
+    ),
+    radial-gradient(at 95% 75%, var(--color-pink1) 0%, transparent 50%),
+    radial-gradient(at 92% 27%, var(--color-sky-blue) 0%, transparent 50%),
+    radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
+    radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 50%);
+  background-color: var(--color-milky-white);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 1rem;
 }
