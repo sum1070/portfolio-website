@@ -111,7 +111,7 @@ export default function MouseAnimated() {
             const dx = p.x - p2.x, dy = p.y - p2.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             // --- Lines Setting ---
-            if (dist < 80 && connectionsCount < 4) {
+            if (dist < 100 && connectionsCount < 4) {
               ctx.beginPath();
               ctx.strokeStyle = p.color;
               ctx.lineWidth = 0.2;
