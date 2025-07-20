@@ -13,7 +13,7 @@ export const Hero = () => {
         <CenterContainer className="min-h-screen relative z-10">
           <div className="text-center text-nice-purple0 ">
             <h1 className="text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold">
-              Lorem, ipsum.
+              Lorem ipsum dolor.
             </h1>
             <p className="mt-4 text-xl sm:text-3xl xl:text-4xl text-nice-purple0">
               Lorem, ipsum dolor.
@@ -26,7 +26,8 @@ export const Hero = () => {
             </div>
           </div>
         </CenterContainer>
-      </div></>
+      </div>
+    </>
   );
 }
 
