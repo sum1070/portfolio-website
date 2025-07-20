@@ -1,5 +1,7 @@
 import { Bar } from "../Shapes/Bar";
+import { Dot } from "../Shapes/dot";
 import { LineCircle } from "../Shapes/LineCircle";
+import { Triangle } from "../Shapes/Triangle";
 
 export const BackgroundDeco = () => {
     return (
@@ -40,9 +42,54 @@ export const BackgroundDeco = () => {
                 rotate="135deg"
             />
             {/* Circle */}
-            <div className="absolute bottom-0 left-0">
-                <LineCircle size="200px" className="mx-auto" />
-            </div>
+            <LineCircle
+                size="200px"
+                className="mx-auto absolute bottom-0 left-0"
+                x="0%"
+                y="84%"
+            />
+            {/* Triangle */}
+            <Triangle
+                className="right-40 bottom-11/12"
+                size="150px"
+                image="mid"
+            />
+            <Triangle
+                className="right-11/12 bottom-4/12"
+                size="100px"
+                image="big"
+                rotate="330deg"
+            />
+            {/* Dots */}
+            <Dot
+                size="36px"
+                type="hollow"
+                x="10%"
+                y="10%"
+                border={7}
+                color="var(--color-milky-white)"
+            />
+            <Dot
+                size="40px"
+                x="80%"
+                y="65%"
+                border={7}
+            />
+            <Dot
+                size="40px"
+                x="88%"
+                y="95%"
+                border={7}
+                blur={true}
+                color="var(--color-pale-purple0)"
+            />
+            <Dot
+                size="15px"
+                x="92%"
+                y="75%"
+                border={7}
+                color="var(--color-pale-purple0)"
+            />
         </div>
     );
 };
