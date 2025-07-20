@@ -2,6 +2,7 @@ import { Bar } from "../Shapes/Bar";
 import { Dot } from "../Shapes/dot";
 import { LineCircle } from "../Shapes/LineCircle";
 import { Triangle } from "../Shapes/Triangle";
+import { CodeText } from "./CodeText";
 
 export const BackgroundDeco = () => {
     return (
@@ -64,10 +65,24 @@ export const BackgroundDeco = () => {
             <Dot
                 size="36px"
                 type="hollow"
-                x="10%"
-                y="10%"
+                x="5%"
+                y="7%"
                 border={7}
                 color="var(--color-milky-white)"
+            />
+            <Dot
+                size="38px"
+                x="9.8%"
+                y="18.9%"
+                blur={true}
+                color="var(--color-purple0)"
+            />
+            <Dot
+                size="36px"
+                x="10%"
+                y="19%"
+                border={7}
+                color="var(--color-pink2)"
             />
             <Dot
                 size="40px"
@@ -89,6 +104,15 @@ export const BackgroundDeco = () => {
                 y="75%"
                 border={7}
                 color="var(--color-pale-purple0)"
+            />
+            <CodeText
+                text="if (tired) {sleep();}"
+                className="absolute top-3/12 left-10/12 -translate-x-1/2 -translate-y-1/2"
+                size="80px"
+                color={["var(--color-purple1)", "var(--color-nice-purple0)"]}
+                fontWeight="800"
+                rotate="90deg"
+                opacity={0.4}
             />
         </div>
     );
