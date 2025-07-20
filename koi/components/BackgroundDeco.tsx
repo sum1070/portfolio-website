@@ -1,11 +1,10 @@
-import { motion } from "motion/react";
-import { Bar } from "../Shapes/Bar";
-import { Dot } from "../Shapes/dot";
-import { LineCircle } from "../Shapes/LineCircle";
-import { Triangle } from "../Shapes/Triangle";
 import CodeTextSVG from "./CodeText";
+import { Bar } from "./shapes/Bar";
+import { Dot } from "./shapes/dot";
+import { LineCircle } from "./shapes/LineCircle";
+import { Triangle } from "./shapes/Triangle";
 
-export const BackgroundDeco = () => {
+export default function BackgroundDeco() {
     return (
         <>
             <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
