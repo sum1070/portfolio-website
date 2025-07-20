@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {fraunces, inter, titilliumWeb} from './fonts';
+import {fraunces} from './fonts';
 
 export const metadata: Metadata = {
   title: "koi",
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.className} ${titilliumWeb.className}`}>
+    <html lang="en" className={`${fraunces.className}`}>
       <body>
         {children}
       </body>
