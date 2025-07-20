@@ -2,118 +2,102 @@ import { Bar } from "../Shapes/Bar";
 import { Dot } from "../Shapes/dot";
 import { LineCircle } from "../Shapes/LineCircle";
 import { Triangle } from "../Shapes/Triangle";
-import { CodeText } from "./CodeText";
+import CodeTextSVG from "./CodeText";
+// import CodeText from "./CodeText";
 
 export const BackgroundDeco = () => {
     return (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-            {/* Bar */}
-            <Bar
-                width="500px"
-                length="80px"
-                x="70%"
-                y="80%"
-                rotate="135deg"
-            />
-            <Bar
-                width="400px"
-                length="15px"
-                startColor="var(--color-sky-blue)"
-                endColor="var(--color-pale-purple0)"
-                x="4%"
-                y="90%"
-                rotate="315deg"
-            />
-            <Bar
-                width="220px"
-                length="15px"
-                startColor="var(--color-sky-blue)"
-                endColor="var(--color-pale-purple0)"
-                x="-5%"
-                y="80%"
-                rotate="135deg"
-            />
-            <Bar
-                width="300px"
-                length="10px"
-                startColor="var(--color-Mauve)"
-                endColor="var(--color-sky-blue)"
-                x="20%"
-                y="10%"
-                rotate="135deg"
-            />
-            {/* Circle */}
-            <LineCircle
-                size="200px"
-                className="mx-auto absolute bottom-0 left-0"
-                x="0%"
-                y="84%"
-            />
-            {/* Triangle */}
-            <Triangle
-                className="right-40 bottom-11/12"
-                size="150px"
-                image="mid"
-            />
-            <Triangle
-                className="right-11/12 bottom-4/12"
-                size="100px"
-                image="big"
-                rotate="330deg"
-            />
-            {/* Dots */}
-            <Dot
-                size="36px"
-                type="hollow"
-                x="5%"
-                y="7%"
-                border={7}
-                color="var(--color-milky-white)"
-            />
-            <Dot
-                size="38px"
-                x="9.8%"
-                y="18.9%"
-                blur={true}
-                color="var(--color-purple0)"
-            />
-            <Dot
-                size="36px"
-                x="10%"
-                y="19%"
-                border={7}
-                color="var(--color-pink2)"
-            />
-            <Dot
-                size="40px"
-                x="80%"
-                y="65%"
-                border={7}
-            />
-            <Dot
-                size="40px"
-                x="88%"
-                y="95%"
-                border={7}
-                blur={true}
-                color="var(--color-pale-purple0)"
-            />
-            <Dot
-                size="15px"
-                x="92%"
-                y="75%"
-                border={7}
-                color="var(--color-pale-purple0)"
-            />
-            <CodeText
-                text="if (tired) {sleep();}"
-                className="absolute top-3/12 left-10/12 -translate-x-1/2 -translate-y-1/2"
-                size="80px"
-                color={["var(--color-purple1)", "var(--color-nice-purple0)"]}
-                fontWeight="800"
-                rotate="90deg"
-                opacity={0.4}
-            />
-        </div>
+        <>
+            <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+                {/* Bar */}
+                <Bar
+                    width="500px"
+                    length="80px"
+                    x="70%"
+                    y="80%"
+                    rotate="135deg" />
+                <Bar
+                    width="400px"
+                    length="15px"
+                    startColor="var(--color-sky-blue)"
+                    endColor="var(--color-pale-purple0)"
+                    x="4%"
+                    y="90%"
+                    rotate="315deg" />
+                <Bar
+                    width="220px"
+                    length="15px"
+                    startColor="var(--color-sky-blue)"
+                    endColor="var(--color-pale-purple0)"
+                    x="-5%"
+                    y="80%"
+                    rotate="135deg" />
+                <Bar
+                    width="300px"
+                    length="10px"
+                    startColor="var(--color-Mauve)"
+                    endColor="var(--color-sky-blue)"
+                    x="20%"
+                    y="10%"
+                    rotate="135deg" />
+                {/* Circle */}
+                <LineCircle
+                    size="200px"
+                    className="mx-auto absolute bottom-0 left-0"
+                    x="0%"
+                    y="84%" />
+                {/* Triangle */}
+                <Triangle
+                    className="right-40 bottom-11/12"
+                    size="150px"
+                    image="mid" />
+                <Triangle
+                    className="right-11/12 bottom-4/12"
+                    size="100px"
+                    image="big"
+                    rotate="330deg" />
+                {/* Dots */}
+                <Dot
+                    size="36px"
+                    type="hollow"
+                    x="5%"
+                    y="7%"
+                    border={7}
+                    color="var(--color-milky-white)" />
+                <Dot
+                    size="38px"
+                    x="9.8%"
+                    y="18.9%"
+                    blur={true}
+                    color="var(--color-purple0)" />
+                <Dot
+                    size="36px"
+                    x="10%"
+                    y="19%"
+                    border={7}
+                    color="var(--color-pink2)" />
+                <Dot
+                    size="40px"
+                    x="80%"
+                    y="65%"
+                    border={7} />
+                <Dot
+                    size="40px"
+                    x="88%"
+                    y="95%"
+                    border={7}
+                    blur={true}
+                    color="var(--color-pale-purple0)" />
+                <Dot
+                    size="15px"
+                    x="92%"
+                    y="75%"
+                    border={7}
+                    color="var(--color-pale-purple0)" />
+            </div>
+            <div className="absolute top-0 right-0 -z-1">
+                <CodeTextSVG />
+            </div>
+        </>
     );
 };

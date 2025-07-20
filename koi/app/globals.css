@@ -45,6 +45,7 @@ body {
     radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
     radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 50%);
   background-color: var(--color-milky-white);
+  background-color: var(--color-pale-purple0);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
