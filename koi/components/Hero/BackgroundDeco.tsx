@@ -1,9 +1,9 @@
+import { motion } from "motion/react";
 import { Bar } from "../Shapes/Bar";
 import { Dot } from "../Shapes/dot";
 import { LineCircle } from "../Shapes/LineCircle";
 import { Triangle } from "../Shapes/Triangle";
 import CodeTextSVG from "./CodeText";
-// import CodeText from "./CodeText";
 
 export const BackgroundDeco = () => {
     return (
@@ -65,23 +65,6 @@ export const BackgroundDeco = () => {
                     border={7}
                     color="var(--color-milky-white)" />
                 <Dot
-                    size="38px"
-                    x="9.8%"
-                    y="18.9%"
-                    blur={true}
-                    color="var(--color-purple0)" />
-                <Dot
-                    size="36px"
-                    x="10%"
-                    y="19%"
-                    border={7}
-                    color="var(--color-pink2)" />
-                <Dot
-                    size="40px"
-                    x="80%"
-                    y="65%"
-                    border={7} />
-                <Dot
                     size="40px"
                     x="88%"
                     y="95%"
@@ -94,6 +77,32 @@ export const BackgroundDeco = () => {
                     y="75%"
                     border={7}
                     color="var(--color-pale-purple0)" />
+                {/* pink with purple shadow */}
+                <Dot
+                    size="38px"
+                    x="9.8%"
+                    y="18.9%"
+                    blur={true}
+                    color="var(--color-purple0)" />
+                <Dot
+                    size="36px"
+                    x="10%"
+                    y="19%"
+                    border={7}
+                    color="var(--color-pink2)" />
+                {/* blue with pink shadow */}
+                <Dot
+                    size="42px"
+                    x="79.8%"
+                    y="65%"
+                    blur={true}
+                    color="var(--color-pink1)"
+                    border={7} />
+                <Dot
+                    size="40px"
+                    x="80%"
+                    y="65%" />
+
             </div>
             <div className="absolute top-0 right-0 -z-1">
                 <CodeTextSVG />

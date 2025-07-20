@@ -21,7 +21,7 @@ export function Typewriter({
   showCursor = true,
   cursorBlinkSpeed = 500,
   children
-}: TypewriterProps) {
+}: Readonly<TypewriterProps>) {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [typingDone, setTypingDone] = useState(false);
