@@ -1,12 +1,17 @@
-import { Hero } from "@/components/Hero/Hero";
+import { Hero } from "@/ui/Hero";
 import { Test } from "./test";
+import { TracingBeam } from "@/components/ui/tracing-beam";
 
 export default function Home() {
 
   return (
     <>
-    <Hero />
-    {/* <Test /> */}
+      {/* <TracingBeam className="px-1">
+        <Hero />
+      </TracingBeam> */}
+        {/* <Test /> */}
+        <Hero />
+
     </>
 
   );

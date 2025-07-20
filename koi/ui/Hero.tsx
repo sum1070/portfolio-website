@@ -1,8 +1,9 @@
-import { CenterContainer } from "@/components/CenterContainer";
-import ScrollDown from "../Animated/ScrollArrow/ScrollDown";
-import { Typewriter } from "../Animated/Typewriter/Typewriter";
-import { BackgroundDeco } from "./BackgroundDeco";
-import MouseAnimated from "../Animated/mouse/mouse";
+import BackgroundDeco from "@/components/BackgroundDeco";
+import CenterContainer from "@/components/CenterContainer";
+import { ScrollDown } from "@/components/TriangleArrow";
+import MouseAnimated from "@/components/ui/MouseTrail";
+import Typewriter from "@/components/ui/Typewriter";
+
 
 export const Hero = () => {
   return (
@@ -10,7 +11,7 @@ export const Hero = () => {
       <MouseAnimated />
       <div className="">
         <BackgroundDeco />
-        <CenterContainer className="min-h-screen relative z-10">
+        <CenterContainer className="min-h-screen relative z-100">
           <div className="text-center text-nice-purple0 ">
             <h1 className="text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold">
               Lorem ipsum dolor.

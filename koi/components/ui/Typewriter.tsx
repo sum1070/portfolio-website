@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Cursor } from './Cursor';
+
 
 interface TypewriterProps {
   text?: string;
@@ -13,7 +13,41 @@ interface TypewriterProps {
   children?: React.ReactNode // <T> children </T>
 }
 
-export function Typewriter({
+interface CursorProps {
+    cursorChar?: string;
+    blinkSpeed?: number;
+    blinkEnabled?: boolean;
+}
+
+export function Cursor({
+    cursorChar = '|',
+    blinkSpeed = 500,
+    blinkEnabled = true,
+}: Readonly<CursorProps>) {
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+        if (!blinkEnabled) {
+            setVisible(true);
+            return;
+        }
+
+        setVisible(true);
+        const timer = setInterval(() => {
+            setVisible((visible) => !visible);
+        }, blinkSpeed);
+
+        return () => clearInterval(timer);
+    }, [blinkSpeed, blinkEnabled]);
+
+    return (
+        <span className={`inline-block transition-opacity duration-100 ${visible ? 'opacity-100' : 'opacity-0'}`}>
+            {cursorChar}
+        </span>
+    );
+}
+
+export default function Typewriter({
   text = '',
   className = '',
   speed = 100,

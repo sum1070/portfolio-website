@@ -5,12 +5,12 @@ interface ContainerProps {
   className?: string; // for tailwind styling
 }
 
-export function CenterContainer(props: Readonly<ContainerProps>) {
+export default function CenterContainer(props: Readonly<ContainerProps>) {
   return (
     <div
       className={`container
         flex items-center justify-center text-center
-        h-screen 
+        h-screen
         px-4
         mx-auto
         py-32

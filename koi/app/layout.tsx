@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {fraunces} from './fonts';
+import {fraunces} from '../lib/fonts';
 
 export const metadata: Metadata = {
   title: "koi",
