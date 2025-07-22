@@ -57,14 +57,11 @@ type PatternType = "dots" | "grid";
 export type PatternProps = {
   className?: string;
   type: PatternType;
-  size?: number; // spacing
+  size?: number; // spacing between pattern elements
   mask?: boolean;
   width?: string;
   height?: string;
   position?: Position;
-  zIndex?: string;
-  color?: string;
-  opacity?: string;
-
+  opacity?: number; // [0,1]
 };
 
