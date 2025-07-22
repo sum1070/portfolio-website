@@ -1,7 +1,6 @@
 import BackgroundDeco from "@/components/BackgroundDeco";
 import CenterContainer from "@/components/CenterContainer";
-import { ScrollDown } from "@/components/TriangleArrow";
-import MouseAnimated from "@/components/ui/MouseTrail";
+import { TriangleArrowDown } from "@/components/TriangleArrow";
 import Typewriter from "@/components/ui/Typewriter";
 
 export const Hero = () => {
@@ -21,13 +20,11 @@ export const Hero = () => {
             Lorem ipsum dolor sit.
           </Typewriter>
           <div className="mt-4 flex justify-center">
-            <ScrollDown />
+            <TriangleArrowDown />
           </div>
         </div>
       </CenterContainer>
     </div>
-    
-
   );
 }
 
