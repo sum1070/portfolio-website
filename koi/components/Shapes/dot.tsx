@@ -1,12 +1,8 @@
-interface dotProps {
-    className?: string;
-    size?: string;
+import { TShape } from "@/lib/types";
+
+interface DotProps extends TShape {
     type?: "solid" | "hollow";
     color?: string;
-    x?: string;
-    y?: string;
-    border?: number;
-    blur?: boolean;
 }
 
 export function Dot({
@@ -18,7 +14,7 @@ export function Dot({
     y = "0px",
     border = 2,
     blur = false,
-}: Readonly<dotProps>) {
+}: Readonly<DotProps>) {
     const style: React.CSSProperties = {
         width: size,
         height: size,

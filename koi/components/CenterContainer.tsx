@@ -1,11 +1,7 @@
 import React from "react";
+import {TContainerProps} from "@/lib/types";
 
-interface ContainerProps {
-  children: React.ReactNode; // My son to be rendered
-  className?: string; // for tailwind styling
-}
-
-export default function CenterContainer(props: Readonly<ContainerProps>) {
+export default function CenterContainer(props: Readonly<TContainerProps>) {
   return (
     <div
       className={`container

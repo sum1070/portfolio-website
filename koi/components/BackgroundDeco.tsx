@@ -18,7 +18,7 @@ export default function BackgroundDeco() {
                 <Bar
                     width="400px"
                     length="15px"
-                    startColor="var(--color-sky-blue)"
+                    color="var(--color-sky-blue)"
                     endColor="var(--color-pale-purple0)"
                     x="4%"
                     y="90%"
@@ -26,7 +26,7 @@ export default function BackgroundDeco() {
                 <Bar
                     width="220px"
                     length="15px"
-                    startColor="var(--color-sky-blue)"
+                    color="var(--color-sky-blue)"
                     endColor="var(--color-pale-purple0)"
                     x="-5%"
                     y="80%"
@@ -34,7 +34,7 @@ export default function BackgroundDeco() {
                 <Bar
                     width="300px"
                     length="10px"
-                    startColor="var(--color-Mauve)"
+                    color="var(--color-Mauve)"
                     endColor="var(--color-sky-blue)"
                     x="20%"
                     y="10%"
