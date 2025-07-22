@@ -1,13 +1,13 @@
 import CodeTextSVG from "./svg/CodeText";
 import { Bar } from "./shapes/Bar";
-import { Dot } from "./shapes/dot";
+import { Dot } from "./shapes/Dot";
 import { LineCircle } from "./shapes/LineCircle";
 import { Triangle } from "./shapes/Triangle";
 
 export default function BackgroundDeco() {
     return (
         <>
-            <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+            <div className="-z-10 pointer-events-none absolute inset-0 overflow-hidden">
                 {/* Bar */}
                 <Bar
                     width="500px"
@@ -103,7 +103,7 @@ export default function BackgroundDeco() {
                     y="65%" />
 
             </div>
-            <div className="absolute top-0 right-0 -z-1">
+            <div className="-z-1 absolute top-0 right-0">
                 <CodeTextSVG />
             </div>
         </>

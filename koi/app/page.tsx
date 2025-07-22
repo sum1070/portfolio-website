@@ -4,12 +4,19 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import MouseAnimated from "@/components/ui/MouseTrail";
 import Dummy from "./dummy";
 import { Reveal } from "@/utils/Reveal";
+import Pattern from "@/components/Patterns";
 
 export default function Home() {
 
   return (
     <>
       <MouseAnimated />
+      <Pattern
+        type="dots"
+        size={10}
+        height="15svh"
+        position="bottom"
+      />
       {/* <Test /> */}
       <Hero />
       <Reveal>
