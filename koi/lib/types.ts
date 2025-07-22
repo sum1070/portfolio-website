@@ -28,7 +28,6 @@ export type TAnimation = {
   children?: React.ReactNode; // <T> children </T>
 };
 
-type PatternType = "dots" | "grid";
 type Position =
   | "top"
   | "bottom"
@@ -40,16 +39,7 @@ type Position =
   | "bottom-left"
   | "bottom-right"
   | "full";
-export type PatternProps = {
-  className?: string;
-  type: PatternType;
-  size?: number; // spacing
-  mask?: boolean;
-  width?: string;
-  height?: string;
-  position?: Position;
-  zIndex?: string;
-};
+
 export const positionClasses = {
   top: "top-0 left-1/2 -translate-x-1/2",
   bottom: "bottom-0 left-1/2 -translate-x-1/2",
@@ -62,3 +52,18 @@ export const positionClasses = {
   "bottom-right": "bottom-0 right-0",
   full: "inset-0",
 };
+
+type PatternType = "dots" | "grid";
+export type PatternProps = {
+  className?: string;
+  type: PatternType;
+  size?: number; // spacing
+  mask?: boolean;
+  width?: string;
+  height?: string;
+  position?: Position;
+  zIndex?: string;
+  color?: string;
+
+};
+

@@ -1,10 +1,10 @@
 "use client"
 
-import BackgroundDeco from "@/components/BackgroundDeco";
+import BackgroundDeco from "@/components/sections/hero/BackgroundDeco";
 import CenterContainer from "@/components/CenterContainer";
 import { TriangleArrowDown } from "@/components/TriangleArrow";
 import Typewriter from "@/components/ui/Typewriter";
-import { Reveal } from "@/utils/Reveal";
+import { Reveal } from "@/lib/Reveal";
 import { useState } from "react";
 
 const Text = {
