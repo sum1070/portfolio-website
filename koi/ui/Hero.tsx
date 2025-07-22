@@ -1,10 +1,12 @@
+"use client"
+
 import BackgroundDeco from "@/components/BackgroundDeco";
 import CenterContainer from "@/components/CenterContainer";
 import { TriangleArrowDown } from "@/components/TriangleArrow";
 import Typewriter from "@/components/ui/Typewriter";
 import { StringReveal } from "@/utils/StringReveal";
 import { Reveal } from "@/utils/Reveal";
-
+import { useState } from "react";
 
 const Text = {
   txtMain: "text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold",
@@ -14,6 +16,7 @@ const Text = {
 
 
 export const Hero = () => {
+  const [revealArrow, setRevealArrow] = useState(false);
   return (
 
     <div className="pb-20">
@@ -35,15 +38,23 @@ export const Hero = () => {
             className={`${Text.txtMono}`}
             delay={1300}
             speed={110}
+            onComplete={() => setRevealArrow(true)}
           >
             Lorem ipsum dolor sit.
           </Typewriter>
-          <Reveal 
-              delay={0.5}
-              width="full"
-              className="mt-4 pb-2 flex justify-center w-full">
-              <TriangleArrowDown />
-          </Reveal>
+          {/* Fixed height container as placeholder */}
+          <div className="mt-6 pb-2 flex justify-center w-full h-8">
+            {revealArrow && (
+              <Reveal
+                key="arrow"
+                delay={0.1}
+                width="full"
+                className="flex justify-center w-full"
+              >
+                <TriangleArrowDown />
+              </Reveal>
+            )}
+          </div>
         </div>
       </CenterContainer>
     </div>
