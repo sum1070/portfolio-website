@@ -23,6 +23,7 @@ export type TAnimation = {
   text?: string;
   className?: string;
   duration?: number;
+  delay?: number;
   speed?: number;
   children?: React.ReactNode; // <T> children </T>
 };

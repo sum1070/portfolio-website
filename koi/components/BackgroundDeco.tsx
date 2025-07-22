@@ -1,4 +1,4 @@
-import CodeTextSVG from "./CodeText";
+import CodeTextSVG from "./svg/CodeText";
 import { Bar } from "./shapes/Bar";
 import { Dot } from "./shapes/dot";
 import { LineCircle } from "./shapes/LineCircle";

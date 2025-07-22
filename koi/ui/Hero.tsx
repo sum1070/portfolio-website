@@ -3,6 +3,13 @@ import CenterContainer from "@/components/CenterContainer";
 import { TriangleArrowDown } from "@/components/TriangleArrow";
 import Typewriter from "@/components/ui/Typewriter";
 
+const Text = {
+  txtMain: "text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold",
+  txtMid: "mt-4 text-xl sm:text-3xl xl:text-4xl text-nice-purple0",
+  txtMono: "mt-4 text-base sm:text-2xl block font-titillium-web",
+};
+
+
 export const Hero = () => {
   return (
 
@@ -10,16 +17,16 @@ export const Hero = () => {
       <BackgroundDeco />
       <CenterContainer className="min-h-screen relative z-100">
         <div className="text-center text-nice-purple0 ">
-          <h1 className="text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold">
-            Lorem ipsum dolor.
-          </h1>
-          <p className="mt-4 text-xl sm:text-3xl xl:text-4xl text-nice-purple0">
-            Lorem, ipsum dolor.
-          </p>
-          <Typewriter className="mt-4 text-base sm:text-2xl block font-titillium-web">
-            Lorem ipsum dolor sit.
-          </Typewriter>
-          <div className="mt-4 flex justify-center">
+            <h1 className={`${Text.txtMain}`}>
+              Lorem ipsum dolor.
+            </h1>
+            <p className={`${Text.txtMid}`}>
+              Lorem, ipsum dolor.
+            </p>
+            <Typewriter className={`${Text.txtMono}`}>
+              Lorem ipsum dolor sit.
+            </Typewriter>
+          <div className="mt-4 pb-2 flex justify-center">
             <TriangleArrowDown />
           </div>
         </div>

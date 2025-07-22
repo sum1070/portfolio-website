@@ -2,6 +2,8 @@ import { Hero } from "@/ui/Hero";
 import { Test } from "./test";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import MouseAnimated from "@/components/ui/MouseTrail";
+import Dummy from "./dummy";
+import { Reveal } from "@/utils/Reveal";
 
 export default function Home() {
 
@@ -10,6 +12,12 @@ export default function Home() {
       <MouseAnimated />
       {/* <Test /> */}
       <Hero />
+      <Reveal>
+        <Dummy />
+        <Dummy />
+        <Dummy />
+      </Reveal>
+
       {/* <Wave mask="url(#mask)" fill="#1277b0" >
         <defs>
           <linearGradient id="gradient" gradientTransform="rotate(90)">
