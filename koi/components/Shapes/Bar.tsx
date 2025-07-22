@@ -1,20 +1,9 @@
 import React from "react";
-
-interface BarProps {
-    className?: string;
-    startColor?: string;
-    endColor?: string;
-    width?: string;
-    length?: string;
-    rotate?: string;
-    opacity?: number;
-    x?: string;
-    y?: string;
-}
+import { TShape } from "@/lib/types";
 
 export function Bar({
     className = '',
-    startColor = '',
+    color = '',
     endColor = '',
     width = '200px',
     length = '20px',
@@ -22,10 +11,9 @@ export function Bar({
     opacity = 1,
     x = '0px',
     y = '0px',
-}: Readonly<BarProps>) {
-
-    if (!startColor && !endColor) {
-        startColor = 'var(--color-Mauve)';
+}: Readonly<TShape>) {
+    if (!color && !endColor) {
+        color = 'var(--color-Mauve)';
         endColor = 'var(--color-sky-blue)';
     }
     const barStyle: React.CSSProperties = {
@@ -36,9 +24,9 @@ export function Bar({
         top: y,
         opacity,
         transform: `rotate(${rotate})`,
-        background: startColor === endColor
-            ? startColor
-            : `linear-gradient(45deg, ${startColor}, ${endColor})`,
+        background: color === endColor
+            ? color
+            : `linear-gradient(45deg, ${color}, ${endColor})`,
         borderRadius: '9999px',
         transformOrigin: 'center'
     };

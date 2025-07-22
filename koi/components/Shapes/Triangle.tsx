@@ -1,8 +1,7 @@
-interface TriangleProp {
-    className?: string;
-    size?: string;
+import { TShape } from "@/lib/types";
+
+interface TriangleProp extends TShape {
     image?: "big" | "mid";
-    rotate?: string;
 }
 
 export function Triangle({

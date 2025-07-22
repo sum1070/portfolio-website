@@ -1,16 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { TAnimation } from '@/lib/types';
 
-
-interface TypewriterProps {
-  text?: string;
-  className?: string;
-  speed?: number;
+interface TypewriterProps extends TAnimation {
   onComplete?: () => void;
   showCursor?: boolean;
   cursorBlinkSpeed?: number
-  children?: React.ReactNode // <T> children </T>
 }
 
 interface CursorProps {

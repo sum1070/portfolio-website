@@ -1,17 +1,12 @@
-interface LineCircleProps {
-    className?: string;
-    size?: string;
-    x?: string;
-    y?: string;
-}
+import { TShape } from "@/lib/types";
 
 export function LineCircle({
     className = "",
     size = "200px",
     x = "50%",
     y = "50%",
-}: Readonly<LineCircleProps>) {
-    const url = "/images/circle-bars-palep-p.webp"; 
+}: Readonly<TShape>) {
+    const url = "/images/circle-bars-palep-p.webp";
 
     const style: React.CSSProperties = {
         width: size,

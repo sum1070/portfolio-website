@@ -4,11 +4,10 @@ import { ScrollDown } from "@/components/TriangleArrow";
 import MouseAnimated from "@/components/ui/MouseTrail";
 import Typewriter from "@/components/ui/Typewriter";
 
-
 export const Hero = () => {
   return (
 
-    <div className="">
+    <div className="pb-20">
       <BackgroundDeco />
       <CenterContainer className="min-h-screen relative z-100">
         <div className="text-center text-nice-purple0 ">
@@ -27,6 +26,7 @@ export const Hero = () => {
         </div>
       </CenterContainer>
     </div>
+    
 
   );
 }
