@@ -6,7 +6,7 @@ import { TriangleArrowDown } from "@/components/TriangleArrow";
 import Typewriter from "@/components/ui/Typewriter";
 import { Reveal } from "@/lib/Reveal";
 import { useState } from "react";
-import Pattern from "../Patterns";
+import Pattern from "@/components/Patterns";
 
 const Text = {
   txtMain: "text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold",
@@ -53,13 +53,12 @@ export const Hero = () => {
           </div>
         </div>
       </CenterContainer>
-      <Pattern
-        type="dots"
-        size={10}
-        height="15svh"
-        position="bottom"
-        mask={true}
-      />
+<Pattern
+  type="dots"
+  size={10}
+  height="15svh"
+  position="bottom"
+/>
     </div>
   );
 }
