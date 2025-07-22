@@ -38,7 +38,10 @@ export const Hero = () => {
           >
             Lorem ipsum dolor sit.
           </Typewriter>
-          <Reveal delay={0.5} className="mt-4 pb-2 flex justify-center">
+          <Reveal 
+              delay={0.5}
+              width="full"
+              className="mt-4 pb-2 flex justify-center w-full">
               <TriangleArrowDown />
           </Reveal>
         </div>

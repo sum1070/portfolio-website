@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from "motion/react";
 import { TAnimation } from "@/lib/types";
-import { delay } from 'motion';
 
 interface RevealProps extends TAnimation {
     width?: "fit-content" | "full";
@@ -13,7 +12,7 @@ export const Reveal = ({
     delay = 0.1,
     duration = 0.6,
     className = "",
-    width = "fit-content"
+    width = "full"
 }: RevealProps) => {
     const ref = useRef(null);
     const inView = useInView(ref, { once: true });
@@ -23,12 +22,13 @@ export const Reveal = ({
         if (inView) {
             controls.start("visible");
         }
-    }, [inView]);
+    }, [inView, controls]);
+
     return (
         <div
             ref={ref}
-            style={{ position: "relative", width, overflow: "hidden" }}
-            className={`${className}`}
+            style={{ position: "relative", width: width === "full" ? "100%" : "fit-content" }}
+            className={className}
         >
             <motion.div
                 variants={{
@@ -41,7 +41,8 @@ export const Reveal = ({
                     duration,
                     delay
                 }}
-            >{children}
+            >
+                {children}
             </motion.div>
         </div>
     );
