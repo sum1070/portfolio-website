@@ -15,7 +15,7 @@
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   border-bottom: 16px solid var(--color-nice-purple0);
-  animation: bounce 1.5s infinite;
+  animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
