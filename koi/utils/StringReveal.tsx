@@ -2,18 +2,18 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation } from "motion/react";
 import { TAnimation } from "@/lib/types";
-import { delay } from 'motion';
 
 interface RevealProps extends TAnimation {
     width?: "fit-content" | "full";
 }
 
-export const Reveal = ({
+export const StringReveal = ({
+    text = '',
+    className = '',
     children,
-    delay = 0.1,
-    duration = 0.6,
-    className = "",
-    width = "fit-content"
+    delay = 100,
+    duration = 0.25,
+    width = "fit-content",
 }: RevealProps) => {
     const ref = useRef(null);
     const inView = useInView(ref, { once: true });
@@ -27,9 +27,11 @@ export const Reveal = ({
     return (
         <div
             ref={ref}
-            style={{ position: "relative", width, overflow: "hidden" }}
-            className={`${className}`}
-        >
+            style={{ 
+                position: "relative", width, overflow: "hidden"
+            }}
+            className={className}
+            >
             <motion.div
                 variants={{
                     hidden: { opacity: 0, y: 75 },
@@ -39,7 +41,7 @@ export const Reveal = ({
                 animate={controls}
                 transition={{
                     duration,
-                    delay
+                    delay,
                 }}
             >{children}
             </motion.div>

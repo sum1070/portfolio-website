@@ -60,7 +60,7 @@ export default function Typewriter({
 }: Readonly<TypewriterProps>) {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [typingDone, setTypingDone] = useState(false);
+  // const [typingDone, setTypingDone] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
 
   // Use `children` if it's string, else use `text` prop
@@ -82,7 +82,7 @@ export default function Typewriter({
     if (!hasStarted || currentIndex >= textToType.length || !textToType) {
       if (currentIndex !== 0 && hasStarted) {
         // --- typing done ---
-        setTypingDone(true);
+        // setTypingDone(true);
         onComplete?.();
       }
       return;
