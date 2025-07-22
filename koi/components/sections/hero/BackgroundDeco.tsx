@@ -1,8 +1,8 @@
-import CodeTextSVG from "./svg/CodeText";
-import { Bar } from "./shapes/Bar";
-import { Dot } from "./shapes/Dot";
-import { LineCircle } from "./shapes/LineCircle";
-import { Triangle } from "./shapes/Triangle";
+import CodeTextSVG from "../../decorations/CodeText";
+import { Bar } from "../../decorations/Bar";
+import { Dot } from "../../decorations/Dot";
+import { LineCircle } from "../../decorations/LineCircle";
+import { Triangle } from "../../decorations/Triangle";
 
 export default function BackgroundDeco() {
     return (

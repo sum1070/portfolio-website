@@ -1,10 +1,10 @@
-import { Hero } from "@/ui/Hero";
-import { Test } from "./test";
-import { TracingBeam } from "@/components/ui/tracing-beam";
+import { Test } from "./dev/test";
+import { TracingBeam } from "@/components/ui/dev/tracing-beam";
 import MouseAnimated from "@/components/ui/MouseTrail";
-import Dummy from "./dummy";
-import { Reveal } from "@/utils/Reveal";
+import Dummy from "./dev/dummy";
+import { Reveal } from "@/lib/Reveal";
 import Pattern from "@/components/Patterns";
+import { Hero } from "@/components/sections/Hero";
 
 export default function Home() {
 

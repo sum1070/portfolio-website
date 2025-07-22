@@ -1,6 +1,6 @@
 'use client';
 
-import { TextHoverEffect } from "@/components/ui/text-hover-effect";
+import { TextHoverEffect } from "@/components/ui/dev/text-hover-effect";
 
 
 
