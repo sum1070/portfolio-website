@@ -11,8 +11,7 @@ const Pattern: React.FC<PatternProps> = ({
     height = "100px",
     position = "full",
     className = "",
-    zIndex = "-z-20",
-
+    zIndex = "-z-10",
 }) => {
     const patternStyle =
         type === "grid"

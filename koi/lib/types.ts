@@ -64,6 +64,7 @@ export type PatternProps = {
   position?: Position;
   zIndex?: string;
   color?: string;
+  opacity?: string;
 
 };
 

@@ -7,7 +7,7 @@ import { Triangle } from "../../decorations/Triangle";
 export default function BackgroundDeco() {
     return (
         <>
-            <div className="-z-10 pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="-z-40 pointer-events-none absolute inset-0 overflow-hidden">
                 {/* Bar */}
                 <Bar
                     width="500px"
@@ -103,7 +103,7 @@ export default function BackgroundDeco() {
                     y="65%" />
 
             </div>
-            <div className="-z-1 absolute top-0 right-0">
+            <div className="z-10 absolute top-0 right-0">
                 <CodeTextSVG />
             </div>
         </>
