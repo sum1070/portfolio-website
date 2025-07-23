@@ -17,7 +17,7 @@ const Text = {
 export const Hero = () => {
   const [revealArrow, setRevealArrow] = useState(false);
   return (
-    <div className="pb-20">
+    <div className="">
       <BackgroundDeco />
       <CenterContainer className="min-h-screen relative z-10">
         <div className="text-center text-nice-purple2 ">
@@ -38,11 +38,11 @@ export const Hero = () => {
             Lorem ipsum dolor sit.
           </Typewriter>
           {/* Fixed height container as placeholder */}
-          <div className="mt-4 pt-8 flex justify-center w-full h-8">
+          <div className="mt-12 pt-12 flex justify-center w-full h-10">
             {revealArrow && (
               <Reveal
                 key="arrow"
-                delay={0.2}
+                delay={0.6}
                 width="full"
                 duration={0.6}
                 className="flex justify-center w-full"

@@ -15,7 +15,7 @@
   --color-sky-blue: #a9e8f2;
   --color-pink1: #fcb0ff;
   --color-pink2: #fed6ff;
-  --color-Mauve: #E2BAFF;
+  --color-Mauve: #e2baff;
 
   --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -51,4 +51,46 @@ body {
   background-size: cover;
   background-attachment: fixed;
   padding: 1rem;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(50px, -20) scale(1.6) rotate(60deg);
+  }
+  66% {
+    transform: translate(-40, 40px) scale(1.9) rotate(-10deg);
+  }
+  100% {
+    transform: translate(-10px, -20px) scale(1) rotate(20deg);
+  }
+}
+
+@keyframes blob2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(50px, -100px) scale(0.9);
+  }
+  66% {
+    transform: translate(100px, -30px) scale(1.8);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes blob3 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  66% {
+    transform: translate(-60px, -80px) scale(0.9) rotate(240deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+  }
 }
