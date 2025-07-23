@@ -13,6 +13,7 @@ export type TShape = {
   blur?: boolean;
 };
 
+
 export type TContainerProps = {
   className?: string; // for tailwind styling
   children: React.ReactNode; // My son to be rendered
@@ -28,7 +29,7 @@ export type TAnimation = {
   children?: React.ReactNode; // <T> children </T>
 };
 
-type Position =
+type TPosition =
   | "top"
   | "bottom"
   | "left"
@@ -54,14 +55,16 @@ export const positionClasses = {
 };
 
 type PatternType = "dots" | "grid";
-export type PatternProps = {
+export type TPattern = {
   className?: string;
   type: PatternType;
-  size?: number; // spacing between pattern elements
+  spacing?: number; // spacing between dots / grid lines
   mask?: boolean;
   width?: string;
   height?: string;
-  position?: Position;
+  position?: TPosition;
   opacity?: number; // [0,1]
+  color?: string;
+  stroke?: number;
 };
 
