@@ -1,14 +1,13 @@
-import MouseAnimated from "@/components/ui/MouseTrail";
-import Dummy from "./dummy";
-import { Reveal } from "@/lib/";
+import {MouseTrail, BlurredBlobs} from "@/components";
 import {Hero} from "@/components/sections";
-import BlurredBlobs from "@/components/decorations/BlurredBlobs";
+import Reveal from "@/lib/Reveal";
+import Dummy from "./dummy";
 
 export default function dev() {
 
   return (
     <>
-      <MouseAnimated />
+      <MouseTrail />
       <BlurredBlobs />
       <Hero />
       <Reveal>
