@@ -9,7 +9,7 @@ import { useState } from "react";
 import Pattern from "@/components/Patterns";
 
 const Text = {
-  txtMain: "text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold",
+  txtMain: "text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold text-shadow-lg/10",
   txtMid: "mt-4 text-xl sm:text-3xl xl:text-4xl",
   txtMono: "mt-4 text-base sm:text-2xl block font-titillium-web",
 };

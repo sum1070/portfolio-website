@@ -11,8 +11,6 @@ export default function Pattern({
     type,
     spacing = 20,
     mask = false,
-    width = '100%',
-    height = '100%',
     position = 'full',
     opacity = 0.9,
     color = '#737373',
