@@ -104,3 +104,20 @@ body {
     transform: translate(0px, 0px) scale(1) rotate(360deg);
   }
 }
+
+@keyframes dotExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+  }
+}
+
+.dot-hover-effect {
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.dot-hover-effect:hover {
+  transform: translate(-50%, -50%) scale(2) !important;
+}
