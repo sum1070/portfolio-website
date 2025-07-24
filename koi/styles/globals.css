@@ -17,11 +17,6 @@
   --color-pink2: #fed6ff;
   --color-Mauve: #e2baff;
 
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
   --font-titillium-web: "Titillium Web", sans-serif;
   --font-fraunces: "Fraunces", serif;
   --font-fira-code: "Fira Code", monospace;
