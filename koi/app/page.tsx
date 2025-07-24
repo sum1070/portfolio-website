@@ -1,5 +1,4 @@
 import { Test } from "./dev/test";
-import { TracingBeam } from "@/components/ui/dev/tracing-beam";
 import MouseAnimated from "@/components/ui/MouseTrail";
 import Dummy from "./dev/dummy";
 import { Reveal } from "@/lib/Reveal";
@@ -18,7 +17,6 @@ export default function Home() {
         <Dummy />
         <Dummy />
       </Reveal>
-
     </>
 
   );

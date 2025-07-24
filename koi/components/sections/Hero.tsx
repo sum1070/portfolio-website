@@ -56,7 +56,7 @@ export const Hero = () => {
       </CenterContainer>
       <Pattern
         type="dots"
-        height="10svh"
+        className="w-full h-[10svh] sm:h-[15svh]"
         position="bottom"
         color="#fefaf3"
         width="100%"
@@ -65,13 +65,11 @@ export const Hero = () => {
       />
       <Pattern
         type="dots"
-        height="40%"
-        width="10svw"
         position="bottom-right"
         color="#fefaf3"
         spacing={13}
         stroke={3}
-        className="bottom-[10svh]"
+        className="bottom-[10svh] h-full w-[10svw] sm:w-[15svw] sm:bottom-[15svh] sm:h-2/5"
       />
     </div>
   );
