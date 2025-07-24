@@ -22,12 +22,7 @@
   --font-fira-code: "Fira Code", monospace;
 }
 
-@layer base {
-  html,
-  body {
-    @apply min-h-screen;
-  }
-}
+@layer base { html,body { @apply min-h-screen; }}
 
 /* my cute cute pastel bg */
 body {
