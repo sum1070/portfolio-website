@@ -18,7 +18,8 @@ export const Hero = () => {
   const [revealArrow, setRevealArrow] = useState(false);
   return (
     <div className="">
-      <BackgroundDeco />
+      <BackgroundDeco /> 
+      {/* TODO: parallax effect of deco */}
       <CenterContainer className="min-h-screen relative z-10">
         <div className="text-center text-nice-purple2 ">
           <Reveal>
