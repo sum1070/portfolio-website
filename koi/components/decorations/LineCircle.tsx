@@ -1,6 +1,6 @@
 import { TShape } from "@/lib/types";
 
-export function LineCircle({
+function LineCircle({
     className = "",
     size = "200px",
     x = "50%",
@@ -21,3 +21,5 @@ export function LineCircle({
 
     return <div className={className} style={style} />;
 }
+
+export default LineCircle;
