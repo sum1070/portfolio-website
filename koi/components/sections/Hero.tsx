@@ -1,14 +1,9 @@
 "use client"
 
 import { useState } from "react";
-import DevBackgroundDeco from "@/components/sections/hero/dev_BackgroundDeco";
 import BackgroundDeco from "@/components/sections/hero/BackgroundDeco";
-import CenterContainer from "@/components/CenterContainer";
-import { TriangleArrowDown, Pattern } from "@/components";
-import Typewriter from "@/components/ui/Typewriter";
+import { TriangleArrowDown, Pattern, CenterContainer, Typewriter} from "@/components";
 import Reveal from "@/lib/Reveal";
-import { motion, useScroll } from "motion/react";
-import { springY } from "@/lib/utils";
 
 const Text = {
   txtMain: "text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold text-shadow-lg/10",
@@ -18,13 +13,10 @@ const Text = {
 
 const Hero = () => {
   const [revealArrow, setRevealArrow] = useState(false);
-  const { scrollY } = useScroll();
-  const springTxt = springY(scrollY, [0, -90]);
 
   return (
     <div className="">
       <BackgroundDeco />
-      {/* TODO: parallax effect of deco */}
       <CenterContainer className="min-h-screen relative z-10">
         <div className="text-center text-nice-purple2 ">
           <Reveal>
@@ -61,7 +53,7 @@ const Hero = () => {
       </CenterContainer>
       <Pattern
         type="dots"
-        className="w-full h-[10svh] sm:h-[15svh]"
+        className="w-full h-[10svh] sm:h-[10svh] md:h-[15svh]"
         position="bottom"
         color="#fefaf3"
         width="100%"
@@ -74,7 +66,7 @@ const Hero = () => {
         color="#fefaf3"
         spacing={13}
         stroke={3}
-        className="bottom-[10svh] h-full w-[10svw] sm:w-[10svw] sm:bottom-[15svh] sm:h-2/5"
+        className="bottom-[10svh] h-2/5 sm:bottom-[10svh] md:bottom-[15svh] sm:w-[10svw] "
       />
     </div>
   );
