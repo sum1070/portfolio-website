@@ -59,8 +59,6 @@ export default function Pattern({
                 className
             )}
             style={{
-                width,
-                height,
                 ...getPatternStyle(),
                 ...getMaskStyle(),
             }}
