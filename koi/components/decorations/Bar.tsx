@@ -1,7 +1,7 @@
 import React from "react";
 import { TShape } from "@/lib/types";
 
-export function Bar({
+function Bar({
     className = '',
     color = '',
     endColor = '',
@@ -38,3 +38,5 @@ export function Bar({
         />
     );
 }
+
+export default Bar;

@@ -5,7 +5,7 @@ interface DotProps extends TShape {
     color?: string;
 }
 
-export function Dot({
+function Dot({
     className = "",
     size = "10px",
     type = "solid",
@@ -30,3 +30,5 @@ export function Dot({
 
     return <div className={className} style={style} />;
 }
+
+export default Dot;

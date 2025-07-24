@@ -7,7 +7,7 @@ interface RevealProps extends TAnimation {
     width?: "fit-content" | "full";
 }
 
-export const Reveal = ({
+const Reveal = ({
     children,
     delay = 0.1,
     duration = 0.6,
@@ -47,3 +47,5 @@ export const Reveal = ({
         </div>
     );
 };
+
+export default Reveal;

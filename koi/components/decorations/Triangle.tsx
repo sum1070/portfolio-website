@@ -4,7 +4,7 @@ interface TriangleProp extends TShape {
     image?: "big" | "mid";
 }
 
-export function Triangle({
+function Triangle({
     className = "",
     size = "200px",
     image = "big",
@@ -24,3 +24,5 @@ export function Triangle({
 
     return <div className={className} style={style} />;
 }
+
+export default Triangle;
