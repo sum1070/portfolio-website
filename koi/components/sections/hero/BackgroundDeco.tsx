@@ -9,15 +9,16 @@ export default function BackgroundDeco() {
     const barY2 = springY(scrollY, [0, -150], [0, 500], { stiffness: 100, damping: 25 });
     const triangleY = springY(scrollY, [0, -180], [0, 500], { stiffness: 90, damping: 20 });
     const dotY1 = springY(scrollY, [0, -90], [0, 500], { stiffness: 120, damping: 15 });
-    const dotY2 = springY(scrollY, [0, -120], [0, 500], { stiffness: 80, damping: 20 });
+    const LineCircleY1 = springY(scrollY, [0, -220], [0, 500], { stiffness: 80, damping: 10 });
     const dotY3 = springY(scrollY, [0, -200], [0, 500], { stiffness: 70, damping: 10 });
+    const dotY4 = springY(scrollY, [0, -200], [0, 500], { stiffness: 90, damping: 20 });
     const codeTextY = springY(scrollY, [0, -180], [0, 500], { stiffness: 80, damping: 20 });
     return (
         <>
             <div className="-z-40 pointer-events-none absolute inset-0 overflow-hidden">
                 {/* Bar */}
                 <motion.div style={{ y: barY1, position: "absolute", left: "70%", top: "80%" }}>
-                    <Bar width="500px" length="80px" x="0" y="0" rotate="135deg" />
+                    <Bar width="500px" length="80px"rotate="135deg" />
                 </motion.div>
                 <motion.div style={{ y: barY2, position: "absolute", left: "4%", top: "90%" }}>
                     <Bar
@@ -49,10 +50,10 @@ export default function BackgroundDeco() {
                 {/* Circle */}
                 <motion.div
                     style={{
-                        y: barY2,
+                        y: LineCircleY1,
                         position: "absolute",
                         left: "0%",
-                        top: "84%"
+                        bottom: "24%"
                     }}>
                     <LineCircle size="200px" className="mx-auto absolute bottom-0 left-0" />
                 </motion.div>
@@ -68,51 +69,40 @@ export default function BackgroundDeco() {
                     <Triangle size="80px" image="big" rotate="120deg" className="mask-luminance mask-r-from-white mask-r-from-70% mask-r-to-black" />
                 </motion.div>
                 {/* Dots */}
-                <Dot
-                    size="36px"
-                    type="hollow"
-                    x="5%"
-                    y="7%"
-                    border={7}
-                    color="var(--color-milky-white)" />
-                <Dot
-                    size="40px"
-                    x="88%"
-                    y="95%"
-                    border={7}
-                    blur={true}
-                    color="var(--color-pale-purple0)" />
-                <Dot
-                    size="15px"
-                    x="92%"
-                    y="75%"
-                    border={7}
-                    color="var(--color-pale-purple0)" />
+                <motion.div style={{ y: dotY1, position: "absolute", left: "5%", top: "7%" }}>
+                    <Dot size="36px" type="hollow" border={7} color="var(--color-milky-white)" />
+                </motion.div>
+                <motion.div style={{ y: dotY4, position: "absolute", left: "10%", bottom: "35%" }}>
+                    <Dot
+                        size="20px"
+                        border={7}
+                        blur={true}
+                        color="var(--color-pale-purple0)"
+                    />
+                </motion.div>
+                <motion.div style={{ y: dotY3, position: "absolute", left: "92%", top: "75%" }}>
+                    <Dot size="15px"border={7} color="var(--color-pale-purple0)" />
+                </motion.div>
                 {/* pink with purple shadow */}
-                <Dot
-                    size="38px"
-                    x="9.8%"
-                    y="18.9%"
-                    blur={true}
-                    color="var(--color-purple0)" />
-                <Dot
-                    size="36px"
-                    x="10%"
-                    y="19%"
-                    border={7}
-                    color="var(--color-pink2)" />
+                <motion.div style={{ y: dotY1, position: "absolute", left: "9.8%", top: "18.9%" }}>
+                    <Dot size="38px"blur={true} color="var(--color-purple0)" />
+                </motion.div>
+                <motion.div style={{ y: dotY1, position: "absolute", left: "10%", top: "19%" }}>
+                    <Dot size="36px" border={7} color="var(--color-pink2)" />
+                </motion.div>
+
+
                 {/* blue with pink shadow */}
-                <Dot
-                    size="42px"
-                    x="79.8%"
-                    y="65%"
-                    blur={true}
-                    color="var(--color-pink1)"
-                    border={7} />
-                <Dot
-                    size="40px"
-                    x="80%"
-                    y="65%" />
+                <motion.div style={{ y: dotY4, position: "absolute", left: "79.8%", top: "65%" }}>
+                    <Dot
+                        size="42px"
+                        blur={true}
+                        color="var(--color-pink1)"
+                        border={7} />
+                </motion.div>
+                <motion.div style={{ y: dotY4, position: "absolute", left: "80%", top: "65%" }}>
+                    <Dot size="38px" blur={true}/>
+                </motion.div>
 
             </div>
             <div className="z-10 absolute top-0 right-0">
