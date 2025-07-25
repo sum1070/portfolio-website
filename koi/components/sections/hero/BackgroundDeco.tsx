@@ -13,6 +13,7 @@ export default function BackgroundDeco() {
     const sprStiff = springY(scrollY, [0, -90], [0, 500], { stiffness: 120, damping: 15 });
     const sprNormal = springY(scrollY, [0, -200], [0, 500], { stiffness: 90, damping: 20 });
     const sprFlex = springY(scrollY, [0, -200], [0, 500], { stiffness: 70, damping: 10 });
+    const sprFlex2 = springY(scrollY, [0, -250], [0, 500], { stiffness: 70, damping: 10 });
     const sprOrbit = springY(scrollY, [0, -120], [0, 500], { stiffness: 80, damping: 10 });
     const orbitScale = 1;
 
@@ -20,7 +21,20 @@ export default function BackgroundDeco() {
         <>
             {/* shape component */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                <motion.div style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
+                    <Bar width="60px" length="10px" rotate="145deg  " />
+                    <Bar width="60px" length="10px" rotate="55deg  " />
+                </motion.div>
+                <motion.div style={{ y: sprFlex2, position: "absolute", right: "18%", bottom: "24%" }}>
+                    <Bar width="50px" length="10px" rotate="25deg" color="var(--color-pink3)" endColor="var(--color-pale-purple1)"/>
+                    <Bar width="50px" length="10px" rotate="115deg" color="var(--color-pink0)" endColor="var(--color-pink3)"/>
+                </motion.div>
                 {/* Bars */}
+                {/* Hollow bar */}
+                <motion.div style={{ y: sprBar2, position: "absolute" }} className="top-40 left-0">
+                    <Bar width="300px" type="hollow" borderWidth="3px" length="70px" rotate="135deg" />
+                </motion.div>
+                {/* fat bar */}
                 <motion.div style={{ y: sprBar1, position: "absolute", left: "70%", top: "80%" }} className="-z-10">
                     <Bar width="500px" length="80px" rotate="135deg" />
                 </motion.div>
