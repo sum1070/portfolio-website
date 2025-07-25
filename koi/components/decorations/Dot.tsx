@@ -1,25 +1,25 @@
-import { TShape } from "@/lib/types";
+import { positionClasses, TShape } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface DotProps extends TShape {
     type?: "solid" | "hollow";
-    color?: string;
 }
 
 function Dot({
     className = "",
+    sizeClassName = "",
     size = "10px",
+    width = "",
+    length = "",
     type = "solid",
     color = "var(--color-sky-blue)",
-    x = "0px",
-    y = "0px",
     border = 2,
+    position = 'full',
     blur = false,
 }: Readonly<DotProps>) {
     const style: React.CSSProperties = {
-        width: size,
-        height: size,
-        left: x,
-        top: y,
+        width: sizeClassName ? undefined : (width || size),
+        height: sizeClassName ? undefined : (length || size),
         position: "absolute",
         borderRadius: "50%",
         backgroundColor: type === "solid" ? color : "transparent",
@@ -27,8 +27,11 @@ function Dot({
         display: "inline-block",
         boxShadow: blur ? `0 0 ${border * 2}px ${color}` : "none",
     };
+    const positionClass = positionClasses[position] || positionClasses.full;
 
-    return <div className={className} style={style} />;
+    return (
+        <div className={cn(className, positionClass, sizeClassName)} style={style} />
+    );
 }
 
 export default Dot;
