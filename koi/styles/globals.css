@@ -16,13 +16,19 @@
   --color-pink1: #fcb0ff;
   --color-pink2: #fed6ff;
   --color-Mauve: #e2baff;
+  --color-purblue: #aab1f2;
 
   --font-titillium-web: "Titillium Web", sans-serif;
   --font-fraunces: "Fraunces", serif;
   --font-fira-code: "Fira Code", monospace;
 }
 
-@layer base { html,body { @apply min-h-screen; }}
+@layer base {
+  html,
+  body {
+    @apply min-h-screen;
+  }
+}
 
 /* my cute cute pastel bg */
 body {
@@ -55,31 +61,31 @@ body {
 
 @keyframes blob {
   0% {
-    transform: translate(0px, 0px) scale(1) rotate(0deg);
-  }
-  33% {
-    transform: translate(50px, -20) scale(1.6) rotate(60deg);
+    transform: rotate(0deg);
   }
   66% {
-    transform: translate(-40, 40px) scale(1.9) rotate(-10deg);
+    transform: translate(-40, 40px) scale(1.2) rotate(160deg);
+  }
+  77% {
+    transform: translate(50px, -20px) scale(1) rotate(220deg);
   }
   100% {
-    transform: translate(-10px, -20px) scale(1) rotate(20deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes blob2 {
   0% {
-    transform: translate(0px, 0px) scale(1);
+    transform: rotate(360deg);
   }
   33% {
-    transform: translate(50px, -100px) scale(0.9);
+    transform: rotate(200deg), scale(1.5);
   }
-  66% {
-    transform: translate(100px, -30px) scale(1.8);
+  50% {
+    transform: rotate(160deg);
   }
   100% {
-    transform: translate(0px, 0px) scale(1);
+    transform: rotate(0deg);
   }
 }
 
@@ -88,26 +94,12 @@ body {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
   }
   66% {
-    transform: translate(-60px, -80px) scale(0.9) rotate(240deg);
+    transform: translate(-20px, -30px) scale(1.3) rotate(220deg);
+  }
+  78% {
+    transform:scale(1.2) rotate(300deg);
   }
   100% {
     transform: translate(0px, 0px) scale(1) rotate(360deg);
   }
-}
-
-@keyframes dotExpand {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(2);
-  }
-}
-
-.dot-hover-effect {
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-}
-
-.dot-hover-effect:hover {
-  transform: translate(-50%, -50%) scale(2) !important;
 }
