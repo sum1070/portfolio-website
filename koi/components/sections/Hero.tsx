@@ -4,7 +4,6 @@ import { useState } from "react";
 import BackgroundDeco from "@/components/sections/hero/BackgroundDeco";
 import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
 import Reveal from "@/lib/Reveal";
-import DevBackgroundDeco from "./hero/dev_BackgroundDeco";
 
 const Text = {
   txtMain: "text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold text-shadow-lg/10",
@@ -14,7 +13,7 @@ const Text = {
 
 const Hero = () => {
   const [revealArrow, setRevealArrow] = useState(false);
-
+// TODO: theme change button, sound button
   return (
     <div className="">
       <BlurredBlobs />
