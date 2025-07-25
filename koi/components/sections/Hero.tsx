@@ -21,7 +21,7 @@ const Hero = () => {
       <BackgroundDeco />
       <CenterContainer className="min-h-screen relative z-20">
         <div className="text-center text-nice-purple2 ">
-          <Reveal delay={1.2} duration={0.8} width="fit-content" className="flex flex-col items-center">
+          <Reveal delay={1.2} duration={0.8} width="full" className="flex flex-col items-center">
             <h1 className={`${Text.txtMain}`}>
               HELLO
             </h1>
