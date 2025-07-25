@@ -27,12 +27,12 @@ const Reveal = ({
     return (
         <div
             ref={ref}
-            style={{ position: "relative", width: width === "full" ? "100%" : "fit-content" }}
+            style={{ width: width === "full" ? "100%" : "fit-content" }}
             className={className}
         >
             <motion.div
                 variants={{
-                    hidden: { opacity: 0, y: 75 },
+                    hidden: { opacity: 0, y: 70 },
                     visible: { opacity: 1, y: 0 },
                 }}
                 initial="hidden"
