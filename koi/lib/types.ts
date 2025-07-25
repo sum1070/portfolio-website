@@ -1,19 +1,3 @@
-export type TShape = {
-  className?: string;
-  color?: string;
-  endColor?: string;
-  width?: string;
-  length?: string;
-  size?: string;
-  rotate?: string;
-  opacity?: number;
-  border?: number;
-  x?: string;
-  y?: string;
-  blur?: boolean;
-};
-
-
 export type TContainerProps = {
   className?: string; // for tailwind styling
   children: React.ReactNode; // My son to be rendered
@@ -27,6 +11,27 @@ export type TAnimation = {
   delay?: number;
   speed?: number;
   children?: React.ReactNode; // <T> children </T>
+};
+
+interface TUIComponent {
+  className?: string;
+  sizeClassName?: string;
+  width?: string;
+  length?: string;
+  size?: string;
+  position?: TPosition;
+  color?: string;
+  endColor?: string;
+};
+
+export type TShape = TUIComponent & {
+  rotate?: string;
+  opacity?: number;
+  border?: number;
+  x?: string;
+  y?: string;
+  blur?: boolean;
+  position?: TPosition;
 };
 
 type TPosition =
@@ -55,16 +60,11 @@ export const positionClasses = {
 };
 
 type PatternType = "dots" | "grid";
-export type TPattern = {
-  className?: string;
+export type TPattern = TUIComponent & {
   type: PatternType;
   spacing?: number; // spacing between dots / grid lines
   mask?: boolean;
-  width?: string;
-  height?: string;
-  position?: TPosition;
-  opacity?: number; // [0,1]
-  color?: string;
+  opacity?: number;
   stroke?: number;
 };
 

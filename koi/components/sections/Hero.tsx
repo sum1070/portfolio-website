@@ -6,9 +6,9 @@ import { TriangleArrowDown, Pattern, CenterContainer, Typewriter} from "@/compon
 import Reveal from "@/lib/Reveal";
 
 const Text = {
-  txtMain: "text-4xl sm:text-7xl xl:text-8xl text-balance tracking-tight italic font-semibold text-shadow-lg/10",
-  txtMid: "mt-4 text-xl sm:text-3xl xl:text-4xl",
-  txtMono: "mt-4 text-base sm:text-2xl block font-titillium-web",
+  txtMain: "text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold text-shadow-lg/10",
+  txtMid: "mt-4 text-3xl sm:text-4xl md:text-5xl xl:text-7xl",
+  txtMono: "mt-4 text-base sm:text-2xl md:pt-2 xl:pt-4 block font-titillium-web",
 };
 
 const Hero = () => {
@@ -21,10 +21,10 @@ const Hero = () => {
         <div className="text-center text-nice-purple2 ">
           <Reveal>
             <h1 className={`${Text.txtMain}`}>
-              Lorem ipsum dolor sit amet.
+              HELLO
             </h1>
             <p className={`${Text.txtMid}`}>
-              Lorem, ipsum dolor.
+              I'm Margaret!
             </p>
           </Reveal>
           <Typewriter
@@ -33,7 +33,7 @@ const Hero = () => {
             speed={90}
             onComplete={() => setRevealArrow(true)}
           >
-            Lorem ipsum dolor sit.
+            Welcome to my website
           </Typewriter>
           {/* Fixed height container as placeholder */}
           <div className="mt-12 pt-12 flex justify-center w-full h-10">
