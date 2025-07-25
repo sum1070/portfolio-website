@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import BackgroundDeco from "@/components/sections/hero/BackgroundDeco";
-import { TriangleArrowDown, Pattern, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
+import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
 import Reveal from "@/lib/Reveal";
-import { motion } from "motion/react";
 import DevBackgroundDeco from "./hero/dev_BackgroundDeco";
 
 const Text = {
@@ -18,8 +17,8 @@ const Hero = () => {
 
   return (
     <div className="">
-      <DevBackgroundDeco />
       <BlurredBlobs />
+      <BackgroundDeco />
       <CenterContainer className="min-h-screen relative z-20">
         <div className="text-center text-nice-purple2 ">
           <Reveal delay={1.2} duration={0.8} width="fit-content" className="flex flex-col items-center">
