@@ -29,6 +29,8 @@
   html,
   body {
     @apply min-h-screen;
+    /* remove padding */
+    /* @apply !p-0; */
   }
 }
 
@@ -48,7 +50,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  padding: 1rem;
 }
 
 @keyframes bounce {

@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.className}`}>
+    <html lang="en" className={`${fraunces.className} !p-0`}>
       <body>
         {children}
       </body>
