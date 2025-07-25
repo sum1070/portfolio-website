@@ -35,20 +35,47 @@ function Bar({
         transformOrigin: 'center',
         borderRadius: '9999px',
     };
-    // hollow bar bar
+    
     if (type === 'hollow') {
         barStyle.backgroundColor = 'transparent';
-        barStyle.borderWidth = borderWidth;
-        barStyle.borderStyle = 'solid';
         
-        // gradient border
         if (color !== endColor) {
-            barStyle.borderImage = `linear-gradient(45deg, ${color}, ${endColor}) 1`;
+            barStyle.position = 'relative';
+            barStyle.border = '0';
+            
+            return (
+                <div
+                    className={`bar hollow-gradient-bar ${className}`}
+                    style={barStyle}
+                    data-border-width={borderWidth}
+                    data-color-start={color}
+                    data-color-end={endColor}
+                >
+                    <style jsx>{`
+                        .hollow-gradient-bar {
+                            position: relative;
+                        }
+                        .hollow-gradient-bar::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            padding: ${borderWidth};
+                            border-radius: 9999px;
+                            background: linear-gradient(45deg, ${color}, ${endColor});
+                            -webkit-mask: 
+                                linear-gradient(#fff 0 0) content-box, 
+                                linear-gradient(#fff 0 0);
+                            -webkit-mask-composite: xor;
+                            mask-composite: exclude;
+                            pointer-events: none;
+                        }
+                    `}</style>
+                </div>
+            );
         } else {
-            barStyle.borderColor = color;
+            barStyle.border = `${borderWidth} solid ${color}`;
         }
     } else {
-        // solid bar bar
         barStyle.background = color === endColor
             ? color
             : `linear-gradient(45deg, ${color}, ${endColor})`;
