@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import BackgroundDeco from "@/components/sections/hero/BackgroundDeco";
-import { TriangleArrowDown, Pattern, CenterContainer, Typewriter, BlurredBlobs} from "@/components";
+import { TriangleArrowDown, Pattern, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
 import Reveal from "@/lib/Reveal";
+import { motion } from "motion/react";
+import DevBackgroundDeco from "./hero/dev_BackgroundDeco";
 
 const Text = {
   txtMain: "text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold text-shadow-lg/10",
@@ -16,11 +18,11 @@ const Hero = () => {
 
   return (
     <div className="">
+      <DevBackgroundDeco />
       <BlurredBlobs />
-      <BackgroundDeco />
-      <CenterContainer className="min-h-screen relative z-10">
+      <CenterContainer className="min-h-screen relative z-20">
         <div className="text-center text-nice-purple2 ">
-          <Reveal>
+          <Reveal delay={1.2} duration={0.8} width="fit-content" className="flex flex-col items-center">
             <h1 className={`${Text.txtMain}`}>
               HELLO
             </h1>
@@ -30,11 +32,11 @@ const Hero = () => {
           </Reveal>
           <Typewriter
             className={`${Text.txtMono}`}
-            delay={1300}
-            speed={90}
+            delay={2300}
+            speed={50}
             onComplete={() => setRevealArrow(true)}
           >
-            Welcome to my website
+            Welcome to my website...
           </Typewriter>
           {/* Fixed height container as placeholder */}
           <div className="mt-12 pt-12 flex justify-center w-full h-10">
@@ -52,24 +54,6 @@ const Hero = () => {
           </div>
         </div>
       </CenterContainer>
-      {/* white dots grid */}
-      <Pattern
-        type="dots"
-        className="w-full h-[10svh] sm:h-[10svh] md:h-[15svh] z-10"
-        position="bottom"
-        color="#fefaf3"
-        width="100%"
-        spacing={13}
-        stroke={3}
-      />
-      <Pattern
-        type="dots"
-        position="bottom-right"
-        color="#fefaf3"
-        spacing={13}
-        stroke={3}
-        className="z-10 bottom-[10svh] h-2/5 sm:bottom-[10svh] md:bottom-[15svh] sm:w-[10svw] "
-      />
     </div>
   );
 }
