@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import BackgroundDeco from "@/components/sections/hero/BackgroundDeco";
-import { TriangleArrowDown, Pattern, CenterContainer, Typewriter} from "@/components";
+import { TriangleArrowDown, Pattern, CenterContainer, Typewriter, BlurredBlobs} from "@/components";
 import Reveal from "@/lib/Reveal";
 
 const Text = {
@@ -16,6 +16,7 @@ const Hero = () => {
 
   return (
     <div className="">
+      <BlurredBlobs />
       <BackgroundDeco />
       <CenterContainer className="min-h-screen relative z-10">
         <div className="text-center text-nice-purple2 ">
@@ -51,9 +52,10 @@ const Hero = () => {
           </div>
         </div>
       </CenterContainer>
+      {/* white dots grid */}
       <Pattern
         type="dots"
-        className="w-full h-[10svh] sm:h-[10svh] md:h-[15svh]"
+        className="w-full h-[10svh] sm:h-[10svh] md:h-[15svh] z-10"
         position="bottom"
         color="#fefaf3"
         width="100%"
@@ -66,7 +68,7 @@ const Hero = () => {
         color="#fefaf3"
         spacing={13}
         stroke={3}
-        className="bottom-[10svh] h-2/5 sm:bottom-[10svh] md:bottom-[15svh] sm:w-[10svw] "
+        className="z-10 bottom-[10svh] h-2/5 sm:bottom-[10svh] md:bottom-[15svh] sm:w-[10svw] "
       />
     </div>
   );

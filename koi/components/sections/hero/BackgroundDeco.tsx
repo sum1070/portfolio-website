@@ -1,66 +1,45 @@
-import { Bar, CodeTextSVG, Dot, LineCircle, Triangle } from "@/components/decorations";
+import { Bar, BlurredBlobs, CodeTextSVG, Dot, LineCircle, Triangle } from "@/components/decorations";
 import { animate, motion, useMotionTemplate, useMotionValue, useScroll } from "framer-motion";
 import { springY } from "@/lib/utils";
+import { tr } from "motion/react-client";
 
 export default function BackgroundDeco() {
     const { scrollY } = useScroll();
 
-    const barY1 = springY(scrollY, [0, -75], [0, 500], { stiffness: 100, damping: 30 });
-    const barY2 = springY(scrollY, [0, -150], [0, 500], { stiffness: 100, damping: 25 });
+    const sprBar1 = springY(scrollY, [0, -115], [0, 500], { stiffness: 80, damping: 20 });
+    const sprBar2 = springY(scrollY, [0, -150], [0, 500], { stiffness: 100, damping: 25 });
     const triangleY = springY(scrollY, [0, -180], [0, 500], { stiffness: 90, damping: 20 });
-    const dotY1 = springY(scrollY, [0, -90], [0, 500], { stiffness: 120, damping: 15 });
-    const circleY1 = springY(scrollY, [0, -220], [0, 500], { stiffness: 80, damping: 10 });
-    const dotY3 = springY(scrollY, [0, -200], [0, 500], { stiffness: 70, damping: 10 });
-    const dotY4 = springY(scrollY, [0, -200], [0, 500], { stiffness: 90, damping: 20 });
-    
-    const orbitY = springY(scrollY, [0, -100], [0, 500], { stiffness: 80, damping: 10 });
+    const spr5 = springY(scrollY, [0, -220], [0, 500], { stiffness: 80, damping: 10 });
+    const sprStiff = springY(scrollY, [0, -90], [0, 500], { stiffness: 120, damping: 15 });
+    const sprNormal = springY(scrollY, [0, -200], [0, 500], { stiffness: 90, damping: 20 });
+    const sprFlex = springY(scrollY, [0, -200], [0, 500], { stiffness: 70, damping: 10 });
+    const sprOrbit = springY(scrollY, [0, -120], [0, 500], { stiffness: 80, damping: 10 });
     const orbitScale = 1;
 
     return (
         <>
-            <div className="-z-40 pointer-events-none absolute inset-0 overflow-hidden">
-                {/* Bar */}
-                <motion.div style={{ y: barY1, position: "absolute", left: "70%", top: "80%" }}>
+            {/* shape component */}
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                {/* Bars */}
+                <motion.div style={{ y: sprBar1, position: "absolute", left: "70%", top: "80%" }} className="-z-10">
                     <Bar width="500px" length="80px" rotate="135deg" />
                 </motion.div>
-                <motion.div style={{ y: barY2, position: "absolute", left: "4%", top: "90%" }}>
-                    <Bar
-                        width="400px"
-                        length="15px"
-                        color="var(--color-sky-blue)"
-                        endColor="var(--color-pale-purple0)"
-                        rotate="315deg"
-                        className="mask-luminance mask-r-from-black mask-r-from-5% mask-r-to-white"
-                    />
+                <motion.div style={{ y: sprBar2, position: "absolute", left: "4%", top: "90%" }}>
+                    <Bar width="400px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="315deg" className="mask-luminance mask-r-from-black mask-r-from-5% mask-r-to-white" />
                 </motion.div>
-                <motion.div style={{ y: barY1, position: "absolute", left: "-5%", top: "80%" }}>
-                    <Bar
-                        width="220px"
-                        length="15px"
-                        color="var(--color-sky-blue)"
-                        endColor="var(--color-pale-purple0)"
-                        rotate="135deg" />
+                <motion.div style={{ y: sprBar1, position: "absolute", left: "-5%", top: "80%" }}>
+                    <Bar width="220px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="135deg" />
                 </motion.div>
-                <motion.div style={{ y: barY2, position: "absolute", left: "20%", top: "10%" }}>
-                    <Bar
-                        width="300px"
-                        length="10px"
-                        color="var(--color-Mauve)"
-                        endColor="var(--color-sky-blue)"
-                        rotate="135deg" />
+                <motion.div style={{ y: sprBar2, position: "absolute", left: "20%", top: "10%" }}>
+                    <Bar width="300px" length="10px" color="var(--color-Mauve)" endColor="var(--color-sky-blue)" rotate="135deg" />
                 </motion.div>
-
                 {/* Circle */}
-                <motion.div
-                    style={{
-                        y: circleY1,
-                        position: "absolute",
-                        left: "0%",
-                        bottom: "24%"
-                    }}>
-                    <LineCircle size="200px" className="mx-auto absolute bottom-0 left-0" />
+                <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
+                    <LineCircle size="200px" className="mx-auto " />
                 </motion.div>
-
+                <motion.div style={{ y: spr5, position: "absolute", right: "20%", bottom: "84%" }}>
+                    <LineCircle size="90px" className="mx-auto absolute " />
+                </motion.div>
                 {/* Triangle */}
                 <motion.div style={{ y: triangleY }} className="absolute left-0 bottom-6/12">
                     <Triangle size="100px" image="big" rotate="330deg" />
@@ -72,42 +51,45 @@ export default function BackgroundDeco() {
                     <Triangle size="80px" image="big" rotate="120deg" className="mask-luminance mask-r-from-white mask-r-from-70% mask-r-to-black" />
                 </motion.div>
                 {/* Dots */}
-                <motion.div style={{ y: dotY1, position: "absolute", left: "5%", top: "7%" }}>
+                {/* Hollow dot small r */}
+                <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>
+                    <Dot size="15px" type="hollow" border={2} color="var(--color-sky-blue)" />
+                </motion.div>
+                {/* Hollow dot bigger tl */}
+                <motion.div style={{ y: sprNormal, position: "absolute", left: "5%", top: "7%" }}>
                     <Dot size="36px" type="hollow" border={7} color="var(--color-milky-white)" />
                 </motion.div>
-                <motion.div style={{ y: dotY4, position: "absolute", left: "10%", bottom: "35%" }}>
-                    <Dot
-                        size="20px"
-                        border={7}
-                        blur={true}
-                        color="var(--color-pale-purple0)"
-                    />
+                {/* Glowing pink dot bl */}
+                <motion.div style={{ y: sprFlex, position: "absolute", left: "25%", bottom: "27%" }}>
+                    <Dot size="10px" border={2} color="var(--color-pink2)" blur={true} />
                 </motion.div>
-                <motion.div style={{ y: dotY3, position: "absolute", left: "92%", top: "75%" }}>
+                {/* Glowing white dot bl */}
+                <motion.div style={{ y: sprNormal, position: "absolute", left: "10%", bottom: "35%" }}>
+                    <Dot size="20px" border={7} blur={true} color="var(--color-pale-purple0)" />
+                </motion.div>
+                {/* Hyper white dot owo */}
+                <motion.div style={{ y: sprFlex, position: "absolute", left: "92%", top: "75%" }}>
                     <Dot size="15px" border={7} color="var(--color-pale-purple0)" />
                 </motion.div>
                 {/* pink with purple shadow */}
-                <motion.div style={{ y: dotY1, position: "absolute", left: "9.8%", top: "18.9%" }}>
+                <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
                     <Dot size="38px" blur={true} color="var(--color-purple0)" />
                 </motion.div>
-                <motion.div style={{ y: dotY1, position: "absolute", left: "10%", top: "19%" }}>
+                <motion.div style={{ y: sprStiff, position: "absolute", left: "10%", top: "19%" }}>
                     <Dot size="36px" border={7} color="var(--color-pink2)" />
                 </motion.div>
-
-
                 {/* blue with pink shadow */}
-                <motion.div style={{ y: dotY4, position: "absolute", left: "79.8%", top: "65%" }}>
-                    <Dot
-                        size="42px"
-                        blur={true}
-                        color="var(--color-pink1)"
-                        border={7} />
+                <motion.div style={{ y: sprNormal, position: "absolute", left: "79.8%", top: "65%" }}>
+                    <Dot size="42px" blur={true} color="var(--color-pink1)  border={7} " />
                 </motion.div>
-                <motion.div style={{ y: dotY4, position: "absolute", left: "80%", top: "65%" }}>
+                <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
+                    <Dot size="39px" blur={true} color="var(--color-milky-white)" />
+                </motion.div>
+                <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
                     <Dot size="38px" blur={true} />
                 </motion.div>
-
             </div>
+            {/* code text */}
             <div className="z-10 absolute top-0 right-0">
                 <CodeTextSVG />
             </div>
@@ -116,7 +98,7 @@ export default function BackgroundDeco() {
                 className="-z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                     position: "absolute",
-                    y: orbitY,
+                    y: sprOrbit,
                     scale: orbitScale,
                     rotate: -30,
                     borderRadius: "50%"
@@ -147,11 +129,11 @@ export default function BackgroundDeco() {
 
 const borderColor = [
     "4px solid #BAEBFF", // blue
-    "4px solid #CAD4FF", 
+    "4px solid #CAD4FF",
     "4px solid #D9BAFF", // purple
-    "4px solid #ECBEF4", 
+    "4px solid #ECBEF4",
     "4px solid #FFBAF5", // pink
-    "4px solid #FEDED7", 
+    "4px solid #FEDED7",
     "2px solid #FFF8BA", // yellow
     "4px solid #FED6AE",
     "4px solid #D9BAFF", // purple
@@ -170,11 +152,11 @@ const borderColor = [
 
 const boxShadow = [
     "0 0 50px #BAEBFF", // blue
-    "0 0 30px #CAD4FF", 
+    "0 0 30px #CAD4FF",
     "0 0 30px #D9BAFF", // purple
-    "0 0 30px #ECBEF4", 
+    "0 0 30px #ECBEF4",
     "0 0 50px #FFBAF5", // pink
-    "0 0 30px #FEDED7", 
+    "0 0 30px #FEDED7",
     "0 0 30px #FFF8BA", // yellow
     "0 0 30px #FED6AE",
     "0 0 30px #D9BAFF", // purple

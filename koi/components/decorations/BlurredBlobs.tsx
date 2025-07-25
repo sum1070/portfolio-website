@@ -2,7 +2,8 @@ import React from 'react'
 
 const BlurredBlobs = () => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    // idk but don't set z index here
+    <div className="absolute inset-0 overflow-hidden pointer-events-none ">
       {/* C */}
       <div
         className="absolute w-100 h-100 rounded-full mix-blend-multiply filter blur-xl opacity-90 [animation:blob_6s_infinite_1s_ease-in-out] bg-linear-to-r from-sky-100 to-fuchsia-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"

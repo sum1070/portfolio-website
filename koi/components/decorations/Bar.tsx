@@ -1,6 +1,11 @@
 import React from "react";
 import { TShape } from "@/lib/types";
 
+interface BarProps extends TShape {
+    type?: 'solid' | 'hollow';
+    borderWidth?: string;
+}
+
 function Bar({
     className = '',
     color = '',
@@ -11,11 +16,14 @@ function Bar({
     opacity = 1,
     x = '0px',
     y = '0px',
-}: Readonly<TShape>) {
+    type = 'solid',
+    borderWidth = '2px',
+}: Readonly<BarProps>) {
     if (!color && !endColor) {
         color = 'var(--color-Mauve)';
         endColor = 'var(--color-sky-blue)';
     }
+    
     const barStyle: React.CSSProperties = {
         position: 'absolute',
         width,
@@ -24,12 +32,27 @@ function Bar({
         top: y,
         opacity,
         transform: `rotate(${rotate})`,
-        background: color === endColor
-            ? color
-            : `linear-gradient(45deg, ${color}, ${endColor})`,
+        transformOrigin: 'center',
         borderRadius: '9999px',
-        transformOrigin: 'center'
     };
+    // hollow bar bar
+    if (type === 'hollow') {
+        barStyle.backgroundColor = 'transparent';
+        barStyle.borderWidth = borderWidth;
+        barStyle.borderStyle = 'solid';
+        
+        // gradient border
+        if (color !== endColor) {
+            barStyle.borderImage = `linear-gradient(45deg, ${color}, ${endColor}) 1`;
+        } else {
+            barStyle.borderColor = color;
+        }
+    } else {
+        // solid bar bar
+        barStyle.background = color === endColor
+            ? color
+            : `linear-gradient(45deg, ${color}, ${endColor})`;
+    }
 
     return (
         <div
