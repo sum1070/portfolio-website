@@ -8,7 +8,6 @@ export default function dev() {
   return (
     <>
       <MouseTrail />
-      <BlurredBlobs />
       <Hero />
       <Reveal>
         <Dummy />
