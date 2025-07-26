@@ -1,19 +1,22 @@
 import React from 'react'
-import { CenterContainer } from '@/components'
+import { CenterContainer, Pattern } from '@/components'
+import Wave from 'react-wavify'
 
 const MainPage = () => {
     return (
-        <section className=' bg-blue-800 '>
-            <CenterContainer className="min-h-screen">
-                <div className="text-white">
-                    <h1 className="text-4xl">
-                        meow
-                    </h1>
-                    <p className="text-xl">
-                        meow
-                    </p>
-                </div>
-            </CenterContainer>
+        <section className="relative min-h-screen bg-Mauve">
+            <div className=" -top-2 left-0 right-0 scale-y-[-1] z-0 relative">
+                <Wave
+                    fill="var(--color-milky-white)"
+                    paused={false}
+                    options={{
+                        height: 40,
+                        amplitude: 20,
+                        speed: 0.3,
+                        points: 4
+                    }}
+                />
+            </div>
         </section>
     )
 }
