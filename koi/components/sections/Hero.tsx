@@ -20,20 +20,12 @@ const Hero = () => {
 
   // TODO: theme change button, sound button
   return (
-    <div id="Hero">
+    <div id="Hero" >
       <BlurredBlobs />
       <BackgroundDeco />
       <CenterContainer className="min-h-screen relative z-20">
         <div className="text-center text-nice-purple2 ">
-          {/* <Reveal delay={animationTimeClasses.delayMainTxt} duration={animationTimeClasses.durationMainTxt} width="full" className="flex flex-col items-center">
-            <h1 className={`${Text.txtMain}`}>
-              HELLO
-            </h1>
-            <p className={`${Text.txtMid}`}>
-              I'm Margaret!
-            </p>
-          </Reveal> */}
-          <FadeIn onComplete={() => setStartTyping(true)}>
+          <FadeIn onComplete={() => setStartTyping(true)} disableTransparentFade={true} >
             <h1 className={`${Text.txtMain}`}>
               HELLO
             </h1>
@@ -41,13 +33,6 @@ const Hero = () => {
               I'm Margaret!
             </p>
           </FadeIn>
-          {/* <Typewriter
-            className={`${Text.txtMono}`}
-            speed={50}
-            onComplete={() => setRevealArrow(true)}
-          >
-            Welcome to my website...
-          </Typewriter> */}
           <div className="mt-2 pt-2 flex justify-center w-full h-10">
             {startTyping && (
               <Typewriter
