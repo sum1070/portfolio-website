@@ -18,16 +18,13 @@ export function springY(
     mass?: number;
   } = {}
 ) {
-  const {
-    stiffness = 70,
-    damping = 20,
-    mass = 1.2,
-  } = config;
+  const { stiffness = 70, damping = 20, mass = 1.2 } = config;
 
   const transformed = useTransform(scrollY, inputRange, outputRange);
 
   return useSpring(transformed, { stiffness, damping, mass });
 }
+
 export const borderColor = [
   "4px solid #BAEBFF", // blue
   "4px solid #CAD4FF",

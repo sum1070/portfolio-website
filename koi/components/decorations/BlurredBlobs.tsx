@@ -13,7 +13,7 @@ const BlurredBlobs = () => {
       ></div>
       {/* BR */}
       <div
-        className='absolute rounded-full mix-blend-multiply filter blur-3xl opacity-90 [animation:blob3_6s_infinite_2s] bg-linear-60 from-fuchsia-300 to-sky-300 bottom-0 right-0 w-80 h-80 lg:w-120 lg:h-120 xl:w-200 xl:h-200'
+        className='absolute rounded-full mix-blend-multiply filter blur-3xl opacity-90 [animation:blob3_6s_infinite_2s_delay_2s] bg-linear-60 from-fuchsia-300 to-sky-300 bottom-0 right-0 w-80 h-80 lg:w-120 lg:h-120 xl:w-200 xl:h-200'
       ></div>
       {/* BL */}
       <div

@@ -4,7 +4,7 @@ import Wave from 'react-wavify'
 
 const MainPage = () => {
     return (
-        <section className="relative min-h-screen bg-Mauve">
+        <section className="relative min-h-screen " id='MainPage'>
             <div className=" -top-2 left-0 right-0 scale-y-[-1] z-0 relative">
                 <Wave
                     fill="var(--color-milky-white)"
@@ -17,6 +17,11 @@ const MainPage = () => {
                     }}
                 />
             </div>
+            <CenterContainer>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta accusamus ullam iure, ut placeat voluptatum quia sed aliquam modi? Quasi?
+                </p>
+            </CenterContainer>
         </section>
     )
 }

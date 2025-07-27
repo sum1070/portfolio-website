@@ -4,6 +4,7 @@ import { borderColor, boxShadow, springY } from "@/lib/utils";
 import { useEffect } from "react";
 import { Pattern } from "@/components";
 import FadeIn from "@/lib/FadeIn";
+import { animationTimeClasses } from "@/lib/types";
 
 export default function BackgroundDeco() {
     const [scope, animate] = useAnimate();
@@ -26,11 +27,11 @@ export default function BackgroundDeco() {
             // fade in the orbit
             await animate(scope.current, {
                 opacity: 1,
-                border: borderColor[0],
-                boxShadow: boxShadow[0]
+                border: "4px solid #86DDFF",
+                boxShadow: "0 0 70px #86DDFF"
             }, {
-                duration: 1.2,
-                delay: 0.5,
+                duration: animationTimeClasses.durationOrbitIntro,
+                delay: animationTimeClasses.delayOrbitIntro,
                 ease: "easeInOut"
             });
             // color change
@@ -40,8 +41,8 @@ export default function BackgroundDeco() {
                     border: borderColor[index],
                     boxShadow: boxShadow[index]
                 }, {
-                    delay: 0.2,
-                    duration: 1.6,
+                    delay: animationTimeClasses.delayOrbitColor,
+                    duration: animationTimeClasses.durationOrbitColor,
                     ease: "easeInOut"
                 });
 
@@ -77,7 +78,7 @@ export default function BackgroundDeco() {
             </FadeIn>
             {/* shape component */}
 
-            <FadeIn className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+            <FadeIn className="pointer-events-none absolute inset-0 overflow-hidden -z-10" >
                 {/* X */}
                 <motion.div style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
                     <Bar width="60px" length="10px" rotate="145deg  " />
