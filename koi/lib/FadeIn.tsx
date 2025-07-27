@@ -4,6 +4,7 @@ import { TAnimation, animationTimeClasses } from '@/lib/types';
 
 type FadeInProps = TAnimation & {
     yTranslation?: boolean;
+    disableTransparentFade?: boolean;
     stiffness?: number;
     damping?: number;
     mass?: number;
@@ -20,6 +21,7 @@ function FadeIn({
     damping = 20,
     mass = 0.8,
     onComplete,
+    disableTransparentFade = false,
 }: Readonly<FadeInProps>) {
     return (
         <motion.div
@@ -34,7 +36,7 @@ function FadeIn({
             }}
             transition={{
                 opacity: {
-                    duration: duration * 0.7,
+                    duration: disableTransparentFade ? duration * 0.7 : duration,
                     delay,
                     ease: "easeOut"
                 },
