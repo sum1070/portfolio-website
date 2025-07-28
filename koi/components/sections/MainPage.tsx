@@ -1,9 +1,15 @@
 import React from 'react'
-import { CenterContainer } from '@/components'
+import { CenterContainer, TriangleArrowUp } from '@/components'
 import Wave from 'react-wavify'
 import BackgroundMain from './MainPage/BackgroundMain'
 
 const MainPage = () => {
+    const scrollToTop = () => {
+        document.getElementById('hero')?.scrollIntoView({
+            behavior: 'smooth'
+        });
+    };
+
     return (
         <div className="flex overflow-hidden min-w-dvw" id='MainPage'>
             <BackgroundMain />
@@ -26,6 +32,8 @@ const MainPage = () => {
                 <p>
                     this is main
                 </p>
+                <TriangleArrowUp onClick={scrollToTop} bounce={false} />
+
             </CenterContainer>
         </div>
     )
