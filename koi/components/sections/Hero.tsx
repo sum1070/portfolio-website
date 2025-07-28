@@ -6,6 +6,7 @@ import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/
 import { animationTimeClasses } from "@/lib/types";
 import Reveal from "@/lib/Reveal";
 import FadeIn from "@/lib/FadeIn";
+import {useRef} from "react";
 
 const Text = {
   txtMain: "text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
@@ -14,12 +15,13 @@ const Text = {
 };
 
 const Hero = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
   const [revealArrow, setRevealArrow] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
 
   // TODO: theme change button, sound button
   return (
-    <div id="Hero" className="overflow-hidden">
+    <div ref={heroRef} id="hero" className="overflow-hidden">
       <BlurredBlobs />
       <BackgroundHero />
       <CenterContainer className="min-h-dvh relative z-20">
