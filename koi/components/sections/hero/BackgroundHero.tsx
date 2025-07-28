@@ -95,8 +95,7 @@ export default function BackgroundHero() {
                 />
             </FadeIn>
             {/* shape component */}
-
-            <FadeIn className="pointer-events-none absolute inset-0 overflow-hidden -z-10" >
+            <FadeIn className="pointer-events-none absolute inset-0 overflow-hidden -z-10 " >
                 {/* X */}
                 <motion.div style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
                     <Bar width="60px" length="10px" rotate="145deg  " />
@@ -107,78 +106,109 @@ export default function BackgroundHero() {
                     <Bar width="50px" length="10px" rotate="115deg" color="var(--color-pink0)" endColor="var(--color-pink3)" />
                 </motion.div>
                 {/* Bars */}
-                {/* Hollow bar */}
-                <motion.div style={{ y: sprBar2, position: "absolute" }} className="top-40 left-0">
-                    <Bar width="300px" type="hollow" borderWidth="3px" length="70px" rotate="135deg" />
-                </motion.div>
-                {/* fat bar */}
-                <motion.div style={{ y: sprBar1, position: "absolute", left: "70%", top: "80%" }}>
-                    <Bar width="500px" length="80px" rotate="135deg" />
-                </motion.div>
-                <motion.div style={{ y: sprBar2, position: "absolute", left: "4%", top: "90%" }}>
-                    <Bar width="400px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="315deg" className="mask-luminance mask-r-from-black mask-r-from-5% mask-r-to-white" />
-                </motion.div>
-                <motion.div style={{ y: sprBar1, position: "absolute", left: "-5%", top: "80%" }}>
-                    <Bar width="220px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="135deg" />
-                </motion.div>
-                <motion.div style={{ y: sprBar2, position: "absolute", left: "20%", top: "10%" }}>
-                    <Bar width="300px" length="10px" color="var(--color-Mauve)" endColor="var(--color-sky-blue)" rotate="135deg" />
-                </motion.div>
-                {/* Circle */}
-                <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
-                    <LineCircle size="200px" className="mx-auto " />
-                </motion.div>
-                <motion.div style={{ y: spr5, position: "absolute", right: "20%", bottom: "84%" }}>
-                    <LineCircle size="90px" className="mx-auto absolute " />
-                </motion.div>
-                {/* Triangle */}
-                <motion.div style={{ y: triangleY }} className="absolute left-0 bottom-6/12">
-                    <Triangle size="100px" image="big" rotate="330deg" />
-                </motion.div>
-                <motion.div style={{ y: triangleY }} className="absolute left-3/5 top-auto">
-                    <Triangle size="150px" image="mid" />
-                </motion.div>
-                <motion.div style={{ y: triangleY }} className="absolute left-3/5 bottom-4/12">
-                    <Triangle size="80px" image="big" rotate="120deg" className="mask-luminance mask-r-from-white mask-r-from-70% mask-r-to-black" />
-                </motion.div>
+                <div >
+                    {/* Hollow bar (bigger screen)*/}
+                    <motion.div style={{ y: sprBar2, position: "absolute" }} className="top-40 left-0 hidden md:block">
+                        <Bar width="300px" type="hollow" borderWidth="3px" length="70px" rotate="135deg" />
+                    </motion.div>
+                    {/* Hollow bar (small screen) */}
+                    <motion.div style={{ y: sprBar2, position: "absolute" }} className="top-10 left-0 md:hidden ">
+                        <Bar width="60dvw" type="hollow" borderWidth="1dvw" length="10dvh" rotate="135deg" />
+                    </motion.div>
+                    {/* fat bar */}
+                    <motion.div style={{ y: sprBar1, position: "absolute", left: "70%", top: "80%" }}>
+                        <Bar width="500px" length="80px" rotate="135deg" />
+                    </motion.div>
+                    <motion.div style={{ y: sprBar2, position: "absolute", left: "4%", top: "90%" }}>
+                        <Bar width="400px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="315deg" className="mask-luminance mask-r-from-black mask-r-from-5% mask-r-to-white" />
+                    </motion.div>
+                    <motion.div style={{ y: sprBar1, position: "absolute", left: "-5%", top: "80%" }}>
+                        <Bar width="220px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="135deg" />
+                    </motion.div>
+                    <motion.div style={{ y: sprBar2, position: "absolute", left: "20%", top: "10%" }}>
+                        <Bar width="300px" length="10px" color="var(--color-Mauve)" endColor="var(--color-sky-blue)" rotate="135deg" />
+                    </motion.div>
+                </div>
+                {/* SVG Circle */}
+                <div >
+                    <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
+                        <LineCircle size="200px" className="mx-auto " />
+                    </motion.div>
+                    <motion.div style={{ y: spr5, position: "absolute", right: "20%", bottom: "84%" }}>
+                        {/* TODO: ???where r u */}
+                        <LineCircle size="90px" className="mx-auto absolute " />
+                    </motion.div>
+                    {/* Triangle */}
+                    <motion.div style={{ y: triangleY }} className="absolute left-0 bottom-6/12">
+                        <Triangle size="100px" image="big" rotate="330deg" />
+                    </motion.div>
+                    <motion.div style={{ y: triangleY }} className="absolute left-3/5 top-auto">
+                        <Triangle size="150px" image="mid" />
+                    </motion.div>
+                    <motion.div style={{ y: triangleY }} className="absolute left-3/5 bottom-4/12">
+                        <Triangle size="80px" image="big" rotate="120deg" className="mask-luminance mask-r-from-white mask-r-from-70% mask-r-to-black" />
+                    </motion.div>
+                </div>
                 {/* Dots */}
-                {/* Hollow dot small r */}
-                <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>
-                    <Dot size="15px" type="hollow" border={2} color="var(--color-sky-blue)" />
-                </motion.div>
-                {/* Hollow dot bigger tl */}
-                <motion.div style={{ y: sprNormal, position: "absolute", left: "5%", top: "7%" }}>
-                    <Dot size="36px" type="hollow" border={7} color="var(--color-milky-white)" />
-                </motion.div>
-                {/* Glowing pink dot bl */}
-                <motion.div style={{ y: sprFlex, position: "absolute", left: "25%", bottom: "27%" }}>
-                    <Dot size="10px" border={2} color="var(--color-pink2)" blur={true} />
-                </motion.div>
-                {/* Glowing white dot bl */}
-                <motion.div style={{ y: sprNormal, position: "absolute", left: "10%", bottom: "35%" }}>
-                    <Dot size="20px" border={7} blur={true} color="var(--color-pale-purple0)" />
-                </motion.div>
-                {/* Hyper white dot owo */}
-                <motion.div style={{ y: sprFlex, position: "absolute", left: "92%", top: "75%" }}>
-                    <Dot size="15px" border={7} color="var(--color-pale-purple0)" />
-                </motion.div>
-                {/* pink with purple shadow */}
-                <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
-                    <Dot size="38px" blur={true} color="var(--color-purple0)" />
-                </motion.div>
-                <motion.div style={{ y: sprStiff, position: "absolute", left: "10%", top: "19%" }}>
-                    <Dot size="36px" border={7} color="var(--color-pink2)" />
-                </motion.div>
-                {/* blue with pink shadow */}
-                <motion.div style={{ y: sprNormal, position: "absolute", left: "79.8%", top: "65%" }}>
-                    <Dot size="42px" blur={true} color="var(--color-pink1)  border={7} " />
-                </motion.div>
-                <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
-                    <Dot size="39px" blur={true} color="var(--color-milky-white)" />
-                </motion.div>
-                <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
-                    <Dot size="38px" blur={true} />
-                </motion.div>
+                <div className="opacity-70 sm:opacity-100">
+                    {/* Hollow dot small r */}
+                    <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>
+                        <Dot size="15px" type="hollow" border={2} color="var(--color-sky-blue)" />
+                    </motion.div>
+                    {/* Hollow dot bigger tl */}
+                    <motion.div style={{ y: sprNormal, position: "absolute", left: "5%", top: "7%" }}>
+                        <Dot size="36px" type="hollow" border={7} color="var(--color-milky-white)" />
+                    </motion.div>
+                    {/* Glowing pink dot bl */}
+                    <motion.div style={{ y: sprFlex, position: "absolute", left: "25%", bottom: "27%" }}>
+                        <Dot size="10px" border={2} color="var(--color-pink2)" blur={true} />
+                    </motion.div>
+                    {/* Glowing white dot bl */}
+                    <motion.div style={{ y: sprNormal, position: "absolute", left: "10%", bottom: "35%" }}>
+                        <Dot size="20px" border={7} blur={true} color="var(--color-pale-purple0)" />
+                    </motion.div>
+                    {/* Hyper white dot owo */}
+                    <motion.div style={{ y: sprFlex, position: "absolute", left: "92%", top: "75%" }}>
+                        <Dot size="15px" border={7} color="var(--color-pale-purple0)" />
+                    </motion.div>
+                    {/* pink with purple shadow (big screen) */}
+                    <div className="hidden md:block" >
+                        <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
+                            <Dot size="38px" blur={true} color="var(--color-purple0)" />
+                        </motion.div>
+                        <motion.div style={{ y: sprStiff, position: "absolute", left: "10%", top: "19%" }}>
+                            <Dot size="36px" border={7} color="var(--color-pink0)" />
+                        </motion.div>
+                    </div>
+
+                    {/* pink with purple shadow (big screen) */}
+                    <div className="hidden md:block" >
+                        <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
+                            <Dot size="38px" blur={true} color="var(--color-purple0)" />
+                        </motion.div>
+                        <motion.div style={{ y: sprStiff, position: "absolute", left: "10%", top: "19%" }}>
+                            <Dot size="36px" border={7} color="var(--color-pink0)" />
+                        </motion.div>
+                    </div>
+                    {/* pink with purple shadow (small screen) */}
+                    <div className="md:hidden" >
+                        <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "22.9%" }}>
+                            <Dot size="30px" blur={true} color="var(--color-purple0)" />
+                        </motion.div>
+                        <motion.div style={{ y: sprStiff, position: "absolute", left: "10.5%", top: "23%" }}>
+                            <Dot size="26px" blur={true} color="var(--color-pink0)" />
+                        </motion.div>
+                    </div>
+                    <motion.div style={{ y: sprNormal, position: "absolute", left: "79.8%", top: "65%" }}>
+                        <Dot size="42px" blur={true} color="var(--color-pink1)  border={7} " />
+                    </motion.div>
+                    <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
+                        <Dot size="39px" blur={true} color="var(--color-milky-white)" />
+                    </motion.div>
+                    <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
+                        <Dot size="38px" blur={true} />
+                    </motion.div>
+                </div>
             </FadeIn>
             {/* code text */}
             <div className="z-10 absolute top-0 right-0">
@@ -189,7 +219,7 @@ export default function BackgroundHero() {
             {/* Centre orbit */}
             <motion.div
                 ref={scope}
-                className="z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                className="z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  "
                 style={{
                     position: "absolute",
                     y: sprOrbit,
@@ -201,7 +231,7 @@ export default function BackgroundHero() {
                 }}
                 initial={{ opacity: 0, border: "0px solid transparent", boxShadow: "none" }}
             >
-                <div className="w-[320px] h-[120px] sm:w-[480px] sm:h-[180px] md:w-[800px] md:h-[300px] xl:w-[960px] xl:h-[360px]" />
+                <div className="w-[288px] h-[108px]  sm:w-[480px] sm:h-[180px] md:w-[800px] md:h-[300px] xl:w-[960px] xl:h-[360px]" />
             </motion.div>
 
 
