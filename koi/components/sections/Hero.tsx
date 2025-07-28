@@ -29,7 +29,7 @@ const Hero = () => {
 
   // TODO: theme change button, sound button
   return (
-    <div ref={heroRef} id="hero" className="overflow-hidden">
+    <div ref={heroRef} id="hero" className="overflow-hidden static">
       <BlurredBlobs />
       <BackgroundHero />
       <CenterContainer className="min-h-dvh relative z-20">
