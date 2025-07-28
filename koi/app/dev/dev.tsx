@@ -6,7 +6,7 @@ import Dummy from "./dummy";
 export default function dev() {
 
   return (
-    <>
+    <div className="min-h-full flex-col">
       <MouseTrail />
       <Hero />
       <MainPage />
@@ -15,7 +15,7 @@ export default function dev() {
         <Dummy />
         <Dummy />
       </Reveal> */}
-    </>
+    </div>
 
   );
 }
