@@ -40,7 +40,7 @@ type TPosition =
 
 export const positionClasses = {
   top: "top-0 left-1/2 -translate-x-1/2",
-  bottom: "bottom-0 left-1/2 -translate-x-1/2",
+  bottom: "absolute inset-x-0 bottom-0",
   left: "left-0 top-1/2 -translate-y-1/2",
   right: "right-0 top-1/2 -translate-y-1/2",
   center: "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",

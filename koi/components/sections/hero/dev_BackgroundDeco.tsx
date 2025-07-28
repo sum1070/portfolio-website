@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Pattern } from "@/components";
 import FadeIn from "@/lib/FadeIn";
 
-export default function BackgroundDeco() {
+export default function BackgroundHero() {
   const [scope, animate] = useAnimate();
   const { scrollY } = useScroll();
 
