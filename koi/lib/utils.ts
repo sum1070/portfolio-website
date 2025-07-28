@@ -31,10 +31,10 @@ export const borderColor = [
   "4px solid #D9BAFF", // purple
   "4px solid #ECBEF4",
   "4px solid #FFBAF5", // pink
-  "4px solid #FEDED7",
-  "2px solid #FFF8BA", // yellow
-  "4px solid #FED6AE",
-  "4px solid #D9BAFF", // purple
+  "4px solid #FFCFE1",
+  "2px solid #FFE3CE", // pale orange
+  "4px solid #EEFCBA",
+  "4px solid #DDFFBA", // green
   "4px solid #FFB7C1",
   "4px solid #FFBAF5", // pink
   "4px solid #E2DFD4",
@@ -53,10 +53,10 @@ export const boxShadow = [
   "0 0 30px #D9BAFF", // purple
   "0 0 30px #ECBEF4",
   "0 0 50px #FFBAF5", // pink
-  "0 0 30px #FEDED7",
-  "0 0 30px #FFF8BA", // yellow
-  "0 0 30px #FED6AE",
-  "0 0 30px #D9BAFF", // purple
+  "0 0 30px #FFCFE1",
+  "0 0 30px #FFE3CE", // pale orange
+  "0 0 30px #EEFCBA",
+  "0 0 30px #DDFFBA", // green
   "0 0 30px #FFB7C1",
   "0 0 50px #FFBAF5", // pink
   "0 0 30px #E2DFD4",

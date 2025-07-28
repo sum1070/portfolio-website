@@ -5,7 +5,7 @@ const BlurredBlobs = () => {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* C */}
       <div
-        className="absolute w-100 h-100 rounded-full mix-blend-multiply filter blur-xl opacity-20 sm:opacity-40 [animation:blob_6s_infinite_1s_ease-in-out] bg-linear-to-r from-sky-100 to-fuchsia-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="absolute w-100 h-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 sm:opacity-40 [animation:blob_6s_infinite_1s_ease-in-out] bg-linear-to-r from-sky-100 to-fuchsia-300 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       ></div>
       {/* TL */}
       <div
@@ -13,7 +13,7 @@ const BlurredBlobs = () => {
       ></div>
       {/* BR */}
       <div
-        className='absolute rounded-full mix-blend-multiply filter blur-3xl opacity-20 sm:opacity-90 [animation:blob3_6s_infinite_2s_delay_2s] bg-linear-60 from-fuchsia-300 to-sky-300 bottom-0 right-0 w-80 h-80 lg:w-120 lg:h-120 xl:w-200 xl:h-200'
+        className='absolute rounded-full mix-blend-multiply filter blur-3xl opacity-20 sm:opacity-50 [animation:blob3_6s_infinite_2s] bg-linear-60 from-fuchsia-300 to-sky-300 bottom-0 right-0 w-80 h-80 lg:w-120 lg:h-120 xl:w-200 xl:h-200'
       ></div>
       {/* BL */}
       <div
