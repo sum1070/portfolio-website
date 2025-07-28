@@ -1,12 +1,11 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
 import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
 import { animationTimeClasses } from "@/lib/types";
 import Reveal from "@/lib/Reveal";
 import FadeIn from "@/lib/FadeIn";
-import {useRef} from "react";
 
 const Text = {
   txtMain: "text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
@@ -18,6 +17,15 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [revealArrow, setRevealArrow] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
+
+  const scrollNextPage = () => {
+    const mainPageSection = document.getElementById('MainPage');
+    if (mainPageSection) {
+      mainPageSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // TODO: theme change button, sound button
   return (
@@ -57,7 +65,7 @@ const Hero = () => {
                 duration={animationTimeClasses.durationTriangleArrow}
                 className="flex justify-center w-full"
               >
-                <TriangleArrowDown />
+                <TriangleArrowDown onClick={scrollNextPage} />
               </Reveal>
             )}
           </div>

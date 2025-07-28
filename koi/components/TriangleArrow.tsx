@@ -1,9 +1,9 @@
 import React from "react";
 
-export const TriangleArrowDown = ({ onClick }: { onClick?: () => void }) => {
+export const TriangleArrowDown = ({ onClick, bounce = true }: { onClick?: () => void, bounce?: boolean }) => {
   return (
     <button
-      className="[animation:bounce_1.5s_infinite] cursor-pointer p-0 bg-transparent border-0 outline-none"
+      className={`${bounce ? "[animation:bounce_1.5s_infinite]" : ""} cursor-pointer p-0 bg-transparent border-0 outline-none`}
       onClick={onClick}
       aria-label="Scroll down"
     >
@@ -21,10 +21,10 @@ export const TriangleArrowDown = ({ onClick }: { onClick?: () => void }) => {
   );
 };
 
-export const TriangleArrowUp = ({ onClick }: { onClick?: () => void }) => {
+export const TriangleArrowUp = ({ onClick, bounce = true }: { onClick?: () => void, bounce?: boolean }) => {
   return (
     <button
-      className="[animation:bounce_2s_infinite] cursor-pointer p-0 bg-transparent border-0 outline-none"
+      className={`${bounce ? "[animation:bounce_2s_infinite]" : ""} cursor-pointer p-0 bg-transparent border-0 outline-none`}
       onClick={onClick}
       aria-label="Scroll up"
     >
