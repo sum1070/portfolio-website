@@ -6,7 +6,7 @@ import { Pattern } from "@/components";
 import FadeIn from "@/lib/FadeIn";
 import { animationTimeClasses } from "@/lib/types";
 
-export default function BackgroundDeco() {
+export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
     const { scrollY } = useScroll();
 
@@ -57,7 +57,7 @@ export default function BackgroundDeco() {
     return (
         <>
             <div
-                className="absolute inset-0 -z-50"
+                className="absolute inset-0 -z-50 "
                 style={{
                     background: `
                         radial-gradient(at 6% 8%, var(--color-purple0) 0%, transparent 50%),
@@ -72,7 +72,9 @@ export default function BackgroundDeco() {
                     backgroundAttachment: "fixed",
                 }}
             ></div>
-            <FadeIn>
+            {/* <FadeIn> */}
+            <FadeIn className="absolute inset-x-0 bottom-0">
+                <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-[var(--color-milky-white)] to-transparent"></div>
                 {/* white dots grid */}
                 <Pattern
                     type="dots"
@@ -201,6 +203,8 @@ export default function BackgroundDeco() {
             >
                 <div className="w-[320px] h-[120px] sm:w-[480px] sm:h-[180px] md:w-[800px] md:h-[300px] xl:w-[960px] xl:h-[360px]" />
             </motion.div>
+
+
         </>
 
 

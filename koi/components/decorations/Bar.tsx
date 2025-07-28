@@ -23,7 +23,7 @@ function Bar({
         color = 'var(--color-Mauve)';
         endColor = 'var(--color-sky-blue)';
     }
-    
+
     const barStyle: React.CSSProperties = {
         position: 'absolute',
         width,
@@ -35,14 +35,14 @@ function Bar({
         transformOrigin: 'center',
         borderRadius: '9999px',
     };
-    
+
     if (type === 'hollow') {
         barStyle.backgroundColor = 'transparent';
-        
+
         if (color !== endColor) {
             barStyle.position = 'relative';
             barStyle.border = '0';
-            
+
             return (
                 <div
                     className={`bar hollow-gradient-bar ${className}`}

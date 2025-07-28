@@ -10,11 +10,11 @@ export default function dev() {
       <MouseTrail />
       <Hero />
       <MainPage />
-      <Reveal>
+      {/* <Reveal>
         <Dummy />
         <Dummy />
         <Dummy />
-      </Reveal>
+      </Reveal> */}
     </>
 
   );

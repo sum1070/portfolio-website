@@ -6,11 +6,8 @@ export default function CenterContainer(props: Readonly<TContainerProps>) {
     <div
       className={`container
         flex items-center justify-center text-center
-        h-screen
-        px-4
+        min-h-screen
         mx-auto
-        py-32
-        relative isolate
         sm:py-48
         lg:py-56 lg:px-8
         ${props.className ? props.className : ""}`}>

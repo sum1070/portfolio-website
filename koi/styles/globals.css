@@ -29,6 +29,7 @@
   html,
   body {
     @apply min-h-screen;
+    overflow-x: hidden;
     /* remove padding */
     /* @apply !p-0; */
   }

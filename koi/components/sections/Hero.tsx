@@ -1,11 +1,10 @@
 "use client"
 
 import { useState } from "react";
-import BackgroundDeco from "@/components/sections/hero/BackgroundDeco";
+import BackgroundHero from "@/components/sections/hero/BackgroundHero";
 import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
 import { animationTimeClasses } from "@/lib/types";
 import Reveal from "@/lib/Reveal";
-import { a } from "motion/react-client";
 import FadeIn from "@/lib/FadeIn";
 
 const Text = {
@@ -20,10 +19,10 @@ const Hero = () => {
 
   // TODO: theme change button, sound button
   return (
-    <div id="Hero" >
+    <div id="Hero" className="overflow-hidden">
       <BlurredBlobs />
-      <BackgroundDeco />
-      <CenterContainer className="min-h-screen relative z-20">
+      <BackgroundHero />
+      <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
           <FadeIn onComplete={() => setStartTyping(true)} disableTransparentFade={true} >
             <h1 className={`${Text.txtMain}`}>
@@ -60,8 +59,11 @@ const Hero = () => {
               </Reveal>
             )}
           </div>
+
         </div>
+
       </CenterContainer>
+
     </div>
   );
 }
