@@ -17,6 +17,36 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
         const maxStars = 1000;
         let animationId: number;
 
+        // Set canvas size and initialize stars
+        const setCanvasSize = () => {
+            // Get actual viewport dimensions (important for mobile)
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Set canvas size to match viewport exactly
+            canvas.width = viewportWidth;
+            canvas.height = viewportHeight;
+            
+            // Apply device pixel ratio for sharper rendering on high-DPI screens
+            const dpr = window.devicePixelRatio || 1;
+            if (dpr > 1) {
+                canvas.style.width = viewportWidth + 'px';
+                canvas.style.height = viewportHeight + 'px';
+                canvas.width = viewportWidth * dpr;
+                canvas.height = viewportHeight * dpr;
+                ctx.scale(dpr, dpr);
+            }
+
+            // Cancel existing animation
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+
+            // Reinitialize stars for new dimensions
+            initStars();
+            animate();
+        };
+
         const createStarImage = () => {
             const canvas2 = document.createElement('canvas');
             const ctx2 = canvas2.getContext('2d');
@@ -113,23 +143,6 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
             }
         };
 
-        // Set canvas size and initialize stars
-        const setCanvasSize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            // Cancel existing animation
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-
-            // Reinitialize stars for new window dimensions
-            initStars();
-
-            // Restart animation
-            animate();
-        };
-
         // Animation loop
         function animate() {
             if (!ctx || !canvas) return;
@@ -143,23 +156,28 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
 
         // Initial setup
         setCanvasSize();
-
-        // Add resize listener
-        window.addEventListener('resize', setCanvasSize);
-
-        // Cleanup on unmount
+        
+        // Add resize listener with debounce for better performance
+        let resizeTimer: NodeJS.Timeout;
+        const handleResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(setCanvasSize, 100);
+        };
+        
+        window.addEventListener('resize', handleResize);
+        
+        // Cleanup
         return () => {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-            window.removeEventListener('resize', setCanvasSize);
+            if (animationId) cancelAnimationFrame(animationId);
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(resizeTimer);
         };
     }, []);
 
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 min-w-screen min-h-screen pointer-events-none"
+            className="fixed inset-0 w-screen h-screen pointer-events-none overflow-hidden"
             style={{ zIndex }}
         />
     );
