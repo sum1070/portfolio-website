@@ -91,6 +91,7 @@ export default function MouseAnimated() {
         p.life -= p.decay;
 
         // Skip drawing if particle is offscreen
+        if(!p || !canvas) continue;
         if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
           particles.splice(i, 1);
           continue;

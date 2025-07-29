@@ -22,7 +22,7 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
             const canvas2 = document.createElement('canvas');
             const ctx2 = canvas2.getContext('2d');
             if (!ctx2) return null;
-            
+
             canvas2.width = 100;
             canvas2.height = 100;
             const half = canvas2.width / 2;
@@ -65,10 +65,10 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
 
         function createStar() {
             const star = {
-                orbitRadius: random(maxOrbit(canvas.width, canvas.height)),
+                orbitRadius: random(maxOrbit(canvas?.width || 0, canvas?.height || 0)),
                 radius: 0,
-                orbitX: canvas.width / 2,
-                orbitY: canvas.height / 2,
+                orbitX: (canvas?.width || 2) / 2,
+                orbitY: (canvas?.height || 2) / 2,
                 timePassed: random(0, maxStars),
                 speed: 0,
                 alpha: 0,
@@ -83,7 +83,7 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
                     } else if (twinkle === 2 && star.alpha < 1) {
                         star.alpha += 0.05;
                     }
-                    if (!ctx) return;
+                    if (!ctx || !starImage) return;
                     ctx.globalAlpha = star.alpha;
                     ctx.drawImage(starImage, x - star.radius / 2, y - star.radius / 2, star.radius, star.radius);
                     star.timePassed += star.speed;
@@ -107,7 +107,7 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
             // Reset
             stars = [];
             count = 0;
-            
+
             // Create stars - reduce the number for a more subtle effect
             for (let i = 0; i < 600; i++) {
                 createStar();
@@ -118,15 +118,15 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
         const setCanvasSize = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            
+
             // Cancel existing animation
             if (animationId) {
                 cancelAnimationFrame(animationId);
             }
-            
+
             // Reinitialize stars for new window dimensions
             initStars();
-            
+
             // Restart animation
             animate();
         };
@@ -144,7 +144,7 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
 
         // Initial setup
         setCanvasSize();
-        
+
         // Add resize listener
         window.addEventListener('resize', setCanvasSize);
 
