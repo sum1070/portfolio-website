@@ -1,5 +1,5 @@
 import {MouseTrail} from "@/components";
-import {Hero} from "@/components/sections";
+import {Hero, MainPage} from "@/components/sections";
 
 export default function deploy() {
 
@@ -7,6 +7,7 @@ export default function deploy() {
     <div className="min-h-full flex-col">
       <MouseTrail />
       <Hero />
+      <MainPage />
     </div>
 
   );
