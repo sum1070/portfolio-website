@@ -6,6 +6,8 @@ import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/
 import { animationTimeClasses } from "@/lib/types";
 import Reveal from "@/lib/Reveal";
 import FadeIn from "@/lib/FadeIn";
+import SpaceParticles from "../ui/Space";
+import Stars from "../ui/Stars";
 
 const Text = {
   txtMain: "text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
@@ -30,10 +32,12 @@ const Hero = () => {
   // TODO: theme change button, sound button
   return (
     <div ref={heroRef} id="hero" className="overflow-hidden static">
+      <Stars zIndex={-5}/>
       <BlurredBlobs />
       <BackgroundHero />
       <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
+          
           <FadeIn onComplete={() => setStartTyping(true)} disableTransparentFade={true} >
             <h1 className={`${Text.txtMain}`}>
               HELLO

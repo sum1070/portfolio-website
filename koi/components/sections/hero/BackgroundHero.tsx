@@ -1,4 +1,4 @@
-import { Bar, CodeTextSVG, Dot, LineCircle, Triangle } from "@/components/decorations";
+import { Bar, CodeTextSVG, CodeTextSVG2, Dot, LineCircle, Triangle} from "@/components/decorations";
 import { motion, useAnimate, useScroll } from "framer-motion";
 import { borderColor, boxShadow, springY } from "@/lib/utils";
 import { useEffect } from "react";
@@ -212,7 +212,8 @@ export default function BackgroundHero() {
             </FadeIn>
             {/* code text */}
             <div className="z-10 absolute top-0 right-0">
-                <CodeTextSVG />
+                <CodeTextSVG2 />
+                {/* <CodeText /> */}
             </div>
 
 
