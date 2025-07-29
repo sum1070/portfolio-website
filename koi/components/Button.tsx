@@ -12,7 +12,7 @@ function CyberButton({
   special = false,
   onClick,
   ...props
-}: ButtonProps) {
+}: Readonly<ButtonProps>) {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
