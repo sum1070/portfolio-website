@@ -17,7 +17,6 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
         const maxStars = 1000;
         let animationId: number;
 
-        // Create the star particle image once
         const createStarImage = () => {
             const canvas2 = document.createElement('canvas');
             const ctx2 = canvas2.getContext('2d');
