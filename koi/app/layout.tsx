@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import {fraunces} from '../lib/fonts';
+import { fraunces } from '../lib/fonts';
 
 export const metadata: Metadata = {
   title: "koi",
@@ -14,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fraunces.className} !p-0`}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+      </head>
       <body>
         {children}
       </body>

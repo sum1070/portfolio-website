@@ -1,6 +1,5 @@
 'use client';
 
-import { TextHoverEffect } from "@/components/ui/dev/text-hover-effect";
 import Dummy from "./dummy";
 import Scroll from "@/components/Scroll";
 import Hero from "@/components/sections/Hero";
