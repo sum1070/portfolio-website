@@ -31,7 +31,6 @@
     @apply min-h-screen;
     overflow-x: hidden;
     /* remove padding */
-    /* @apply !p-0; */
   }
 }
 
@@ -139,4 +138,13 @@ body {
 
 .animate-flash {
   animation: flash 0.75s ease-out 1 forwards;
+}
+
+@supports not (height: 100dvh) {
+  .min-h-dvh {
+    min-height: 100vh;
+  }
+  .h-dvh {
+    height: 100vh;
+  }
 }
