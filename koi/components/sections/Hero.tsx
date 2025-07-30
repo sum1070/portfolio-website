@@ -31,13 +31,13 @@ const Hero = () => {
 
   // TODO: theme change button, sound button
   return (
-    <div ref={heroRef} id="hero" className="overflow-hidden static">
-      <Stars zIndex={-5}/>
+    <div ref={heroRef} id="hero" className="overflow-hidden relative">
+      <Stars zIndex={-5} />
       <BlurredBlobs />
       <BackgroundHero />
       <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
-          
+
           <FadeIn onComplete={() => setStartTyping(true)} disableTransparentFade={true} >
             <h1 className={`${Text.txtMain}`}>
               HELLO
