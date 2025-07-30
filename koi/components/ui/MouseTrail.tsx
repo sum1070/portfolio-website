@@ -13,19 +13,15 @@ export default function MouseAnimated() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: true })!;
     let particles: any[] = [], hue = 0, frame = 0;
-    const MAX_PARTICLES = 150;
+    const MAX_PARTICLES = 200;
 
-    // Blur effect
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = "rgba(255, 255, 255, 0.3)";
+    applyBlur(ctx); // Blur effect
 
     function resize() {
       if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      // reapply blur
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = "rgba(255, 255, 255, 0.3)";
+      applyBlur(ctx); // reapply blur after resize
     }
     resize();
 
@@ -35,7 +31,7 @@ export default function MouseAnimated() {
     function click(e: MouseEvent) {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-      hue += 8;
+      hue += 8; 
       for (let i = 0; i < 20; i++) particles.push(createParticle());
       for (let i = 0; i < 20; i++) {
         if (particles.length < MAX_PARTICLES) {
@@ -56,19 +52,17 @@ export default function MouseAnimated() {
       if (frame % 2 === 0) for (let i = 0; i < 7; i++) particles.push(createParticle());
     }
 
-
-
     // --- Particles Setting ---
     function createParticle() {
       return {
         x: mouse.x,
         y: mouse.y,
-        size: Math.random() * 14 + 1,
-        speedX: Math.random() * 3 - 1,
-        speedY: Math.random() * 3 - 1,
-        color: `hsla(${hue},100%, 82%, 0.7)`,
-        growFactor: Math.random() * 0.05 + 0.03,
-        maxSize: Math.random() * 8 + 5,
+        size: Math.random() * 14 + 2,
+        speedX: Math.random() * 3 - 0.9,
+        speedY: Math.random() * 3 - 0.9,
+        color: `hsla(${hue},100%, 70%, 0.7)`,
+        growFactor: Math.random() * 0.05 + 0.05,
+        maxSize: Math.random() % 20 + 10,
         life: 1,
         decay: Math.random() * 0.02 + 0.015,
       };
@@ -79,13 +73,7 @@ export default function MouseAnimated() {
         const p = particles[i];
 
         // update particle position
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.size < p.maxSize) {
-          p.size += p.growFactor;
-        } else {
-          p.size -= 0.1;
-        }
+        updateParticlePosition(p);
 
         // Decrease life
         p.life -= p.decay;
@@ -97,41 +85,17 @@ export default function MouseAnimated() {
           continue;
         }
 
-        // draw particle with glow
-        ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
+        drawGlowParticle(ctx, p);
 
-
-        if (i % 2 === 0) {
-          let connectionsCount = 0;
-          for (let j = i + 1; j < particles.length; j++) {
-            const p2 = particles[j];
-            const dx = p.x - p2.x, dy = p.y - p2.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            // --- Lines Setting ---
-            if (dist < 100 && connectionsCount < 4) {
-              ctx.beginPath();
-              ctx.strokeStyle = p.color;
-              ctx.lineWidth = 0.2;
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(p2.x, p2.y);
-              ctx.stroke();
-              ctx.closePath();
-            }
-          }
-        }
+        drawParticleConnections(i, particles, p, ctx);
 
         // clear small or dead particles
-        if (p.size <= 0.2 || p.life <= 0) {
-          particles.splice(i, 1);
-        }
+        clearParticles(p, particles, i);
       }
     }
 
     let animationId: number;
+    // --- Animation loop ---
     function animate() {
       if (!canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
@@ -166,4 +130,54 @@ export default function MouseAnimated() {
       }}
     />
   );
+}
+
+function applyBlur(ctx: CanvasRenderingContext2D) {
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = "rgba(255, 255, 255, 0.3)";
+}
+
+function clearParticles(p: any, particles: any[], i: number) {
+  if (p.size <= 0.2 || p.life <= 0) {
+    particles.splice(i, 1);
+  }
+}
+
+function drawParticleConnections(i: number, particles: any[], p: any, ctx: CanvasRenderingContext2D) {
+  if (i % 2 === 0) {
+    let connectionsCount = 0;
+    for (let j = i + 1; j < particles.length; j++) {
+      const p2 = particles[j];
+      const dx = p.x - p2.x, dy = p.y - p2.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      // --- Lines Setting ---
+      if (dist < 100 && connectionsCount < 4) {
+        ctx.beginPath();
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = 0.2;
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+        ctx.closePath();
+      }
+    }
+  }
+}
+
+function drawGlowParticle(ctx: CanvasRenderingContext2D, p: any) {
+  ctx.fillStyle = p.color;
+  ctx.shadowColor = p.color;
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function updateParticlePosition(p: any) {
+  p.x += p.speedX;
+  p.y += p.speedY;
+  if (p.size < p.maxSize) {
+    p.size += p.growFactor;
+  } else {
+    p.size -= 0.1;
+  }
 }

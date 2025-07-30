@@ -19,21 +19,25 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
 
         // Set canvas size and initialize stars
         const setCanvasSize = () => {
-            // Get actual viewport dimensions (important for mobile)
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
+            // Get parent container dimensions instead of viewport
+            const parent = canvas.parentElement;
+            if (!parent) return;
             
-            // Set canvas size to match viewport exactly
-            canvas.width = viewportWidth;
-            canvas.height = viewportHeight;
-            
+            const rect = parent.getBoundingClientRect();
+            const containerWidth = rect.width;
+            const containerHeight = rect.height;
+
+            // Set canvas size to match parent container
+            canvas.width = containerWidth;
+            canvas.height = containerHeight;
+
             // Apply device pixel ratio for sharper rendering on high-DPI screens
             const dpr = window.devicePixelRatio || 1;
             if (dpr > 1) {
-                canvas.style.width = viewportWidth + 'px';
-                canvas.style.height = viewportHeight + 'px';
-                canvas.width = viewportWidth * dpr;
-                canvas.height = viewportHeight * dpr;
+                canvas.style.width = containerWidth + 'px';
+                canvas.style.height = containerHeight + 'px';
+                canvas.width = containerWidth * dpr;
+                canvas.height = containerHeight * dpr;
                 ctx.scale(dpr, dpr);
             }
 
@@ -156,16 +160,16 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
 
         // Initial setup
         setCanvasSize();
-        
+
         // Add resize listener with debounce for better performance
         let resizeTimer: NodeJS.Timeout;
         const handleResize = () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(setCanvasSize, 100);
         };
-        
+
         window.addEventListener('resize', handleResize);
-        
+
         // Cleanup
         return () => {
             if (animationId) cancelAnimationFrame(animationId);
@@ -177,7 +181,7 @@ const Stars = ({ zIndex = -3 }: { zIndex?: number }) => {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 w-screen h-screen pointer-events-none overflow-hidden"
+            className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
             style={{ zIndex }}
         />
     );
