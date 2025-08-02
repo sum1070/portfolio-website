@@ -60,16 +60,15 @@ export default function BackgroundHero() {
                 className="absolute inset-0 -z-50 "
                 style={{
                     background: `
-                        radial-gradient(at 6% 8%, var(--color-purple0) 0%, transparent 50%),
+                        radial-gradient(at 6% 8%, var(--color-purple2) 0%, transparent 50%),
                         radial-gradient(at 95% 75%, var(--color-pink1) 0%, transparent 50%),
-                        radial-gradient(at 92% 27%, var(--color-sky-blue) 0%, transparent 50%),
+                        radial-gradient(at 95% 15%, var(--color-blue2) 0%, transparent 50%),
+                        radial-gradient(at 50% 15%, var(--color-pale-purple3) 0%, transparent 50%),
                         radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
                         radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 50%)
                         `,
                     backgroundColor: "var(--color-pale-purple0)",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundAttachment: "fixed",
+
                 }}
             ></div>
             {/* <FadeIn> */}
@@ -220,7 +219,7 @@ export default function BackgroundHero() {
             {/* Centre orbit */}
             <motion.div
                 ref={scope}
-                className="z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  "
+                className="z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  "
                 style={{
                     position: "absolute",
                     y: sprOrbit,
