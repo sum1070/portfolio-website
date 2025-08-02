@@ -13,7 +13,7 @@ const MainPage = () => {
 
 
     return (
-        <div className="flex overflow-hidden min-w-dvw min-h-dvh relative" id='MainPage'>
+        <section className="flex overflow-hidden min-w-dvw min-h-dvh relative" id='MainPage'>
             <BackgroundMain />
             {/* Set wave to bottom, then invert the container*/}
             <div className='scale-y-[-1]' id='MainPageWaveDiv'>
@@ -39,7 +39,7 @@ const MainPage = () => {
                 </p>
                 <TriangleArrowUp onClick={scrollToTop} bounce={false} />
             </CenterContainer>
-        </div>
+        </section>
 
     )
 }

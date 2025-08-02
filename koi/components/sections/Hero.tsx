@@ -10,8 +10,8 @@ import SpaceParticles from "../ui/Space";
 import Stars from "../ui/Stars";
 
 const Text = {
-  txtMain: "text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
-  txtMid: "mt-4 text-3xl sm:text-4xl md:text-5xl xl:text-7xl",
+  txtMain: "tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
+  txtMid: "tracking-tight mt-4 text-3xl sm:text-4xl md:text-5xl xl:text-7xl",
   txtMono: "mt-4 text-base sm:text-2xl md:pt-2 xl:pt-4 block font-titillium-web",
 };
 
@@ -31,8 +31,8 @@ const Hero = () => {
 
   // TODO: theme change button, sound button
   return (
-    <div ref={heroRef} id="hero" className="overflow-hidden relative">
-      <Stars zIndex={-5} />
+    <section ref={heroRef} id="hero" className="overflow-hidden relative">
+      {/* <Stars zIndex={-5} /> */}
       <BlurredBlobs />
       <BackgroundHero />
       <CenterContainer className="min-h-dvh relative z-20">
@@ -78,7 +78,7 @@ const Hero = () => {
 
       </CenterContainer>
 
-    </div>
+    </section>
   );
 }
 
