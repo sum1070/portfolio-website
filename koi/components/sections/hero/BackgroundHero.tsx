@@ -95,7 +95,7 @@ export default function BackgroundHero() {
                 />
             </FadeIn>
             {/* Bar */}
-            <FadeIn duration={animationTime.durationBars} delayOffset={1} className={`${shapeClasses}`} >
+            <FadeIn duration={animationTime.durationBars} delayOffset={1.5} className={`${shapeClasses}`} >
                 {/* Bars */}
                 <div >
                     {/* Hollow bar (bigger screen)*/}
@@ -140,30 +140,8 @@ export default function BackgroundHero() {
                     <Bar width="30px" length="10px" rotate="140deg" color="var(--color-pale-purple1)" endColor="var(--color-blue2)" />
                 </motion.div>
             </FadeIn>
-            {/* SVG */}
-            <FadeIn className={`${shapeClasses}`} >
-                <div >
-                    <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
-                        <LineCircle size="200px" className="mx-auto " />
-                    </motion.div>
-                    <motion.div style={{ y: spr5, position: "absolute", right: "20%", bottom: "84%" }}>
-                        {/* TODO: ???where r u */}
-                        <LineCircle size="90px" className="mx-auto absolute " />
-                    </motion.div>
-                    {/* Triangle */}
-                    <motion.div style={{ y: triangleY }} className="absolute left-0 bottom-6/12">
-                        <Triangle size="100px" image="big" rotate="330deg" />
-                    </motion.div>
-                    <motion.div style={{ y: triangleY }} className="absolute left-3/5 top-auto">
-                        <Triangle size="150px" image="mid" />
-                    </motion.div>
-                    <motion.div style={{ y: triangleY }} className="absolute left-3/5 bottom-4/12">
-                        <Triangle size="80px" image="big" rotate="120deg" className="mask-luminance mask-r-from-white mask-r-from-70% mask-r-to-black" />
-                    </motion.div>
-                </div>
-            </FadeIn>
             {/* Dots */}
-            <FadeIn delayOffset={0.4} className={`${shapeClasses}`} >
+            <FadeIn duration={animationTime.durationDots} delayOffset={0.8} className={`${shapeClasses}`} >
                 <div className="opacity-70 sm:opacity-100">
                     {/* Hollow dot small r */}
                     <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>
@@ -229,7 +207,28 @@ export default function BackgroundHero() {
                 <CodeTextSVG2 />
                 {/* <CodeText /> */}
             </FadeIn>
-
+            {/* SVG */}
+            <FadeIn className={`${shapeClasses}`} >
+                <div >
+                    <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
+                        <LineCircle size="200px" className="mx-auto " />
+                    </motion.div>
+                    <motion.div style={{ y: spr5, position: "absolute", right: "20%", bottom: "84%" }}>
+                        {/* TODO: ???where r u */}
+                        <LineCircle size="90px" className="mx-auto absolute " />
+                    </motion.div>
+                    {/* Triangle */}
+                    <motion.div style={{ y: triangleY }} className="absolute left-0 bottom-6/12">
+                        <Triangle size="100px" image="big" rotate="330deg" />
+                    </motion.div>
+                    <motion.div style={{ y: triangleY }} className="absolute left-3/5 top-auto">
+                        <Triangle size="150px" image="mid" />
+                    </motion.div>
+                    <motion.div style={{ y: triangleY }} className="absolute left-3/5 bottom-4/12">
+                        <Triangle size="80px" image="big" rotate="120deg" className="mask-luminance mask-r-from-white mask-r-from-70% mask-r-to-black" />
+                    </motion.div>
+                </div>
+            </FadeIn>
 
             {/* Centre orbit */}
             <motion.div
