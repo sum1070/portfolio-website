@@ -60,24 +60,6 @@ export type TPattern = TUIComponent & {
   stroke?: number;
 };
 
-/**
- * First appear component: delayOrbit
- */
-export const animationTimeClasses = {
-  delayOrbitIntro: 0.2,
-  durationOrbitIntro: 0.4,
-  delayOrbitColor: 2,
-  durationOrbitColor: 2,
-  delayBG: 1,
-  durationBG: 2,
-  delayMainTxt: 1.8,
-  durationMainTxt: 0.6,
-  delayTriangleArrow: 0.6,
-  durationTriangleArrow: 0.4,
-  delayTypewriter: 200, // 3 digits
-  durationTypewriter: 500, // 3 digits
-}
-
 export type TAnimation = {
   className?: string;
   text?: string;

@@ -1,13 +1,11 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
 import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
-import { animationTimeClasses } from "@/lib/types";
+import { animationTime } from "@/lib/utils";
 import Reveal from "@/lib/Reveal";
 import FadeIn from "@/lib/FadeIn";
-import SpaceParticles from "../ui/Space";
-import Stars from "../ui/Stars";
 
 const Text = {
   txtMain: "tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
@@ -32,13 +30,12 @@ const Hero = () => {
   // TODO: theme change button, sound button
   return (
     <section ref={heroRef} id="hero" className="overflow-hidden relative">
-      {/* <Stars zIndex={-5} /> */}
       <BlurredBlobs />
       <BackgroundHero />
       <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
 
-          <FadeIn onComplete={() => setStartTyping(true)} disableTransparentFade={true} >
+          <FadeIn onComplete={() => setStartTyping(true)} disableTransparentFade={true} delay={animationTime.delayMainTxt} duration={animationTime.durationMainTxt}>
             <h1 className={`${Text.txtMain}`}>
               HELLO
             </h1>
@@ -51,7 +48,7 @@ const Hero = () => {
               <Typewriter
                 className={`${Text.txtMono}`}
                 speed={50}
-                delay={animationTimeClasses.delayTypewriter}
+                delay={animationTime.delayTypewriter}
                 onComplete={() => setRevealArrow(true)}
               >
                 Welcome to my website...
@@ -64,9 +61,9 @@ const Hero = () => {
             {revealArrow && (
               <Reveal
                 key="arrow"
-                delay={animationTimeClasses.delayTriangleArrow}
+                delay={animationTime.delayTriangleArrow}
                 width="full"
-                duration={animationTimeClasses.durationTriangleArrow}
+                duration={animationTime.durationTriangleArrow}
                 className="flex justify-center w-full"
               >
                 <TriangleArrowDown onClick={scrollNextPage} />

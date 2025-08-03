@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { TAnimation, animationTimeClasses } from '@/lib/types';
+import { TAnimation } from '@/lib/types';
+import { animationTime } from "@/lib/utils";
 
 interface TypewriterProps extends TAnimation {
   onComplete?: () => void;
@@ -51,8 +52,8 @@ export function Cursor({
 export default function Typewriter({
   text = '',
   className = '',
-  speed = animationTimeClasses.durationTypewriter,
-  delay = animationTimeClasses.delayTypewriter,
+  speed = animationTime.durationTypewriter,
+  delay = animationTime.delayTypewriter,
   onComplete,
   showCursor = true,
   cursorBlinkSpeed = 500,
