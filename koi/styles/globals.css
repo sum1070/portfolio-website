@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-xs: 35rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
   --color-black: #171717;
   --color-white: #ffffff;
   --color-milky-white: #fefaf3;
@@ -48,7 +51,6 @@
   }
 }
 
-/* my cute cute pastel bg */
 body {
   background-color: var(--color-pale-purple0);
   background-repeat: no-repeat;
@@ -62,7 +64,7 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
 }
 

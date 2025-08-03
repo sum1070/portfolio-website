@@ -73,7 +73,7 @@ export default function BackgroundHero() {
                 }}
             ></div>
             {/* Center orbit */}
-            <FadeIn className="absolute inset-x-0 bottom-0">
+            <FadeIn  className="absolute inset-x-0 bottom-0">
                 <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-[var(--color-milky-white)] to-transparent"></div>
                 {/* white dots grid */}
                 <Pattern
@@ -122,7 +122,7 @@ export default function BackgroundHero() {
                 </div>
             </FadeIn>
             {/* X */}
-            <FadeIn duration={animationTime.durationBars} delayOffset={0.8} className={`${shapeClasses}`}>
+            <FadeIn yTranslation={true} duration={animationTime.durationBars} delayOffset={0.8} className={`${shapeClasses}`}>
                 <motion.div style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
                     <Bar width="60px" length="10px" rotate="145deg  " />
                     <Bar width="60px" length="10px" rotate="55deg  " />
@@ -141,7 +141,7 @@ export default function BackgroundHero() {
                 </motion.div>
             </FadeIn>
             {/* Dots */}
-            <FadeIn duration={animationTime.durationDots} delayOffset={0.8} className={`${shapeClasses}`} >
+            <FadeIn yTranslation={true}  duration={animationTime.durationDots} delayOffset={0.8} className={`${shapeClasses}`} >
                 <div className="opacity-70 sm:opacity-100">
                     {/* Hollow dot small r */}
                     <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>
@@ -203,12 +203,12 @@ export default function BackgroundHero() {
                 </div>
             </FadeIn>
             {/* code text */}
-            <FadeIn className="z-10 absolute top-0 right-0">
+            <FadeIn yTranslation={true} delayOffset={1} className="z-10 absolute top-0 right-0">
                 <CodeTextSVG2 />
                 {/* <CodeText /> */}
             </FadeIn>
             {/* SVG */}
-            <FadeIn className={`${shapeClasses}`} >
+            <FadeIn yTranslation={true} className={`${shapeClasses}`} >
                 <div >
                     <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
                         <LineCircle size="200px" className="mx-auto " />

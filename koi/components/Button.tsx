@@ -1,56 +1,54 @@
-import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import { buttonImages, cn } from '@/lib/utils';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { TButton } from '@/lib/types';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-  special?: boolean;
+interface ButtonProps {
+    type: TButton;
+    href: string;
+    className?: string;
 }
 
-function CyberButton({
-  children,
-  className,
-  special = false,
-  onClick,
-  ...props
-}: Readonly<ButtonProps>) {
-  const [isActive, setIsActive] = useState(false);
+const Button = ({ type, href, className }: ButtonProps) => {
+    const [isClicked, setIsClicked] = useState(false);
+    const resetDelay = 300; // ms
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setIsActive(true);
-    if (onClick) onClick(e);
-    setTimeout(() => setIsActive(false), 750);
-  };
+    const handleClick = () => {
+        setIsClicked(true);
 
-  return (
-    <button
-      onClick={handleClick}
-      className={cn(
-        'group relative w-60 h-14 px-6 py-2 font-mono text-lg text-[#6c669c] tracking-wider',
-        'bg-gradient-to-br from-[#e4d2ff] to-[#d4b9ff] text-left',
-        'transition-transform duration-200 hover:scale-105',
-        'shadow-lg border border-[#a089e4] outline-none',
-        'clip-path-[polygon(0%_0%,95%_0%,100%_50%,95%_100%,0%_100%,5%_50%)]',
-        'hover:bg-gradient-to-br hover:from-[#efdbff] hover:to-[#d3b4ff]',
-        className
-      )}
-      {...props}
-    >
-      {/* Special tag */}
-      {special && (
-        <span className="absolute -top-2 -right-3 bg-[#3b3963] text-white text-xs px-2 py-[1px] rounded-md z-20">
-          Special
-        </span>
-      )}
+        setTimeout(() => {
+            setIsClicked(false);
+        }, resetDelay);
+    };
 
-      {/* Shine overlay */}
-      <div className="absolute inset-0 rounded-[inherit] opacity-40 group-hover:opacity-80 transition-opacity duration-300 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(135deg,rgba(255,255,255,0.2),transparent)]"></div>
-      </div>
+    const buttonClasses = "w-3xs h-auto xs:w-auto xs:h-auto";
+    return (
+        <Link href={href} passHref>
+            <button
+                className={cn(
+                    "relative focus:outline-none transition-transform",
+                    "active:scale-95",
+                    className
+                )}
+                onClick={handleClick}
+            >
+                <Image
+                    src={isClicked ? buttonImages[type].clicked : buttonImages[type].normal}
+                    alt={`${type} button`}
+                    width={150}
+                    height={50}
+                    className={cn(
+                        buttonClasses,
+                        "transition-all duration-200 ease-in-out",
+                        "hover:scale-105",
+                        "focus-visible:scale-105",
+                        "group-focus-visible:[&+img]:hidden",
+                    )}
+                />
+            </button>
+        </Link>
+    );
+};
 
-      {/* Content */}
-      <span className="relative z-10">{children}</span>
-    </button>
-  );
-}
-
-export default CyberButton;
+export default Button;

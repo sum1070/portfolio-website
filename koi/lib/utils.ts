@@ -75,17 +75,40 @@ export const boxShadow = [
 
 export const animationTime = {
   delayOrbitIntro: 0.2,
-  durationOrbitIntro: 0.4,
+  durationOrbitIntro: 0.3,
   delayOrbitColor: 2,
   durationOrbitColor: 2,
-  delayBG: 0.8,
-  durationBG: 2,
-  durationBars: 1.8,
-  durationDots: 1.4,
-  delayMainTxt: 3,
-  durationMainTxt: 0.9,
+  delayBG: 0.6,
+  durationBG: 1,
+  durationBars: 1.6,
+  durationDots: 1.2,
+  delayMainTxt: 2.7,
+  durationMainTxt: 0.8,
   delayTriangleArrow: 0.6,
   durationTriangleArrow: 0.4,
   delayTypewriter: 200, // 3 digits
   durationTypewriter: 500, // 3 digits
+};
+
+export const buttonImages = {
+  contact: {
+    normal: "/images/btn-contact.svg",
+    clicked: "/images/btnC-contact.svg",
+  },
+  wip: {
+    normal: "/images/btn-wip.svg",
+    clicked: "/images/btnC-wip.svg",
+  },
+  projects: {
+    normal: "/images/btn-proj.svg",
+    clicked: "/images/btnC-proj.svg",
+  },
+  github: {
+    normal: "/images/btn-github.svg",
+    clicked: "/images/btnC-github.svg",
+  },
+  certificates: {
+    normal: "/images/btn-certificates.svg",
+    clicked: "/images/btnC-certificates.svg",
+  },
 };
