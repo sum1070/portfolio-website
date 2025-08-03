@@ -3,9 +3,10 @@
 import { useState, useRef } from "react";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
 import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
-import { animationTime } from "@/lib/utils";
+import { animationTime, cn } from "@/lib/utils";
 import Reveal from "@/lib/Reveal";
 import FadeIn from "@/lib/FadeIn";
+import { motion } from "motion/react";
 
 const Text = {
   txtMain: "tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
@@ -35,14 +36,30 @@ const Hero = () => {
       <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
 
-          <FadeIn onComplete={() => setStartTyping(true)} disableTransparentFade={true} delay={animationTime.delayMainTxt} duration={animationTime.durationMainTxt}>
-            <h1 className={`${Text.txtMain}`}>
+          <motion.div
+            initial={{
+              opacity: 0, filter: "blur(15px)", letterSpacing: "-0.5em"
+            }}
+            animate={{
+              opacity: 1, filter: "blur(0px)", letterSpacing: "normal"
+            }}
+            transition={{
+              delay: animationTime.delayMainTxt,
+              duration: animationTime.durationMainTxt,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            onAnimationComplete={() => setStartTyping(true)} // Correct placement as separate prop
+          >
+            <h1 className={cn(
+              `${Text.txtMain}`,
+              "textBlurAnimation",
+            )}>
               HELLO
             </h1>
             <p className={`${Text.txtMid}`}>
               I'm Margaret!
             </p>
-          </FadeIn>
+          </motion.div>
           <div className="mt-2 pt-2 flex justify-center w-full h-10">
             {startTyping && (
               <Typewriter
