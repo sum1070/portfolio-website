@@ -1,10 +1,9 @@
-import { Bar, CodeTextSVG, CodeTextSVG2, Dot, LineCircle, Triangle} from "@/components/decorations";
+import { Bar, CodeTextSVG2, Dot, LineCircle, Triangle } from "@/components/decorations";
 import { motion, useAnimate, useScroll } from "framer-motion";
-import { borderColor, boxShadow, springY } from "@/lib/utils";
+import { borderColor, boxShadow, springY, animationTime } from "@/lib/utils";
 import { useEffect } from "react";
 import { Pattern } from "@/components";
 import FadeIn from "@/lib/FadeIn";
-import { animationTimeClasses } from "@/lib/types";
 
 export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
@@ -16,10 +15,12 @@ export default function BackgroundHero() {
     const spr5 = springY(scrollY, [0, -220], [0, 500], { stiffness: 80, damping: 10 });
     const sprStiff = springY(scrollY, [0, -90], [0, 500], { stiffness: 120, damping: 15 });
     const sprNormal = springY(scrollY, [0, -200], [0, 500], { stiffness: 90, damping: 20 });
-    const sprFlex = springY(scrollY, [0, -200], [0, 500], { stiffness: 70, damping: 10 });
+    const sprFlex = springY(scrollY, [0, -280], [0, 500], { stiffness: 70, damping: 10 });
     const sprFlex2 = springY(scrollY, [0, -250], [0, 500], { stiffness: 70, damping: 10 });
     const sprOrbit = springY(scrollY, [0, -120], [0, 500], { stiffness: 80, damping: 10 });
     const orbitScale = 1;
+
+    const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";
 
     useEffect(() => {
         const animateOrbit = async () => {
@@ -30,8 +31,8 @@ export default function BackgroundHero() {
                 border: "4px solid #86DDFF",
                 boxShadow: "0 0 70px #86DDFF"
             }, {
-                duration: animationTimeClasses.durationOrbitIntro,
-                delay: animationTimeClasses.delayOrbitIntro,
+                duration: animationTime.durationOrbitIntro,
+                delay: animationTime.delayOrbitIntro,
                 ease: "easeInOut"
             });
             // color change
@@ -41,8 +42,8 @@ export default function BackgroundHero() {
                     border: borderColor[index],
                     boxShadow: boxShadow[index]
                 }, {
-                    delay: animationTimeClasses.delayOrbitColor,
-                    duration: animationTimeClasses.durationOrbitColor,
+                    delay: animationTime.delayOrbitColor,
+                    duration: animationTime.durationOrbitColor,
                     ease: "easeInOut"
                 });
 
@@ -71,7 +72,7 @@ export default function BackgroundHero() {
 
                 }}
             ></div>
-            {/* <FadeIn> */}
+            {/* Center orbit */}
             <FadeIn className="absolute inset-x-0 bottom-0">
                 <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-[var(--color-milky-white)] to-transparent"></div>
                 {/* white dots grid */}
@@ -93,17 +94,8 @@ export default function BackgroundHero() {
                     className="z-40 bottom-[10svh] h-2/5 sm:bottom-[10svh] md:bottom-[15svh] sm:w-[10svw] "
                 />
             </FadeIn>
-            {/* shape component */}
-            <FadeIn className="pointer-events-none absolute inset-0 overflow-hidden -z-10 " >
-                {/* X */}
-                <motion.div style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
-                    <Bar width="60px" length="10px" rotate="145deg  " />
-                    <Bar width="60px" length="10px" rotate="55deg  " />
-                </motion.div>
-                <motion.div style={{ y: sprFlex2, position: "absolute", right: "18%", bottom: "24%" }}>
-                    <Bar width="50px" length="10px" rotate="25deg" color="var(--color-pink3)" endColor="var(--color-pale-purple1)" />
-                    <Bar width="50px" length="10px" rotate="115deg" color="var(--color-pink0)" endColor="var(--color-pink3)" />
-                </motion.div>
+            {/* Bar */}
+            <FadeIn duration={animationTime.durationBars} delayOffset={1} className={`${shapeClasses}`} >
                 {/* Bars */}
                 <div >
                     {/* Hollow bar (bigger screen)*/}
@@ -128,7 +120,28 @@ export default function BackgroundHero() {
                         <Bar width="300px" length="10px" color="var(--color-Mauve)" endColor="var(--color-sky-blue)" rotate="135deg" />
                     </motion.div>
                 </div>
-                {/* SVG Circle */}
+            </FadeIn>
+            {/* X */}
+            <FadeIn duration={animationTime.durationBars} delayOffset={0.8} className={`${shapeClasses}`}>
+                <motion.div style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
+                    <Bar width="60px" length="10px" rotate="145deg  " />
+                    <Bar width="60px" length="10px" rotate="55deg  " />
+                </motion.div>
+                <motion.div style={{ y: sprFlex2, position: "absolute", right: "18%", bottom: "24%" }}>
+                    <Bar width="50px" length="10px" rotate="25deg" color="var(--color-pink3)" endColor="var(--color-pale-purple1)" />
+                    <Bar width="50px" length="10px" rotate="115deg" color="var(--color-pink0)" endColor="var(--color-pink3)" />
+                </motion.div>
+                <motion.div style={{ y: sprNormal, position: "absolute", right: "80%", bottom: "32%" }}>
+                    <Bar width="20px" length="3px" rotate="25deg" color="var(--color-pink3)" endColor="var(--color-pale-purple1)" />
+                    <Bar width="20px" length="3px" rotate="115deg" color="var(--color-pink0)" endColor="var(--color-pink3)" />
+                </motion.div>
+                <motion.div style={{ y: sprFlex, position: "absolute", right: "24%", bottom: "60%" }}>
+                    <Bar width="30px" length="10px" rotate="50deg" color="var(--color-blue2)" endColor="var(--color-pale-purple1)" />
+                    <Bar width="30px" length="10px" rotate="140deg" color="var(--color-pale-purple1)" endColor="var(--color-blue2)" />
+                </motion.div>
+            </FadeIn>
+            {/* SVG */}
+            <FadeIn className={`${shapeClasses}`} >
                 <div >
                     <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
                         <LineCircle size="200px" className="mx-auto " />
@@ -148,7 +161,9 @@ export default function BackgroundHero() {
                         <Triangle size="80px" image="big" rotate="120deg" className="mask-luminance mask-r-from-white mask-r-from-70% mask-r-to-black" />
                     </motion.div>
                 </div>
-                {/* Dots */}
+            </FadeIn>
+            {/* Dots */}
+            <FadeIn delayOffset={0.4} className={`${shapeClasses}`} >
                 <div className="opacity-70 sm:opacity-100">
                     {/* Hollow dot small r */}
                     <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>
@@ -210,10 +225,10 @@ export default function BackgroundHero() {
                 </div>
             </FadeIn>
             {/* code text */}
-            <div className="z-10 absolute top-0 right-0">
+            <FadeIn className="z-10 absolute top-0 right-0">
                 <CodeTextSVG2 />
                 {/* <CodeText /> */}
-            </div>
+            </FadeIn>
 
 
             {/* Centre orbit */}

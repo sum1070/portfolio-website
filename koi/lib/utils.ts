@@ -69,3 +69,22 @@ export const boxShadow = [
   "0 0 30px #BAEBFF", // blue
   "0 0 50px #C6F3FF", // light blue 2
 ];
+/**
+ * First appear component: delayOrbit
+ */
+
+export const animationTime = {
+  delayOrbitIntro: 0.2,
+  durationOrbitIntro: 0.4,
+  delayOrbitColor: 2,
+  durationOrbitColor: 2,
+  delayBG: 0.8,
+  durationBG: 2,
+  durationBars: 1.8,
+  delayMainTxt: 2.3,
+  durationMainTxt: 0.9,
+  delayTriangleArrow: 0.6,
+  durationTriangleArrow: 0.4,
+  delayTypewriter: 200, // 3 digits
+  durationTypewriter: 500, // 3 digits
+};

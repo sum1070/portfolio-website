@@ -4,7 +4,7 @@ import { borderColor, boxShadow, springY } from "@/lib/utils";
 import { useEffect } from "react";
 import { Pattern } from "@/components";
 import FadeIn from "@/lib/FadeIn";
-import { animationTimeClasses } from "@/lib/types";
+import { animationTime } from "@/lib/utils";
 import Wave from "react-wavify";
 
 export default function BackgroundHero() {

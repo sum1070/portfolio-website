@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TAnimation, animationTimeClasses } from '@/lib/types';
+import { TAnimation } from '@/lib/types';
+import { animationTime } from "./utils";
 
 type FadeInProps = TAnimation & {
     yTranslation?: boolean;
     disableTransparentFade?: boolean;
     stiffness?: number;
+    delayOffset?: number;
     damping?: number;
     mass?: number;
     onComplete?: () => void;
@@ -14,14 +16,15 @@ type FadeInProps = TAnimation & {
 function FadeIn({
     className = '',
     children,
-    duration = animationTimeClasses.durationBG,
-    delay = animationTimeClasses.delayBG,
+    duration = animationTime.durationBG,
+    delay = animationTime.delayBG,
     yTranslation = false,
     stiffness = 90,
     damping = 20,
     mass = 0.8,
     onComplete,
     disableTransparentFade = false,
+    delayOffset = 0,
 }: Readonly<FadeInProps>) {
     return (
         <motion.div
@@ -37,14 +40,14 @@ function FadeIn({
             transition={{
                 opacity: {
                     duration: disableTransparentFade ? duration * 0.7 : duration,
-                    delay,
+                    delay: delay + delayOffset,
                     ease: "easeOut"
                 },
                 ...(yTranslation ? {
                     y: {
                         type: "spring",
                         duration,
-                        delay,
+                        delay: delay + delayOffset,
                         stiffness,
                         damping,
                         mass,
