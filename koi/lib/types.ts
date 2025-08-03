@@ -1,5 +1,3 @@
-import { delay } from "motion";
-
 export type TContainerProps = {
   className?: string; // for tailwind styling
   children: React.ReactNode; // My son to be rendered
@@ -15,7 +13,7 @@ interface TUIComponent {
   position?: TPosition;
   color?: string;
   endColor?: string;
-};
+}
 
 export type TShape = TUIComponent & {
   rotate?: string;
@@ -51,9 +49,9 @@ export const positionClasses = {
   full: "inset-0",
 };
 
-type PatternType = "dots" | "grid";
+type TPatternStyle = "dots" | "grid";
 export type TPattern = TUIComponent & {
-  type: PatternType;
+  type: TPatternStyle;
   spacing?: number; // spacing between dots / grid lines
   mask?: boolean;
   opacity?: number;
@@ -68,3 +66,10 @@ export type TAnimation = {
   speed?: number;
   children?: React.ReactNode; // <T> children </T>
 };
+
+export type TButton =
+  | "contact"
+  | "wip"
+  | "projects"
+  | "github"
+  | "certificates";

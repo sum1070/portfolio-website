@@ -2,8 +2,8 @@
 
 ## Framework and Libraries
 
-* Framework: Next.js (App Router)
-* Libraries: React, TailwindCSS
+- Framework: Next.js (App Router)
+- Libraries: React, TailwindCSS
 
 ### Installation
 
@@ -29,16 +29,23 @@ npx create-next-app@latest
 
 ### Rendering
 
-* **Client**-side rendering (CSR)
-  * Front-end
-  * e.g. Event listeners, states, use effects, APIs
-  * Files outside `app/` or starting with *client directives*: `'use client';`
-* **Server**-side rendering (SSR)
-  * Back-end
-  * e.g. Data fetching, static components like side bar
+- **Client**-side rendering (CSR)
+  - Front-end
+  - e.g. Event listeners, states, use effects, APIs
+  - Files outside `app/` or starting with _client directives_: `'use client';`
+- **Server**-side rendering (SSR)
+  - Back-end
+  - e.g. Data fetching, static components like side bar
 
 ### Useful shortcuts
 
-* React Arrow Function Component Export: `rafce`
+- React Arrow Function Component Export: `rafce`
 
-<!-- ## Deployment -->
+### Next.js redirect
+
+- `redirect`: Server-side redirect, e.g.:
+  - login redirect if no error
+  - external URLs
+- `useRouter` hook: Client
+  - event handlers
+  - recommended to use `<link>`
