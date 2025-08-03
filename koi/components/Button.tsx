@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { TButton } from '@/lib/types';
-
 interface ButtonProps {
     type: TButton;
     href: string;
@@ -29,6 +28,7 @@ const Button = ({ type, href, className }: ButtonProps) => {
                 className={cn(
                     "relative focus:outline-none transition-transform",
                     "active:scale-95",
+                    "transition-all duration-300",
                     className
                 )}
                 onClick={handleClick}
