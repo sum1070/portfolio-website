@@ -60,8 +60,8 @@ const MainPage = () => {
                         "md:items-end md:order-1",
                         colGap,
                     )}>
-                        <Button type="contact" href="/contact" className={cn(buttonClasses,"hover:-rotate-3")} />
-                        <Button type="projects" href="/projects" className={cn(buttonClasses,"hover:-rotate-3")} />
+                        <Button type="contact" href="/wip" className={cn(buttonClasses,"hover:-rotate-3")} />
+                        <Button type="projects" href="/wip" className={cn(buttonClasses,"hover:-rotate-3")} />
                     </div>
 
                     {/* right (bottom) */}
