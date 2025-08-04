@@ -1,8 +1,10 @@
-import { buttonImages, cn } from '@/lib/utils';
+import { buttonImages, cn, sounds } from '@/lib/utils';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { TButton } from '@/lib/types';
+import useSound from 'use-sound';
+
 interface ButtonProps {
     type: TButton;
     href: string;
@@ -11,6 +13,10 @@ interface ButtonProps {
 
 const Button = ({ type, href, className }: ButtonProps) => {
     const [isClicked, setIsClicked] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
+    const [bell] = useSound(sounds.bell, {volume: 0.5,});
+    const [bubble] = useSound(sounds.bubble, {volume: 0.5,});
+
     const resetDelay = 300; // ms
 
     const handleClick = () => {
@@ -32,6 +38,15 @@ const Button = ({ type, href, className }: ButtonProps) => {
                     className
                 )}
                 onClick={handleClick}
+                onMouseDown={() => bell()}
+                onMouseEnter={() => {
+                    setIsHovering(true);
+                    bubble();
+                }}
+                onMouseLeave={() => {
+                    setIsHovering(false);
+                    stop();
+                }}
             >
                 <Image
                     src={isClicked ? buttonImages[type].clicked : buttonImages[type].normal}

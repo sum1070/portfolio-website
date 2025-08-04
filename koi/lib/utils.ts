@@ -112,3 +112,12 @@ export const buttonImages = {
     clicked: "/images/btnC-certificates.svg",
   },
 };
+
+export const sounds = {
+  bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
+  bubble: "/sounds/bubble.mp3", // https://freesound.org/people/mokasza/sounds/810164/
+  sweetsaw: "/sounds/sweetsaw.wav", //https://freesound.org/people/newlocknew/sounds/515830/
+  glimmer: "/sounds/glimmer.wav", //https://freesound.org/people/mokasza/sounds/810164/
+  sparkle: "/sounds/sparkle.mp3", // https://freesound.org/people/Soughtaftersounds/sounds/145459/
+  tinkle: "/sounds/tinkle.flac", // https://freesound.org/people/Timbre/sounds/221683/
+};

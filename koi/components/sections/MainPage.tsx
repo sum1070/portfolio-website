@@ -60,8 +60,8 @@ const MainPage = () => {
                         "md:items-end md:order-1",
                         colGap,
                     )}>
-                        <Button type="contact" href="/contact" className={cn(buttonClasses,)} />
-                        <Button type="projects" href="/projects" className={cn(buttonClasses,)} />
+                        <Button type="contact" href="/contact" className={cn(buttonClasses,"hover:-rotate-3")} />
+                        <Button type="projects" href="/projects" className={cn(buttonClasses,"hover:-rotate-3")} />
                     </div>
 
                     {/* right (bottom) */}
@@ -70,8 +70,8 @@ const MainPage = () => {
                         "order-3 md:order-3",
                         colGap,
                     )}>
-                        <Button type="wip" href="/wip" className={cn(buttonClasses,)} />
-                        <Button type="wip" href="/wip" className={cn(buttonClasses,)} />
+                        <Button type="wip" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
+                        <Button type="wip" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
                     </div>
                 </div>
                 {/* arrow (big screen) */}
