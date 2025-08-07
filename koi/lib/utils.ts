@@ -113,6 +113,11 @@ export const buttonImages = {
   },
 };
 
+export const soundButtonImages = {
+  soundOn: "/images/sound-on.svg",
+  soundOff: "/images/sound-off.svg",
+};
+
 export const sounds = {
   bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
   bubble: "/sounds/bubble.mp3", // https://freesound.org/people/mokasza/sounds/810164/

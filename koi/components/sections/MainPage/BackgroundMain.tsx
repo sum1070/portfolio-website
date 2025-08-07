@@ -1,3 +1,4 @@
+import { buttonImages} from '@/lib/utils';
 import { BlurredBlobsMain } from "@/components/decorations";
 
 export default function BackgroundHero() {

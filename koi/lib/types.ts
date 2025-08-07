@@ -72,4 +72,4 @@ export type TButton =
   | "wip"
   | "projects"
   | "github"
-  | "certificates";
+  | "certificates"
