@@ -19,6 +19,23 @@ const Hero = () => {
   const [revealArrow, setRevealArrow] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
 
+  const typewriterSequences = [
+    {
+      text: "Welcome to my website...",
+      deleteCount: 10,
+      pauseBeforeDelete: 1000 // 1 sec
+    },
+    {
+      text: "WORLD!",
+      deleteCount: 0,
+      pauseBeforeDelete: 1500
+    },
+    {
+      text: "I am a Computer Science student",
+      pauseBeforeDelete: 1500
+    }
+  ];
+
   const scrollNextPage = () => {
     const mainPageSection = document.getElementById('MainPage');
     if (mainPageSection) {
@@ -28,12 +45,12 @@ const Hero = () => {
     }
   };
 
-  // TODO: theme change button, sound button
+  // TODO: theme change button
   return (
     <section ref={heroRef} id="hero" className="overflow-hidden relative">
       <HeroHeader />
-      <BlurredBlobsHero />
       <BackgroundHero />
+      <BlurredBlobsHero />
       <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
 
@@ -66,11 +83,11 @@ const Hero = () => {
               <Typewriter
                 className={`${Text.txtMono}`}
                 speed={50}
+                deleteSpeed={30} // Delete faster than typing
                 delay={animationTime.delayTypewriter}
                 onComplete={() => setRevealArrow(true)}
-              >
-                Welcome to my website...
-              </Typewriter>
+                sequences={typewriterSequences}
+              />
             )}
           </div>
 

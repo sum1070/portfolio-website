@@ -5,10 +5,21 @@ import { motion } from 'motion/react';
 import { TAnimation } from '@/lib/types';
 import { animationTime } from "@/lib/utils";
 
+// Define a sequence of text with typing/deleting options
+interface TextSequence {
+  text: string;
+  deleteCount?: number; // How many characters to delete after typing (0 = delete all)
+  pauseBeforeDelete?: number; // Pause before deleting (ms)
+  pauseAfterDelete?: number; // Pause after deleting (ms)
+}
+
 interface TypewriterProps extends TAnimation {
   onComplete?: () => void;
   showCursor?: boolean;
   cursorBlinkSpeed?: number;
+  deleteSpeed?: number;
+  sequences?: TextSequence[];
+  loop?: boolean;
 }
 
 interface CursorProps {
@@ -57,47 +68,108 @@ export default function Typewriter({
   onComplete,
   showCursor = true,
   cursorBlinkSpeed = 500,
+  deleteSpeed,
+  sequences = [],
+  loop = false,
   children
 }: Readonly<TypewriterProps>) {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  // const [typingDone, setTypingDone] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [sequenceIndex, setSequenceIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Use `children` if it's string, else use `text` prop
-  const textToType = children && typeof children === 'string' ? children : text;
+  const sequencesToType = sequences.length > 0
+    ? sequences
+    : [{ text: children && typeof children === 'string' ? children : text }];
 
+  const currentSequence = sequencesToType[sequenceIndex];
+  const currentText = currentSequence?.text || '';
+  const actualDeleteSpeed = deleteSpeed || speed * 0.7
+
+  // Initial delay before starting
   useEffect(() => {
-    // --- delay timer ---
     if (delay > 0 && !hasStarted) {
       const delayTimer = setTimeout(() => {
         setHasStarted(true);
       }, delay);
       return () => clearTimeout(delayTimer);
-    } else if (delay === 0) { // delay completed
+    } else if (delay === 0) {
       setHasStarted(true);
     }
   }, [delay, hasStarted]);
 
   useEffect(() => {
-    if (!hasStarted || currentIndex >= textToType.length || !textToType) {
-      if (currentIndex !== 0 && hasStarted) {
-        // --- typing done ---
-        // setTypingDone(true);
-        onComplete?.();
+    if (!hasStarted || isPaused) return;
+
+    if (!isDeleting) {
+      // ---- Typing ------
+      if (currentIndex >= currentText.length) {
+        // start pause before deletion
+        if (currentSequence.pauseBeforeDelete) {
+          setIsPaused(true);
+          setTimeout(() => {
+            setIsPaused(false);
+            setIsDeleting(true);
+          }, currentSequence.pauseBeforeDelete);
+          return;
+        }
+        setIsDeleting(true);
+        return;
       }
-      return;
+
+      // type the next character
+      const timer = setTimeout(() => {
+        setDisplayedText(prev => prev + currentText[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, speed);
+      return () => clearTimeout(timer);
+    } else {
+      // ---- Deleting ------
+      const deleteAll = !currentSequence.deleteCount || currentSequence.deleteCount === 0;
+      const targetLength = deleteAll ? 0 : currentText.length - (currentSequence.deleteCount || 0);
+
+      if (displayedText.length <= targetLength) {
+        // complete deletion
+        if (currentSequence.pauseAfterDelete) {
+          setIsPaused(true);
+          setTimeout(() => {
+            setIsPaused(false);
+            moveToNextSequence();
+          }, currentSequence.pauseAfterDelete);
+          return;
+        }
+        moveToNextSequence();
+        return;
+      }
+
+      // del one character
+      const timer = setTimeout(() => {
+        setDisplayedText(prev => prev.slice(0, -1));
+      }, actualDeleteSpeed);
+      return () => clearTimeout(timer);
     }
+  }, [currentIndex, hasStarted, isDeleting, displayedText, currentText, isPaused, speed, actualDeleteSpeed]);
 
-    // append the next char after speed ms
-    const timer = setTimeout(() => {
-      // --- typing ---
-      setDisplayedText((prev) => prev + textToType[currentIndex]);
-      setCurrentIndex((prev) => prev + 1); // increment index
-    }, speed);
+  const moveToNextSequence = () => {
+    const nextIndex = sequenceIndex + 1;
 
-    return () => clearTimeout(timer);
-  }, [currentIndex, textToType, speed, hasStarted, onComplete]);
+    if (nextIndex < sequencesToType.length) {
+      // move to the next sequence
+      setSequenceIndex(nextIndex);
+      setCurrentIndex(0);
+      setIsDeleting(false);
+    } else if (loop) {
+      // loop back to first sequence
+      setSequenceIndex(0);
+      setCurrentIndex(0);
+      setIsDeleting(false);
+    } else {
+      // All sequences completed
+      onComplete?.();
+    }
+  };
 
   return (
     <motion.span
@@ -108,10 +180,9 @@ export default function Typewriter({
     >
       {displayedText}
       {showCursor && (
-        <Cursor blinkSpeed={cursorBlinkSpeed}  />
+        <Cursor blinkSpeed={cursorBlinkSpeed} />
       )}
     </motion.span>
   );
-
 }
 
