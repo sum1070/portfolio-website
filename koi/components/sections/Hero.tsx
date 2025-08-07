@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
-import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobs } from "@/components";
+import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero } from "@/components";
 import { animationTime, cn } from "@/lib/utils";
 import Reveal from "@/lib/Reveal";
 import FadeIn from "@/lib/FadeIn";
@@ -31,7 +31,7 @@ const Hero = () => {
   // TODO: theme change button, sound button
   return (
     <section ref={heroRef} id="hero" className="overflow-hidden relative">
-      <BlurredBlobs />
+      <BlurredBlobsHero />
       <BackgroundHero />
       <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
