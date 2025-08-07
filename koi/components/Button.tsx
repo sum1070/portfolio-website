@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { TButton } from '@/lib/types';
 import useSound from 'use-sound';
+import { useMainVolume } from '@/lib/hooks/useMainVolume';
 
 interface ButtonProps {
     type: TButton;
@@ -12,6 +13,7 @@ interface ButtonProps {
 }
 
 const Button = ({ type, href, className }: ButtonProps) => {
+    useMainVolume();
     const [isClicked, setIsClicked] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
     const [bell] = useSound(sounds.bell, {volume: 0.5,});

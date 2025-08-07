@@ -73,3 +73,13 @@ export type TButton =
   | "projects"
   | "github"
   | "certificates"
+  ;
+
+export type VolumeContextType = {
+  volume: number;
+  isMuted: boolean;
+  toggleMute: () => void;
+  setNewVolume: (volume: number) => void;
+  incrementVolume: () => void;
+  decrementVolume: () => void;
+};
