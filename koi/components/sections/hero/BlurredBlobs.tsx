@@ -9,6 +9,7 @@ const BlobsOpacity2 = "opacity-20 sm:opacity-80"
 const BlobsOpacity3 = "opacity-20 sm:opacity-50"
 const BlobsOpacity4 = "opacity-70"
 
+// HERO
 const BlurredBlobs = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none  will-change-transform">
@@ -26,17 +27,6 @@ const BlurredBlobs = () => {
         )}
 
       ></div>
-    {/* BR */}
-      {/* <div
-        className={cn(
-          BlobsClasses, BlobsOpacity3,
-          "[animation:blob3_6s_infinite_2s]",
-          "blur-3xl",
-          "bg-linear-60 from-fuchsia-500 to-sky-300",
-          "bottom-0 right-0",
-          "w-80 h-80 lg:w-120 lg:h-120 xl:w-200 xl:h-200",
-        )}
-      ></div> */}
       {/* BL */}
       <div
         className={cn(
