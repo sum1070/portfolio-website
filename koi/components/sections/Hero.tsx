@@ -11,7 +11,8 @@ import HeroHeader from "./hero/HeroHeader";
 const Text = {
   txtMain: "tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
   txtMid: "tracking-tight mt-4 text-3xl sm:text-4xl md:text-5xl xl:text-7xl",
-  txtMono: "mt-4 text-base sm:text-2xl md:pt-2 xl:pt-4 block font-titillium-web",
+  txtMono: "w-full text-left mt-4 text-base sm:text-2xl md:pt-2 xl:pt-4 block font-titillium-web",
+  typingContainer: "mt-2 pt-2 flex justify-center w-full h-10 ",
 };
 
 const Hero = () => {
@@ -24,11 +25,11 @@ const Hero = () => {
   const firstTypewriterSequences = [
     {
       text: "Welcome to my website...",
-      deleteCount: 10,
-      pauseBeforeDelete: 3000 // 1 sec
+      deleteCount: 11,
+      pauseBeforeDelete: 1000 // 1 sec
     },
     {
-      text: "WORLD!",
+      text: " WORLD!",
       deleteCount: 0,
       pauseBeforeDelete: 2000
     },
@@ -82,7 +83,7 @@ const Hero = () => {
             <p className={cn(`${Text.txtMid}`)}>I'm <span className={cn("text-nice-purple3 font-medium")}>Margaret</span> !</p>
           </motion.div>
           {/* First typing string */}
-          <div className="mt-2 pt-2 flex justify-center w-full h-10">
+          <div className={cn(`${Text.typingContainer}`)}>
             {startTyping && !firstSequenceComplete && (
               <Typewriter
                 className={`${Text.txtMono}`}
@@ -99,6 +100,7 @@ const Hero = () => {
             {/* Second typing string */}
             {startSecondSequence && (
               <motion.div
+                className={cn(`${Text.typingContainer}`)}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
