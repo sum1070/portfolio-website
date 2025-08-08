@@ -17,6 +17,7 @@
   --color-nice-purple0: #544d85;
   --color-nice-purple1: #746ba6;
   --color-nice-purple2: #423c6c; /* deepest */
+  --color-nice-purple3: #6b3d8b;
   --color-sky-blue: #a9e8f2;
   --color-blue2: #6cbbfd;
   --color-pink0: #ffc2f9;
@@ -70,16 +71,22 @@ body {
 
 @keyframes blob {
   0% {
-    transform: rotate(0deg);
+    transform: scale(1) rotate(0deg);
   }
-  66% {
-    transform: scale(0.9) rotate(160deg);
+  40%{
+    transform: scale(1.2) rotate(144deg);
   }
-  77% {
-    transform: scale(1) rotate(220deg);
+  60% {
+    transform: scale(0.8) rotate(216deg);
+  }
+  65% {
+    transform: scale(1) rotate(234deg);
+  }
+  70% {
+    transform: scale(1.2) rotate(252deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(1) rotate(360deg);
   }
 }
 @keyframes blob3 {

@@ -5,12 +5,11 @@ import { motion } from 'motion/react';
 import { TAnimation } from '@/lib/types';
 import { animationTime } from "@/lib/utils";
 
-// Define a sequence of text with typing/deleting options
 interface TextSequence {
   text: string;
-  deleteCount?: number; // How many characters to delete after typing (0 = delete all)
-  pauseBeforeDelete?: number; // Pause before deleting (ms)
-  pauseAfterDelete?: number; // Pause after deleting (ms)
+  deleteCount?: number; // number of characters to delete (0 = delete all)
+  pauseBeforeDelete?: number; // pause before deleting (ms)
+  pauseAfterDelete?: number; // pause after deleting (ms)
 }
 
 interface TypewriterProps extends TAnimation {
@@ -88,8 +87,8 @@ export default function Typewriter({
   const currentText = currentSequence?.text || '';
   const actualDeleteSpeed = deleteSpeed || speed * 0.7
 
-  // Initial delay before starting
   useEffect(() => {
+    // delay before starting typing
     if (delay > 0 && !hasStarted) {
       const delayTimer = setTimeout(() => {
         setHasStarted(true);
