@@ -1,18 +1,16 @@
 import React from "react";
 import {TContainerProps} from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 export default function CenterContainer(props: Readonly<TContainerProps>) {
   return (
     <div
-      className={`container
-        flex items-center justify-center text-center
-        min-h-screen
-        mx-auto
-        sm:py-48
-        lg:py-56 lg:px-8
-        ${props.className ? props.className : ""}`}>
+      id="center-container"
+      className={cn(
+        "flex flex-row min-h-screen justify-center items-center min-w-screen",
+        `${props.className ? props.className : ""}`
+      )}>
       {props.children}
     </div>
   );
 }
-

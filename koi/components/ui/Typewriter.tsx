@@ -2,31 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { TAnimation } from '@/lib/types';
+import { CursorProps, TypewriterProps } from '@/lib/types';
 import { animationTime } from "@/lib/utils";
 
-interface TextSequence {
-  text: string;
-  deleteCount?: number; // number of characters to delete (0 = delete all)
-  pauseBeforeDelete?: number; // pause before deleting (ms)
-  pauseAfterDelete?: number; // pause after deleting (ms)
-}
-
-interface TypewriterProps extends TAnimation {
-  onComplete?: () => void;
-  showCursor?: boolean;
-  cursorBlinkSpeed?: number;
-  deleteSpeed?: number;
-  sequences?: TextSequence[];
-  loop?: boolean;
-}
-
-interface CursorProps {
-  cursorChar?: string;
-  blinkSpeed?: number;
-  blinkEnabled?: boolean;
-}
-
+// ------------- Cursor -------------
 export function Cursor({
   cursorChar = '|',
   blinkSpeed = 60,
@@ -59,14 +38,17 @@ export function Cursor({
   );
 }
 
+// ------------- Typewriter -------------
 export default function Typewriter({
   text = '',
   className = '',
   speed = animationTime.durationTypewriter,
   delay = animationTime.delayTypewriter,
   onComplete,
+  onTypeComplete,
   showCursor = true,
   cursorBlinkSpeed = 500,
+  enableDelete = true,
   deleteSpeed,
   sequences = [],
   loop = false,
@@ -105,6 +87,10 @@ export default function Typewriter({
     if (!isDeleting) {
       // ---- Typing ------
       if (currentIndex >= currentText.length) {
+        // Typing complete
+        if (onTypeComplete) {
+          onTypeComplete(currentText);
+        }
         // start pause before deletion
         if (currentSequence.pauseBeforeDelete) {
           setIsPaused(true);
@@ -124,7 +110,7 @@ export default function Typewriter({
         setCurrentIndex(prev => prev + 1);
       }, speed);
       return () => clearTimeout(timer);
-    } else {
+    } else if (enableDelete) {
       // ---- Deleting ------
       const deleteAll = !currentSequence.deleteCount || currentSequence.deleteCount === 0;
       const targetLength = deleteAll ? 0 : currentText.length - (currentSequence.deleteCount || 0);
@@ -164,6 +150,7 @@ export default function Typewriter({
       setSequenceIndex(0);
       setCurrentIndex(0);
       setIsDeleting(false);
+      onComplete?.();
     } else {
       // All sequences completed
       onComplete?.();
