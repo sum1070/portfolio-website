@@ -83,3 +83,25 @@ export type VolumeContextType = {
   incrementVolume: () => void;
   decrementVolume: () => void;
 };
+export interface CursorProps {
+  cursorChar?: string;
+  blinkSpeed?: number;
+  blinkEnabled?: boolean;
+}
+interface TextSequence {
+  text: string;
+  deleteCount?: number; // number of characters to delete (0 = delete all)
+  pauseBeforeDelete?: number; // pause before deleting (ms)
+  pauseAfterDelete?: number; // pause after deleting (ms)
+}
+export interface TypewriterProps extends TAnimation {
+  onComplete?: () => void; // typing + deletion completed
+  onTypeComplete?: (text: string) => void; // typing completed
+  showCursor?: boolean;
+  cursorBlinkSpeed?: number;
+  enableDelete?: boolean; // enable text deletion
+  deleteSpeed?: number;
+  sequences?: TextSequence[];
+  loop?: boolean;
+}
+

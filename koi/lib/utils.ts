@@ -118,6 +118,12 @@ export const soundButtonImages = {
   soundOff: "/images/sound-off.svg",
 };
 
+export const iconImages = {
+  moonStar: "/images/moon-stars-fill.svg",
+  nekoSleep: "/images/neko-sleep.svg",
+  sleepCat: "/images/sleep-cat.svg",
+}
+
 export const sounds = {
   bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
   bubble: "/sounds/bubble.mp3", // https://freesound.org/people/mokasza/sounds/810164/
