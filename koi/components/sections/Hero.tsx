@@ -18,21 +18,32 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [revealArrow, setRevealArrow] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
+  const [firstSequenceComplete, setFirstSequenceComplete] = useState(false);
+  const [startSecondSequence, setStartSecondSequence] = useState(false);
 
-  const typewriterSequences = [
+  const firstTypewriterSequences = [
     {
       text: "Welcome to my website...",
       deleteCount: 10,
-      pauseBeforeDelete: 1000 // 1 sec
+      pauseBeforeDelete: 3000 // 1 sec
     },
     {
       text: "WORLD!",
       deleteCount: 0,
-      pauseBeforeDelete: 1500
+      pauseBeforeDelete: 2000
     },
+  ];
+
+  const secondTypewriterSequences = [
     {
       text: "I am a Computer Science student",
-      pauseBeforeDelete: 1500
+      deleteCount: 26,
+      pauseBeforeDelete: 2000
+    },
+    {
+      text: "a full stack developer",
+      deleteCount: 23,
+      pauseBeforeDelete: 2000
     }
   ];
 
@@ -53,7 +64,6 @@ const Hero = () => {
       <BlurredBlobsHero />
       <CenterContainer className="min-h-dvh relative z-20">
         <div className="text-center text-nice-purple2 ">
-
           <motion.div
             initial={{
               opacity: 0, filter: "blur(15px)", letterSpacing: "-0.5em"
@@ -66,28 +76,42 @@ const Hero = () => {
               duration: animationTime.durationMainTxt,
               ease: [0.25, 0.46, 0.45, 0.94]
             }}
-            onAnimationComplete={() => setStartTyping(true)} // Correct placement as separate prop
+            onAnimationComplete={() => setStartTyping(true)}
           >
-            <h1 className={cn(
-              `${Text.txtMain}`,
-              "textBlurAnimation",
-            )}>
-              HELLO
-            </h1>
-            <p className={`${Text.txtMid}`}>
-              I'm Margaret!
-            </p>
+            <h1 className={cn(`${Text.txtMain}`, "textBlurAnimation",)}>HELLO</h1>
+            <p className={cn(`${Text.txtMid}`)}>I'm <span className={cn("text-nice-purple3 font-medium")}>Margaret</span> !</p>
           </motion.div>
+          {/* First typing string */}
           <div className="mt-2 pt-2 flex justify-center w-full h-10">
-            {startTyping && (
+            {startTyping && !firstSequenceComplete && (
               <Typewriter
                 className={`${Text.txtMono}`}
-                speed={50}
-                deleteSpeed={30} // Delete faster than typing
+                speed={70}
+                deleteSpeed={50}
                 delay={animationTime.delayTypewriter}
-                onComplete={() => setRevealArrow(true)}
-                sequences={typewriterSequences}
+                onComplete={() => {
+                  setFirstSequenceComplete(true);
+                  setTimeout(() => setStartSecondSequence(true), 500);
+                }}
+                sequences={firstTypewriterSequences}
               />
+            )}
+            {/* Second typing string */}
+            {startSecondSequence && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Typewriter
+                  className={`${Text.txtMono}`}
+                  speed={70}
+                  deleteSpeed={60}
+                  loop={true}
+                  onComplete={() => setRevealArrow(true)}
+                  sequences={secondTypewriterSequences}
+                />
+              </motion.div>
             )}
           </div>
 
