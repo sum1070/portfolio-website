@@ -69,7 +69,7 @@ const MainPage = () => {
                         "order-3 ",
                         "md:items-start md:order-3 md:mt-4",
                     )}>
-                        <Button type="licenses" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
+                        <Button type="licences" href="/licences" className={cn(buttonClasses,"hover:rotate-3")} />
                         <Button type="wip" href="/wip" className={cn(buttonClasses,"hover:-rotate-3")} />
                     </div>
                 </div>
