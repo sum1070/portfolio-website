@@ -40,6 +40,8 @@ npx create-next-app@latest
 ### Useful shortcuts
 
 - React Arrow Function Component Export: `rafce`
+- `rfc`: export default function
+- `rafcp`: export default function with props
 
 ### Next.js redirect
 
