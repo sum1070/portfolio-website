@@ -13,11 +13,17 @@ interface ButtonProps {
 }
 
 const Button = ({ type, href, className }: ButtonProps) => {
-    useMainVolume();
+    const { volume, isMuted } = useMainVolume();
     const [isClicked, setIsClicked] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
-    const [bell] = useSound(sounds.bell, {volume: 0.5,});
-    const [bubble] = useSound(sounds.bubble, {volume: 0.5,});
+    
+    const [bell, { stop: stopBell }] = useSound(sounds.bell, {
+        volume: isMuted ? 0 : volume,
+    });
+    
+    const [bubble, { stop: stopBubble }] = useSound(sounds.bubble, {
+        volume: isMuted ? 0 : volume,
+    });
 
     const resetDelay = 300; // ms
 
@@ -40,14 +46,17 @@ const Button = ({ type, href, className }: ButtonProps) => {
                     className
                 )}
                 onClick={handleClick}
-                onMouseDown={() => bell()}
+                onMouseDown={() => {
+                    if (!isMuted) bell();
+                }}
                 onMouseEnter={() => {
                     setIsHovering(true);
-                    bubble();
+                    if (!isMuted) bubble();
                 }}
                 onMouseLeave={() => {
                     setIsHovering(false);
-                    stop();
+                    stopBell();
+                    stopBubble();
                 }}
             >
                 <Image

@@ -17,6 +17,7 @@
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-howler": "^5.2.0",
     "react-mouse-particles": "^1.1.5",
     "react-wavify": "^1.11.1",
     "tailwind-merge": "^3.3.1",
@@ -27,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-howler": "^5.2.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
