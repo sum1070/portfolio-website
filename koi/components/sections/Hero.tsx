@@ -1,10 +1,9 @@
 "use client"
 
 import { useState, useRef } from "react";
-import Image from "next/image";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
 import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero } from "@/components";
-import { animationTime, cn, iconImages } from "@/lib/utils";
+import { animationTime, cn } from "@/lib/utils";
 import Reveal from "@/lib/Reveal";
 import { motion } from "motion/react";
 import HeroHeader from "./hero/HeroHeader";
