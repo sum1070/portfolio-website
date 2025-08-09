@@ -119,9 +119,8 @@ export const soundButtonImages = {
 };
 
 export const iconImages = {
-  moonStar: "/images/moon-stars-fill.svg",
-  nekoSleep: "/images/neko-sleep.svg",
-  sleepCat: "/images/sleep-cat.svg",
+  nekoSleep: "/images/neko-sleep.svg", // https://www.svgrepo.com/svg/368239/neko-sleep
+  sleepZZZ: "/animation/zzz.webm", // https://www.svgrepo.com/svg/479301/sleep
 }
 
 export const sounds = {
