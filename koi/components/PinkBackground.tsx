@@ -11,6 +11,18 @@ const PinkBackground = () => {
             className={cn(
                 "bg-pale-purple1 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
             )}
+            style={{
+                background: `
+                        radial-gradient(at 6% 8%, var(--color-purple1) 0%, transparent 40%),
+                        radial-gradient(at 95% 75%, var(--color-pink1) 0%, transparent 30%),
+                        radial-gradient(at 95% 15%, var(--color-sky-blue) 0%, transparent 50%),
+                        radial-gradient(at 50% 15%, var(--color-pale-purple3) 0%, transparent 50%),
+                        radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
+                        radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 20%)
+                        `,
+                backgroundColor: "var(--color-pale-purple1)",
+
+            }}
         >
             {/* Bar */}
             <div className={cn(`${shapeClasses}`)}>

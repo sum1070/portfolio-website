@@ -2,6 +2,8 @@ import { KoiUrl, Navbar, PinkBackground } from '@/components'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import LicenceCard from './LicenceCard';
+import NekoSleep from '@/components/sections/hero/NekoSleep';
+import Zzz from '@/components/sections/hero/Zzz';
 
 const licences = () => {
     const Text = {
@@ -21,7 +23,7 @@ const licences = () => {
                         Licences and Tools
                     </h1>
                     <p className="mb-4 text-center">
-                        All assets used were created by me or are under PD or CC0 licences if not listed below.
+                        All assets used were created by me <NekoSleep className="w-[20px] md:w-[24px] xl:w-[32px] inline-block object-contain "/><Zzz className="-ml-1 w-[32px] inline-block -mr-2"/>  or are under PD or CC0 licences if not listed below.
                         <br />
                         Information about the licences can be found on <KoiUrl href="https://creativecommons.org/share-your-work/cclicenses/" > Creative Commons (CC)</KoiUrl>
                     </p>
