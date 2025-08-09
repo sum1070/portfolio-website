@@ -1,8 +1,11 @@
+import { BlueBackground } from '@/components'
 import React from 'react'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div>
+      <BlueBackground />
+    </div>
   )
 }
 

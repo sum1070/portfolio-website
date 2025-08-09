@@ -29,7 +29,7 @@ export default function Navbar() {
             id='navbar'
             className={cn(
                 "fixed w-full z-50 transition-all duration-200 ease-in-out ",
-                isScrolled ? "bg-milky-white/80 backdrop-blur-sm shadow-md " : "bg-milky-white bg-opacity-25"
+                isScrolled ? "rounded-b-xl bg-milky-white backdrop-blur-md shadow-md " : "bg-transparent",
             )}>
             <div id='nav-container' className="p-2 flex flex-row justify-between text-xl " >
                 <Link

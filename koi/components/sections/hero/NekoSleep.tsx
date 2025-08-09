@@ -1,10 +1,11 @@
+"use client";
 import { iconImages } from '@/lib/utils'
 import Image from 'next/image'
 
-const NekoSleep = () => {
+const NekoSleep = ({className}: {className?: string}) => {
   return (
     <Image
-      className="w-[32px] md:w-12 xl:w-16 inline-block ml-2 object-contain"
+      className={className}
       alt="svg"
       src={iconImages.nekoSleep}
       width={48}

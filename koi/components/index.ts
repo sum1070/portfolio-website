@@ -6,6 +6,7 @@ export { default as Button } from "./Button";
 export { default as Navbar } from "./Navbar/Navbar";
 export { default as PinkBackground } from "./PinkBackground";
 export { default as BlueBackground } from "./BlueBackground";
+export { default as GreenBackground } from "./GreenBackground";
 export { default as Card } from "./Card";
 export { default as KoiUrl } from "./KoiUrl";
 

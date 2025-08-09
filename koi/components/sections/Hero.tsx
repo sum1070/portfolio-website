@@ -65,8 +65,8 @@ const Hero = () => {
             <div
               className={cn(`${Text.txtMid}`)}>
               I'm&nbsp;<span className={cn("text-nice-purple3 font-medium")}>Margaret</span>
-              <NekoSleep />
-              <Zzz />
+              <NekoSleep className="w-[32px] md:w-12 xl:w-16 inline-block ml-2 object-contain "/>
+              <Zzz className="-ml-1 md:-ml-2 w-[32px] md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " />
             </div>
           </motion.div>
           {/* First typing string */}

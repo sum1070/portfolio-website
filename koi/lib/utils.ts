@@ -122,8 +122,9 @@ export const sounds = {
 };
 
 export const navLinks = [
-  { name: "Hero", href: "/" },
+  { name: "Home", href: "/" },
   { name: "Main", href: "/#MainPage" },
   { name: "Projects", href: "/wip" },
-  { name: "Contact", href: "/wip" },
+  { name: "Contact", href: "/contact" },
+  { name: "Licences", href: "/licences" },
 ];
