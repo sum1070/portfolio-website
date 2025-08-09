@@ -38,6 +38,7 @@ export default function Navbar() {
                     className={cn(
                         navFontClassName,
                         "ml-4",
+                        "text-nice-purple3",
                         "hover:font-black transition-all duration-300 ease-in-out"
                     )} >
                     Meow

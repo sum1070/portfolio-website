@@ -106,16 +106,19 @@ export const soundButtonImages = {
 export const iconImages = {
   nekoSleep: "/images/neko-sleep.svg", // https://www.svgrepo.com/svg/368239/neko-sleep
   sleepZZZ: "/animation/zzz.webm", // https://www.svgrepo.com/svg/479301/sleep
+  attr4: "/images/attr4.svg", // https://www.svgrepo.com/svg/353062/creative-commons-attribution
+  medal: "/images/medal.svg", // https://www.svgrepo.com/svg/495465/medal-star
 };
 
 export const sounds = {
   bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
   bubble: "/sounds/bubble.mp3", // https://freesound.org/people/mokasza/sounds/810164/
-  sweetsaw: "/sounds/sweetsaw.wav", //https://freesound.org/people/newlocknew/sounds/515830/
-  glimmer: "/sounds/glimmer.wav", //https://freesound.org/people/mokasza/sounds/810164/
+  glimmer: "/sounds/glimmer.wav", //https://freesound.org/people/opticaillusions/sounds/521873/
   sparkle: "/sounds/sparkle.mp3", // https://freesound.org/people/Soughtaftersounds/sounds/145459/
   tinkle: "/sounds/tinkle.flac", // https://freesound.org/people/Timbre/sounds/221683/
-  music: "/sounds/music_DeepTheme_Audio_Spring_Hazes_34.mp3",
+  music: "/sounds/music_DeepTheme_Audio_Spring_Hazes_34.mp3", // https://www.zapsplat.com/music/spring-hazes-slow-dreamy-and-carefree-musical-bumper-stinger-intro-outro/
+  // NOT USED:
+  sweetsaw: "/sounds/sweetsaw.wav", //https://freesound.org/people/newlocknew/sounds/515830/
 };
 
 export const navLinks = [

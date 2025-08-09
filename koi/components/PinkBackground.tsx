@@ -17,7 +17,7 @@ const PinkBackground = () => {
             </div>
             {/* X */}
             <div className={cn(`${shapeClasses}`)}>
-                <div className="absolute top-1/12 left-1/12">
+                <div className="absolute top-40 left-1">
                     <Bar width="50px" length="10px" rotate="25deg" color="var(--color-pink3)" endColor="var(--color-pale-purple1)" />
                     <Bar width="50px" length="10px" rotate="115deg" color="var(--color-pink0)" endColor="var(--color-pink3)" />
                 </div>

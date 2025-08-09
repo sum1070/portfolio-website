@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type TContainerProps = {
   className?: string; // for tailwind styling
   children: React.ReactNode; // My son to be rendered
@@ -104,5 +106,15 @@ export interface TypewriterProps extends TAnimation {
   deleteSpeed?: number;
   sequences?: TextSequence[];
   loop?: boolean;
+}
+export interface LicenceLink {
+  name: string;
+  url: string;
+  icon?: string;
+  iconAlt?: string;
+}export interface TLink {
+    href: string;
+    children: React.ReactNode;
+    className?: string;
 }
 

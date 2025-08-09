@@ -1,0 +1,43 @@
+import { Card, KoiUrl } from '@/components'
+import React from 'react'
+import soundLicenceLinks from './SoundLicence'
+import svgLicenceLinks from './SvgLicence'
+
+export const LicenceCard = () => {
+    return (
+        <>
+            <Card
+                title="Sounds"
+                description={
+                    <p>
+                        Sound effects used in this website are from <KoiUrl href="https://freesound.org/">Freesound</KoiUrl> and <KoiUrl href="https://www.zapsplat.com/" >ZAPSPLAT</KoiUrl>.
+                    </p>
+                }
+                links={soundLicenceLinks}
+            />
+            <Card
+                title="SVGs"
+                description={
+                    <p>
+                        Most of the SVGs I used were from <KoiUrl href="https://www.svgrepo.com/">SVG Repo</KoiUrl>.
+                    </p>
+                }
+                links={svgLicenceLinks}
+            />
+            <Card
+                variant="compact"
+                title="Tools"
+                description={
+                    <p>
+                        I created the SVGs with Inkscape (or just doodled them in Figma) and animated them with <KoiUrl href="https://lottiefiles.com/">LottieFiles</KoiUrl>.
+                    </p>
+
+                }
+                links={soundLicenceLinks}
+            />
+        </>
+
+    )
+}
+
+export default LicenceCard
