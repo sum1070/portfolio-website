@@ -1,3 +1,4 @@
+"use client";
 import { buttonImages, cn, sounds } from '@/lib/utils';
 import React, { useState } from 'react';
 import Link from 'next/link';

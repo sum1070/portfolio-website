@@ -1,3 +1,4 @@
+"use client";
 import { cn, sounds } from '@/lib/utils';
 import React, { useState } from 'react';
 import useSound from 'use-sound';
