@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 import { positionClasses } from '@/lib/types'
 import Background from './background'
 import Dummy from '../dev/dummy'
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Navbar/Navbar';
 
 const licences = () => {
     return (
