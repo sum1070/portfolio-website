@@ -26,8 +26,8 @@ const HeroHeader = () => {
     decrementVolume();
   };
 
-  const buttonClassName = "min-w-8 md:min-w-8 p-1 bg-black/20 text-white rounded hover:bg-black/40";
-  const disabledButtonClassName = "min-w-8 md:min-w-8 p-1 bg-black/10 text-gray-400 rounded opacity-50 cursor-not-allowed";
+  const buttonClassName = "min-w-8 md:min-w-12 p-1 bg-black/20 text-white rounded hover:bg-black/40";
+  const disabledButtonClassName = buttonClassName + "bg-black/10 text-gray-400 opacity-32 cursor-not-allowed";
 
   const isAtMinVolume = volume === 0;
   const isAtMaxVolume = volume === 1;
@@ -35,7 +35,7 @@ const HeroHeader = () => {
   return (
     <div className={cn(
       "absolute",
-      "w-full",
+      "w-full pl-4",
       "rounded-b-lg",
       "z-50"
     )}>
@@ -59,7 +59,7 @@ const HeroHeader = () => {
           />
         </button>
         {/* Volume control button */}
-        <div className="flex items-center gap-2">
+        <div className="ml-2 flex items-center gap-2">
           <button
             onClick={handleDecrement}
             className={cn(isAtMinVolume ? disabledButtonClassName : buttonClassName)}

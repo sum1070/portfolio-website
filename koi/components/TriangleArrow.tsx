@@ -9,19 +9,18 @@ export const TriangleArrowDown = ({ onClick, bounce = true }: { onClick?: () => 
   const [isClicked, setIsClicked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const { volume, isMuted } = useMainVolume();
-  
-  // Use the volume and mute state from context
-  const [glimmer] = useSound(sounds.glimmer, { 
-    volume: isMuted ? 0 : volume 
+
+  const [glimmer] = useSound(sounds.glimmer, {
+    volume: isMuted ? 0 : volume
   });
-  
-  const [sparkle] = useSound(sounds.sparkle, { 
-    volume: isMuted ? 0 : volume 
+
+  const [sparkle] = useSound(sounds.sparkle, {
+    volume: isMuted ? 0 : volume
   });
 
   const handleClick = () => {
     setIsClicked(true);
-    
+
     if (!isMuted) {
       sparkle();
     }
@@ -70,19 +69,19 @@ export const TriangleArrowUp = ({ onClick, bounce = true }: { onClick?: () => vo
   const [isClicked, setIsClicked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const { volume, isMuted } = useMainVolume();
-  
+
   // Use the volume and mute state from context
-  const [tinkle] = useSound(sounds.tinkle, { 
-    volume: isMuted ? 0 : volume 
+  const [tinkle] = useSound(sounds.tinkle, {
+    volume: isMuted ? 0 : volume
   });
-  
-  const [sparkle] = useSound(sounds.sparkle, { 
-    volume: isMuted ? 0 : volume 
+
+  const [sparkle] = useSound(sounds.sparkle, {
+    volume: isMuted ? 0 : volume
   });
 
   const handleClick = () => {
     setIsClicked(true);
-    
+
     if (!isMuted) {
       tinkle();
     }

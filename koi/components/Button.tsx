@@ -43,7 +43,7 @@ const Button = ({ type, href, className }: ButtonProps) => {
                     "relative focus:outline-none transition-transform",
                     "active:scale-95",
                     "transition-all duration-300",
-                    className
+                    className,
                 )}
                 onClick={handleClick}
                 onMouseDown={() => {
@@ -67,7 +67,7 @@ const Button = ({ type, href, className }: ButtonProps) => {
                     className={cn(
                         buttonClasses,
                         "transition-all duration-200 ease-in-out",
-                        "hover:scale-105",
+                        "hover:scale-105 focus:drop-shadow-xl",
                         "focus-visible:scale-105",
                         "group-focus-visible:[&+img]:hidden",
                     )}

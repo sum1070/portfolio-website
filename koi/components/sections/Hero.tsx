@@ -6,7 +6,6 @@ import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero } from
 import { animationTime, cn } from "@/lib/utils";
 import Reveal from "@/lib/Reveal";
 import { motion } from "motion/react";
-import HeroHeader from "./hero/HeroHeader";
 import Zzz from "./hero/Zzz";
 import NekoSleep from "./hero/NekoSleep";
 

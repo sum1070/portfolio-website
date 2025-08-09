@@ -73,6 +73,7 @@ export type TButton =
   | "projects"
   | "github"
   | "certificates"
+  | "licenses";
   ;
 
 export type VolumeContextType = {
