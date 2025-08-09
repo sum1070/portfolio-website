@@ -1,16 +1,30 @@
-import { sounds } from '@/lib/utils';
+import { cn, sounds } from '@/lib/utils';
 import React, { useState } from 'react';
 import useSound from 'use-sound';
+import { useMainVolume } from '@/lib/hooks/useMainVolume';
+
+const bounceClassName = "cursor-pointer p-0 bg-transparent border-0 outline-none transition-transform hover:scale-110 duration-200";
 
 export const TriangleArrowDown = ({ onClick, bounce = true }: { onClick?: () => void, bounce?: boolean }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [glimmer] = useSound(sounds.glimmer, { volume: 0.5 });
-  const [sparkle] = useSound(sounds.sparkle, { volume: 0.5 });
+  const { volume, isMuted } = useMainVolume();
+  
+  // Use the volume and mute state from context
+  const [glimmer] = useSound(sounds.glimmer, { 
+    volume: isMuted ? 0 : volume 
+  });
+  
+  const [sparkle] = useSound(sounds.sparkle, { 
+    volume: isMuted ? 0 : volume 
+  });
 
   const handleClick = () => {
     setIsClicked(true);
-    sparkle();
+    
+    if (!isMuted) {
+      sparkle();
+    }
 
     if (onClick) { onClick(); }
 
@@ -21,13 +35,16 @@ export const TriangleArrowDown = ({ onClick, bounce = true }: { onClick?: () => 
 
   return (
     <button
-      className={`${bounce ? "[animation:bounce_1.5s_infinite]" : ""} 
-        cursor-pointer p-0 bg-transparent border-0 outline-none
-        transition-transform hover:scale-110 duration-200`}
+      className={cn(
+        `${bounce ? "[animation:bounce_1.5s_infinite]" : ""}`,
+        bounceClassName,
+      )}
       onClick={handleClick}
       onMouseEnter={() => {
         setIsHovering(true);
-        glimmer();
+        if (!isMuted) {
+          glimmer();
+        }
       }}
       onMouseLeave={() => {
         setIsHovering(false);
@@ -52,12 +69,23 @@ export const TriangleArrowDown = ({ onClick, bounce = true }: { onClick?: () => 
 export const TriangleArrowUp = ({ onClick, bounce = true }: { onClick?: () => void, bounce?: boolean }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [tinkle] = useSound(sounds.tinkle, { volume: 0.5 });
-  const [sparkle] = useSound(sounds.sparkle, { volume: 0.5 });
+  const { volume, isMuted } = useMainVolume();
+  
+  // Use the volume and mute state from context
+  const [tinkle] = useSound(sounds.tinkle, { 
+    volume: isMuted ? 0 : volume 
+  });
+  
+  const [sparkle] = useSound(sounds.sparkle, { 
+    volume: isMuted ? 0 : volume 
+  });
 
   const handleClick = () => {
     setIsClicked(true);
-    tinkle();
+    
+    if (!isMuted) {
+      tinkle();
+    }
 
     if (onClick) {
       onClick();
@@ -70,13 +98,16 @@ export const TriangleArrowUp = ({ onClick, bounce = true }: { onClick?: () => vo
 
   return (
     <button
-      className={`${bounce ? "[animation:bounce_2s_infinite]" : ""} 
-        cursor-pointer p-0 bg-transparent border-0 outline-none
-        transition-transform hover:scale-110 duration-200`}
+      className={cn(
+        `${bounce ? "[animation:bounce_2s_infinite]" : ""}`,
+        bounceClassName,
+      )}
       onClick={handleClick}
       onMouseEnter={() => {
         setIsHovering(true);
-        sparkle();
+        if (!isMuted) {
+          sparkle();
+        }
       }}
       onMouseLeave={() => {
         setIsHovering(false);
