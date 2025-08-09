@@ -5,8 +5,9 @@ import BackgroundMain from './MainPage/BackgroundMain'
 import { cn } from '@/lib/utils'
 
 const MainPage = () => {
-    const colGap = 'gap-2 xs:gap-8 md:gap-12 lg:gap-16';
     const buttonClasses = 'max-w-60 md:max-w-none';
+    const colGap = 'gap-2 xs:gap-4 md:gap-12 lg:gap-20';
+    const buttonContainerClasses = "md:p-8 lg:p-16 flex flex-col justify-center items-center w-full";
 
     const scrollToTop = () => {
         document.getElementById('hero')?.scrollIntoView({
@@ -43,48 +44,46 @@ const MainPage = () => {
                     {/* pic */}
                     <div className={cn(
                         "flex flex-col justify-center items-center order-first",
-                        "w-3/4 mb-8",
-                        "md:order-2 md:w-full md:mb-0"
+                        "w-1/2 mb-8",
+                        "md:order-2 md:w-full "
                     )}>
                         <div className={cn("w-full flex items-center justify-center")}>
                             <img className={cn("object-scale-down, w-auto h-auto")} src="/images/dog.png" alt='pic' decoding="async" fetchPriority="low" loading="lazy" />
                         </div>
-
-
                     </div>
-
                     {/* left (top) */}
                     <div className={cn(
-                        "flex flex-col justify-center items-center w-full",
+                        buttonContainerClasses,
+                        colGap,
                         "order-2",
                         "md:items-end md:order-1",
-                        colGap,
                     )}>
-                        <Button type="contact" href="/wip" className={cn(buttonClasses,"hover:-rotate-3")} />
-                        <Button type="projects" href="/wip" className={cn(buttonClasses,"hover:-rotate-3")} />
+                        <Button type="contact" href="/wip" className={cn(buttonClasses,"hover:-rotate-3  ")} />
+                        <Button type="projects" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
                     </div>
 
                     {/* right (bottom) */}
                     <div className={cn(
-                        "flex flex-col justify-center items-center md:items-start w-full",
-                        "order-3 md:order-3",
+                        buttonContainerClasses,
                         colGap,
+                        "order-3 ",
+                        "md:items-start md:order-3 md:mt-4",
                     )}>
-                        <Button type="wip" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
-                        <Button type="wip" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
+                        <Button type="licenses" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
+                        <Button type="wip" href="/wip" className={cn(buttonClasses,"hover:-rotate-3")} />
                     </div>
                 </div>
                 {/* arrow (big screen) */}
                 <div className={cn(
                     "relative",
-                    "pt-2"
+                    "md:pt-2 "
                 )}>
-                    <div className="absolute hidden md:block pt-20">
+                    <div className="absolute hidden md:block pt-4">
                         <TriangleArrowUp onClick={scrollToTop} />
                     </div>
                 </div>
                 {/* arrow (small screen) */}
-                <div className="md:hidden mt-12 flex justify-center">
+                <div className="md:hidden p-4 mb-2 mt-4 flex justify-center">
                     <TriangleArrowUp onClick={scrollToTop} />
                 </div>
             </CenterContainer>

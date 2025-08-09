@@ -76,9 +76,8 @@ export default function BackgroundHero() {
 
                 }}
             ></div>
-            {/* Center orbit */}
             <FadeIn className="absolute inset-x-0 bottom-0">
-                <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-[var(--color-milky-white)] to-transparent"></div>
+                <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-milky-white to-transparent"></div>
                 {/* white dots grid */}
                 <Pattern
                     type="dots"

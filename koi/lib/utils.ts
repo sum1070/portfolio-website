@@ -111,6 +111,10 @@ export const buttonImages = {
     normal: "/images/btn-certificates.svg",
     clicked: "/images/btnC-certificates.svg",
   },
+  licenses: {
+    normal: "/images/btn-licenses.svg",
+    clicked: "/images/btnC-licenses.svg",
+  }
 };
 
 export const soundButtonImages = {
