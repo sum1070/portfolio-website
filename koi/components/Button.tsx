@@ -16,11 +16,11 @@ const Button = ({ type, href, className }: ButtonProps) => {
     const { volume, isMuted } = useMainVolume();
     const [isClicked, setIsClicked] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
-    
+
     const [bell, { stop: stopBell }] = useSound(sounds.bell, {
         volume: isMuted ? 0 : volume,
     });
-    
+
     const [bubble, { stop: stopBubble }] = useSound(sounds.bubble, {
         volume: isMuted ? 0 : volume,
     });

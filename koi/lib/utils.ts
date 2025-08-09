@@ -130,5 +130,6 @@ export const sounds = {
   glimmer: "/sounds/glimmer.wav", //https://freesound.org/people/mokasza/sounds/810164/
   sparkle: "/sounds/sparkle.mp3", // https://freesound.org/people/Soughtaftersounds/sounds/145459/
   tinkle: "/sounds/tinkle.flac", // https://freesound.org/people/Timbre/sounds/221683/
+  music: "/sounds/music_DeepTheme_Audio_Spring_Hazes_34.mp3",
 };
 

@@ -1,6 +1,6 @@
 "use client";
 import { cn, soundButtonImages } from '@/lib/utils';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useVolume } from '@/lib/context/VolumeContext';
 
