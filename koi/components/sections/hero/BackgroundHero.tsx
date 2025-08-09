@@ -4,6 +4,7 @@ import { borderColor, boxShadow, springY, animationTime } from "@/lib/utils";
 import { useEffect } from "react";
 import { Pattern } from "@/components";
 import FadeIn from "@/lib/FadeIn";
+import HeroHeader from "./HeroHeader";
 
 export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
@@ -57,6 +58,9 @@ export default function BackgroundHero() {
 
     return (
         <>
+            {/* Sound */}
+            <FadeIn><HeroHeader /></FadeIn>
+            {/* Background */}
             <div
                 className="absolute inset-0 -z-40 "
                 style={{
@@ -73,7 +77,7 @@ export default function BackgroundHero() {
                 }}
             ></div>
             {/* Center orbit */}
-            <FadeIn  className="absolute inset-x-0 bottom-0">
+            <FadeIn className="absolute inset-x-0 bottom-0">
                 <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-[var(--color-milky-white)] to-transparent"></div>
                 {/* white dots grid */}
                 <Pattern
@@ -141,7 +145,7 @@ export default function BackgroundHero() {
                 </motion.div>
             </FadeIn>
             {/* Dots */}
-            <FadeIn yTranslation={true}  duration={animationTime.durationDots} delayOffset={0.8} className={`${shapeClasses}`} >
+            <FadeIn yTranslation={true} duration={animationTime.durationDots} delayOffset={0.8} className={`${shapeClasses}`} >
                 <div className="opacity-70 sm:opacity-100">
                     {/* Hollow dot small r */}
                     <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>

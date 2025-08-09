@@ -1,11 +1,18 @@
 "use client";
 import { cn, soundButtonImages } from '@/lib/utils';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useVolume } from '@/lib/context/VolumeContext';
 
 const HeroHeader = () => {
-  const { isMuted, toggleMute, volume, incrementVolume, decrementVolume } = useVolume();
+  const { isMuted, toggleMute, volume, incrementVolume, decrementVolume, setNewVolume } = useVolume();
+
+  // toggle mute
+  useEffect(() => {
+    if (volume === 0 && !isMuted) {
+      toggleMute();
+    }
+  }, [volume, isMuted, toggleMute]);
 
   const handleToggleMute = () => {
     toggleMute();
@@ -19,7 +26,11 @@ const HeroHeader = () => {
     decrementVolume();
   };
 
-  const buttonClassName = "min-w-8 md:min-w-8 p-1 bg-black/20 text-white rounded hover:bg-black/40"
+  const buttonClassName = "min-w-8 md:min-w-8 p-1 bg-black/20 text-white rounded hover:bg-black/40";
+  const disabledButtonClassName = "min-w-8 md:min-w-8 p-1 bg-black/10 text-gray-400 rounded opacity-50 cursor-not-allowed";
+
+  const isAtMinVolume = volume === 0;
+  const isAtMaxVolume = volume === 1;
 
   return (
     <div className={cn(
@@ -29,6 +40,7 @@ const HeroHeader = () => {
       "z-50"
     )}>
       <div className="flex items-center gap-2 mt-5 ml-5">
+        {/* Speaker images */}
         <button
           onClick={handleToggleMute}
           className="bg-transparent p-0 border-0 flex items-center justify-center"
@@ -46,12 +58,13 @@ const HeroHeader = () => {
             )}
           />
         </button>
-
+        {/* Volume control button */}
         <div className="flex items-center gap-2">
           <button
             onClick={handleDecrement}
-            className={cn(`${buttonClassName}`)}
+            className={cn(isAtMinVolume ? disabledButtonClassName : buttonClassName)}
             aria-label="Decrease volume"
+            disabled={isAtMinVolume}
           >
             -
           </button>
@@ -60,8 +73,9 @@ const HeroHeader = () => {
           </span>
           <button
             onClick={handleIncrement}
-            className={cn(`${buttonClassName}`)}
+            className={cn(isAtMaxVolume ? disabledButtonClassName : buttonClassName)}
             aria-label="Increase volume"
+            disabled={isAtMaxVolume}
           >
             +
           </button>

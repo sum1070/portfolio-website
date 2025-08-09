@@ -48,7 +48,6 @@ const Hero = () => {
   // TODO: theme change button
   return (
     <section ref={heroRef} id="hero" className="overflow-hidden relative">
-      <HeroHeader />
       <BackgroundHero />
       <BlurredBlobsHero />
       <CenterContainer className="min-h-dvh relative z-20 p-10">
