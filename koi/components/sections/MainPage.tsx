@@ -34,7 +34,7 @@ const MainPage = () => {
                 />
             </div>
 
-            <CenterContainer className="min-h-dvh relative flex flex-col justify-center">
+            <CenterContainer className="min-h-dvh relative">
                 {/* pic, btns grid */}
                 <div className={cn(
                     "flex flex-col md:grid md:grid-cols-3 items-center",

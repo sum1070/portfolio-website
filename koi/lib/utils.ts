@@ -114,7 +114,7 @@ export const buttonImages = {
   licences: {
     normal: "/images/btn-licences.svg",
     clicked: "/images/btnC-licences.svg",
-  }
+  },
 };
 
 export const soundButtonImages = {
@@ -125,7 +125,7 @@ export const soundButtonImages = {
 export const iconImages = {
   nekoSleep: "/images/neko-sleep.svg", // https://www.svgrepo.com/svg/368239/neko-sleep
   sleepZZZ: "/animation/zzz.webm", // https://www.svgrepo.com/svg/479301/sleep
-}
+};
 
 export const sounds = {
   bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
@@ -137,3 +137,9 @@ export const sounds = {
   music: "/sounds/music_DeepTheme_Audio_Spring_Hazes_34.mp3",
 };
 
+export const navLinks = [
+  { name: "Hero", href: "/" },
+  { name: "Main", href: "/#MainPage" },
+  { name: "Projects", href: "/wip" },
+  { name: "Contact", href: "/wip" },
+];

@@ -1,1 +1,0 @@
-export {default as Licences} from './licences';
