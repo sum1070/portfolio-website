@@ -1,8 +1,10 @@
-import { Bar, Dot, CodeTextSVG2, LineCircle, Triangle } from '@/components'
+import { Bar, Triangle } from '@/components'
+import { positionClasses } from '@/lib/types';
 import { cn } from '@/lib/utils'
 import React from 'react'
+import Wave from 'react-wavify';
 
-const background = () => {
+const PinkBackground = () => {
     const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";
     return (
         <div
@@ -12,11 +14,6 @@ const background = () => {
         >
             {/* Bar */}
             <div className={cn(`${shapeClasses}`)}>
-                {/* <Bar width="200px" type="hollow" borderWidth="3px" length="40px" rotate="135deg" />
-                <Bar width="60dvw" type="hollow" borderWidth="1dvw" length="10dvh" rotate="135deg" />
-                <Bar width="500px" length="80px" rotate="135deg" />
-                <Bar width="400px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="315deg" className="mask-luminance mask-r-from-black mask-r-from-5% mask-r-to-white" />
-                <Bar width="300px" length="10px" color="var(--color-Mauve)" endColor="var(--color-sky-blue)" rotate="135deg" /> */}
             </div>
             {/* X */}
             <div className={cn(`${shapeClasses}`)}>
@@ -46,8 +43,28 @@ const background = () => {
                 </div>
 
             </div>
+            <div className={cn()} id='LicencesWave'>
+                <Wave
+                    fill="url(#gradient)"
+                    className={cn(positionClasses.bottom, "min-w-svw z-0")}
+                    paused={true}
+                    options={{
+                        height: 10,
+                        amplitude: 200,
+                        speed: 0.1,
+                        points: 3
+                    }}
+                >
+                    <defs>
+                        <linearGradient id="gradient" gradientTransform="rotate(90)">
+                            <stop offset="10%" stopColor="#F18EC9" />
+                            <stop offset="90%" stopColor="#97025B" />
+                        </linearGradient>
+                    </defs>
+                </Wave>
+            </div>
         </div>
     )
 }
 
-export default background
+export default PinkBackground
