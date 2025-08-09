@@ -7,6 +7,7 @@ export { default as Button } from "./Button";
 
 export * from "./decorations";
 export * from "./sections";
+export * from "./pages";
 export {default as Typewriter} from "./ui/Typewriter";
 export { default as MouseTrail } from "./ui/MouseTrail";
 export * from "./decorations";

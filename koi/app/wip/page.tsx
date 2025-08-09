@@ -3,8 +3,7 @@ import React from 'react'
 
 const wip = () => {
   return (
-    // <div>wip</div>
-    <Wip></Wip>
+    <Wip/>
   )
 }
 

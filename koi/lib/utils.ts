@@ -83,7 +83,7 @@ export const animationTime = {
   durationBars: 1.6,
   durationDots: 1.2,
   delayMainTxt: 2.7,
-  durationMainTxt: 0.8,
+  durationMainTxt: 0.2,
   delayTriangleArrow: 0.6,
   durationTriangleArrow: 0.4,
   delayTypewriter: 200, // 3 digits
@@ -111,9 +111,9 @@ export const buttonImages = {
     normal: "/images/btn-certificates.svg",
     clicked: "/images/btnC-certificates.svg",
   },
-  licenses: {
-    normal: "/images/btn-licenses.svg",
-    clicked: "/images/btnC-licenses.svg",
+  licences: {
+    normal: "/images/btn-licences.svg",
+    clicked: "/images/btnC-licences.svg",
   }
 };
 

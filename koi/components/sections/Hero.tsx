@@ -31,7 +31,7 @@ const Hero = () => {
     {
       text: " WORLD!",
       deleteCount: 0,
-      pauseBeforeDelete: 2000
+      pauseBeforeDelete: 1000
     },
   ];
 
@@ -73,7 +73,7 @@ const Hero = () => {
           <div className={cn(`${Text.typingContainer}`, `${Text.txtMono}`)}>
             {startTyping && !finishTyping && (
               <Typewriter
-                speed={70}
+                speed={60}
                 deleteSpeed={50}
                 delay={animationTime.delayTypewriter}
                 onComplete={() => { setFinishTyping(true); }}
@@ -84,8 +84,8 @@ const Hero = () => {
             {finishTyping && (
               <Typewriter
                 enableDelete={false}
-                speed={70}
-                deleteSpeed={50}
+                speed={40}
+                deleteSpeed={40}
                 delay={animationTime.delayTypewriter}
                 sequences={[{ text: "Let’s explore together..." }]}
                 onTypeComplete={() => { setRevealArrow(true); }}
