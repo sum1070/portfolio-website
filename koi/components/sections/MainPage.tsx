@@ -34,57 +34,53 @@ const MainPage = () => {
                 />
             </div>
 
-            <CenterContainer className="min-h-dvh relative">
-                {/* pic, btns grid */}
-                <div className={cn(
-                    "flex flex-col md:grid md:grid-cols-3 items-center",
-                    "pt-20",
-                    colGap,
-                )}>
-                    {/* pic */}
-                    <div className={cn(
-                        "flex flex-col justify-center items-center order-first",
-                        "w-1/2 mb-8",
-                        "md:order-2 md:w-full "
+            <CenterContainer className="min-h-dvh relative flex-col">
+                <div
+                    id='main-pic-btns-grid'
+                    className={cn(
+                        "-mt-8",
+                        "flex flex-col md:grid md:grid-cols-3 items-center",
+                        "pt-20",
+                        colGap,
                     )}>
+                    <div
+                        id='main-pic-container'
+                        className={cn(
+                            "flex flex-col justify-center items-center order-first",
+                            "w-1/2 mb-8",
+                            "md:order-2 md:w-full "
+                        )}>
                         <div className={cn("w-full flex items-center justify-center")}>
                             <img className={cn("object-scale-down, w-auto h-auto")} src="/images/dog.png" alt='pic' decoding="async" fetchPriority="low" loading="lazy" />
                         </div>
                     </div>
-                    {/* left (top) */}
-                    <div className={cn(
-                        buttonContainerClasses,
-                        colGap,
-                        "order-2",
-                        "md:items-end md:order-1",
-                    )}>
-                        <Button type="contact" href="/wip" className={cn(buttonClasses,"hover:-rotate-3  ")} />
-                        <Button type="projects" href="/wip" className={cn(buttonClasses,"hover:rotate-3")} />
+                    <div
+                        id='main-btns-tl'
+                        className={cn(
+                            buttonContainerClasses,
+                            colGap,
+                            "order-2",
+                            "md:items-end md:order-1",
+                        )}>
+                        <Button type="contact" href="/wip" className={cn(buttonClasses, "hover:-rotate-3  ")} />
+                        <Button type="projects" href="/wip" className={cn(buttonClasses, "hover:rotate-3")} />
                     </div>
-
-                    {/* right (bottom) */}
-                    <div className={cn(
-                        buttonContainerClasses,
-                        colGap,
-                        "order-3 ",
-                        "md:items-start md:order-3 md:mt-4",
-                    )}>
-                        <Button type="licences" href="/licences" className={cn(buttonClasses,"hover:rotate-3")} />
-                        <Button type="wip" href="/wip" className={cn(buttonClasses,"hover:-rotate-3")} />
+                    <div
+                        id='main-btns-br'
+                        className={cn(
+                            buttonContainerClasses,
+                            colGap,
+                            "order-3 ",
+                            "md:items-start md:order-3 md:mt-4",
+                        )}>
+                        <Button type="licences" href="/licences" className={cn(buttonClasses, "hover:rotate-3")} />
+                        <Button type="wip" href="/wip" className={cn(buttonClasses, "hover:-rotate-3")} />
                     </div>
                 </div>
-                {/* arrow (big screen) */}
-                <div className={cn(
-                    "relative",
-                    "md:pt-2 "
-                )}>
-                    <div className="absolute hidden md:block pt-4">
+                <div id='main-arrow-outer-container' className='p-4'>
+                    <div id='main-arrow-container' className="absolute  justify-center pt-4">
                         <TriangleArrowUp onClick={scrollToTop} />
                     </div>
-                </div>
-                {/* arrow (small screen) */}
-                <div className="md:hidden p-4 mb-2 mt-4 flex justify-center">
-                    <TriangleArrowUp onClick={scrollToTop} />
                 </div>
             </CenterContainer>
         </section>
