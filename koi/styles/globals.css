@@ -25,6 +25,7 @@
   --color-pink2: #fed6ff;
   --color-pink3: #ff8fea;
   --color-Mauve: #e2baff;
+  --color-Mauve2: #E8C7FF;
   --color-purblue: #aab1f2;
 
   --font-titillium-web: "Titillium Web", sans-serif;
@@ -33,6 +34,9 @@
 }
 
 @layer base {
+  .koi-url {
+    @apply underline text-nice-purple1 hover:text-nice-purple1/80;
+  }
   html {
     height: 100%;
     scroll-behavior: smooth;
@@ -43,6 +47,8 @@
     overflow-x: hidden;
     overscroll-behavior-y: none;
     scroll-snap-type: y mandatory;
+    color: var(--color-nice-purple2);
+    
   }
   section {
     height: 100vh;

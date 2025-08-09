@@ -7,7 +7,7 @@ export default function CenterContainer(props: Readonly<TContainerProps>) {
     <div
       id="center-container"
       className={cn(
-        "flex min-h-screen justify-center items-center min-w-screen",
+        "flex text-center min-h-svh sm:min-h-dvh justify-center items-center min-w-screen",
         `${props.className ? props.className : ""}`
       )}>
       {props.children}

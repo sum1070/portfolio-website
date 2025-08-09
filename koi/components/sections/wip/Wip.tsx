@@ -7,7 +7,7 @@ const Wip = () => {
         <>
             <BlueBackground />
             <CenterContainer className='flex-col'>
-                <p className="p-8 text-sky-700 font-semibold">
+                <p className="p-8 text-sky-700 font-semibold text-balance">
                     Sorry! This page is still a work in progress (˵ ͡° ͜ʖ ͡°˵)
                 </p>
                 <button
