@@ -3,11 +3,8 @@ import { Pattern } from '@/components';
 
 export default function BackgroundHero() {
     return (
-        <>
+        <div className="bg-pale-purple2">
             <BlurredBlobsMain />
-            <div
-                className="absolute inset-0 -z-50 bg-pale-purple1">
-            </div>
             <div className="absolute bottom-0 left-0 w-full py-40 bg-gradient-to-t from-purple1 to-transparent"></div>
             {/* white dots grid */}
             <Pattern
@@ -19,7 +16,7 @@ export default function BackgroundHero() {
                 spacing={13}
                 stroke={3}
             />
-        </>
+        </div>
     );
 };
 

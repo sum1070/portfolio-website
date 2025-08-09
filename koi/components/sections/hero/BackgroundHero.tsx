@@ -1,10 +1,11 @@
 import { Bar, CodeTextSVG2, Dot, LineCircle, Triangle } from "@/components/decorations";
 import { motion, useAnimate, useScroll } from "framer-motion";
-import { borderColor, boxShadow, springY, animationTime } from "@/lib/utils";
+import { borderColor, boxShadow, animationTime } from "@/lib/utils";
 import { useEffect } from "react";
 import { Pattern } from "@/components";
 import FadeIn from "@/lib/FadeIn";
 import HeroHeader from "./HeroHeader";
+import { springY } from "@/lib/hooks/useSpring";
 
 export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
