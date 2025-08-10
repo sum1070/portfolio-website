@@ -11,25 +11,53 @@ interface CardProps {
         url: string;
         icon?: string;
         iconAlt?: string;
+        isSensitive?: boolean;  // Add this property
     }>;
     headerBackground?: string;
     headerImage?: string;
     variant?: 'default' | 'compact' | 'feature';
+    backgroundColor?: string;
+    bgGradient?: boolean;
+    animated?: boolean;
 }
 
-const Card = ({ title, description, links, cardContainerCN, headerBackground, headerImage, variant = 'default' }: CardProps) => {
+const gradientBGCN = "bg-gradient-to-br from-Mauve2 from-30% to-95% to-sky-300 ";
+const defaultBGCN = "bg-Mauve2";
+
+const Card = ({
+    title,
+    description,
+    links,
+    cardContainerCN,
+    headerBackground,
+    headerImage,
+    variant = 'default',
+    backgroundColor,
+    bgGradient = true,
+    animated = true
+}: CardProps) => {
+    if (!backgroundColor) {
+        backgroundColor = bgGradient ? gradientBGCN : defaultBGCN;
+    }
+
+    const animationClasses = animated
+        ? "transition-all ease-in-out duration-200 hover:shadow-xl hover:translate-y-[-5px]"
+        : "";
+
     // --- compact ---
     if (variant === 'compact') {
         return (
             <div className={cn(
-                "bg-Mauve2 rounded-lg overflow-hidden shadow-md mb-4 p-4",
-                cardContainerCN
+                "rounded-lg overflow-hidden shadow-md mb-4 p-4",
+                backgroundColor,
+                cardContainerCN,
+                animated && "hover:scale-[1.02] ", animationClasses
             )}>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
                     {title}
                 </h2>
                 <div className="p-1">
-                    <div className="mb-4">
+                    <div className="mb-2">
                         {description}
                     </div>
                 </div>
@@ -37,44 +65,62 @@ const Card = ({ title, description, links, cardContainerCN, headerBackground, he
         );
     }
 
+
     // --- feature ---
     if (variant === 'feature') {
         return (
             <div className={cn(
-                "bg-gradient-to-br from-Mauve2 to-nice-purple1/30 rounded-lg overflow-hidden shadow-md mb-6 p-6 border-l-4 border-nice-purple1",
-                cardContainerCN
+                "group relative rounded-lg overflow-hidden shadow-md mb-6 p-6",
+                backgroundColor,
+                cardContainerCN,
+                animated && "transition-all duration-300 ease-in-out hover:translate-y-[-5px] hover:shadow-xl"
             )}>
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">{title}</h2>
-                <div className="mb-4 text-lg">{description}</div>
-                {links && links.length > 0 && (
-                    <>
-                        <hr className="border-gray-700 my-4" />
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                            {links.map((link) => (
-                                <a
-                                    key={link.url}
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:scale-105 hover:shadow-md"
-                                >
-                                    {link.icon && (
-                                        <div className="flex-shrink-0 w-5 h-5 relative">
-                                            <Image
-                                                src={link.icon}
-                                                alt={link.iconAlt || `${link.name} icon`}
-                                                width={20}
-                                                height={20}
-                                                className="object-contain"
-                                            />
-                                        </div>
-                                    )}
-                                    <span>{link.name}</span>
-                                </a>
-                            ))}
-                        </div>
-                    </>
+                {animated && (
+                    <div className="absolute inset-0 rounded-lg transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100"
+                        style={{
+                            boxShadow: "inset 8px -8px 0 0 rgba(116, 107, 166, 1)",
+                            pointerEvents: "none"
+                        }}>
+                    </div>
                 )}
+
+                <div className={cn(
+                    "relative z-10",
+                    animated && "transition-transform duration-300 ease-in-out group-hover:translate-x-[4px] group-hover:translate-y-[-4px]"
+                )}>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
+                    <div className="mb-4 text-lg">{description}</div>
+                    {links && links.length > 0 && (
+                        <>
+                            <hr className="border-gray-700 my-4" />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                                {links.map((link) => (
+                                    <a
+                                        key={link.name}
+                                        href={link.isSensitive ? "#" : link.url}
+                                        onClick={(e) => link.isSensitive && handleLinkClick(e, link)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:scale-105 hover:shadow-md"
+                                    >
+                                        {link.icon && (
+                                            <div className="flex-shrink-0 w-5 h-5 relative">
+                                                <Image
+                                                    src={link.icon}
+                                                    alt={link.iconAlt || `${link.name} icon`}
+                                                    width={20}
+                                                    height={20}
+                                                    className="object-contain"
+                                                />
+                                            </div>
+                                        )}
+                                        <span>{link.name}</span>
+                                    </a>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
             </div>
         );
     }
@@ -82,8 +128,10 @@ const Card = ({ title, description, links, cardContainerCN, headerBackground, he
     // ---- default ---
     return (
         <div className={cn(
-            "bg-Mauve2 rounded-lg overflow-hidden shadow-md mb-6 transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]",
-            cardContainerCN
+            backgroundColor,
+            "rounded-lg overflow-hidden shadow-md mb-6",
+            cardContainerCN,
+            animated && "transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]"
         )}>
             {headerImage ? (
                 <div className="h-32 w-full relative">
@@ -117,7 +165,8 @@ const Card = ({ title, description, links, cardContainerCN, headerBackground, he
                             {links.map((link) => (
                                 <a
                                     key={link.url}
-                                    href={link.url}
+                                    href={link.isSensitive ? "#" : link.url}
+                                    onClick={(e) => link.isSensitive && handleLinkClick(e, link)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:scale-105 hover:shadow-md"
@@ -145,3 +194,11 @@ const Card = ({ title, description, links, cardContainerCN, headerBackground, he
 };
 
 export default Card;
+
+// Add this helper function inside the Card component
+const handleLinkClick = (e: React.MouseEvent, link: { url: string, isSensitive?: boolean }) => {
+    if (link.isSensitive) {
+        e.preventDefault();
+        window.location.href = link.url; // This won't expose the URL in the HTML source
+    }
+};

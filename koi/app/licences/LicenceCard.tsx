@@ -2,7 +2,6 @@ import { Card, KoiUrl } from '@/components'
 import React from 'react'
 import soundLicenceLinks from './SoundLicence'
 import svgLicenceLinks from './SvgLicence'
-import { Spoiler } from "spoiled";
 
 export const LicenceCard = () => {
     return (
@@ -30,9 +29,7 @@ export const LicenceCard = () => {
                 title="Tools"
                 description={
                     <p>
-                        I created the SVGs with Inkscape <Spoiler accentColor={["black", "white"]}>(or just doodled them in Figma)</Spoiler>
-                        <br />
-                        and animated them with <KoiUrl href="https://lottiefiles.com/">LottieFiles</KoiUrl>.
+                        I created the SVGs with Inkscape (or just doodled them in Figma) and animated them with <KoiUrl href="https://lottiefiles.com/">LottieFiles</KoiUrl>.
                     </p>
 
                 }

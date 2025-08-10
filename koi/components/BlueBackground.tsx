@@ -4,48 +4,35 @@ import { cn } from '@/lib/utils'
 import React from 'react'
 import Wave from 'react-wavify';
 
-const BlueBackground = () => {
-    const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";
+type TWaveOptions = {
+    height?: number;
+    amplitude?: number;
+    speed?: number;
+    points?: number;
+};
+
+interface TColoredBackground {
+    bgContainerCN?: string;
+    wavePaused?: boolean;
+    wave?: TWaveOptions;
+}
+
+const BlueBackground = ({
+    bgContainerCN = "",
+    wavePaused = false,
+}: Readonly<TColoredBackground>) => {
     return (
         <div
             className={cn(
                 "bg-blue-50 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
             )}
         >
-            {/* Dots */}
-            <div className={cn(`${shapeClasses}`)}>
-                <div className="opacity-70 sm:opacity-100">
-                    {/* Hollow dot small r */}
-                    <div style={{  position: "absolute", right: "25%", top: "47%" }}>
-                        <Dot size="16px" type="hollow" border={2} color="var(--color-sky-blue)" />
-                    </div>
-                    {/* Glowing pink dot bl */}
-                    <div style={{  position: "absolute", left: "15%", bottom: "27%" }}>
-                        <Dot size="10px" border={2} color="var(--color-sky-blue)" blur={true} />
-                    </div>
-                    </div>
-                    
-            </div>
-            {/* X */}
-            <div className={cn(`${shapeClasses}`)}>
-                <div className="absolute top-1/12 left-1/12">
-                    <Bar width="50px" length="10px" rotate="25deg" color="var(--color-sky-blue)" endColor="var(--color-blue2)" />
-                    <Bar width="50px" length="10px" rotate="115deg" color="var(--color-blue2)" endColor="var(--color-sky-blue)" />
-                </div>
-                <div className="absolute bottom-1/5 left-4/12">
-                    <Bar width="20px" length="3px" rotate="25deg" color="var(--color-purblue)" endColor="var(--color-sky-blue)" />
-                    <Bar width="20px" length="3px" rotate="115deg" color="var(--color-sky-blue)" endColor="var(--color-purblue)" />
-                </div>
-                <div className="absolute top-4/5 right-2/12">
-                    <Bar width="30px" length="10px" rotate="50deg" color="var(--color-pale-purple2)" endColor="var(--color-purple1)" />
-                    <Bar width="30px" length="10px" rotate="140deg" color="var(--color-pale-purple1)" endColor="var(--color-pale-purple2)" />
-                </div>
-            </div>
+            <BDeco />
             <div className={cn()} id='LicencesWave'>
                 <Wave
                     fill="url(#gradient)"
                     className={cn(positionClasses.bottom, "min-w-svw z-0")}
-                    paused={true}
+                    paused={wavePaused}
                     options={{
                         height: 10,
                         amplitude: 200,
@@ -66,3 +53,39 @@ const BlueBackground = () => {
 }
 
 export default BlueBackground
+
+const BDeco = () => {
+    const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";
+    return (
+        <>
+            {/* Dots */}
+            <div className={cn(`${shapeClasses}`)}>
+                <div className="opacity-70 sm:opacity-100">
+                    {/* Hollow dot small r */}
+                    <div style={{ position: "absolute", right: "25%", top: "47%" }}>
+                        <Dot size="16px" type="hollow" border={2} color="var(--color-sky-blue)" />
+                    </div>
+                    {/* Glowing pink dot bl */}
+                    <div style={{ position: "absolute", left: "15%", bottom: "27%" }}>
+                        <Dot size="10px" border={2} color="var(--color-sky-blue)" blur={true} />
+                    </div>
+                </div>
+            </div>
+            {/* X */}
+            <div className={cn(`${shapeClasses}`)}>
+                <div className="absolute top-1/12 left-1/12">
+                    <Bar width="50px" length="10px" rotate="25deg" color="var(--color-sky-blue)" endColor="var(--color-blue2)" />
+                    <Bar width="50px" length="10px" rotate="115deg" color="var(--color-blue2)" endColor="var(--color-sky-blue)" />
+                </div>
+                <div className="absolute bottom-1/5 left-4/12">
+                    <Bar width="20px" length="3px" rotate="25deg" color="var(--color-purblue)" endColor="var(--color-sky-blue)" />
+                    <Bar width="20px" length="3px" rotate="115deg" color="var(--color-sky-blue)" endColor="var(--color-purblue)" />
+                </div>
+                <div className="absolute top-4/5 right-2/12">
+                    <Bar width="30px" length="10px" rotate="50deg" color="var(--color-pale-purple2)" endColor="var(--color-purple1)" />
+                    <Bar width="30px" length="10px" rotate="140deg" color="var(--color-pale-purple1)" endColor="var(--color-pale-purple2)" />
+                </div>
+            </div>
+        </>
+    );
+};

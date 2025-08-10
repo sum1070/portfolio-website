@@ -6,8 +6,8 @@ import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero } from
 import { animationTime, cn } from "@/lib/utils";
 import Reveal from "@/lib/Reveal";
 import { motion } from "motion/react";
-import Zzz from "./hero/Zzz";
-import NekoSleep from "./hero/NekoSleep";
+import Zzz from "@/components/svg/Zzz";
+import NekoSleep from "@/components/svg/NekoSleep";
 
 const Text = {
   txtMain: "tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
