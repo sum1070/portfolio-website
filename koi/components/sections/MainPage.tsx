@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button, CenterContainer, TriangleArrowUp } from '@/components'
 import Wave from 'react-wavify'
-import BackgroundMain from './MainPage/BackgroundMain'
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
+import BackgroundMain from './mainPage/BackgroundMain'
 
 const MainPage = () => {
     const buttonClasses = 'max-w-60 md:max-w-none';
@@ -63,7 +63,7 @@ const MainPage = () => {
                             "md:items-end md:order-1",
                         )}>
                         <Button type="contact" href="/contact" className={cn(buttonClasses, "hover:-rotate-3  ")} />
-                        <Button type="projects" href="/wip" className={cn(buttonClasses, "hover:rotate-3")} />
+                        <Button type="projects" href="/projects" className={cn(buttonClasses, "hover:rotate-3")} />
                     </div>
                     <div
                         id='main-btns-br'

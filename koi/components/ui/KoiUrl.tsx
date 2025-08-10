@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils'
 import { TLink } from '@/lib/types';
+import { cn } from '@/utils';
 
 const KoiUrl = ({
     href = "",

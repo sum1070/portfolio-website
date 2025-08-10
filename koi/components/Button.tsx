@@ -1,11 +1,11 @@
 "use client";
-import { buttonImages, cn, sounds } from '@/lib/utils';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { TButton } from '@/lib/types';
 import useSound from 'use-sound';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';
+import { buttonImages, cn, sounds } from '@/utils';
 
 interface ButtonProps {
     type: TButton;

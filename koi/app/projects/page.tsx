@@ -1,8 +1,12 @@
+import { Navbar } from '@/components'
 import React from 'react'
 
 const Project = () => {
   return (
-    <div>Project</div>
+    <>
+      <Navbar />
+      meow
+    </>
   )
 }
 

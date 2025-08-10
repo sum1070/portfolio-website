@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { CursorProps, TypewriterProps } from '@/lib/types';
-import { animationTime } from "@/lib/utils";
+import { animationTime } from '@/utils';
 
 // ///////////////////// Cursor /////////////////////
 export function Cursor({
@@ -119,12 +119,12 @@ export default function Typewriter({
 
   // --- Typing finished ---
   const typingComplete = () => {
-    if (currentSequence.pauseBeforeDelete) {
+    if (currentSequence.pauses?.beforeDelete) {
       setIsPaused(true);
       setTimeout(() => {
         setIsPaused(false);
         setIsDeleting(true);
-      }, currentSequence.pauseBeforeDelete);
+      }, currentSequence.pauses?.beforeDelete);
     } else {
       setIsDeleting(true);
     }
@@ -146,12 +146,12 @@ export default function Typewriter({
   };
 
   const deletingComplete = () => {
-    if (currentSequence.pauseAfterDelete) {
+    if (currentSequence.pauses?.afterDelete) {
       setIsPaused(true);
       setTimeout(() => {
         setIsPaused(false);
         moveToNextSequence();
-      }, currentSequence.pauseAfterDelete);
+      }, currentSequence.pauses?.afterDelete);
     } else {
       moveToNextSequence();
     }
@@ -190,4 +190,3 @@ export default function Typewriter({
     </motion.span>
   );
 }
-

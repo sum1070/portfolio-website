@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { cn, navLinks } from '@/lib/utils';
+import { cn, navLinks } from '@/utils';
 import Link from 'next/link';
 
 interface NavMenuProps {

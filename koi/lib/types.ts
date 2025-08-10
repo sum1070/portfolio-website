@@ -1,20 +1,31 @@
-import React from 'react';
+import React from "react";
 
-export type TContainerProps = {
+// use ?: if optional
+
+type TClassName = {
   className?: string; // for tailwind styling
-  children: React.ReactNode; // My son to be rendered
+};
+
+export type TBaseProps = TClassName & {
+  children?: React.ReactNode; // My son to be rendered
   style?: React.CSSProperties; // for inline styles
 };
 
-interface TUIComponent {
-  className?: string;
-  sizeClassName?: string;
+type TColorProps = {
+  color?: string;
+  endColor?: string;
+};
+
+type TSizeProps = {
   width?: string;
   length?: string;
   size?: string;
+};
+
+interface TUIComponent extends TColorProps, TSizeProps {
+  className?: string;
+  sizeClassName?: string;
   position?: TPosition;
-  color?: string;
-  endColor?: string;
 }
 
 export type TShape = TUIComponent & {
@@ -60,13 +71,12 @@ export type TPattern = TUIComponent & {
   stroke?: number;
 };
 
-export type TAnimation = {
-  className?: string;
+export type TAnimation = TBaseProps & {
   text?: string;
   duration?: number;
   delay?: number;
   speed?: number;
-  children?: React.ReactNode; // <T> children </T>
+  onComplete?: () => void;
 };
 
 export type TButton =
@@ -76,8 +86,6 @@ export type TButton =
   | "github"
   | "certificates"
   | "licences";
-  ;
-
 export type VolumeContextType = {
   volume: number;
   isMuted: boolean;
@@ -86,17 +94,19 @@ export type VolumeContextType = {
   incrementVolume: () => void;
   decrementVolume: () => void;
 };
+
 export interface CursorProps {
   cursorChar?: string;
   blinkSpeed?: number;
   blinkEnabled?: boolean;
 }
+
 interface TextSequence {
   text: string;
-  deleteCount?: number; // number of characters to delete (0 = delete all)
-  pauseBeforeDelete?: number; // pause before deleting (ms)
-  pauseAfterDelete?: number; // pause after deleting (ms)
+  deleteCount?: number; // characters to delete (0 = delete all)
+  pauses?: { beforeDelete?: number; afterDelete?: number }; // ms
 }
+
 export interface TypewriterProps extends TAnimation {
   onComplete?: () => void; // typing + deletion completed
   onTypeComplete?: (text: string) => void; // typing completed
@@ -109,16 +119,18 @@ export interface TypewriterProps extends TAnimation {
 }
 
 export interface CardDetails {
-    name: string;
-    url: string;
-    icon: string;
-    iconAlt: string;
-    isSensitive?: boolean;
+  name: string;
+  url: string;
+  icon: string;
+  iconAlt: string;
+  isSensitive?: boolean;
 }
 
-export interface TLink {
-    href: string;
-    children: React.ReactNode;
-    className?: string;
+export interface TLink extends TBaseProps {
+  href: string;
 }
 
+export interface TSvgImage extends TClassName {
+  src: string;
+  alt?: string;
+}

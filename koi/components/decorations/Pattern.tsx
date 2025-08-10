@@ -1,7 +1,7 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { TPattern, positionClasses } from '@/lib/types';
+import { cn } from '@/utils';
 
 /**
  * Inspired by https://dev.to/rifkyalfarez/how-to-create-grid-and-dots-background-using-tailwind-css-1jkb

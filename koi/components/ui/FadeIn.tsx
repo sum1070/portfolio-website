@@ -1,7 +1,8 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TAnimation } from '@/lib/types';
-import { animationTime } from "./utils";
+import { animationTime } from '@/utils';
 
 type FadeInProps = TAnimation & {
     yTranslation?: boolean;
@@ -10,7 +11,6 @@ type FadeInProps = TAnimation & {
     delayOffset?: number;
     damping?: number;
     mass?: number;
-    onComplete?: () => void;
 };
 
 function FadeIn({

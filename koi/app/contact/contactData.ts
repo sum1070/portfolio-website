@@ -1,6 +1,6 @@
 import { CardDetails } from "@/lib/types";
-import { iconImages } from "@/lib/utils";
 import contactsJson from "@/data/data.json";
+import { iconImages } from "@/utils";
 
 const contactData: CardDetails[] = contactsJson.contacts.map((contact) => {
     const mapContactsIcon = (name: string) => {

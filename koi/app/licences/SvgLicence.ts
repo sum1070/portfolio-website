@@ -1,5 +1,5 @@
 import { CardDetails } from "@/lib/types";
-import { iconImages } from "@/lib/utils";
+import { iconImages } from "@/utils";
 
 const svgLicenceLinks: CardDetails[] = [
   {

@@ -1,6 +1,6 @@
 import { Bar, Triangle } from '@/components'
 import { positionClasses } from '@/lib/types';
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 import React from 'react'
 import Wave from 'react-wavify';
 

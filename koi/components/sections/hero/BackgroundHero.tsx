@@ -1,11 +1,10 @@
-import { Bar, CodeTextSVG2, Dot, LineCircle, Triangle } from "@/components/decorations";
+import { Bar, Dot, LineCircle, Triangle } from "@/components/decorations";
 import { motion, useAnimate, useScroll } from "framer-motion";
-import { borderColor, boxShadow, animationTime } from "@/lib/utils";
 import { useEffect } from "react";
-import { Pattern } from "@/components";
-import FadeIn from "@/lib/FadeIn";
+import { FadeIn, Pattern, CodeTextSVG } from "@/components";
 import HeroHeader from "./HeroHeader";
 import { springY } from "@/lib/hooks/useSpring";
+import { animationTime, borderColor, boxShadow } from "@/utils";
 
 export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
@@ -208,7 +207,7 @@ export default function BackgroundHero() {
             </FadeIn>
             {/* code text */}
             <FadeIn yTranslation={true} delayOffset={1} className="z-10 absolute top-0 right-0">
-                <CodeTextSVG2 />
+                <CodeTextSVG />
                 {/* <CodeText /> */}
             </FadeIn>
             {/* SVG */}
