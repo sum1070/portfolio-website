@@ -8,6 +8,7 @@ export const LicenceCard = () => {
         <>
             <Card
                 title="Sounds"
+                bgGradient={false}
                 description={
                     <p>
                         Sound effects used in this website are from <KoiUrl href="https://freesound.org/">Freesound</KoiUrl> and <KoiUrl href="https://www.zapsplat.com/" >ZAPSPLAT</KoiUrl>.
@@ -17,6 +18,7 @@ export const LicenceCard = () => {
             />
             <Card
                 title="SVGs"
+                bgGradient={false}
                 description={
                     <p>
                         Most of the SVGs I used were from <KoiUrl href="https://www.svgrepo.com/">SVG Repo</KoiUrl>.
@@ -26,6 +28,7 @@ export const LicenceCard = () => {
             />
             <Card
                 variant="compact"
+                bgGradient={false}
                 title="Tools"
                 description={
                     <p>
