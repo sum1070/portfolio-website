@@ -1,5 +1,5 @@
 "use client";
-import { cn, sounds } from '@/lib/utils';
+import { cn, sounds } from '@/utils';
 import React, { useState } from 'react';
 import useSound from 'use-sound';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';

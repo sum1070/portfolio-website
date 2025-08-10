@@ -2,12 +2,9 @@
 
 import { useState, useRef } from "react";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
-import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero } from "@/components";
-import { animationTime, cn } from "@/lib/utils";
-import Reveal from "@/lib/Reveal";
+import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero, Reveal, NekoSleep, SleepZZZ } from "@/components";
+import { cn, animationTime } from "@/utils";
 import { motion } from "motion/react";
-import Zzz from "@/components/svg/Zzz";
-import NekoSleep from "@/components/svg/NekoSleep";
 
 const Text = {
   txtMain: "tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
@@ -36,9 +33,9 @@ const Hero = () => {
   ];
 
   const scrollNextPage = () => {
-    const mainPageSection = document.getElementById('MainPage');
-    if (mainPageSection) {
-      mainPageSection.scrollIntoView({
+    const MainPageSection = document.getElementById('MainPage');
+    if (MainPageSection) {
+      MainPageSection.scrollIntoView({
         behavior: 'smooth'
       });
     }
@@ -66,7 +63,7 @@ const Hero = () => {
               className={cn(`${Text.txtMid}`)}>
               I'm&nbsp;<span className={cn("text-nice-purple3 font-medium")}>Margaret</span>
               <NekoSleep className="w-[32px] md:w-12 xl:w-16 inline-block ml-2 object-contain "/>
-              <Zzz className="-ml-1 md:-ml-2 w-[32px] md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " />
+              <SleepZZZ className="-ml-1 md:-ml-2 w-[32px] md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " />
             </div>
           </motion.div>
           {/* First typing string */}

@@ -1,8 +1,8 @@
 "use client";
-import { cn, soundButtonImages } from '@/lib/utils';
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useVolume } from '@/lib/context/VolumeContext';
+import { cn, soundButtonImages } from '@/utils';
 
 const HeroHeader = () => {
   const { isMuted, toggleMute, volume, incrementVolume, decrementVolume, setNewVolume } = useVolume();

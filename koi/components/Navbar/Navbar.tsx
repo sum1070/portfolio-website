@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { cn, navLinks } from '@/lib/utils';
+import { cn, navLinks } from '@/utils';
 import Hamburger from './Hamburger';
 import NavMenu from './NavMenu';
 

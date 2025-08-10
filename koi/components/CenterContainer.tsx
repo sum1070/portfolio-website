@@ -1,8 +1,8 @@
 import React from "react";
-import {TContainerProps} from "@/lib/types";
-import { cn } from "@/lib/utils";
+import {TBaseProps} from "@/lib/types";
+import { cn } from "@/utils";
 
-export default function CenterContainer(props: Readonly<TContainerProps>) {
+export default function CenterContainer(props: Readonly<TBaseProps>) {
   return (
     <div
       id="center-container"

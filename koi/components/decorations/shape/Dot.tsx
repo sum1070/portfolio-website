@@ -1,6 +1,6 @@
 "use client";
 import { positionClasses, TShape } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 interface DotProps extends TShape {
     type?: "solid" | "hollow";

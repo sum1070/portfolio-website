@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { useVolume } from "../context/VolumeContext";
 import { Howl } from "howler";
-import { sounds } from "@/lib/utils";
+import { sounds } from "@/utils";
 
 export function useMainVolume() {
   const { volume, isMuted } = useVolume();

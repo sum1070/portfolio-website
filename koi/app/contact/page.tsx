@@ -1,8 +1,7 @@
-import { BlueBackground, Navbar } from '@/components'
-import Watching from '@/components/svg/Watching';
-import { cn } from '@/lib/utils'
+import { BlueBackground, Navbar, Watching } from '@/components'
 import React from 'react'
 import ContactCard from './ContactCard';
+import { cn } from '@/utils';
 
 const Contact = () => {
   console.log('env variable is: ', process.env.DISCORD_URL);

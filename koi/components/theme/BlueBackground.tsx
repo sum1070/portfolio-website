@@ -1,6 +1,6 @@
 import { Bar, Dot } from '@/components'
 import { positionClasses } from '@/lib/types';
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 import React from 'react'
 import Wave from 'react-wavify';
 
@@ -25,6 +25,7 @@ const BlueBackground = ({
         <div
             className={cn(
                 "bg-blue-50 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
+                bgContainerCN,
             )}
         >
             <BDeco />
@@ -85,6 +86,7 @@ const BDeco = () => {
                     <Bar width="30px" length="10px" rotate="50deg" color="var(--color-pale-purple2)" endColor="var(--color-purple1)" />
                     <Bar width="30px" length="10px" rotate="140deg" color="var(--color-pale-purple1)" endColor="var(--color-pale-purple2)" />
                 </div>
+                
             </div>
         </>
     );

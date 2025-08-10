@@ -51,3 +51,7 @@ npx create-next-app@latest
 - `useRouter` hook: Client
   - event handlers
   - recommended to use `<link>`
+
+### useEffect
+
+- Example usage in typewriter: [typewiter.md](./typewriter.md)
