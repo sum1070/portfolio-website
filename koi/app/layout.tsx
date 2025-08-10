@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { fraunces } from '../lib/fonts';
+import { VolumeProvider } from "@/lib/context/VolumeContext";
 
 export const metadata: Metadata = {
   title: "koi",
@@ -17,9 +18,11 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </head>
-      <body>
-        {children}
-      </body>
+      <VolumeProvider>
+        <body>
+          {children}
+        </body>
+      </VolumeProvider>
     </html>
   );
 }

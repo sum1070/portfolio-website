@@ -1,7 +1,7 @@
-import { LicenceLink } from "@/lib/types";
+import { CardDetails } from "@/lib/types";
 import { iconImages } from "@/lib/utils";
 
-const svgLicenceLinks: LicenceLink[] = [
+const svgLicenceLinks: CardDetails[] = [
   {
     name: "Creative Commons Attribution SVG Vector - geakstr",
     url: "https://www.svgrepo.com/svg/353062/creative-commons-attribution",
@@ -14,6 +14,12 @@ const svgLicenceLinks: LicenceLink[] = [
     icon: iconImages.medal,
     iconAlt: "medal",
   },
+  {
+    name: "Discord SVG Vector - primefaces",
+    url: "https://www.svgrepo.com/svg/506463/discord",
+    icon: iconImages.medal,
+    iconAlt: "Discord Icon",
+  }
 ];
 
 export default svgLicenceLinks;

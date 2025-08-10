@@ -107,12 +107,16 @@ export interface TypewriterProps extends TAnimation {
   sequences?: TextSequence[];
   loop?: boolean;
 }
-export interface LicenceLink {
-  name: string;
-  url: string;
-  icon?: string;
-  iconAlt?: string;
-}export interface TLink {
+
+export interface CardDetails {
+    name: string;
+    url: string;
+    icon: string;
+    iconAlt: string;
+    isSensitive?: boolean;
+}
+
+export interface TLink {
     href: string;
     children: React.ReactNode;
     className?: string;

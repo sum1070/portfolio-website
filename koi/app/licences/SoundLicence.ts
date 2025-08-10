@@ -1,7 +1,7 @@
-import { LicenceLink } from "@/lib/types";
+import { CardDetails } from "@/lib/types";
 import { iconImages } from "@/lib/utils";
 
-const soundLicenceLinks: LicenceLink[] = [
+const soundLicenceLinks: CardDetails[] = [
   {
     name: "Awesome bubble Pop by mokasza",
     url: "https://freesound.org/people/mokasza/sounds/810164/",
