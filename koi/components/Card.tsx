@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
 import Image from 'next/image';
+import ClientLink from './ClientLink';
 
 interface CardProps {
     cardContainerCN?: string;
@@ -88,34 +89,22 @@ const Card = ({
                     "relative z-10",
                     animated && "transition-transform duration-300 ease-in-out group-hover:translate-x-[4px] group-hover:translate-y-[-4px]"
                 )}>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{title}</h2>
                     <div className="mb-4 text-lg">{description}</div>
                     {links && links.length > 0 && (
                         <>
                             <hr className="border-gray-700 my-4" />
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                                 {links.map((link) => (
-                                    <a
+                                    <ClientLink
                                         key={link.name}
-                                        href={link.isSensitive ? "#" : link.url}
-                                        onClick={(e) => link.isSensitive && handleLinkClick(e, link)}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        name={link.name}
+                                        url={link.url}
+                                        icon={link.icon}
+                                        iconAlt={link.iconAlt}
+                                        isSensitive={link.isSensitive}
                                         className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:scale-105 hover:shadow-md"
-                                    >
-                                        {link.icon && (
-                                            <div className="flex-shrink-0 w-5 h-5 relative">
-                                                <Image
-                                                    src={link.icon}
-                                                    alt={link.iconAlt || `${link.name} icon`}
-                                                    width={20}
-                                                    height={20}
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        )}
-                                        <span>{link.name}</span>
-                                    </a>
+                                    />
                                 ))}
                             </div>
                         </>
@@ -163,27 +152,15 @@ const Card = ({
                         <hr className="border-gray-700 my-4" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                             {links.map((link) => (
-                                <a
+                                <ClientLink
                                     key={link.url}
-                                    href={link.isSensitive ? "#" : link.url}
-                                    onClick={(e) => link.isSensitive && handleLinkClick(e, link)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    name={link.name}
+                                    url={link.url}
+                                    icon={link.icon}
+                                    iconAlt={link.iconAlt}
+                                    isSensitive={link.isSensitive}
                                     className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:scale-105 hover:shadow-md"
-                                >
-                                    {link.icon && (
-                                        <div className="flex-shrink-0 w-5 h-5 relative">
-                                            <Image
-                                                src={link.icon}
-                                                alt={link.iconAlt || `${link.name} icon`}
-                                                width={20}
-                                                height={20}
-                                                className="object-contain"
-                                            />
-                                        </div>
-                                    )}
-                                    <span>{link.name}</span>
-                                </a>
+                                />
                             ))}
                         </div>
                     </>
@@ -194,11 +171,3 @@ const Card = ({
 };
 
 export default Card;
-
-// Add this helper function inside the Card component
-const handleLinkClick = (e: React.MouseEvent, link: { url: string, isSensitive?: boolean }) => {
-    if (link.isSensitive) {
-        e.preventDefault();
-        window.location.href = link.url; // This won't expose the URL in the HTML source
-    }
-};
