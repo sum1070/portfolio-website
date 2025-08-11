@@ -1,4 +1,4 @@
-import { BlueBackground, BlueZZZ, Navbar, PinkBackground, Sleepy } from '@/components'
+import { BlueBackground, BlueZZZ, Navbar, Sleepy } from '@/components'
 import { cn, pageIDs } from '@/utils'
 import React from 'react'
 import TechSkills from './TechSkills'
@@ -10,7 +10,10 @@ const About = () => {
         h2: "text-xl sm:text-2xl md:text-3xl xl:text-4xl ",
     };
     return (
-        <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative text-sky-900")} id={pageID}>
+        <div 
+        className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative text-sky-900")} 
+        // id={pageID}
+        >
             <Navbar currentPage={pageID} />
             <BlueBackground
                 wavePaused={true}

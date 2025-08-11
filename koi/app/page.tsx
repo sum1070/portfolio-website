@@ -1,5 +1,5 @@
 'use client';
-import { Hero, MainPage, MouseTrail } from "@/components";
+import { About, Hero, MainPage, MouseTrail } from "@/components";
 
 export default function Home() {
 
@@ -7,6 +7,7 @@ export default function Home() {
     <>
       <MouseTrail />
       <Hero />
+      <About />
       <MainPage />
     </>
 
