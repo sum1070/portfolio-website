@@ -8,29 +8,43 @@ export default function NavButton({
     btnName?: string;
 }) {
     const pillsTransition = "transition-transform duration-1100 ease-in-out";
-    const pillsDefaultBg = "bg-violet-800/[var(--bg-opacity)] [--bg-opacity:30%] shadow-[1px_8px_18px_0px_#d285ff] ";
+    const pillsDefaultBg = "bg-violet-400/[var(--bg-opacity)] [--bg-opacity:20%] shadow-[1px_8px_18px_0px_#d285ff] ";
     const pillsBasic = "absolute z-30 w-[24%] h-full p-3 text-center border-t-2 border-r-2 border-sky-50 rounded-[45%_45%_0%_0%/15%_15%_0%_0%] origin-bottom-left relative overflow-hidden pill-group ";
     const pillsBefore = "before:content-[''] before:absolute before:inset-0 before:rounded-inherit before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 ";
-    const btnAfter = "after:content-[''] after:absolute after:inset-0 after:rounded-inherit after:opacity-0 after:transition-opacity after:duration-500 hover:after:opacity-100 ";
     const pillsCN = pillsBasic + pillsDefaultBg + pillsTransition + pillsBefore;
 
     return (
         <div className="relative">
+
+
             <div
                 className={cn(
-                    "relative overflow-hidden rounded-[2rem] group w-64 h-30 ",
-                    "transition-all duration-1000 ease-in-out hover:scale-110 ",
-                    "bg-[rgb(193,228,248)] ", 
+                    "relative overflow-hidden rounded-[2rem] group w-64 h-30",
+                    "transition-all duration-1000 ease-in-out hover:scale-110",
+                    "bg-[rgb(193,228,248)]"
                 )}
                 style={{
                     boxShadow: "#64646f33 0px 7px 29px 0px",
                 }}
             >
                 {/* Background */}
-                <div
+                <div className=" absolute inset-0 overflow-hidden">
+                        <div
+                            className={cn(
+                                "absolute -top-[75%] -left-[75%] w-[250%] h-[250%]",
+                                "bg-[rbg(222,0,75)] bg-gradient-to-r from-[#ff0077] from-0% via-[#d6aaff] via-49% to-[#2e4dff]",
+                                // "bg-gradient-to-r from-[rgba(222,0,75,1)] via-[rgba(191,70,255,1)] to-[rgba(0,212,255,1)]",
+                                "rounded-[40rem]",
+                                "filter blur-[20px]",
+                                "animate-effect",
+                                "[animation:rotation_4s_infinite_2s]"
+                            )}
+                        />
+                    </div>
+
+                {/* <div
                     className={cn(
                         "absolute inset-0 bottom-0 left-0 right-0 top-0",
-                        "bg-[rbg(222,0,75)] bg-gradient-to-r from-[rgba(222,0,75,1)] from-0% via-[rgba(191,70,255,1)] via-49% to-[rgba(0,212,255,1)]",
                         "rounded-[40rem]",
                         "w-full h-full",
                         "transition-all duration-400",
@@ -40,7 +54,7 @@ export default function NavButton({
                         "[animation:rotation_4s_infinite_2s]",
                     )}
 
-                />
+                /> */}
                 {/* <div
 
                     className={cn(
