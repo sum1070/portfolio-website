@@ -8,13 +8,23 @@ interface NavMenuProps {
     containerCN?: string;
     isOpen: boolean;
     onLinkClick?: () => void;
+    currentPage?: string; // Add this prop
 }
 
 export default function NavMenu({
     containerCN = "",
     isOpen,
-    onLinkClick = () => {},
+    onLinkClick = () => { },
+    currentPage,
 }: Readonly<NavMenuProps>) {
+    // filter nav links
+    const filteredNavLinks = currentPage
+        ? navLinks.filter(link =>
+            !link.href.endsWith(currentPage) &&
+            !(currentPage === "MainPage" && link.href.endsWith("#MainPage"))
+        )
+        : navLinks;
+
     return (
         <div
             id='mobile-nav'
@@ -25,7 +35,7 @@ export default function NavMenu({
             )}
         >
             <div id='mobile-nav-Links' className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-milky-white/90 backdrop-blur-sm">
-                {navLinks.map((link) => (
+                {filteredNavLinks.map((link) => (
                     <Link
                         key={link.name}
                         href={link.href}

@@ -6,7 +6,11 @@ import { cn, navLinks } from '@/utils';
 import Hamburger from './Hamburger';
 import NavMenu from './NavMenu';
 
-export default function Navbar() {
+interface NavbarProps {
+    currentPage?: string;
+}
+
+export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,6 +27,14 @@ export default function Navbar() {
 
     const navFontColor = "text-nice-purple2";
     const navFontClassName = "px-3 py-2 rounded-md font-medium transition-colors " + navFontColor;
+
+    // filter curr page if params is provided
+    const filteredNavLinks = currentPage
+        ? navLinks.filter(link =>
+            !link.href.endsWith(currentPage) &&
+            !(currentPage === "MainPage" && link.href.endsWith("#MainPage"))
+        )
+        : navLinks;
 
     return (
         <nav
@@ -43,14 +55,9 @@ export default function Navbar() {
                     )} >
                     Meow
                 </Link>
-                {/* <div className="flex flex-row gap-4">
-                    <div>pages</div>
-                    <div>pages</div>
-                    <div>pages</div>
-                </div> */}
                 {/* desktop buttons */}
                 <div id='desktop-nav' className="hidden md:flex flex-row gap-4 mr-4">
-                    {navLinks.map((link) => (
+                    {filteredNavLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
@@ -62,7 +69,6 @@ export default function Navbar() {
                             {link.name}
                         </Link>
                     ))}
-
                 </div>
                 {/* mobile hamburger */}
                 <Hamburger
@@ -76,6 +82,7 @@ export default function Navbar() {
             <NavMenu
                 isOpen={isOpen}
                 onLinkClick={() => setIsOpen(false)}
+                currentPage={currentPage}
             />
         </nav>
     );

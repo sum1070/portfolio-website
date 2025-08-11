@@ -1,16 +1,17 @@
 import { KoiUrl, Navbar, NekoSleep, PinkBackground, SleepZZZ } from '@/components'
 import React from 'react'
 import LicenceCard from './LicenceCard';
-import { cn } from '@/utils';
+import { cn, pageIDs } from '@/utils';
 
 const licences = () => {
+    const pageID = pageIDs.licences;
     const Text = {
         h1: "text-3xl sm:text-4xl md:text-5xl xl:text-7xl ",
         h2: "text-xl sm:text-2xl md:text-3xl xl:text-4xl ",
     };
     return (
-        <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative")} id="licencesPage">
-            <Navbar />
+        <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative")} id={pageID}>
+            <Navbar currentPage={pageID} />
             <PinkBackground />
             <div className="w-full pt-20 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
                 <div id='license-text' className="">
