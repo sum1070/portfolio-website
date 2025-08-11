@@ -6,9 +6,7 @@ const BlobsClasses = "absolute rounded-full mix-blend-multiply filter"
 const BlobsContainerClasses = "absolute inset-0 overflow-hidden pointer-events-none  will-change-transform"
 
 const BlobsOpacity1 = "opacity-70 sm:opacity-40"
-const BlobsOpacity2 = "opacity-20 sm:opacity-80"
-const BlobsOpacity3 = "opacity-20 sm:opacity-50"
-const BlobsOpacity4 = "opacity-70"
+const BlobsOpacity2 = "opacity-70"
 
 // Main Page
 const BlurredBlobsMain = () => {
@@ -32,7 +30,7 @@ const BlurredBlobsMain = () => {
                 {/* R */}
                 <div
                     className={cn(
-                        BlobsClasses, BlobsOpacity4,
+                        BlobsClasses, BlobsOpacity2,
                         "[animation:blob2_6s_infinite_2s]",
                         "translate-x-52",
                         "bg-radial-[at_25%_25%] from-pink1 via-purple-300 to-pink-200 to-90%",
