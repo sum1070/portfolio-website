@@ -24,5 +24,7 @@ export {
   Medal,
   Watching,
   Cat1,
+  Sleepy,
   ArrowDown,
+  BlueZZZ,
 } from "./Svg";
