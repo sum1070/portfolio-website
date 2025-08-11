@@ -20,16 +20,17 @@ export const sounds = {
 export const pageIDs = {
   home: "home",
   main: "main",
+  about: "about",
   projects: "projects",
   contact: "contact",
   licences: "licences",
-  about: "about",
 }
 
 export const navLinks = [
   { name: "Home", href: `/${pageIDs.home}` },
   { name: "Main", href: `/#${pageIDs.main}` },
-  { name: "About", href: `/${pageIDs.about}` },
+  { name: "About", href: `/#${pageIDs.about}` },
+  // { name: "About", href: `/${pageIDs.about}` },
   { name: "Projects", href: `/${pageIDs.projects}` },
   { name: "Contact", href: `/${pageIDs.contact}` },
   { name: "Licences", href: `/${pageIDs.licences}` },
