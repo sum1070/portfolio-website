@@ -38,6 +38,9 @@ export const iconImages = {
   watching: "/images/watching.svg", // https://www.svgrepo.com/svg/28048/watching
   cat1: "/images/cat1.svg", // https://www.svgrepo.com/svg/33137/cat-in-black-silhouette
   arrowDown: "/images/arrow-down.svg", // https://www.svgrepo.com/svg/108052/arrow-down-filled-triangle
+};
+
+export const contactImages = {
   github: "/images/github.svg",
   discord: "/images/discord.svg", // hhttps://www.svgrepo.com/svg/506463/discord
   email: "/images/email.svg",

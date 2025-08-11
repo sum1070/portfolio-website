@@ -26,8 +26,4 @@ export {
   Watching,
   Cat1,
   ArrowDown,
-  Github,
-  Discord,
-  Email,
-  Instagram,
 } from "./Svg";
