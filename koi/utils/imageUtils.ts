@@ -48,3 +48,10 @@ export const contactImages = {
   email: "/images/email.svg",
   instagram: "/images/instagram.svg",
 };
+
+export const iconMap: Record<string, string> = {
+  github: contactImages.github,
+  discord: contactImages.discord,
+  gmail: contactImages.email,
+  instagram: contactImages.instagram,
+};

@@ -22,7 +22,7 @@ type TSizeProps = {
   size?: string;
 };
 
-interface TUIComponent extends TColorProps, TSizeProps {
+export interface TUIComponent extends TColorProps, TSizeProps {
   className?: string;
   sizeClassName?: string;
   position?: TPosition;

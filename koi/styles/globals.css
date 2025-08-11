@@ -25,7 +25,7 @@
   --color-pink2: #fed6ff;
   --color-pink3: #ff8fea;
   --color-Mauve: #e2baff;
-  --color-Mauve2: #E8C7FF;
+  --color-Mauve2: #e8c7ff;
   --color-purblue: #aab1f2;
 
   --font-titillium-web: "Titillium Web", sans-serif;
@@ -48,7 +48,6 @@
     overscroll-behavior-y: none;
     scroll-snap-type: y mandatory;
     color: var(--color-nice-purple2);
-    
   }
   section {
     height: 100vh;
@@ -79,7 +78,7 @@ body {
   0% {
     transform: scale(1) rotate(0deg);
   }
-  40%{
+  40% {
     transform: scale(1.2) rotate(144deg);
   }
   60% {
@@ -97,19 +96,19 @@ body {
 }
 @keyframes blob3 {
   0% {
-    transform: scale(1) rotate(360deg) ;
+    transform: scale(1) rotate(360deg);
   }
-  50%{
-    transform: scale(1.2) rotate(180deg) ;
+  50% {
+    transform: scale(1.2) rotate(180deg);
   }
   75% {
-    transform: scale(1.4) rotate(90deg) ;
+    transform: scale(1.4) rotate(90deg);
   }
   88% {
-    transform: scale(1) rotate(45deg) ;
+    transform: scale(1) rotate(45deg);
   }
   100% {
-    transform: scale(1) rotate(0deg) ;
+    transform: scale(1) rotate(0deg);
   }
 }
 
@@ -132,13 +131,19 @@ body {
     transform: rotate(360deg);
   }
   33% {
-    transform: rotate(200deg), scale(1.5);
-  }
-  50% {
-    transform: rotate(160deg);
+    transform: rotate(200deg) scale(1.5);
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 @media (min-width: 600px) {
@@ -198,4 +203,15 @@ body {
   .h-dvh {
     height: 100vh;
   }
+}
+
+/* //////// */
+
+.pills {
+  transform-origin: bottom left;
+  transition: all 1s ease-in-out;
+}
+
+.pill-group:hover .pill-group-hover\:scale-125 {
+  transform: scale(1.25);
 }

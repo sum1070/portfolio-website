@@ -1,5 +1,6 @@
 'use client';
-import { About, Hero, MainPage, MouseTrail } from "@/components";
+import { About, CenterContainer, Hero, MainPage, MouseTrail } from "@/components";
+import NavButton from "@/components/NavButton";
 
 export default function Home() {
 
@@ -9,6 +10,9 @@ export default function Home() {
       <Hero />
       <About />
       <MainPage />
+      {/* <CenterContainer>
+        <NavButton />
+      </CenterContainer> */}
     </>
 
 

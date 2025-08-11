@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, CenterContainer, TriangleArrowUp } from '@/components'
 import Wave from 'react-wavify'
-import { cn, pageIDs } from '@/utils'
+import { cn, iconImages, pageIDs } from '@/utils'
 import BackgroundMain from './mainPage/BackgroundMain'
 
 const MainPage = () => {
@@ -52,7 +52,7 @@ const MainPage = () => {
                             "md:order-2 md:w-full "
                         )}>
                         <div className={cn("w-full flex items-center justify-center")}>
-                            <img className={cn("object-scale-down, w-auto h-auto")} src="/images/dog.png" alt='pic' decoding="async" fetchPriority="low" loading="lazy" />
+                            <img className={cn("object-scale-down, w-auto h-auto")} src={iconImages.cat1} alt='pic' decoding="async" fetchPriority="low" loading="lazy" />
                         </div>
                     </div>
                     <div
