@@ -21,7 +21,6 @@ const SvgImage = ({
     );
 };
 
-// Helper function to create SVG components from iconImages
 function createSvgComponent(iconKey: string, iconSrc: string) {
     return ({ className }: { className?: string }) => {
         if (iconKey === 'sleepZZZ') {

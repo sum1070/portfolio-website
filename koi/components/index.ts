@@ -30,4 +30,4 @@ export {
   Discord,
   Email,
   Instagram,
-} from "./svg";
+} from "./Svg";

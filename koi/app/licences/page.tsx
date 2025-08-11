@@ -12,7 +12,20 @@ const licences = () => {
     return (
         <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative")} id={pageID}>
             <Navbar currentPage={pageID} />
-            <PinkBackground />
+            <PinkBackground
+                style={{
+                    background: `
+                        radial-gradient(at 6% 8%, var(--color-purple1) 0%, transparent 40%),
+                        radial-gradient(at 95% 75%, var(--color-pink1) 0%, transparent 30%),
+                        radial-gradient(at 95% 15%, var(--color-sky-blue) 0%, transparent 50%),
+                        radial-gradient(at 50% 15%, var(--color-pale-purple3) 0%, transparent 50%),
+                        radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
+                        radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 20%)
+                        `,
+                    backgroundColor: "var(--color-pale-purple1)",
+
+                }}
+            />
             <div className="w-full pt-20 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
                 <div id='license-text' className="">
                     <h1 className={cn(

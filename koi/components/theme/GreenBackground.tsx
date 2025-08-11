@@ -1,16 +1,19 @@
 import { Bar, Dot } from '@/components'
-import { positionClasses } from '@/lib/types';
+import { positionClasses, TBaseProps } from '@/lib/types';
 import { cn } from '@/utils';
 import React from 'react'
 import Wave from 'react-wavify';
 
-const GreenBackground = () => {
+const GreenBackground = ({
+    style = {},
+}: Readonly<TBaseProps>) => {
     const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";
     return (
         <div
             className={cn(
                 "bg-green-50 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
             )}
+            style={style}
         >
             {/* Dots */}
             <div className={cn(`${shapeClasses}`)}>

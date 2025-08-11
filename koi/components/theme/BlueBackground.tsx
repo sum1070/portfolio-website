@@ -1,5 +1,5 @@
 import { Bar, Dot } from '@/components'
-import { positionClasses } from '@/lib/types';
+import { positionClasses, TBaseProps } from '@/lib/types';
 import { cn } from '@/utils'
 import React from 'react'
 import Wave from 'react-wavify';
@@ -11,7 +11,7 @@ type TWaveOptions = {
     points?: number;
 };
 
-interface TColoredBackground {
+interface TColoredBackground extends TBaseProps {
     bgContainerCN?: string;
     wavePaused?: boolean;
     wave?: TWaveOptions;
@@ -20,6 +20,7 @@ interface TColoredBackground {
 const BlueBackground = ({
     bgContainerCN = "",
     wavePaused = false,
+    style = {},
 }: Readonly<TColoredBackground>) => {
     return (
         <div
@@ -27,6 +28,7 @@ const BlueBackground = ({
                 "bg-blue-50 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
                 bgContainerCN,
             )}
+            style={style}
         >
             <BDeco />
             <div className={cn()} id='LicencesWave'>
