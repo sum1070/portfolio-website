@@ -34,7 +34,6 @@ const Contact = () => {
           </p>
         </div>
         <ContactCard />
-
       </div>
     </div>
   )

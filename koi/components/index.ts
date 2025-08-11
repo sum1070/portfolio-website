@@ -16,6 +16,7 @@ export { default as MouseTrail } from "./ui/MouseTrail";
 export { default as FadeIn } from "./ui/FadeIn";
 export { default as KoiUrl } from "./ui/KoiUrl";
 export { default as Reveal } from "./ui/Reveal";
+export { default as InvertedWave } from "./ui/InvertedWave";
 
 export {
   NekoSleep,

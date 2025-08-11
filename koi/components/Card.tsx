@@ -49,7 +49,7 @@ const Card = ({
     if (variant === 'compact') {
         return (
             <div className={cn(
-                "rounded-lg overflow-hidden shadow-md mb-4 p-4",
+                "rounded-lg overflow-hidden shadow-md mb-2 p-4 pb-2",
                 backgroundColor,
                 cardContainerCN,
                 animated && "hover:scale-[1.02] ", animationClasses
