@@ -1,18 +1,17 @@
 import { BlueBackground, Navbar, Watching } from '@/components'
 import React from 'react'
 import ContactCard from './ContactCard';
-import { cn } from '@/utils';
+import { cn, pageIDs } from '@/utils';
 
 const Contact = () => {
-  console.log('env variable is: ', process.env.DISCORD_URL);
+  const pageID = pageIDs.contact;
   const Text = {
     h1: "text-3xl sm:text-4xl md:text-5xl xl:text-7xl ",
     h2: "text-xl sm:text-2xl md:text-3xl xl:text-4xl ",
   };
   return (
-
-    <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative text-sky-900")} id="contactPage">
-      <Navbar />
+    <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative text-sky-900")} id={pageID}>
+      <Navbar currentPage={pageID} />
       <BlueBackground wavePaused={true} />
       <div className="w-full pt-16 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
         <div id='contact-text' className="md:mb-12 sm:mb-8 mb-4">

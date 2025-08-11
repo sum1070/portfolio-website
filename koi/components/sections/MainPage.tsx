@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, CenterContainer, TriangleArrowUp } from '@/components'
 import Wave from 'react-wavify'
-import { cn } from '@/utils'
+import { cn, pageIDs } from '@/utils'
 import BackgroundMain from './mainPage/BackgroundMain'
 
 const MainPage = () => {
+    const pageID = pageIDs.main;
     const buttonClasses = 'max-w-60 md:max-w-none';
     const colGap = 'gap-2 xs:gap-4 md:gap-12 lg:gap-20';
     const buttonContainerClasses = "md:p-8 lg:p-16 flex flex-col justify-center items-center w-full";
@@ -16,7 +17,7 @@ const MainPage = () => {
     };
 
     return (
-        <section className="flex overflow-hidden min-w-dvw min-h-dvh relative" id='MainPage'>
+        <section className="flex overflow-hidden min-w-dvw min-h-dvh relative" id={pageID}>
             <BackgroundMain />
             {/* Set wave to bottom, then invert the container*/}
             <div className='scale-y-[-1]' id='MainPageWaveDiv'>

@@ -17,10 +17,18 @@ export const sounds = {
   sweetsaw: "/sounds/sweetsaw.wav", //https://freesound.org/people/newlocknew/sounds/515830/
 };
 
+export const pageIDs = {
+  home: "home",
+  main: "main",
+  projects: "projects",
+  contact: "contact",
+  licences: "licences",
+}
+
 export const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Main", href: "/#MainPage" },
-  { name: "Projects", href: "/wip" },
-  { name: "Contact", href: "/contact" },
-  { name: "Licences", href: "/licences" },
+  { name: "Home", href: `/${pageIDs.home}` },
+  { name: "Main", href: `/#${pageIDs.main}` },
+  { name: "Projects", href: `/${pageIDs.projects}` },
+  { name: "Contact", href: `/${pageIDs.contact}` },
+  { name: "Licences", href: `/${pageIDs.licences}` },
 ];

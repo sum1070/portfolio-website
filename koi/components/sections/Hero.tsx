@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
 import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero, Reveal, NekoSleep, SleepZZZ } from "@/components";
-import { cn, animationTime } from "@/utils";
+import { cn, animationTime, pageIDs } from "@/utils";
 import { motion } from "motion/react";
 
 const Text = {
@@ -14,6 +14,7 @@ const Text = {
 };
 
 const Hero = () => {
+  const pageID = pageIDs.home;
   const heroRef = useRef<HTMLDivElement>(null);
   const [revealArrow, setRevealArrow] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
@@ -43,7 +44,7 @@ const Hero = () => {
 
   // TODO: theme change button
   return (
-    <section ref={heroRef} id="hero" className="overflow-hidden relative">
+    <section ref={heroRef} id={pageID} className="overflow-hidden relative">
       <BackgroundHero />
       <BlurredBlobsHero />
       <CenterContainer className="min-h-dvh relative z-20 p-10">
