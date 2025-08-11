@@ -3,23 +3,6 @@ import { iconImages } from "@/utils";
 import Image from "next/image";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { JSX } from "react";
-import { TSvgImage } from "@/lib/types";
-
-const SvgImage = ({
-    className,
-    src,
-    alt = "svg"
-}: TSvgImage) => {
-    return (
-        <Image
-            className={className}
-            alt={alt}
-            src={src}
-            width={48}
-            height={48}
-        />
-    );
-};
 
 function createSvgComponent(iconKey: string, iconSrc: string) {
     return ({ className }: { className?: string }) => {
@@ -45,7 +28,6 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
     };
 }
 
-// Generate components from iconImages
 const svgComponents = Object.entries(iconImages).reduce((acc, [key, src]) => {
     // convert to pascal case
     const componentName = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, '$1');
@@ -63,9 +45,5 @@ export const {
     Watching,
     Cat1,
     ArrowDown,
-    Github,
-    Discord,
-    Email,
-    Instagram
 } = svgComponents;
 
