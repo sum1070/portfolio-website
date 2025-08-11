@@ -11,7 +11,7 @@ const BlobsOpacity3 = "opacity-20 sm:opacity-50"
 const BlobsOpacity4 = "opacity-70"
 
 // Main Page
-const BlurredBlobs = () => {
+const BlurredBlobsMain = () => {
     return (
         <>
             {/* Desktop */}
@@ -74,4 +74,4 @@ const BlurredBlobs = () => {
     )
 }
 
-export default BlurredBlobs
+export default BlurredBlobsMain
