@@ -12,7 +12,9 @@ const Contact = () => {
   return (
     <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative text-sky-900")} id={pageID}>
       <Navbar currentPage={pageID} />
-      <BlueBackground wavePaused={true} />
+      <BlueBackground
+        wavePaused={true}
+      />
       <div className="w-full pt-16 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
         <div id='contact-text' className="md:mb-12 sm:mb-8 mb-4">
           <h1 className={cn(

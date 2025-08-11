@@ -16,6 +16,16 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
                 />
             );
         }
+        if (iconKey === 'blueZZZ') {
+            return (
+                <DotLottieReact
+                    className={className}
+                    src="https://lottie.host/a7b12d49-1bb6-42c7-b5b4-45fe28041072/TWB7LL1u37.lottie"
+                    loop
+                    autoplay
+                />
+            );
+        }
         return (
             <Image
                 className={className}
@@ -45,5 +55,7 @@ export const {
     Watching,
     Cat1,
     ArrowDown,
+    Sleepy,
+    BlueZZZ,
 } = svgComponents;
 
