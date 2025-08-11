@@ -129,8 +129,3 @@ export interface CardDetails {
 export interface TLink extends TBaseProps {
   href: string;
 }
-
-export interface TSvgImage extends TClassName {
-  src: string;
-  alt?: string;
-}
