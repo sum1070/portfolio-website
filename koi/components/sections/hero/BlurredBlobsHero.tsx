@@ -10,7 +10,7 @@ const BlobsOpacity3 = "opacity-20 sm:opacity-50"
 const BlobsOpacity4 = "opacity-10 sm:opacity-50"
 
 // HERO
-const BlurredBlobs = () => {
+const BlurredBlobsHero = () => {
   return (
     <div className="-z-20 absolute inset-0 overflow-hidden pointer-events-none  will-change-transform">
       {/* C */}
@@ -73,4 +73,4 @@ const BlurredBlobs = () => {
   )
 }
 
-export default BlurredBlobs
+export default BlurredBlobsHero

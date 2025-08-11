@@ -1,5 +1,5 @@
-import { BlurredBlobsMain } from "@/components/decorations";
 import { Pattern } from '@/components';
+import BlurredBlobsMain from './BlurredBlobsMain';
 
 export default function BackgroundHero() {
     return (

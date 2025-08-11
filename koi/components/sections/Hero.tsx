@@ -2,9 +2,10 @@
 
 import { useState, useRef } from "react";
 import BackgroundHero from "@/components/sections/hero/BackgroundHero";
-import { TriangleArrowDown, CenterContainer, Typewriter, BlurredBlobsHero, Reveal, NekoSleep, SleepZZZ } from "@/components";
+import { TriangleArrowDown, CenterContainer, Typewriter, Reveal, NekoSleep, SleepZZZ } from "@/components";
 import { cn, animationTime, pageIDs } from "@/utils";
 import { motion } from "motion/react";
+import BlurredBlobsHero from "./hero/BlurredBlobsHero";
 
 const Text = {
   txtMain: "tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-8xl text-balance tracking-tight italic font-semibold ",
