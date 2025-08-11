@@ -30,7 +30,7 @@ npx create-next-app@latest
 ### Rendering
 
 - **Client**-side rendering (CSR)
-  - Front-end
+  - Front-end, runs in the browser
   - e.g. Event listeners, states, use effects, APIs
   - Files outside `app/` or starting with _client directives_: `'use client';`
 - **Server**-side rendering (SSR)
@@ -55,3 +55,23 @@ npx create-next-app@latest
 ### useEffect
 
 - Example usage in typewriter: [typewiter.md](./typewriter.md)
+
+### Deployment Errors
+
+I encountered deployment errors on Vercel even though `npm run build` worked locally.
+
+![Deployment Errors](./../assets/deploy-error-resolve.png)
+
+(And i ignored the error and kept pushing other changes lmao)
+![Deployment Errors](./../assets/deploy-errors.png)
+
+**Cause**: Git cache didn't track changes to the case of file names, so parts of the remote repos were outdated.
+
+**Solution**: Based on [this post](https://stackoverflow.com/questions/62378045/how-to-fix-next-js-vercel-deployment-module-not-found-error), I fixed it by running:
+
+```powershell
+git rm -r --cached .
+git add --all .
+git commit -a -m "Versioning untracked files"
+git push origin master
+```
