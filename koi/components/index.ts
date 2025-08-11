@@ -10,7 +10,6 @@ export { default as Card } from "./Card";
 
 export * from "./decorations";
 export * from "./sections";
-export * from "./decorations";
 
 export { default as Typewriter } from "./ui/Typewriter";
 export { default as MouseTrail } from "./ui/MouseTrail";

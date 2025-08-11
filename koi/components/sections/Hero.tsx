@@ -43,7 +43,6 @@ const Hero = () => {
     }
   };
 
-  // TODO: theme change button
   return (
     <section ref={heroRef} id={pageID} className="overflow-hidden relative">
       <BackgroundHero />

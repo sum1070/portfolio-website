@@ -1,10 +1,11 @@
 "use client"
-import { CenterContainer, GreenBackground } from '@/components'
+import { CenterContainer, GreenBackground, Navbar } from '@/components'
 import React from 'react'
 
 const Wip = () => {
     return (
         <>
+            <Navbar />
             <GreenBackground />
             <CenterContainer className='flex-col'>
                 <p className="p-8 text-emerald-700 font-semibold text-balance">

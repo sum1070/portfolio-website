@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useVolume } from '@/lib/context/VolumeContext';
 import { cn, soundButtonImages } from '@/utils';
 
+  // TODO: theme change button
 const HeroHeader = () => {
   const { isMuted, toggleMute, volume, incrementVolume, decrementVolume, setNewVolume } = useVolume();
 
