@@ -1,87 +1,4 @@
-# Koi App File Structure
-
-## Simplified
-
-```txt
-└── 📁koi
-    └── 📁app
-        └── 📁contact
-        └── 📁licences
-        └── 📁projects
-        ├── layout.tsx
-        ├── page.tsx
-    └── 📁components
-        └── 📁decorations
-            └── 📁shape
-        └── 📁navbar
-        └── 📁sections
-            └── 📁hero
-            └── 📁MainPage
-            └── 📁wip
-            ├── Contact.tsx
-            ├── Hero.tsx
-            ├── index.ts
-            ├── MainPage.tsx
-        └── 📁svg
-            ├── ArrowDown.tsx
-            ├── NekoSleep.tsx
-            ├── Watching.tsx
-            ├── Zzz.tsx
-        └── 📁theme
-            ├── BlueBackground.tsx
-            ├── GreenBackground.tsx
-            ├── PinkBackground.tsx
-        └── 📁ui
-            ├── FadeIn.tsx
-            ├── MouseTrail.tsx
-            ├── Reveal.tsx
-            ├── Stars.tsx
-            ├── Typewriter.tsx
-        ├── Button.tsx
-        ├── Card.tsx
-        ├── CenterContainer.tsx
-        ├── ClientLink.tsx
-        ├── index.ts
-        ├── KoiUrl.tsx
-        ├── TriangleArrow.tsx
-    └── 📁data
-        ├── data.json
-    └── 📁lib
-        └── 📁context
-            ├── VolumeContext.tsx
-        └── 📁hooks
-            ├── useMainVolume.tsx
-            ├── useSpring.tsx
-        ├── fonts.ts
-        ├── types.ts
-    └── 📁public
-        └── 📁animation
-        └── 📁images
-        └── 📁sounds
-        ├── favicon.ico
-    └── 📁styles
-        ├── globals.css
-        ├── TriangleArrow.module.css
-    └── 📁utils
-        ├── colorUtils.ts
-        ├── imageUtils.ts
-        ├── index.ts
-        ├── motionUtils.ts
-        ├── utils.ts
-    ├── .gitignore
-    ├── file-tree.txt
-    ├── next-env.d.ts
-    ├── next.config.ts
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.mjs
-    ├── temp.txt
-    └── tsconfig.json
 ```
-
-## Detailed
-
-```txt
 └── 📁koi
     └── 📁app
         └── 📁contact
@@ -116,28 +33,23 @@
         └── 📁sections
             └── 📁hero
                 ├── BackgroundHero.tsx
-                ├── BlurredBlobs.tsx
+                ├── BlurredBlobsHero.tsx
                 ├── HeroHeader.tsx
-            └── 📁MainPage
+            └── 📁mainPage
                 ├── BackgroundMain.tsx
-                ├── BlurredBlobs.tsx
+                ├── BlurredBlobsMain.tsx
             └── 📁wip
                 ├── Wip.tsx
-            ├── Contact.tsx
             ├── Hero.tsx
             ├── index.ts
             ├── MainPage.tsx
-        └── 📁svg
-            ├── ArrowDown.tsx
-            ├── NekoSleep.tsx
-            ├── Watching.tsx
-            ├── Zzz.tsx
         └── 📁theme
             ├── BlueBackground.tsx
             ├── GreenBackground.tsx
             ├── PinkBackground.tsx
         └── 📁ui
             ├── FadeIn.tsx
+            ├── KoiUrl.tsx
             ├── MouseTrail.tsx
             ├── Reveal.tsx
             ├── Stars.tsx
@@ -147,7 +59,7 @@
         ├── CenterContainer.tsx
         ├── ClientLink.tsx
         ├── index.ts
-        ├── KoiUrl.tsx
+        ├── Svg.tsx
         ├── TriangleArrow.tsx
     └── 📁data
         ├── data.json
@@ -207,7 +119,7 @@
         ├── motionUtils.ts
         ├── utils.ts
     ├── .gitignore
-    ├── file-tree.txt
+    ├── file-tree.md
     ├── next-env.d.ts
     ├── next.config.ts
     ├── package-lock.json
