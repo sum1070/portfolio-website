@@ -1,4 +1,4 @@
-import { Navbar } from '@/components'
+import { Navbar, PinkBackground } from '@/components'
 import { pageIDs } from '@/utils'
 import React from 'react'
 
@@ -7,7 +7,7 @@ const Project = () => {
   return (
     <div id={pageID} >
       <Navbar currentPage={pageID} />
-      meow
+      <PinkBackground />
     </div>
   )
 }
