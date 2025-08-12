@@ -16,42 +16,42 @@
   "skills": [
     {
       "name": "Javascript",
-      "type": "frontend",
+      "type": "languages",
       "icon": "javascript"
     },
     {
       "name": "React",
-      "type": "frontend",
+      "type": "frameworks",
       "icon": "react"
     },
     {
       "name": "Tailwind CSS",
-      "type": "frontend",
+      "type": "frameworks",
       "icon": "tailwind"
     },
     {
       "name": "HTML",
-      "type": "frontend",
+      "type": "languages",
       "icon": "html"
     },
     {
       "name": "CSS",
-      "type": "frontend",
+      "type": "languages",
       "icon": "css"
     },
     {
-      "name": "Framer Motion",
-      "type": "frontend",
+      "name": "Motion",
+      "type": "frameworks",
       "icon": "motion"
     },
     {
       "name": "C",
-      "type": "frontend",
+      "type": "languages",
       "icon": "c"
     },
     {
       "name": "Python",
-      "type": "frontend",
+      "type": "languages",
       "icon": "python"
     },
     {
@@ -61,12 +61,12 @@
     },
     {
       "name": "Next.js",
-      "type": "backend",
+      "type": "frameworks",
       "icon": "nextjs"
     },
     {
       "name": "Oracle",
-      "type": "database",
+      "type": "backend",
       "icon": "oracle"
     },
     {
