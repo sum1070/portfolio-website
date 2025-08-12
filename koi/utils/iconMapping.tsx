@@ -1,17 +1,11 @@
 import React from 'react';
-import { RiNextjsFill, RiReactjsLine, RiTailwindCssFill } from "react-icons/ri";
-import { FaQuestion } from "react-icons/fa";
-import { FaHtml5, FaCss3Alt } from "react-icons/fa6";
-import { contactImages } from './imageUtils';
+import { RiNextjsFill, RiReactjsLine, RiTailwindCssFill, RiNodejsFill  } from "react-icons/ri";
+import { FaQuestion, FaAws } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaDocker  } from "react-icons/fa6";
+import { SiOracle } from "react-icons/si";
+import { iconMap } from './imageUtils';
 import Image from 'next/image';
-
-// local svg
-export const localSvgIcons: Record<string, string> = {
-  github: contactImages.github,
-  discord: contactImages.discord,
-  gmail: contactImages.email,
-  instagram: contactImages.instagram,
-};
+import { BiLogoGoogleCloud } from "react-icons/bi";
 
 export const reactIconMap: Record<string, React.ComponentType<any>> = {
   // Frontend
@@ -20,25 +14,23 @@ export const reactIconMap: Record<string, React.ComponentType<any>> = {
   tailwind: RiTailwindCssFill,
   html: FaHtml5,
   css: FaCss3Alt,
-  framer: RiNextjsFill,
 
   // Languages
+  // TODO: C
   c: RiNextjsFill,
   python: RiNextjsFill,
 
   // Backend
-  nodejs: RiNextjsFill,
+  nodejs: RiNodejsFill ,
   nextjs: RiNextjsFill,
 
   // Database
-  oracle: RiNextjsFill,
+  oracle: SiOracle ,
 
   // Tools
-  git: RiNextjsFill,
-  docker: RiNextjsFill,
-  googlecloud: RiNextjsFill,
-  aws: RiNextjsFill,
-
+  docker: FaDocker,
+  googlecloud: BiLogoGoogleCloud,
+  aws: FaAws,
 };
 
 export const createLocalSvgComponent = (iconName: string, iconSrc: string) => {
@@ -56,11 +48,12 @@ export const createLocalSvgComponent = (iconName: string, iconSrc: string) => {
   };
 };
 
-
 export const getIconComponent = (iconName: string, defaultIcon = FaQuestion) => {
   const lowerName = iconName.toLowerCase();
-  if (localSvgIcons[lowerName]) {
-    return createLocalSvgComponent(lowerName, localSvgIcons[lowerName]);
+  // use iconMap first
+  if (lowerName in iconMap) {
+    return createLocalSvgComponent(lowerName, iconMap[lowerName as keyof typeof iconMap]);
   }
+  // use react icon if not in map
   return reactIconMap[lowerName] || defaultIcon;
 };

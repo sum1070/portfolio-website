@@ -28,7 +28,7 @@ const About = () => {
     };
     return (
         <section
-            className="overflow-hidden relative"
+            className="overflow-hidden relative min-h-[200svh]"
             id={pageID}
         >
             <InvertedWave className='z-30' />

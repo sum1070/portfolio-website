@@ -16,7 +16,7 @@ const TechSkills = () => {
     frontend: "#423c6c",
     backend: "#e2baff",
     database: "#ff8fea",
-    tools: "#6cbbfd",
+    tools: "#0c4a6e",
   };
 
   return (
