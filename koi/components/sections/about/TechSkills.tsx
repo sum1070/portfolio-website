@@ -14,9 +14,9 @@ const TechSkills = () => {
   };
 
   const categoryColors = {
-    frontend: "#423c6c",
-    backend: "#e2baff",
-    database: "#ff8fea",
+    frontend: "#5B2C6A",
+    backend: "#41366B",
+    database: "#26406D",
     tools: "#0c4a6e",
   };
 
