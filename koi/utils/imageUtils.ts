@@ -40,14 +40,13 @@ export const iconImages = {
   cat1: "/images/cat1.svg", // https://www.svgrepo.com/svg/33137/cat-in-black-silhouette
   arrowDown: "/images/arrow-down.svg", // https://www.svgrepo.com/svg/108052/arrow-down-filled-triangle
   sleepy: "/images/sleepy.svg",
-
 };
 
 export const techImages = {
     motion: "/images/motion.svg", // https://www.svgrepo.com/svg/315753/menu-motion
     c: "/images/c.svg",
     git: "/images/git.svg", // self-made
-}
+};
 
 export const contactImages = {
   github: "/images/github.svg",
@@ -56,13 +55,21 @@ export const contactImages = {
   instagram: "/images/instagram.svg",
 };
 
+// Create a merged iconMap that includes all icons from all collections
 export const iconMap = {
   github: contactImages.github,
   discord: contactImages.discord,
   gmail: contactImages.email,
   instagram: contactImages.instagram,
+  
+  // Include tech images
   motion: techImages.motion,
   c: techImages.c,
   git: techImages.git,
   
+  // Include all icon images directly
+  ...Object.entries(iconImages).reduce((acc, [key, value]) => {
+    acc[key.toLowerCase()] = value;
+    return acc;
+  }, {} as Record<string, string>),
 };
