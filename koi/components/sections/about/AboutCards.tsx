@@ -1,7 +1,6 @@
 "use client";
 import { Card } from '@/components'
 import React from 'react'
-import contactData from './contactData';
 import NavButton from '@/components/navButton/NavButton';
 import { pageIDs } from '@/utils';
 

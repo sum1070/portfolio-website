@@ -28,8 +28,8 @@ export const reactIconMap: Record<string, React.ComponentType<any>> = {
   oracle: SiOracle ,
 
   // Tools
-  docker: FaDocker,
   googlecloud: BiLogoGoogleCloud,
+  docker: FaDocker,
   aws: FaAws,
 };
 

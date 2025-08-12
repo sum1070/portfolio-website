@@ -8,7 +8,7 @@ const contactData: CardDetails[] = contactsJson.contacts.map((contact) => {
   return {
     name: contact.name,
     url: contact.link,
-    icon: iconMap[name] || iconImages.cat1,
+    icon: iconMap[name as keyof typeof iconMap] || iconImages.cat1,
     iconAlt: `${contact.name} icon`,
     isSensitive: true,
   };

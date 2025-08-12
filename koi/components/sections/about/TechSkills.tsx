@@ -27,7 +27,6 @@ const TechSkills = () => {
           id={category}
           key={category}
         >
-          {/* type label */}
           <div className="text-gray-400 text-lg font-bold sticky top-18">
             <button
               className="category-label cursor-pointer hover:text-white transition"
@@ -38,7 +37,6 @@ const TechSkills = () => {
             </button>
           </div>
 
-          {/* skills */}
           <div className="w-full flex flex-wrap gap-4">
             {skillsByType[category].map((skill: Skill) => (
               <div
