@@ -21,7 +21,7 @@ const TechSkills = () => {
   };
 
   return (
-    <div id='tech-skills-container' className="w-full flex flex-col gap-8 ">
+    <div id='tech-skills-container' className=" flex flex-col gap-8 justify-center  ">
       <h1 className={cn(
         "hidden md:block text-2xl lg:text-3xl font-bold ",
       )}>

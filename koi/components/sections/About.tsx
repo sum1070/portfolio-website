@@ -7,6 +7,7 @@ import DevCyberCard from '../dev/DevCyberCard'
 import TechSkills from '@/components/sections/about/TechSkills';
 import BrElements from './about/BrElements';
 
+// lg: desktop
 const About = () => {
   const pageID = pageIDs.about;
   const colGap = 'gap-2 xs:gap-8 md:gap-8 lg:gap-12';
@@ -18,7 +19,7 @@ const About = () => {
   };
   return (
     <section
-      className="-mt-4 md:-mt-0 overflow-hidden relative min-h-[200svh]"
+      className="-mt-4 md:-mt-0 overflow-hidden relative min-h-[100svh] h-fit"
       id={pageID}
     >
       <BackgroundAbout />
@@ -27,6 +28,8 @@ const About = () => {
       </div>
       <CenterContainer className="px-4 lg:px-16 pt-20 lg:pt-8 relative z-40 flex-col">
         <div
+          // fr: fraction of available space
+          // first col fr _ second col fr
           id='main-pic-btns-grid'
           className={cn(
             "flex flex-col",
@@ -56,10 +59,19 @@ const About = () => {
               "lg:row-span-2 lg:col-start-1", // desktop: left col spanning both rows
               colGap,
               "lg:items-start",
-              "lg:pl-4"
+              "lg:pl-4",
             )}
           >
             <TechSkills />
+            <div
+              id='main-arrow-container'
+              className={cn(
+                "mt-6 flex justify-center",
+                "lg:left-1/4 lg:translate-x-[-50%]"
+              )}
+            >
+              <TriangleArrowUp onClick={scrollToTop} />
+            </div>
           </div>
 
           {/* div3 / mobile 3rd, desktop br */}
@@ -75,12 +87,14 @@ const About = () => {
           >
             <BrElements />
           </div>
+
+
         </div>
-        <div id='main-arrow-outer-container' className='p-4'>
+        {/* <div id='main-arrow-outer-container' className='p-4'>
           <div id='main-arrow-container' className="absolute justify-center pt-4">
             <TriangleArrowUp onClick={scrollToTop} />
           </div>
-        </div>
+        </div> */}
       </CenterContainer>
     </section>
   )
