@@ -30,44 +30,57 @@ const About = () => {
                 <div
                     id='main-pic-btns-grid'
                     className={cn(
-                        "flex flex-col lg:grid items-center",
-                        "lg:grid-cols-[1.5fr_0.8fr_1fr]",
-                        colGap,
-                    )}>
-                    <div
-                        id='main-btns-tl'
-                        className={cn(
-                            colGap,
-                            "order-2",
-                            "lg:items-end lg:order-1",
-                            "lg:pl-4"
-                        )}>
-                        <TechSkills />
-                    </div>
+                        "flex flex-col",
+                        "lg:grid lg:grid-cols-[1.5fr_1fr] lg:grid-rows-[auto_auto]",
+                        colGap
+                    )}
+                >
+                    {/* div1 / mobile 1st, desktop tr */}
                     <div
                         id='main-pic-container'
                         className={cn(
-                            "justify-center items-center order-first",
+                            "order-1", // stays 1st on mobile
+                            "lg:row-start-1 lg:col-start-2", // desktop: right col, top row
                             "w-1/2 mb-2 lg:mb-8",
-                            "lg:order-2 lg:w-full",
-                            "lg:max-w-[200px] xl:max-w-[250px] mx-auto"
-                        )}>
-                        <div className={cn("pt-2 w-full flex items-center justify-center")}>
-                            <DevCyberCard />
-                        </div>
+                            "lg:w-full",
+                            "lg:max-w-[200px] xl:max-w-[250px] mx-auto flex justify-center"
+                        )}
+                    >
+                        <DevCyberCard />
                     </div>
+
+                    {/* div2 / mobile 2nd, desktop left full */}
+                    <div
+                        id='main-btns-tl'
+                        className={cn(
+                            "order-2",
+                            "lg:row-span-2 lg:col-start-1", // desktop: left col spanning both rows
+                            colGap,
+                            "lg:items-start",
+                            "lg:pl-4"
+                        )}
+                    >
+                        <TechSkills />
+                    </div>
+
+                    {/* div3 / mobile 3rd, desktop br */}
                     <div
                         id='main-btns-br'
                         className={cn(
+                            "order-3",
+                            "lg:row-start-2 lg:col-start-2", // desktop: right col, bottom row
                             colGap,
-                            "order-3 py-2",
-                            "justify-center items-center ",
-                            "lg:items-start lg:order-3 lg:mt-4",
-                        )}>
+                            "justify-center items-center w-full",
+                            "lg:mt-4"
+                        )}
+                    >
                         <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Contact' titleCN='' />
                         <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Find Me!' />
                     </div>
                 </div>
+
+
+
                 <div id='main-arrow-outer-container' className='p-4'>
                     <div id='main-arrow-container' className="absolute justify-center pt-4">
                         <TriangleArrowUp onClick={scrollToTop} />
