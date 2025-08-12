@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import FetchImage from '@/utils/fetchImage';
 import { getSkillsByType, Skill } from '@/components/sections/about/SkillsData';
+import { cn } from '@/utils';
 
 const TechSkills = () => {
   const skillsByType = useMemo(() => getSkillsByType(), []);
@@ -16,20 +17,25 @@ const TechSkills = () => {
     frontend: "#423c6c",
     backend: "#e2baff",
     database: "#ff8fea",
-    tools: "#0c4a6e",
+    tools: "#6cbbfd",
   };
 
   return (
-    <div id='tech-skills-container' className="w-full flex flex-col gap-16">
+    <div id='tech-skills-container' className="w-full flex flex-col gap-8 ">
+      <h1 className={cn(
+        "hidden md:block text-2xl lg:text-3xl font-bold ",
+      )}>
+        Skills
+      </h1>
       {skillCategories.map((category) => (
         <div
-          className="grid md:grid-cols-[200px_1fr] gap-8 items-start"
+          className="flex flex-col md:flex-row gap-8 lg:gap-12"
           id={category}
           key={category}
         >
-          <div className="text-gray-400 text-lg font-bold sticky top-18">
+          <div id='cato-labels-container' className="md:sticky px-4 lg:px-8 md:w-24 lg:w-32">
             <button
-              className="category-label cursor-pointer hover:text-white transition"
+              className="text-lg font-bold cursor-pointer hover:text-white transition"
               onClick={() => scrollToSection(category)}
               style={{ color: categoryColors[category as keyof typeof categoryColors] || "#ffffff" }}
             >
@@ -37,13 +43,16 @@ const TechSkills = () => {
             </button>
           </div>
 
-          <div className="w-full flex flex-wrap gap-4">
+          <div id='skills-container' className="flex flex-wrap md:gap-2 lg:gap-4 px-2">
             {skillsByType[category].map((skill: Skill) => (
               <div
-                className="flex items-center gap-2 group hover:scale-105 transition-transform duration-300"
+                className={cn(
+                  "flex items-center bg-white/20 rounded-md px-2 py-1",
+                  "hover:scale-105 transition-transform duration-300"
+                )}
                 key={skill.name}
               >
-                <div className="flex items-center justify-center w-8 h-8">
+                <div className="flex items-center justify-center w-8 h-8 mr-2">
                   <FetchImage
                     src={skill.icon}
                     size={24}
@@ -52,12 +61,11 @@ const TechSkills = () => {
                     iconColor={categoryColors[category as keyof typeof categoryColors] || "#ffffff"}
                   />
                 </div>
-                <span className="text-lg">{skill.name}</span>
+                <span className="text-sm md:text-base whitespace-nowrap">{skill.name}</span>
               </div>
             ))}
           </div>
         </div>
-
       ))}
     </div>
   );

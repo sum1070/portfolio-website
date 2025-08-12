@@ -11,7 +11,7 @@ const InvertedWave = ({ className }: InvertedWaveProps) => {
         <div className={cn('scale-y-[-1] pb-8', className)} id='AboutWaveDiv'>
             {/*  wave must be absolute  */}
             <Wave
-                className="min-w-svw z-0 absolute inset-x-0 bottom-0"
+                className="min-w-svw z-50 absolute inset-x-0 bottom-0"
                 fill="var(--color-milky-white)"
                 paused={false}
                 options={{

@@ -1,100 +1,79 @@
 "use client";
 import React from 'react'
-import { Button, CenterContainer, InvertedWave, Navbar, TriangleArrowUp, Watching } from '@/components'
-import { cn, iconImages, pageIDs } from '@/utils'
-import WindowCard from '../WindowCard'
+import { CenterContainer, InvertedWave, TriangleArrowUp } from '@/components'
+import { cn, pageIDs } from '@/utils'
 import BackgroundAbout from './about/BackgroundAbout'
-import Wave from 'react-wavify'
-import AboutCards from './about/AboutCards'
 import NavButton from '../navButton/NavButton'
-import DevCard from '../dev/DevCard'
 import DevCyberCard from '../dev/DevCyberCard'
 import TechSkills from '@/components/sections/about/TechSkills';
 
 const About = () => {
     const pageID = pageIDs.about;
     const buttonClasses = 'max-w-60 md:max-w-none';
-    const colGap = 'gap-2 xs:gap-4 md:gap-12 lg:gap-20';
-    const buttonContainerClasses = "flex flex-col justify-center items-center w-full";
+    const colGap = 'gap-2 xs:gap-8 md:gap-8 lg:gap-12';
 
     const scrollToTop = () => {
         document.getElementById('hero')?.scrollIntoView({
             behavior: 'smooth'
         });
     };
-    const Text = {
-        h1: "text-3xl sm:text-4xl md:text-5xl xl:text-7xl ",
-        h2: "text-xl sm:text-2xl md:text-3xl xl:text-4xl ",
-    };
     return (
         <section
-            className="overflow-hidden relative min-h-[200svh]"
+            className="-mt-4 md:-mt-0 overflow-hidden relative min-h-[200svh]"
             id={pageID}
         >
-            <InvertedWave className='z-30' />
             <BackgroundAbout />
-            <CenterContainer className="min-h-dvh relative z-40 p-10 flex-col  ">
+            <div className="relative w-full z-[60] pb-4">
+                <InvertedWave className="w-full" />
+            </div>
+            <CenterContainer className="px-4 lg:px-16 pt-20 lg:pt-8 relative z-40 flex-col">
                 <div
                     id='main-pic-btns-grid'
                     className={cn(
-                        "-mt-8 lg:-mt-20",
-                        "flex flex-col md:grid md:grid-cols-3 items-center",
+                        "flex flex-col lg:grid items-center",
+                        "lg:grid-cols-[1.5fr_0.8fr_1fr]",
                         colGap,
                     )}>
                     <div
+                        id='main-btns-tl'
+                        className={cn(
+                            colGap,
+                            "order-2",
+                            "lg:items-end lg:order-1",
+                            "lg:pl-4"
+                        )}>
+                        <TechSkills />
+                    </div>
+                    <div
                         id='main-pic-container'
                         className={cn(
-                            "flex flex-col justify-center items-center order-first",
-                            "w-1/2 mb-8",
-                            "md:order-2 md:w-full "
+                            "justify-center items-center order-first",
+                            "w-1/2 mb-2 lg:mb-8",
+                            "lg:order-2 lg:w-full",
+                            "lg:max-w-[200px] xl:max-w-[250px] mx-auto"
                         )}>
-                        <div className={cn("w-full flex items-center justify-center")}>
+                        <div className={cn("pt-2 w-full flex items-center justify-center")}>
                             <DevCyberCard />
                         </div>
                     </div>
                     <div
-                        id='main-btns-tl'
-                        className={cn(
-                            buttonContainerClasses,
-                            colGap,
-                            "order-2",
-                            "md:items-end md:order-1",
-                        )}>
-                        <TechSkills />
-                        {/* <Button type="contact" href="/contact" className={cn(buttonClasses, "hover:-rotate-3  ")} />
-                            <Button type="projects" href="/projects" className={cn(buttonClasses, "hover:rotate-3")} /> */}
-                        {/* <DevCard /> */}
-                        {/* <img className={cn("object-scale-down, w-[2svw] h-[2svw]")} src={iconImages.cat1} alt='pic' decoding="async" fetchPriority="low" loading="lazy" /> */}
-
-                    </div>
-                    <div
                         id='main-btns-br'
                         className={cn(
-                            buttonContainerClasses,
                             colGap,
-                            "order-3 ",
-                            "md:items-start md:order-3 md:mt-4",
+                            "order-3 py-2",
+                            "justify-center items-center ",
+                            "lg:items-start lg:order-3 lg:mt-4",
                         )}>
+                        <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Contact' titleCN='' />
                         <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Find Me!' />
-                        <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Find Me!' />
-                        {/* <Button type="licences" href="/licences" className={cn(buttonClasses, "hover:rotate-3")} />
-                            <Button type="wip" href="/wip" className={cn(buttonClasses, "hover:-rotate-3")} /> */}
                     </div>
                 </div>
                 <div id='main-arrow-outer-container' className='p-4'>
-                    <div id='main-arrow-container' className="absolute  justify-center pt-4">
+                    <div id='main-arrow-container' className="absolute justify-center pt-4">
                         <TriangleArrowUp onClick={scrollToTop} />
                     </div>
                 </div>
             </CenterContainer>
-
-            {/* <CenterContainer className="relative flex-col">
-                <div className={cn(
-                    "flex flex-row",
-                    rowGap,
-                )} >
-                </div>
-            </CenterContainer> */}
         </section>
     )
 }
