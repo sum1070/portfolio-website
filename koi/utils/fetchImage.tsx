@@ -3,7 +3,7 @@ import React from 'react';
 import { iconMap } from './imageUtils';
 import { cn } from '@/utils';
 import { TBaseProps } from '@/lib/types';
-import { getIconComponent, localSvgIcons } from './iconMapping';
+import { getIconComponent } from './iconMapping';
 import { FaQuestion } from "react-icons/fa";
 
 interface FetchImageProps extends TBaseProps {
@@ -25,10 +25,10 @@ const FetchImage = ({
     iconColor,
 }: FetchImageProps) => {
     const lowerSrc = src.toLowerCase();
-    
-    if (useReactIcon && !localSvgIcons[lowerSrc]) {
+
+    if (useReactIcon && !(lowerSrc in iconMap)) {
         const IconComponent = getIconComponent(lowerSrc, FaQuestion);
-        
+
         if (typeof IconComponent === 'function') {
             // if it is function (react icon)
             const iconStyle = {
@@ -36,7 +36,7 @@ const FetchImage = ({
                 fontSize: size,
                 color: iconColor,
             };
-            
+
             return <IconComponent className={cn(className)} style={iconStyle} />;
         } else if (typeof IconComponent === 'object' && IconComponent !== null) {
             // cast local image
@@ -49,7 +49,7 @@ const FetchImage = ({
         }
     }
 
-    const imageSrc = (iconMap as Record<string, string>)[lowerSrc] || src;
+    const imageSrc = (lowerSrc in iconMap) ? iconMap[lowerSrc as keyof typeof iconMap] : src;
     return (
         <Image
             src={imageSrc}
