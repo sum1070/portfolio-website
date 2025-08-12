@@ -35,3 +35,15 @@ export const navLinks = [
   { name: "Contact", href: `/${pageIDs.contact}` },
   { name: "Licences", href: `/${pageIDs.licences}` },
 ];
+
+export const gradient = {
+  purple: " gradient-purple ",
+  deepBlue: " gradient-deep-blue ",
+  limeBLue: " gradient-lime-blue ",
+  insta : " gradient-insta ",
+  paleBlue: " gradient-pale-blue ",
+  ssr: " gradient-ssr ",
+  one: " gradient-1 ",
+  two: " gradient-2 ",
+  default: " gradient-default ",
+}

@@ -3,14 +3,12 @@ import React from 'react'
 import { CenterContainer, InvertedWave, TriangleArrowUp } from '@/components'
 import { cn, pageIDs } from '@/utils'
 import BackgroundAbout from './about/BackgroundAbout'
-import NavButton from '../navButton/NavButton'
 import DevCyberCard from '../dev/DevCyberCard'
 import TechSkills from '@/components/sections/about/TechSkills';
 import BrElements from './about/BrElements';
 
 const About = () => {
   const pageID = pageIDs.about;
-  const buttonClasses = 'max-w-60 md:max-w-none';
   const colGap = 'gap-2 xs:gap-8 md:gap-8 lg:gap-12';
 
   const scrollToTop = () => {
@@ -31,14 +29,12 @@ const About = () => {
         <div
           id='main-pic-btns-grid'
           className={cn(
-            // Mobile = single column in correct order
             "flex flex-col",
-            // Desktop = 2-column grid
             "lg:grid lg:grid-cols-[1.5fr_1fr] lg:grid-rows-[auto_auto]",
             colGap
           )}
         >
-          {/* Cyber card - mobile 1st, desktop right col top */}
+          {/* div1 / mobile 1st, desktop tr */}
           <div
             id='main-pic-container'
             className={cn(
@@ -52,7 +48,7 @@ const About = () => {
             <DevCyberCard />
           </div>
 
-          {/* Skills - mobile 2nd, desktop left col full height */}
+          {/* div2 / mobile 2nd, desktop left full */}
           <div
             id='main-btns-tl'
             className={cn(
@@ -66,7 +62,7 @@ const About = () => {
             <TechSkills />
           </div>
 
-          {/* Nav buttons - mobile 3rd, desktop right col bottom */}
+          {/* div3 / mobile 3rd, desktop br */}
           <div
             id='main-btns-br'
             className={cn(
@@ -78,14 +74,8 @@ const About = () => {
             )}
           >
             <BrElements />
-            {/* <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Contact' titleCN='' />
-            <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Find Me!' /> */}
           </div>
         </div>
-
-
-
-
         <div id='main-arrow-outer-container' className='p-4'>
           <div id='main-arrow-container' className="absolute justify-center pt-4">
             <TriangleArrowUp onClick={scrollToTop} />
