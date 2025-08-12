@@ -59,7 +59,7 @@ const About = () => {
               "lg:row-span-2 lg:col-start-1", // desktop: left col spanning both rows
               colGap,
               "lg:items-start",
-              "lg:pl-4",
+              "lg:pl-4 ",
             )}
           >
             <TechSkills />
@@ -81,7 +81,7 @@ const About = () => {
               "lg:row-start-2 lg:col-start-2", // desktop: right col, bottom row
               colGap,
               "justify-center items-center w-full",
-              "lg:mt-4"
+              "lg:mt-4 pt-8"
             )}
           >
             <BrElements />
