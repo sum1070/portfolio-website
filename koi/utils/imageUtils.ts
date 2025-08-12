@@ -49,9 +49,33 @@ export const contactImages = {
   instagram: "/images/instagram.svg",
 };
 
-export const iconMap: Record<string, string> = {
+export const iconMap = {
   github: contactImages.github,
   discord: contactImages.discord,
   gmail: contactImages.email,
   instagram: contactImages.instagram,
+  javascript: "/icons/javascript.svg",
+  react: "/icons/react.svg",
+  tailwind: "/icons/tailwindcss.svg",
+  html: "/icons/html5.svg",
+  css: "/icons/css3.svg",
+  gsap: "/icons/gsap.svg",
+  framer: "/icons/framer.svg",
+  c: "/icons/c.svg",
+  cpp: "/icons/cplusplus.svg",
+  python: "/icons/python.svg",
+  bootstrap: "/icons/bootstrap.svg",
+  nodejs: "/icons/nodejs.svg",
+  nextjs: "/icons/nextjs.svg",
+  express: "/icons/express.svg",
+  reactrouter: "/icons/reactrouter.svg",
+  nodemon: "/icons/nodemon.svg",
+  mongoose: "/icons/mongoose.svg",
+  mongodb: "/icons/mongodb.svg",
+  oracle: "/icons/oracle.svg",
+  git: "/icons/git.svg",
+  docker: "/icons/docker.svg",
+  googlecloud: "/icons/googlecloud.svg",
+  aws: "/icons/aws.svg",
+  // Add any other icons you need
 };
