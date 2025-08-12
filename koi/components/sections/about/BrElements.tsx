@@ -3,15 +3,24 @@ import NavButton from '@/components/navButton/NavButton';
 import { cn, gradient, pageIDs } from '@/utils';
 import React from 'react';
 
+const lgGap = 'lg:gap-8 ';
+const mbGap = 'gap-4 ';
+const gap = lgGap + mbGap;
+const lgContainer = "lg:flex-row " + lgGap;
+const mbContainer = "flex-col " + mbGap;
+
 export default function BrElements() {
     return (
         <div className={cn(
-            "flex flex-row justify-center items-center gap-8",
+            lgContainer, mbContainer,
+            "flex justify-center items-center ",
         )}>
             <NavButton href={pageIDs.contact} button='contact' title='Contact' />
-            <div className='flex flex-col gap-8 p-4 '>
-                <NavButton btnSize=' w-56 h-14 lg:w-64 lg:h-18 ' background={gradient.purple} href={pageIDs.projects} button='projects' title='Projects' titleCN='' />
-                <NavButton btnSize=' w-56 h-14 lg:w-64 lg:h-18 ' background={gradient.purple} href={pageIDs.licences} button='licences' title='Licences' titleCN='' />
+            <div className={cn(
+                'flex flex-col '+ gap,
+            )}>
+                <NavButton btnSize=' w-56 h-16 lg:w-64 lg:h-18 ' background={gradient.purple} href={pageIDs.projects} button='projects' title='Projects' titleCN='' />
+                <NavButton btnSize=' w-56 h-16 lg:w-64 lg:h-18 ' background={gradient.purple} href={pageIDs.licences} button='licences' title='Licences' titleCN='' />
             </div>
         </div>
     );
