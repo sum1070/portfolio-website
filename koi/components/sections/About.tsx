@@ -66,8 +66,7 @@ const About = () => {
             <div
               id='main-arrow-container'
               className={cn(
-                "mt-6 flex justify-center",
-                "lg:left-1/4 lg:translate-x-[-50%]"
+                "hidden lg-block lg:mt-28 lg:flex lg:justify-center ",
               )}
             >
               <TriangleArrowUp onClick={scrollToTop} />
@@ -90,11 +89,11 @@ const About = () => {
 
 
         </div>
-        {/* <div id='main-arrow-outer-container' className='p-4'>
-          <div id='main-arrow-container' className="absolute justify-center pt-4">
+        <div id='main-arrow-outer-container' className='p-4 pb-24 order-4 '>
+          <div id='main-arrow-container' className="justify-center pt-4 lg:hidden">
             <TriangleArrowUp onClick={scrollToTop} />
           </div>
-        </div> */}
+        </div>
       </CenterContainer>
     </section>
   )
