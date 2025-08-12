@@ -14,17 +14,19 @@ const TechSkills = () => {
   };
 
   const categoryColors = {
-    frontend: "#5B2C6A",
-    backend: "#41366B",
-    database: "#26406D",
+    languages: "#5B2C6A",
+    frameworks: "#41366B",
+    backend: "#26406D",
     tools: "#0c4a6e",
   };
 
   return (
     <div id='tech-skills-container' className=" flex flex-col gap-8 justify-center  ">
-      <h1 className={cn(
-        "hidden md:block text-2xl lg:text-3xl font-bold ",
-      )}>
+      <h1
+        id='skills-title'
+        className={cn(
+          "hidden md:block text-2xl lg:text-3xl font-bold ",
+        )}>
         Skills
       </h1>
       {skillCategories.map((category) => (
@@ -33,8 +35,9 @@ const TechSkills = () => {
           id={category}
           key={category}
         >
-          <div id='cato-labels-container' className="md:sticky px-4 lg:px-8 md:w-24 lg:w-32">
+          <div id='labels-container' className="md:sticky px-4 lg:px-8 md:w-24 lg:w-32">
             <button
+              id='category-label'
               className="text-lg font-bold cursor-pointer hover:text-white transition"
               onClick={() => scrollToSection(category)}
               style={{ color: categoryColors[category as keyof typeof categoryColors] || "#ffffff" }}

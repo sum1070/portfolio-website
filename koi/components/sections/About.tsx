@@ -19,14 +19,14 @@ const About = () => {
   };
   return (
     <section
-      className="-mt-4 md:-mt-0 overflow-hidden relative min-h-[100svh] h-fit"
+      className=" overflow-hidden relative min-h-[100svh] h-fit"
       id={pageID}
     >
       <BackgroundAbout />
-      <div className="relative w-full z-[60] pb-4">
+      <div id='wave-container' className="-mt-4 md:-mt-0 relative w-full z-[60] pb-4">
         <InvertedWave className="w-full" />
       </div>
-      <CenterContainer className="px-4 lg:px-16 pt-20 lg:pt-8 relative z-40 flex-col">
+      <CenterContainer className="w-full px-4 lg:px-8  relative z-40 flex-col">
         <div
           // fr: fraction of available space
           // first col fr _ second col fr
