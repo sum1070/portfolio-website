@@ -86,6 +86,7 @@ export type TButton =
   | "github"
   | "certificates"
   | "licences";
+
 export type VolumeContextType = {
   volume: number;
   isMuted: boolean;
