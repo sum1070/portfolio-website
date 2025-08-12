@@ -1,7 +1,7 @@
 import { BlueBackground, BlueZZZ, Navbar, Sleepy } from '@/components'
 import { cn, pageIDs } from '@/utils'
 import React from 'react'
-import TechSkills from './TechSkills'
+import TechSkills from '../../components/sections/about/TechSkills'
 
 const About = () => {
     const pageID = pageIDs.about

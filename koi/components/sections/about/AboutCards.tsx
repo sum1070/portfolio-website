@@ -2,12 +2,14 @@
 import { Card } from '@/components'
 import React from 'react'
 import contactData from './contactData';
+import NavButton from '@/components/navButton/NavButton';
+import { pageIDs } from '@/utils';
 
-const ContactCard = () => {
+const AboutCards = () => {
     return (
-        <div className='flex flex-col gap-4 px-2 sm:px-8 md:px-24 lg:px-12 lg:flex-row justify-center lg:gap-8'>
+        <div className='flex flex-col gap-4 px-2 sm:px-8 md:px-24 lg:px-12 lg:flex-row justify-center lg:gap-16 items-center'>
             <Card
-                cardContainerCN="lg:grow-4"
+                cardContainerCN="w-64 h-30 "
                 variant='compact'
                 title="Who am I?"
                 description={
@@ -16,7 +18,7 @@ const ContactCard = () => {
                     </p>
                 }
             />
-            <Card
+            {/* <Card
                 cardContainerCN="lg:grow-8"
                 variant='feature'
                 title="Find Me!"
@@ -26,9 +28,11 @@ const ContactCard = () => {
                     </p>
                 }
                 links={contactData}
-            />
+            /> */}
+            <NavButton href={pageIDs.contact} button='contact' title='Find Me!' />
+
         </div>
     )
 }
 
-export default ContactCard;
+export default AboutCards;

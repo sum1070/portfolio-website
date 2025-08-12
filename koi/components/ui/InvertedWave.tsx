@@ -1,9 +1,14 @@
 import Wave from "react-wavify";
+import { cn } from "@/utils";
 
-const InvertedWave = () => {
+interface InvertedWaveProps {
+    className?: string;
+}
+
+const InvertedWave = ({ className }: InvertedWaveProps) => {
     return (
         // Set wave to bottom, then invert the container
-        <div className='scale-y-[-1]' id='AboutWaveDiv'>
+        <div className={cn('scale-y-[-1] pb-8', className)} id='AboutWaveDiv'>
             {/*  wave must be absolute  */}
             <Wave
                 className="min-w-svw z-0 absolute inset-x-0 bottom-0"

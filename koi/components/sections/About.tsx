@@ -1,17 +1,21 @@
+"use client";
 import React from 'react'
-import { CenterContainer, InvertedWave, Navbar, TriangleArrowUp, Watching } from '@/components'
-import { cn, pageIDs } from '@/utils'
+import { Button, CenterContainer, InvertedWave, Navbar, TriangleArrowUp, Watching } from '@/components'
+import { cn, iconImages, pageIDs } from '@/utils'
 import WindowCard from '../WindowCard'
 import BackgroundAbout from './about/BackgroundAbout'
 import Wave from 'react-wavify'
-import ContactCard from './about/ContactCard'
-import NavButton from '../NavButton'
+import AboutCards from './about/AboutCards'
+import NavButton from '../navButton/NavButton'
+import DevCard from '../dev/DevCard'
+import DevCyberCard from '../dev/DevCyberCard'
+import TechSkills from '@/components/sections/about/TechSkills';
 
 const About = () => {
     const pageID = pageIDs.about;
     const buttonClasses = 'max-w-60 md:max-w-none';
-    const rowGap = 'gap-2 xs:gap-4 md:gap-12 lg:gap-20';
-    const buttonContainerClasses = "md:p-8 lg:p-16 flex flex-col justify-center items-center w-full";
+    const colGap = 'gap-2 xs:gap-4 md:gap-12 lg:gap-20';
+    const buttonContainerClasses = "flex flex-col justify-center items-center w-full";
 
     const scrollToTop = () => {
         document.getElementById('hero')?.scrollIntoView({
@@ -24,35 +28,65 @@ const About = () => {
     };
     return (
         <section
-            className="flex flex-col gap-2 overflow-hidden min-w-dvw min-h-dvh relative "
+            className="overflow-hidden relative"
             id={pageID}
         >
-            <InvertedWave />
+            <InvertedWave className='z-30' />
             <BackgroundAbout />
-            <div className="w-full pt-12 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
-                <div id='contact-text' className="md:mb-12 sm:mb-8 mb-4">
-                    <h1 className={cn(
-                        Text.h1,
-                        "font-black text-center",
+            <CenterContainer className="min-h-dvh relative z-40 p-10 flex-col  ">
+                <div
+                    id='main-pic-btns-grid'
+                    className={cn(
+                        "-mt-8 lg:-mt-20",
+                        "flex flex-col md:grid md:grid-cols-3 items-center",
+                        colGap,
                     )}>
-                        <Watching className=" w-[16svw] md:w-[10svw] inline-block ml-2 object-contain " />
-                    </h1>
-                    <h2 className={cn(
-                        Text.h2,
-                        "font-semibold mb-1 text-center",
-                    )}>
-                        Hello
-                    </h2>
-                    <p className="mb-2 text-center">
-                        I think putting something here would look nice, but idk what to write.
-                    </p>
+                    <div
+                        id='main-pic-container'
+                        className={cn(
+                            "flex flex-col justify-center items-center order-first",
+                            "w-1/2 mb-8",
+                            "md:order-2 md:w-full "
+                        )}>
+                        <div className={cn("w-full flex items-center justify-center")}>
+                            <DevCyberCard />
+                        </div>
+                    </div>
+                    <div
+                        id='main-btns-tl'
+                        className={cn(
+                            buttonContainerClasses,
+                            colGap,
+                            "order-2",
+                            "md:items-end md:order-1",
+                        )}>
+                        <TechSkills />
+                        {/* <Button type="contact" href="/contact" className={cn(buttonClasses, "hover:-rotate-3  ")} />
+                            <Button type="projects" href="/projects" className={cn(buttonClasses, "hover:rotate-3")} /> */}
+                        {/* <DevCard /> */}
+                        {/* <img className={cn("object-scale-down, w-[2svw] h-[2svw]")} src={iconImages.cat1} alt='pic' decoding="async" fetchPriority="low" loading="lazy" /> */}
+
+                    </div>
+                    <div
+                        id='main-btns-br'
+                        className={cn(
+                            buttonContainerClasses,
+                            colGap,
+                            "order-3 ",
+                            "md:items-start md:order-3 md:mt-4",
+                        )}>
+                        <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Find Me!' />
+                        <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Find Me!' />
+                        {/* <Button type="licences" href="/licences" className={cn(buttonClasses, "hover:rotate-3")} />
+                            <Button type="wip" href="/wip" className={cn(buttonClasses, "hover:-rotate-3")} /> */}
+                    </div>
                 </div>
-                {/* <ContactCard /> */}
-                <div className='pt-4 flex flex-row gap-8' >
-                    {/* <_NavButton /> */}
-                    <NavButton />
+                <div id='main-arrow-outer-container' className='p-4'>
+                    <div id='main-arrow-container' className="absolute  justify-center pt-4">
+                        <TriangleArrowUp onClick={scrollToTop} />
+                    </div>
                 </div>
-            </div>
+            </CenterContainer>
 
             {/* <CenterContainer className="relative flex-col">
                 <div className={cn(

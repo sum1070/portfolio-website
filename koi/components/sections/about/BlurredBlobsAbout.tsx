@@ -13,7 +13,7 @@ const BlurredBlobsAbout = () => {
     return (
         <>
             {/* Desktop */}
-            <div className={cn(BlobsContainerClasses, "hidden sm:block")}>
+            <div className={cn(BlobsContainerClasses, "hidden sm:block -z-10 ")}>
                 {/* L */}
                 <div
                     id='centerBlob'
