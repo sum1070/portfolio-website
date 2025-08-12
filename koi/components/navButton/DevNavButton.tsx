@@ -87,7 +87,8 @@ const NavButton = ({ href, className, button, title="title", titleCN, background
                         id='nav-btn-BG'
                         className={cn(
                             "absolute -top-[75%] -left-[75%] w-[250%] h-[250%] ",
-                            background || " bg-gradient-to-r from-[#ff0077] via-[#ddbaff] to-[#2e4dff] ",
+                            // background || "pillsBG",
+                            "bg-gradient-to-r from-[#ff0077] via-[#ddbaff] to-[#2e4dff] ",
                             "rounded-[40rem] ",
                             "filter blur-[8px] ",
                             "[animation:rotation_6s_linear_infinite] ",
