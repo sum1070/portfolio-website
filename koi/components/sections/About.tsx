@@ -6,6 +6,8 @@ import BackgroundAbout from './about/BackgroundAbout'
 import NavButton from '../navButton/NavButton'
 import DevCyberCard from '../dev/DevCyberCard'
 import TechSkills from '@/components/sections/about/TechSkills';
+import BottomRightDiv from './about/BrElements';
+import BrElements from './about/BrElements';
 
 const About = () => {
     const pageID = pageIDs.about;
@@ -64,7 +66,7 @@ const About = () => {
                     </div>
 
                     {/* div3 / mobile 3rd, desktop br */}
-                    <div
+                    {/* <div
                         id='main-btns-br'
                         className={cn(
                             "order-3",
@@ -76,7 +78,19 @@ const About = () => {
                     >
                         <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Contact' titleCN='' />
                         <NavButton className={cn(buttonClasses)} href={pageIDs.contact} button='contact' title='Find Me!' />
-                    </div>
+                    </div> */}
+                    <div
+                        id='main-btns-br'
+                        className={cn(
+                            "order-3",
+                            "lg:row-start-2 lg:col-start-2", // desktop: right col, bottom row
+                            colGap,
+                            "justify-center items-center w-full",
+                            "lg:mt-4"
+                        )}
+                    >
+                        < BrElements />
+                    </div>;
                 </div>
 
 
