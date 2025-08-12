@@ -14,9 +14,10 @@ interface ButtonProps {
     className?: string;
     button?: TButton;
     title?: string;
+    titleCN?: string;
 }
 
-const NavButton = ({ href, className, button, title="title" }: ButtonProps) => {
+const NavButton = ({ href, className, button, title="title", titleCN }: ButtonProps) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
 
@@ -101,7 +102,7 @@ const NavButton = ({ href, className, button, title="title" }: ButtonProps) => {
                 <div
                     className="absolute right-1/2 bottom-1/2 translate-x-1/2 translate-y-1/2 transition-all duration-700 ease-in-out group-hover:opacity-0 z-20"
                 >
-                    <div className="font-titillium-web text-3xl">
+                    <div className={cn(titleCN, "font-titillium-web text-3xl ")}>
                         {title}
                     </div>
                 </div>

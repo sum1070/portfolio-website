@@ -17,17 +17,6 @@ const AboutCards = () => {
                     </p>
                 }
             />
-            {/* <Card
-                cardContainerCN="lg:grow-8"
-                variant='feature'
-                title="Find Me!"
-                description={
-                    <p className='mt-1 text-base'>
-                        Still thinking if I should leak my data or not ...
-                    </p>
-                }
-                links={contactData}
-            /> */}
             <NavButton href={pageIDs.contact} button='contact' title='Find Me!' />
 
         </div>
