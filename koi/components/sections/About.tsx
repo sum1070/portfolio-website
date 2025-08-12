@@ -64,7 +64,7 @@ const About = () => {
           >
             <TechSkills />
             <div
-              id='main-arrow-container'
+              id='desktop-arrow-container'
               className={cn(
                 "hidden lg-block lg:mt-28 lg:flex lg:justify-center ",
               )}
@@ -89,10 +89,9 @@ const About = () => {
 
 
         </div>
-        <div id='main-arrow-outer-container' className='p-4 pb-24 order-4 '>
-          <div id='main-arrow-container' className="justify-center pt-4 lg:hidden">
+        {/* mobile arrow */}
+        <div id='mobile-arrow-container' className='p-8 pt-8 pb-24 order-4 justify-center lg:hidden'>
             <TriangleArrowUp onClick={scrollToTop} />
-          </div>
         </div>
       </CenterContainer>
     </section>
