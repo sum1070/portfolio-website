@@ -197,6 +197,27 @@ p {
   }
 }
 
+@keyframes cornerBright {
+  0% {
+    box-shadow: 0 0 12px 4px #00fff7, 0 0 0px 0px #00fff7;
+    border-color: #00fff7;
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 24px 8px #00fff7, 0 0 0px 0px #00fff7;
+    border-color: #00fff7;
+    opacity: 1;
+  }
+  100% {
+    box-shadow: none;
+    border-color: #22d3ee; /* cyan-400 */
+    opacity: 1;
+  }
+}
+
+.corner-bright-anim {
+  animation: cornerBright 0.5s;
+}
 
 /* ============= custom style class ============= */
 
