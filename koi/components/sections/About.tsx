@@ -7,10 +7,10 @@ import DevCyberCard from '../dev/DevCyberCard'
 import TechSkills from '@/components/sections/about/TechSkills';
 import BrElements from './about/BrElements';
 
-// lg: desktop
+// xl: desktop
 const About = () => {
   const pageID = pageIDs.about;
-  const gapY = 'gap-y-2 xs:gap-y-8 md:gap-y-8 lg:gap-y-12';
+  const gapY = 'gap-y-2 xs:gap-y-8 md:gap-y-8 xl:gap-y-12';
 
   const scrollToTop = () => {
     document.getElementById('hero')?.scrollIntoView({
@@ -35,7 +35,7 @@ const About = () => {
           "gap-x-4 gap-y-2 px-24 ",
           "py-[3svh] md:py-[4svh]", // bg grid pattern h / 3
           // desktop: 2 cols
-          "lg:grid lg:grid-cols-[1.4fr_1fr] lg:grid-rows-[1fr_1.6fr] ",
+          "xl:grid xl:grid-cols-[1.4fr_1fr] xl:grid-rows-[1fr_1.6fr] ",
           // mobile: one flex col
           "flex flex-col ",
         )}
@@ -44,8 +44,8 @@ const About = () => {
           id='div1-1st-tr'
           className={cn(
             "order-1", // mobile 1st
-            "lg:row-start-1 lg:col-start-2", // x = 1, y = 1
-            "mb-2 lg:mb-8",
+            "xl:row-start-1 xl:col-start-2", // x = 1, y = 1
+            "mb-2 xl:mb-8",
             "flex justify-center "
           )}
         >
@@ -56,15 +56,15 @@ const About = () => {
           id='div2-2n-lf'
           className={cn(
             "order-2",
-            "lg:row-span-2 lg:col-start-1 ", // desktop: left col spanning both rows
-            "lg:items-start lg:pl-4  ",
+            "xl:row-span-2 xl:col-start-1 ", // desktop: left col spanning both rows
+            "xl:items-start xl:pl-4  ",
           )}
         >
           <TechSkills />
           <div
             id='desktop-arrow-container'
             className={cn(
-              "hidden lg-block lg:mt-28 lg:flex lg:justify-center ",
+              "hidden xl-block xl:mt-28 xl:flex xl:justify-center ",
             )}
           >
             <TriangleArrowUp onClick={scrollToTop} />
@@ -75,9 +75,9 @@ const About = () => {
           id='div3-3rd-br'
           className={cn(
             "order-3",
-            "lg:row-start-2 lg:col-start-2 pb-[4svh] ", // desktop: right col, bottom row
+            "xl:row-start-2 xl:col-start-2 pb-[4svh] ", // desktop: right col, bottom row
             gapY,
-            "justify-center items-center w-full",
+            "justify-center items-center w-full h-full",
           )}
         >
           <BrElements />
@@ -86,7 +86,7 @@ const About = () => {
 
       </div>
       {/* mobile arrow */}
-      <div id='mobile-arrow-container' className='p-8 pt-8 pb-24 order-4 justify-center lg:hidden'>
+      <div id='mobile-arrow-container' className='p-8 pt-8 pb-24 order-4 justify-center xl:hidden'>
         <TriangleArrowUp onClick={scrollToTop} />
       </div>
     </section>
