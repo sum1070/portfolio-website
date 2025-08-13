@@ -7,6 +7,7 @@ export { default as PinkBackground } from "./theme/PinkBackground";
 export { default as BlueBackground } from "./theme/BlueBackground";
 export { default as GreenBackground } from "./theme/GreenBackground";
 export { default as Card } from "./Card";
+export { default as CyberCard } from "./cyberCard/CyberCard";
 
 export * from "./decorations";
 export * from "./sections";
@@ -16,6 +17,7 @@ export { default as MouseTrail } from "./ui/MouseTrail";
 export { default as FadeIn } from "./ui/FadeIn";
 export { default as KoiUrl } from "./ui/KoiUrl";
 export { default as Reveal } from "./ui/Reveal";
+export { default as InvertedWave } from "./ui/InvertedWave";
 
 export {
   NekoSleep,
@@ -24,5 +26,7 @@ export {
   Medal,
   Watching,
   Cat1,
+  Sleepy,
   ArrowDown,
+  BlueZZZ,
 } from "./Svg";

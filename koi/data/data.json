@@ -1,16 +1,98 @@
 {
-    "contacts": [
-        {
-            "name": "GitHub",
-            "link": "https://github.com/sum1070"
-        },
-        {
-            "name": "Gmail",
-            "link": "mailto:contact@kitsum.com"
-        },
-        {
-            "name": "Discord",
-            "link": "https://discord.gg/bjH5mbW6"
-        }
-    ]
+  "contacts": [
+    {
+      "name": "GitHub",
+      "link": "https://github.com/sum1070"
+    },
+    {
+      "name": "Gmail",
+      "link": "mailto:contact@kitsum.com"
+    },
+    {
+      "name": "Discord",
+      "link": "https://discord.gg/bjH5mbW6"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Javascript",
+      "type": "languages",
+      "icon": "javascript"
+    },
+    {
+      "name": "React",
+      "type": "frameworks",
+      "icon": "react"
+    },
+    {
+      "name": "Tailwind CSS",
+      "type": "frameworks",
+      "icon": "tailwind"
+    },
+    {
+      "name": "HTML",
+      "type": "languages",
+      "icon": "html"
+    },
+    {
+      "name": "CSS",
+      "type": "languages",
+      "icon": "css"
+    },
+    {
+      "name": "Motion",
+      "type": "frameworks",
+      "icon": "motion"
+    },
+    {
+      "name": "C",
+      "type": "languages",
+      "icon": "c"
+    },
+    {
+      "name": "Python",
+      "type": "languages",
+      "icon": "python"
+    },
+    {
+      "name": "Node.js",
+      "type": "backend",
+      "icon": "nodejs"
+    },
+    {
+      "name": "Next.js",
+      "type": "frameworks",
+      "icon": "nextjs"
+    },
+    {
+      "name": "Oracle",
+      "type": "backend",
+      "icon": "oracle"
+    },
+    {
+      "name": "Git",
+      "type": "tools",
+      "icon": "git"
+    },
+    {
+      "name": "Docker",
+      "type": "tools",
+      "icon": "docker"
+    },
+    {
+      "name": "GitHub",
+      "type": "tools",
+      "icon": "github"
+    },
+    {
+      "name": "Google Cloud",
+      "type": "tools",
+      "icon": "googlecloud"
+    },
+    {
+      "name": "AWS",
+      "type": "tools",
+      "icon": "aws"
+    }
+  ]
 }

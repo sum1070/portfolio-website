@@ -19,7 +19,7 @@ export const sounds = {
 
 export const pageIDs = {
   home: "home",
-  main: "main",
+  about: "about",
   projects: "projects",
   contact: "contact",
   licences: "licences",
@@ -27,8 +27,20 @@ export const pageIDs = {
 
 export const navLinks = [
   { name: "Home", href: `/${pageIDs.home}` },
-  { name: "Main", href: `/#${pageIDs.main}` },
+  { name: "About", href: `/#${pageIDs.about}` },
   { name: "Projects", href: `/${pageIDs.projects}` },
   { name: "Contact", href: `/${pageIDs.contact}` },
   { name: "Licences", href: `/${pageIDs.licences}` },
 ];
+
+export const gradient = {
+  purple: " gradient-purple ",
+  deepBlue: " gradient-deep-blue ",
+  limeBlue: " gradient-lime-blue ",
+  insta : " gradient-insta ",
+  paleBlue: " gradient-pale-blue ",
+  ssr: " gradient-ssr ",
+  one: " gradient-1 ",
+  two: " gradient-2 ",
+  default: " gradient-default ",
+}

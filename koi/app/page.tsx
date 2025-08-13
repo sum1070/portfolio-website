@@ -1,13 +1,15 @@
 'use client';
-import { Hero, MainPage, MouseTrail } from "@/components";
+import { About, Hero, MouseTrail } from "@/components";
 
 export default function Home() {
 
   return (
     <>
       <MouseTrail />
-      <Hero />
-      <MainPage />
+      <div className="flex flex-col ">
+        <Hero />
+        <About />
+      </div>
     </>
 
 
