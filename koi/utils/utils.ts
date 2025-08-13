@@ -38,7 +38,7 @@ export const navLinks = [
 export const gradient = {
   purple: " gradient-purple ",
   deepBlue: " gradient-deep-blue ",
-  limeBLue: " gradient-lime-blue ",
+  limeBlue: " gradient-lime-blue ",
   insta : " gradient-insta ",
   paleBlue: " gradient-pale-blue ",
   ssr: " gradient-ssr ",
