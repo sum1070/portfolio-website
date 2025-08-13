@@ -19,7 +19,14 @@ const svgLicenceLinks: CardDetails[] = [
     url: "https://www.svgrepo.com/svg/506463/discord",
     icon: "medal",
     iconAlt: "Discord Icon",
-  }
+  },
+  {
+    // <a href="" title="programming language animated icons"> created by Freepik - Flaticon</a>
+    name: "Programming language animated icons",
+    url: "https://www.flaticon.com/free-animated-icons/programming-language",
+    icon: "flatIcon",
+    iconAlt: "Flaticon Icon",
+  },
 ];
 
 export default svgLicenceLinks;
