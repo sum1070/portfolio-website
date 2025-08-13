@@ -13,7 +13,7 @@ const About = () => {
   const gapY = 'gap-y-2 xs:gap-y-8 md:gap-y-8 xl:gap-y-12';
 
   const scrollToTop = () => {
-    document.getElementById('hero')?.scrollIntoView({
+    document.getElementById(pageIDs.home)?.scrollIntoView({
       behavior: 'smooth'
     });
   };
@@ -62,13 +62,14 @@ const About = () => {
           )}
         >
           <TechSkills />
+          {/* desktop arrow */}
           <div
             id='desktop-arrow-container'
             className={cn(
-              "hidden xl-block xl:mt-28 xl:flex items-center justify-center ",
+              " h-full w-full mb-8 hidden xl-block xl:mt-28 xl:flex items-center justify-center ",
             )}
           >
-            <TriangleArrowUp onClick={scrollToTop} />
+              <TriangleArrowUp onClick={scrollToTop} />
           </div>
         </div>
 
