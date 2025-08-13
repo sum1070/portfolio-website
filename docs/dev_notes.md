@@ -43,6 +43,10 @@ npx create-next-app@latest
 - `rfc`: export default function
 - `rafcp`: export default function with props
 
+### Screen size
+
+Use `xl` for large screen
+
 ### Next.js redirect
 
 - `redirect`: Server-side redirect, e.g.:
@@ -56,7 +60,7 @@ npx create-next-app@latest
 
 - Example usage in typewriter: [typewiter.md](./typewriter.md)
 
-### Deployment Errors
+## Deployment errors
 
 I encountered deployment errors on Vercel even though `npm run build` worked locally.
 
@@ -75,3 +79,4 @@ git add --all .
 git commit -a -m "Versioning untracked files"
 git push origin master
 ```
+
