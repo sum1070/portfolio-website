@@ -1,6 +1,5 @@
 'use client';
-import { About, CenterContainer, Hero, MainPage, MouseTrail } from "@/components";
-import NavButton from "@/components/navButton/NavButton";
+import { About, Hero, MouseTrail } from "@/components";
 
 export default function Home() {
 
@@ -10,11 +9,7 @@ export default function Home() {
       <div className="flex flex-col ">
         <Hero />
         <About />
-        {/* <MainPage /> */}
       </div>
-      {/* <CenterContainer>
-        <NavButton />
-      </CenterContainer> */}
     </>
 
 
