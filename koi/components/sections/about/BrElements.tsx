@@ -22,8 +22,10 @@ export default function BrElements() {
                 <div className={cn(
                     'flex flex-col ' + gap,
                 )}>
-                    <NavButton btnSize=' w-56 h-16 xl:w-64 xl:h-18 ' background={gradient.purple} href={pageIDs.projects} button='projects' title='Projects' titleCN='' />
-                    <NavButton btnSize=' w-56 h-16 xl:w-64 xl:h-18 ' background={gradient.purple} href={pageIDs.licences} button='licences' title='Licences' titleCN='' />
+                    <NavButton btnSize=' w-56 h-16 xl:w-64 xl:h-18 ' background={gradient.paleBlue} href={pageIDs.projects} button='projects' title='Projects' titleCN='' />
+                    <div className='pt-8'>
+                        <NavButton btnSize=' w-56 h-16 xl:w-64 xl:h-18 ' background={gradient.insta} href={pageIDs.licences} button='licences' title='Licences' titleCN='text-milky-white' />
+                    </div>
                 </div>
             </div>
         </div>
