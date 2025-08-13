@@ -8,12 +8,12 @@ const BlobsContainerClasses = "absolute inset-0 overflow-hidden pointer-events-n
 const BlobsOpacity1 = "opacity-70 sm:opacity-40"
 const BlobsOpacity2 = "opacity-70"
 
-// Main Page
-const BlurredBlobsMain = () => {
+// About Page
+const BlurredBlobsAbout = () => {
     return (
         <>
             {/* Desktop */}
-            <div className={cn(BlobsContainerClasses, "hidden sm:block")}>
+            <div className={cn(BlobsContainerClasses, "hidden sm:block -z-10 ")}>
                 {/* L */}
                 <div
                     id='centerBlob'
@@ -72,4 +72,4 @@ const BlurredBlobsMain = () => {
     )
 }
 
-export default BlurredBlobsMain
+export default BlurredBlobsAbout

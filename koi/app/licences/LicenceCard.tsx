@@ -33,7 +33,7 @@ export const LicenceCard = () => {
                 title="Tools"
                 description={
                     <div>
-                        I created the SVGs with Inkscape <Spoiler >or just doodled them in Figma</Spoiler> and animated them with <KoiUrl href="https://lottiefiles.com/">LottieFiles</KoiUrl>.
+                        I created the SVGs with Inkscape <Spoiler accentColor="black" >or just doodled them in Figma</Spoiler>,<br/> and animated them with <KoiUrl href="https://lottiefiles.com/">LottieFiles</KoiUrl>.
                     </div>
 
                 }

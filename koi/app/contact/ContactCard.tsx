@@ -11,9 +11,7 @@ const ContactCard = () => {
                 variant='compact'
                 title="Who am I?"
                 description={
-                    <p>
-                        Guess.
-                    </p>
+                    <p>Guess.</p>
                 }
             />
             <Card
@@ -21,7 +19,7 @@ const ContactCard = () => {
                 variant='feature'
                 title="Find Me!"
                 description={
-                    <p className='mt-1 text-base'>
+                    <p className='mt-1 '>
                         Still thinking if I should leak my data or not ...
                     </p>
                 }
