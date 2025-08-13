@@ -25,34 +25,50 @@ const TechSkills = () => {
     return titleColors[i % titleColors.length];
   }
 
-  const largeScreen = {
-    title: "xl:text-3xl ",
-    cato: "xl:gap-12 xl:flex-row ",
+  const xlScreen = {
+    title: "xl:text-3xl xl:text-left ",
+    catoName: "xl:gap-12 xl:flex-row ",
     skills: "xl:text-lg ",
 
   }
+  const mdScreen = {
+    title: "hidden md:block text-center ",
+    catoName: "text-lg ",
+    skills: "md:text-base ",
+  }
+
+  const screen = {
+    catoName: "text-lg ",
+    title: "hidden ",
+    skills: "text-sm ",
+  }
 
   return (
-    <div id='tech-skills-container' className=" flex flex-col gap-8 justify-center  ">
-      <h1
-        id='skills-title'
-        className={cn(
-          "hidden md:block text-2xl font-bold ",
-        )}>
+    <div id='category-container' className="flex flex-col gap-4 xl:gap-8 justify-center ">
+      <h2
+        id='skills-section-title'
+        className={cn(xlScreen.title, mdScreen.title, screen.title, "")}>
         Skills
-      </h1>
+      </h2>
+      {/* skill labels */}
       {skillCategories.map((category, i) => (
         <div
           className={cn(
-            "flex flex-col gap-8 "
+            "flex flex-col gap-2 "
           )}
           id={category}
           key={category}
         >
-          <div id='labels-container' className="md:sticky px-4 xl:px-8 md:w-24 xl:w-32">
+          {/* category name e.g. frameworks */}
+          <div id='category-name-container' className=" md:sticky px-4 xl:px-8 md:w-24 xl:w-32">
             <button
-              id='category-label'
-              className="text-lg font-bold cursor-pointer hover:text-white transition"
+              id='category-name'
+              className={cn(
+                "font-bold cursor-pointer hover:text-white transition",
+                xlScreen.catoName,
+                mdScreen.catoName,
+                screen.catoName
+              )}
               onClick={() => scrollToSection(category)}
               style={{ color: getColor(i) }}
             >
@@ -60,16 +76,16 @@ const TechSkills = () => {
             </button>
           </div>
 
-          <div id='skills-container' className="flex flex-wrap md:gap-2 xl:gap-4 px-2">
+          <div id='skills-container' className="flex flex-row flex-wrap px-2">
             {skillsByType[category].map((skill: Skill) => (
               <div
                 className={cn(
                   "flex items-center bg-white/20 rounded-md px-2 py-1",
-                  "hover:scale-105 transition-transform duration-300"
+                  "hover:scale-105 xl:hover:scale-108 transition-transform duration-200"
                 )}
                 key={skill.name}
               >
-                <div className="flex items-center justify-center w-8 h-8 mr-2">
+                <div id='skills-logo' className="flex items-center justify-center w-8 h-8 mr-2">
                   <FetchImage
                     src={skill.icon}
                     size={24}
@@ -80,8 +96,10 @@ const TechSkills = () => {
                 </div>
                 <span
                   className={cn(
-                    "text-sm md:text-base whitespace-nowrap",
-                    largeScreen.skills,
+                    "whitespace-nowrap",
+                    xlScreen.skills,
+                    mdScreen.skills,
+                    screen.skills
                   )}>
                   {skill.name}
                 </span>

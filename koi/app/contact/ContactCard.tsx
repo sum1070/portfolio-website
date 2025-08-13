@@ -11,9 +11,7 @@ const ContactCard = () => {
                 variant='compact'
                 title="Who am I?"
                 description={
-                    <p>
-                        Guess.
-                    </p>
+                    <p>Guess.</p>
                 }
             />
             <Card
