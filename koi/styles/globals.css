@@ -25,7 +25,7 @@
   --color-pink1: #fcb0ff;
   --color-pink2: #fed6ff;
   --color-pink3: #ff8fea;
-  --color-bright-pink: #FF56AA;
+  --color-bright-pink: #ff56aa;
   --color-phlox: #c04cfd;
   --color-Mauve: #e2baff;
   --color-Mauve2: #e8c7ff;
@@ -84,10 +84,31 @@ p {
   @apply text-base;
 }
 
-
 /* ============== Animation =============== */
 .animate-scanMove {
+  background-size: 100% 200%;
+  background-repeat: no-repeat;
   animation: scanMove 2s linear infinite;
+}
+
+@keyframes scanMove {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% -100%;
+  }
+}
+
+#scan {
+  background: linear-gradient(
+    to bottom,
+    transparent 20%,
+    rgba(1, 196, 255, 0.267) 50%,
+    transparent 75%
+  );
+  background-size: 100% 200%;
+  background-repeat: no-repeat;
 }
 
 @keyframes bounce {
@@ -197,26 +218,68 @@ p {
   }
 }
 
-@keyframes cornerBright {
+@keyframes flashTR {
   0% {
-    box-shadow: 0 0 12px 4px #00fff7, 0 0 0px 0px #00fff7;
-    border-color: #00fff7;
-    opacity: 1;
+    border-color: #5c67ffcc;
+    box-shadow: 2px -2px 12px -2px #5c67ff99;
   }
-  60% {
-    box-shadow: 0 0 24px 8px #00fff7, 0 0 0px 0px #00fff7;
-    border-color: #00fff7;
-    opacity: 1;
+  20% {
+    border-color: rgba(0, 242, 234, 0.5);
+    /* h-offset v-offset blur spread color |inset|initial|inherit; */
+    box-shadow: 4px -2px 5px 1px #00f2ea80;
   }
   100% {
-    box-shadow: none;
-    border-color: #22d3ee; /* cyan-400 */
-    opacity: 1;
+    border-color: #00f2ea80;
+    box-shadow: 3px -2px 5px 1px #00f2ea20;
   }
 }
 
-.corner-bright-anim {
-  animation: cornerBright 0.5s;
+@keyframes flashTL {
+  0% {
+    border-color: #5c67ffcc;
+    box-shadow: -2px -2px 12px -2px #5c67ff99;
+  }
+  20% {
+    border-color: rgba(0, 242, 234, 0.5);
+    /* h-offset v-offset blur spread color |inset|initial|inherit; */
+    box-shadow: -2px -2px 5px 1px #00f2ea80;
+  }
+  100% {
+    border-color: #00f2ea80;
+    box-shadow: -2px -2px 5px 1px #00f2ea20;
+  }
+}
+
+@keyframes flashBR {
+  0% {
+    border-color: #5c67ffcc;
+    box-shadow: 2px 2px 12px -2px #5c67ff99;
+  }
+  20% {
+    border-color: rgba(0, 242, 234, 0.5);
+    /* h-offset v-offset blur spread color |inset|initial|inherit; */
+    box-shadow: 5px 4px 5px -1px #00f2ea80;
+  }
+  100% {
+    border-color: #00f2ea80;
+    box-shadow: 4px 4px 5px -1px #00f2ea20;
+  }
+}
+
+@keyframes flashBL {
+  0% {
+    border-color: #5c67ffcc;
+    box-shadow: -2px 2px 12px -2px #5c67ff99;
+  }
+  20% {
+    border-color: rgba(0, 242, 234, 0.5);
+    /* h-offset v-offset blur spread color |inset|initial|inherit; */
+    box-shadow: -2px 4px 5px 1px #00f2ea80;
+  }
+  100% {
+    border-color: #00f2ea80;
+    box-shadow: -2px 4px 5px 1px #00f2ea20;
+  }
 }
 
 /* ============= custom style class ============= */

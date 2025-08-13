@@ -1,15 +1,24 @@
 "use client";
 import { cn } from '@/utils';
 import React, { useState } from 'react';
-import Corner from './cyberCard/Corner';
+import Corner from './dev/cyberCard/Corner';
+import { TBaseProps } from '@/lib/types';
 
-const DevCool = () => {
-  const cardTitle = "My Name";
+interface Props extends TBaseProps {
+  cardCN?: string;
+}
+
+const CyberCard = ({
+  className,
+  cardCN = "",
+}: Props) => {
+  const cardTitle = "Margaret";
   const cardSize = "w-68 h-60";
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="cyber-card-container">
+    <div className="cyber-card-container w-full h-full">
+
       <div className={cn(
         "flex justify-center items-center p-4 font-fira-code cyber-glitch-wrapper ",
       )}>
@@ -17,11 +26,13 @@ const DevCool = () => {
         <button
           className={cn(
             "relative bg-[#9dceee] rounded-2xl border border-[hsla(178,100%,47%,0)] shadow-[0_0_1.5rem_rgba(0,242,234,0.1),inset_0_0_1rem_rgba(0,0,0,0.5)] overflow-hidden flex flex-col",
-            cardSize,
+            cardCN || cardSize,
           )}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
+          <div id='scan' className="z-20 absolute inset-0 opacity-20 animate-scanMove" />
+
           <Corner isHovered={isHovered} />
 
           <div
@@ -31,9 +42,6 @@ const DevCool = () => {
               "transition-opacity duration-300",
               isHovered ? "opacity-100" : "opacity-0"
             )} />
-
-          <div id='scan' className="z-20 absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/20 to-transparent opacity-50 animate-scanMove" />
-
           <div id='banner' className={cn(
             "h-20 bg-gradient-to-tr from-[#0061f21a] to-[#0d0d0da8] ",
             "border-b border-black2",
@@ -62,8 +70,8 @@ const DevCool = () => {
                 className={cn(
                   "cyber-profile-name",
                   "relative cursor-pointer text-3xl font-bold uppercase m-0 tracking-widest transition-all duration-300",
-                  isHovered 
-                    ? "bg-gradient-to-r from-[#00ffaa] to-[#00a2ff] bg-clip-text text-transparent filter drop-shadow-[0_0_10px_rgba(92,103,255,0.5)]" 
+                  isHovered
+                    ? "bg-gradient-to-r from-[#00ffaa] to-[#00a2ff] bg-clip-text text-transparent filter drop-shadow-[0_0_10px_rgba(92,103,255,0.5)]"
                     : "text-milky-white/90"
                 )}
                 style={{
@@ -84,4 +92,4 @@ const DevCool = () => {
   );
 }
 
-export default DevCool;
+export default CyberCard;

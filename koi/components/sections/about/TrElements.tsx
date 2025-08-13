@@ -1,5 +1,6 @@
 "use client";
 
+import CyberCard from '@/components/CyberCard';
 import { cn } from '@/utils';
 import React from 'react';
 
@@ -15,7 +16,7 @@ export default function TrElements() {
             xlContainer, mbContainer,
             "w-full h-full flex items-center justify-center pt-2 ",
         )}>
-
+            <CyberCard />
         </div>
     );
 }
