@@ -4,21 +4,23 @@ import NavButton from '@/components/navButton/NavButton'
 import BackgroundAbout from '@/components/sections/about/BackgroundAbout'
 import { cn, pageIDs } from '@/utils'
 import React from 'react'
-
+import DevCool from '@/components/dev/DevCool';
+import DevCyberCard from '@/components/dev/DevCyberCard';
+import CyberCard from '@/components/dev/CyberCard'
+import DevCard from '@/components/dev/DevCard'
 const page = () => {
     return (
         <>
             <BackgroundAbout />
-            <CenterContainer className='flex-wrap gap-12'>
-                <NavButton className={cn("")} href={pageIDs.contact} 
-                background='pillsBG'
-                button='contact' title='Dev' titleCN='' />
-                <NavButton className={cn(
-                    "text-white"
-                )} href={pageIDs.contact} 
-                background='pillsBGInsta'
-                button='contact' title='Instagram' titleCN='' />
-                <DevNavButton className={cn()} href={pageIDs.contact} button='contact' title='Original' />
+            <CenterContainer className='flex-col gap-4'>
+                <div className='flex flex-row justify-center items-center w-full gap-4'>
+                    <DevCyberCard />
+                    <DevCool />
+                </div>
+                <div className='flex flex-row justify-center items-center w-full gap-4'>
+                    <CyberCard />
+                    <DevCard />
+                </div>
             </CenterContainer>
         </>
     )

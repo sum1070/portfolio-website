@@ -1,0 +1,75 @@
+"use client";
+import { cn } from '@/utils';
+import React, { useState } from 'react';
+import Corner from './cyberCard/Corner';
+
+const DevCool = () => {
+  const cardTitle = "My Name";
+  const cardSize = "w-68 h-60";
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div className="cyber-card-container">
+      <div className={cn(
+        "bg-Mauve flex justify-center items-center p-4 font-fira-code cyber-glitch-wrapper ",
+      )}>
+
+        <button
+          className={cn(
+            "relative bg-[#9dceee] rounded-2xl border border-[hsla(178,100%,47%,0)] shadow-[0_0_1.5rem_rgba(0,242,234,0.1),inset_0_0_1rem_rgba(0,0,0,0.5)] overflow-hidden flex flex-col",
+            cardSize,
+          )}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <Corner isHovered={isHovered} />
+
+          <div
+            id='card-glare'
+            className={cn(
+              "card-glare absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent",
+              "transition-opacity duration-300",
+              isHovered ? "opacity-100" : "opacity-0"
+            )} />
+
+          <div id='scan' className="z-20 absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/20 to-transparent opacity-50 animate-scanMove" />
+
+          <div id='banner' className={cn(
+            "h-20 bg-gradient-to-tr from-[#0061f21a] to-[#0d0d0da8] ", // Increased from h-14 to h-20
+            "border-b border-black2",
+          )} />
+
+          <div id="avatar" className={cn(
+            "absolute left-[20%] -translate-x-1/2 top-5 z-10 w-[5.5rem] h-[5.5rem] bg-black2 rounded-full p-0.5 shadow-lg border transition-colors duration-500",
+            isHovered ? "border-[rgba(0,242,234,0.8)]" : "border-bright-pink"
+          )}>
+          </div>
+
+          <div
+            id='card-body'
+            className="p-4 pt-8 bg-linear-45 from-[#1a1a1a] to-[#262626] flex flex-col grow items-center text-center"
+          >
+            <div className="mb-3">
+              <div
+                className={cn(
+                  "cyber-profile-name ",
+                  "hover:text-transparent relative cursor-pointer text-3xl font-bold uppercase m-0 tracking-widest",
+                  isHovered ? "text-[rgba(0,242,234,0.9)]" : "text-milky-white/90"
+                )}
+                data-text={cardTitle}
+              >
+                {cardTitle}
+              </div>
+              <p className="opacity-80 text-bright-pink m-1 tracking-widest">
+                うへへ
+              </p>
+            </div>
+          </div>
+
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default DevCool;

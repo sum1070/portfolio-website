@@ -1,5 +1,5 @@
 "use client";
-import DevCyberCard from '@/components/dev/DevCyberCard';
+
 import { cn } from '@/utils';
 import React from 'react';
 
@@ -15,7 +15,6 @@ export default function TrElements() {
             xlContainer, mbContainer,
             "w-full h-full flex items-center justify-center pt-2 ",
         )}>
-            <DevCyberCard />
 
         </div>
     );
