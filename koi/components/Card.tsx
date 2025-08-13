@@ -54,9 +54,9 @@ const Card = ({
                 cardContainerCN,
                 animated && "hover:scale-[1.02] ", animationClasses
             )}>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold">
                     {title}
-                </h2>
+                </h3>
                 <div className="p-1">
                     <div className="mb-2">
                         {description}
@@ -89,7 +89,7 @@ const Card = ({
                     "relative z-10",
                     animated && "transition-transform duration-300 ease-in-out group-hover:translate-x-[4px] group-hover:translate-y-[-4px]"
                 )}>
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{title}</h2>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">{title}</h3>
                     <div className="mb-4 text-lg">{description}</div>
                     {links && links.length > 0 && (
                         <>
@@ -131,9 +131,9 @@ const Card = ({
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white px-6">
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white px-6">
                             {title}
-                        </h2>
+                        </h3>
                     </div>
                 </div>
             ) : (

@@ -13,40 +13,54 @@ const TechSkills = () => {
     document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const categoryColors = {
-    languages: "#5B2C6A",
-    frameworks: "#41366B",
-    backend: "#26406D",
-    tools: "#0c4a6e",
-  };
+  // must use 0c4a6e for tools
+  const titleColors = [
+    "#112C7B",
+    "#0F3677",
+    "#0E4072",
+    "#0c4a6e",
+  ]
+
+  const getColor = (i: number): string => {
+    return titleColors[i % titleColors.length];
+  }
+
+  const largeScreen = {
+    title: "xl:text-3xl ",
+    cato: "xl:gap-12 xl:flex-row ",
+    skills: "xl:text-lg ",
+
+  }
 
   return (
     <div id='tech-skills-container' className=" flex flex-col gap-8 justify-center  ">
       <h1
         id='skills-title'
         className={cn(
-          "hidden md:block text-2xl lg:text-3xl font-bold ",
+          "hidden md:block text-2xl font-bold ",
         )}>
         Skills
       </h1>
-      {skillCategories.map((category) => (
+      {skillCategories.map((category, i) => (
         <div
-          className="flex flex-col md:flex-row gap-8 lg:gap-12"
+          className={cn(
+            "flex flex-col gap-8 "
+          )}
           id={category}
           key={category}
         >
-          <div id='labels-container' className="md:sticky px-4 lg:px-8 md:w-24 lg:w-32">
+          <div id='labels-container' className="md:sticky px-4 xl:px-8 md:w-24 xl:w-32">
             <button
               id='category-label'
               className="text-lg font-bold cursor-pointer hover:text-white transition"
               onClick={() => scrollToSection(category)}
-              style={{ color: categoryColors[category as keyof typeof categoryColors] || "#ffffff" }}
+              style={{ color: getColor(i) }}
             >
               {category.toUpperCase()}
             </button>
           </div>
 
-          <div id='skills-container' className="flex flex-wrap md:gap-2 lg:gap-4 px-2">
+          <div id='skills-container' className="flex flex-wrap md:gap-2 xl:gap-4 px-2">
             {skillsByType[category].map((skill: Skill) => (
               <div
                 className={cn(
@@ -61,10 +75,16 @@ const TechSkills = () => {
                     size={24}
                     alt={`${skill.name} icon`}
                     useReactIcon={true}
-                    iconColor={categoryColors[category as keyof typeof categoryColors] || "#ffffff"}
+                    iconColor={getColor(i)}
                   />
                 </div>
-                <span className="text-sm md:text-base whitespace-nowrap">{skill.name}</span>
+                <span
+                  className={cn(
+                    "text-sm md:text-base whitespace-nowrap",
+                    largeScreen.skills,
+                  )}>
+                  {skill.name}
+                </span>
               </div>
             ))}
           </div>
