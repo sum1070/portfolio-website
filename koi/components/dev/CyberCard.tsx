@@ -40,9 +40,17 @@ const DevCool = () => {
           )} />
 
           <div id="avatar" className={cn(
-            "absolute left-[20%] -translate-x-1/2 top-5 z-10 w-[5.5rem] h-[5.5rem] bg-black2 rounded-full p-0.5 shadow-lg border transition-colors duration-500",
+            "absolute left-[20%] -translate-x-1/2 top-5 z-10 w-[5.5rem] h-[5.5rem] bg-black2 rounded-full p-0.5 drop-shadow-sky-200/15 drop-shadow-lg border transition-colors duration-500 overflow-hidden",
             isHovered ? "border-[rgba(0,242,234,0.8)]" : "border-bright-pink"
           )}>
+            <img
+              src="/images/painoko-15.jpg"
+              alt='icon'
+              className={cn(
+                "w-full h-full object-cover rounded-full",
+                isHovered ? "brightness-100" : "brightness-92"
+              )}
+            />
           </div>
 
           <div
