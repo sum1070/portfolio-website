@@ -7,7 +7,7 @@ export { default as PinkBackground } from "./theme/PinkBackground";
 export { default as BlueBackground } from "./theme/BlueBackground";
 export { default as GreenBackground } from "./theme/GreenBackground";
 export { default as Card } from "./Card";
-export { default as CyberCard } from "./CyberCard";
+export { default as CyberCard } from "./cyberCard/CyberCard";
 
 export * from "./decorations";
 export * from "./sections";

@@ -19,23 +19,31 @@ const About = () => {
   };
   return (
     <section
-      className=" overflow-hidden min-h-svh xl:max-h-svh min-w-svw relative h-fit"
+      className={cn(
+        "min-h-svh min-w-svw relative h-fit",
+        "xl:max-h-svh xl:overflow-hidden"
+      )}
       id={pageID}
     >
       <BackgroundAbout />
-      <div id='wave-container' className="-mt-4 md:-mt-0 relative min-w-svw z-[60] pb-4">
+      <div
+        id='wave-container'
+        className={cn(
+          "-mt-4 md:-mt-0 relative min-w-svw z-[60]",
+          "pb-18",
+          "xl:pb-21"
+        )}
+      >
         <InvertedWave className="w-full" />
       </div>
       <div
-        // fr: fraction of available space
-        // first col fr _ second col fr
         id='components-grid'
         className={cn(
-          "min-h-svh min-w-svw justify-center items-center ",
-          "gap-x-4 gap-y-2 px-24 ",
-          "py-[3svh] md:py-[4svh]", // bg grid pattern h / 3
+          // dont use item center otherwise it push skills to middle
+          "min-h-svh min-w-svw justify-center",
+          "gap-x-4 px-24 ",
           // desktop: 2 cols
-          "xl:grid xl:grid-cols-[1.4fr_1fr] xl:grid-rows-[1fr_1.5fr] ",
+          "xl:grid xl:grid-cols-[1.4fr_1fr] xl:grid-rows-[1fr_1.2fr] ",
           // mobile: one flex col
           "flex flex-col ",
         )}
@@ -46,6 +54,7 @@ const About = () => {
             "order-1", // mobile 1st
             "xl:row-start-1 xl:col-start-2", // x = 1, y = 1
             "flex ",
+            "pt-3 sm:pt-12 pb-2 xl:pt-18 ",
             "justify-center items-center w-full h-full",
           )}
         >
@@ -55,9 +64,9 @@ const About = () => {
         <div
           id='div2-2n-lf'
           className={cn(
-            "order-2",
+            "order-2 relative",
             "xl:row-span-2 xl:col-start-1 ", // desktop: left col spanning both rows
-            "xl:items-start xl:pl-4  ",
+            "xl:pl-4 xl:pt-2",
           )}
         >
           <TechSkills />
@@ -65,11 +74,14 @@ const About = () => {
           <div
             id='desktop-arrow-container'
             className={cn(
-              " h-full w-full mb-8 hidden xl-block xl:mt-28 xl:flex items-center justify-center ",
+              "absolute left-1/2 -translate-x-1/2",
+              "xl:flex hidden items-center justify-center",
+              "mt-18"
             )}
           >
-              <TriangleArrowUp onClick={scrollToTop} />
+            <TriangleArrowUp onClick={scrollToTop} />
           </div>
+
         </div>
 
         <div
