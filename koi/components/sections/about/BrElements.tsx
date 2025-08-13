@@ -3,7 +3,7 @@ import NavButton from '@/components/navButton/NavButton';
 import { cn, gradient, pageIDs } from '@/utils';
 import React from 'react';
 
-const xlGap = 'xl:gap-y-8 xl:gap-x-16 ';
+const xlGap = 'xl:gap-y-10 xl:gap-x-16 ';
 const mbGap = 'gap-y-8 gap-x-12 ';
 const gap = xlGap + mbGap;
 const xlContainer = "xl:flex-row " + xlGap;
@@ -23,9 +23,8 @@ export default function BrElements() {
                     'flex flex-col ' + gap,
                 )}>
                     <NavButton btnSize=' w-56 h-16 xl:w-64 xl:h-18 ' background={gradient.paleBlue} href={pageIDs.projects} button='projects' title='Projects' titleCN='' />
-                    <div className='pt-8'>
-                        <NavButton btnSize=' w-56 h-16 xl:w-64 xl:h-18 ' background={gradient.insta} href={pageIDs.licences} button='licences' title='Licences' titleCN='text-milky-white' />
-                    </div>
+                    <NavButton btnSize=' w-56 h-16 xl:w-64 xl:h-16 ' background={gradient.insta} href={pageIDs.licences} button='licences' title='Licences' titleCN='text-milky-white' />
+
                 </div>
             </div>
         </div>

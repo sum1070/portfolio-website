@@ -5,6 +5,7 @@
   --breakpoint-2xl: 100rem;
   --breakpoint-3xl: 120rem;
   --color-black: #171717;
+  --color-black2: #292525;
   --color-white: #ffffff;
   --color-milky-white: #fefaf3;
   --color-pale-purple0: #f3e9fd;
@@ -24,6 +25,8 @@
   --color-pink1: #fcb0ff;
   --color-pink2: #fed6ff;
   --color-pink3: #ff8fea;
+  --color-bright-pink: #FF56AA;
+  --color-phlox: #c04cfd;
   --color-Mauve: #e2baff;
   --color-Mauve2: #e8c7ff;
   --color-purblue: #aab1f2;
@@ -70,15 +73,21 @@ h1 {
 }
 
 h2 {
-  @apply text-xl sm:text-2xl md:text-3xl xl:text-4xl font-semibold ;
+  @apply text-xl sm:text-2xl md:text-3xl xl:text-4xl font-semibold;
 }
 
 h3 {
-  @apply text-lg sm:text-xl md:text-2xl xl:text-3xl font-semibold ;
+  @apply text-lg sm:text-xl md:text-2xl xl:text-3xl font-semibold;
 }
 
 p {
-  @apply text-base ;
+  @apply text-base;
+}
+
+
+/* ============== Animation =============== */
+.animate-scanMove {
+  animation: scanMove 2s linear infinite;
 }
 
 @keyframes bounce {
@@ -179,39 +188,6 @@ p {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out 0.5s forwards;
-}
-
-@keyframes flash {
-  0% {
-    filter: brightness(1);
-  }
-  7% {
-    filter: brightness(1.5);
-  }
-  14% {
-    filter: brightness(1);
-  }
-  21%,
-  100% {
-    filter: brightness(1.2);
-  }
-}
-
-.animate-flash {
-  animation: flash 0.75s ease-out 1 forwards;
-}
-
 @supports not (height: 100dvh) {
   .min-h-dvh {
     min-height: 100vh;
@@ -221,7 +197,7 @@ p {
   }
 }
 
-/* //////// */
+/* ============= custom style class ============= */
 
 .pills {
   transform-origin: bottom left;
@@ -426,7 +402,6 @@ p {
     hsla(138, 82%, 69%, 1) 0%,
     hsla(186, 100%, 50%, 1) 100%
   );
-
   background: -webkit-linear-gradient(
     90deg,
     hsla(138, 82%, 69%, 1) 0%,
@@ -437,21 +412,30 @@ p {
 }
 
 .gradient-default {
-  background: linear-gradient(
-    90deg,
-    #ff0077 0%,
-    #ddbaff 50%,
-    #2e4dff 100%
-  );
-  
+  background: linear-gradient(90deg, #ff0077 0%, #ddbaff 50%, #2e4dff 100%);
 }
 
-/* 
+/* /////////////////// */
+.cyber-profile-name:hover::before,
+.cyber-profile-name:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.cyber-profile-name:hover::before {
+  opacity: 1;
+  color: #a855f7;
+  animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 
-.gradient-{}
-.gradient-{}
-.gradient-{}
-.gradient-{} 
-
-*/
+.cyber-profile-name:hover::after {
+  color: #00f2ea;
+  animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}

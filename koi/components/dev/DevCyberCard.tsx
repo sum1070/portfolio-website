@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import styled from 'styled-components';
 
@@ -69,12 +70,12 @@ const StyledWrapper = styled.div`
     align-items: center;
     border-radius: 20px;
     transition: 700ms;
-    background: linear-gradient(45deg, #1a1a1a, #262626);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(45deg,#1a1a1a,#262626);
+    border: 2px solid rgba(255,255,255,0.1);
     overflow: hidden;
     box-shadow:
-      0 0 20px rgba(0, 0, 0, 0.3),
-      inset 0 0 20px rgba(0, 0, 0, 0.2);
+      0 0 20px rgba(0,0,0,0.3),
+      inset 0 0 20px rgba(0,0,0,0.2);
   }
 
   .card-content {
@@ -94,8 +95,8 @@ const StyledWrapper = styled.div`
     transition: 300ms ease-in-out;
     position: absolute;
     text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    color: rgba(255,255,255,0.7);
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
   }
 
   .title {
@@ -108,13 +109,13 @@ const StyledWrapper = styled.div`
     text-align: center;
     width: 100%;
     padding-top: 20px;
-    background: linear-gradient(45deg, #00ffaa, #00a2ff);
+    background: linear-gradient(45deg,#00ffaa,#00a2ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(0, 255, 170, 0.3));
+    filter: drop-shadow(0 0 15px rgba(0,255,170,0.3));
     text-shadow:
-      0 0 10px rgba(92, 103, 255, 0.5),
-      0 0 20px rgba(92, 103, 255, 0.3);
+      0 0 10px rgba(92,103,255,0.5),
+      0 0 20px rgba(92,103,255,0.3);
   }
 
   .subtitle {
@@ -125,13 +126,13 @@ const StyledWrapper = styled.div`
     font-size: 12px;
     letter-spacing: 2px;
     transform: translateY(30px);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255,255,255,0.6);
   }
 
   .highlight {
     color: #00ffaa;
     margin-left: 5px;
-    background: linear-gradient(90deg, #5c67ff, #ad51ff);
+    background: linear-gradient(90deg,#5c67ff,#ad51ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
@@ -152,8 +153,8 @@ const StyledWrapper = styled.div`
     border-radius: 50%;
     background: radial-gradient(
       circle at center,
-      rgba(0, 255, 170, 0.3) 0%,
-      rgba(0, 255, 170, 0) 70%
+      rgba(0,255,170,0.3) 0%,
+      rgba(0,255,170,0) 70%
     );
     filter: blur(15px);
     opacity: 0;
@@ -200,14 +201,14 @@ const StyledWrapper = styled.div`
 
   @keyframes particleFloat {
     0% {
-      transform: translate(0, 0);
+      transform: translate(0,0);
       opacity: 0;
     }
     50% {
       opacity: 1;
     }
     100% {
-      transform: translate(calc(var(--x, 0) * 30px), calc(var(--y, 0) * 30px));
+      transform: translate(calc(var(--x,0) * 30px),calc(var(--y,0) * 30px));
       opacity: 0;
     }
   }
@@ -254,8 +255,8 @@ const StyledWrapper = styled.div`
     content: "";
     background: radial-gradient(
       circle at center,
-      rgba(0, 255, 170, 0.1) 0%,
-      rgba(0, 162, 255, 0.05) 50%,
+      rgba(0,255,170,0.1) 0%,
+      rgba(0,162,255,0.05) 50%,
       transparent 100%
     );
     filter: blur(20px);
@@ -265,7 +266,7 @@ const StyledWrapper = styled.div`
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     transition: opacity 0.3s ease;
   }
 
@@ -552,8 +553,8 @@ const StyledWrapper = styled.div`
     -ms-user-select: none;
     /* Internet Explorer/Edge */
     user-select: none;
-    /* Non-prefixed version, currently
-  									supported by Chrome, Edge, Opera and Firefox */
+    /* Non-prefixed version,currently
+  									supported by Chrome,Edge,Opera and Firefox */
   }
 
   .card-glare {
@@ -561,11 +562,11 @@ const StyledWrapper = styled.div`
     inset: 0;
     background: linear-gradient(
       125deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.05) 45%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0.05) 55%,
-      rgba(255, 255, 255, 0) 100%
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.05) 45%,
+      rgba(255,255,255,0.1) 50%,
+      rgba(255,255,255,0.05) 55%,
+      rgba(255,255,255,0) 100%
     );
     opacity: 0;
     transition: opacity 300ms;
@@ -576,7 +577,7 @@ const StyledWrapper = styled.div`
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(92, 103, 255, 0.2),
+      rgba(92,103,255,0.2),
       transparent
     );
   }
@@ -625,7 +626,7 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: 15px;
     height: 15px;
-    border: 2px solid rgba(92, 103, 255, 0.3);
+    border: 2px solid rgba(92,103,255,0.3);
   }
 
   .corner-elements span:nth-child(1) {
@@ -662,7 +663,7 @@ const StyledWrapper = styled.div`
     background: linear-gradient(
       to bottom,
       transparent,
-      rgba(92, 103, 255, 0.1),
+      rgba(92,103,255,0.1),
       transparent
     );
     transform: translateY(-100%);
@@ -703,8 +704,8 @@ const StyledWrapper = styled.div`
   }
 
   #card:hover .corner-elements span {
-    border-color: rgba(92, 103, 255, 0.8);
-    box-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
+    border-color: rgba(92,103,255,0.8);
+    box-shadow: 0 0 10px rgba(92,103,255,0.5);
   }`;
 
 export default DevCyberCard;
