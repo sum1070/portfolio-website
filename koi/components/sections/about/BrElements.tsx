@@ -16,7 +16,7 @@ export default function BrElements() {
             "w-full h-full ",
         )}>
             <div className={cn(
-                ' flex flex-col md:flex-row justify-center items-center pt-20 ' + gap,
+                ' flex flex-col md:flex-row justify-center items-center pt-16 ' + gap,
             )}>
                 <NavButton href={pageIDs.contact} button='contact' title='Contact' />
                 <div className={cn(

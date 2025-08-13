@@ -7,7 +7,7 @@ export default function BackgroundAbout() {
             className=""
         >
             <BlurredBlobsAbout />
-            <div id='about-pattern-container'>
+            <div id='about-pattern-container' className='w-full' >
                 <Pattern
                     type="grid"
                     className="w-full h-[6svh] sm:h-[8svh] md:h-[12svh] z-40"
