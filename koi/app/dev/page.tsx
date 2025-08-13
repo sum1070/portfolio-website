@@ -2,9 +2,8 @@ import { CenterContainer } from '@/components'
 import BackgroundAbout from '@/components/sections/about/BackgroundAbout'
 import { cn, pageIDs } from '@/utils'
 import React from 'react'
-import DevCool from '@/components/dev/DevCool';
 import DevCyberCard from '@/components/dev/DevCyberCard';
-import CyberCard from '@/components/dev/CyberCard'
+import CyberCard from '@/components/CyberCard'
 const page = () => {
     return (
         <>
@@ -12,7 +11,6 @@ const page = () => {
             <CenterContainer className='flex-col gap-4'>
                 <div className='flex flex-row justify-center items-center w-full gap-4'>
                     <DevCyberCard />
-                    <DevCool />
                 </div>
                 <div className='flex flex-row justify-center items-center w-full gap-4'>
                     <CyberCard />

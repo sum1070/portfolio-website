@@ -47,7 +47,6 @@ const About = () => {
             "xl:row-start-1 xl:col-start-2", // x = 1, y = 1
             "flex ",
             "justify-center items-center w-full h-full",
-            "bg-red-400",
           )}
         >
           <TrElements />

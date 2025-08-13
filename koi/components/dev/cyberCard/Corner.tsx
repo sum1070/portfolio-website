@@ -12,24 +12,24 @@ const Corner = ({ isHovered = false }: CornerProps) => {
   return (
     <div className="corner-elements pointer-events-none">
       <span className={cn(
-        "top-[10px] left-[10px] w-[15px] h-[15px] border-t-2 border-l-2 ",
+        "top-[10px] left-[10px] w-[15px] h-[15px] border-t-2 border-l-2",
         corner,
-        isHovered && hoveredStyle
+        isHovered && `${hoveredStyle} animate-[flashTL_0.8s_ease-out_forwards] `
       )}></span>
       <span className={cn(
-        "top-[10px] right-[10px] w-[15px] h-[15px] border-t-2 border-r-2 ",
+        "top-[10px] right-[10px] w-[15px] h-[15px] border-t-2 border-r-2",
         corner,
-        isHovered && hoveredStyle
+        isHovered && `${hoveredStyle} animate-[flashTR_0.8s_ease-out_forwards] `
       )}></span>
       <span className={cn(
-        "bottom-[10px] left-[10px] w-[15px] h-[15px] border-b-2 border-l-2 ",
+        "bottom-[10px] left-[10px] w-[15px] h-[15px] border-b-2 border-l-2",
         corner,
-        isHovered && hoveredStyle
+        isHovered && `${hoveredStyle} animate-[flashBL_0.8s_ease-out_forwards] `
       )}></span>
       <span className={cn(
-        "bottom-[10px] right-[10px] w-[15px] h-[15px] border-b-2 border-r-2 ",
+        "bottom-[10px] right-[10px] w-[15px] h-[15px] border-b-2 border-r-2",
         corner,
-        isHovered && hoveredStyle
+        isHovered && `${hoveredStyle} animate-[flashBR_0.8s_ease-out_forwards] `
       )}></span>
     </div>
   );
