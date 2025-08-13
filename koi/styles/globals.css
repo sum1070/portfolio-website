@@ -501,8 +501,8 @@ p {
 }
 
 /* /////////////////// */
-.cyber-profile-name:hover::before,
-.cyber-profile-name:hover::after {
+.cyber-name:hover::before,
+.cyber-name:hover::after {
   content: attr(data-text);
   position: absolute;
   top: 0;
@@ -514,13 +514,13 @@ p {
   justify-content: center;
 }
 
-.cyber-profile-name:hover::before {
+.cyber-name:hover::before {
   opacity: 1;
   color: #a855f7;
   animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-.cyber-profile-name:hover::after {
+.cyber-name:hover::after {
   color: #00f2ea;
   animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
 }

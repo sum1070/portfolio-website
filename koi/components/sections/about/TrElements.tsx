@@ -14,7 +14,7 @@ export default function TrElements() {
     return (
         <div className={cn(
             xlContainer, mbContainer,
-            "w-full h-full flex items-center justify-center pt-2 ",
+            "w-full h-full flex items-center justify-center pb-3 pt-20 xl:pt-28 ",
         )}>
             <CyberCard />
         </div>
