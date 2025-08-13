@@ -3,9 +3,9 @@ import React from 'react'
 import { InvertedWave, TriangleArrowUp } from '@/components'
 import { cn, pageIDs } from '@/utils'
 import BackgroundAbout from './about/BackgroundAbout'
-import DevCyberCard from '../dev/DevCyberCard'
 import TechSkills from '@/components/sections/about/TechSkills';
 import BrElements from './about/BrElements';
+import TrElements from './about/TrElements';
 
 // xl: desktop
 const About = () => {
@@ -19,11 +19,11 @@ const About = () => {
   };
   return (
     <section
-      className=" overflow-hidden min-h-svh min-w-svw relative h-fit"
+      className=" overflow-hidden min-h-svh xl:max-h-svh min-w-svw relative h-fit"
       id={pageID}
     >
       <BackgroundAbout />
-      <div id='wave-container' className="-mt-4 md:-mt-0 relative min-w-svw z-[60] ">
+      <div id='wave-container' className="-mt-4 md:-mt-0 relative min-w-svw z-[60] pb-4">
         <InvertedWave className="w-full" />
       </div>
       <div
@@ -35,7 +35,7 @@ const About = () => {
           "gap-x-4 gap-y-2 px-24 ",
           "py-[3svh] md:py-[4svh]", // bg grid pattern h / 3
           // desktop: 2 cols
-          "xl:grid xl:grid-cols-[1.4fr_1fr] xl:grid-rows-[1fr_1.6fr] ",
+          "xl:grid xl:grid-cols-[1.4fr_1fr] xl:grid-rows-[1fr_1.5fr] ",
           // mobile: one flex col
           "flex flex-col ",
         )}
@@ -45,11 +45,12 @@ const About = () => {
           className={cn(
             "order-1", // mobile 1st
             "xl:row-start-1 xl:col-start-2", // x = 1, y = 1
-            "mb-2 xl:mb-8",
-            "flex justify-center "
+            "flex ",
+            "justify-center items-center w-full h-full",
+            "bg-red-400",
           )}
         >
-          <DevCyberCard />
+          <TrElements />
         </div>
 
         <div
@@ -64,7 +65,7 @@ const About = () => {
           <div
             id='desktop-arrow-container'
             className={cn(
-              "hidden xl-block xl:mt-28 xl:flex xl:justify-center ",
+              "hidden xl-block xl:mt-28 xl:flex items-center justify-center ",
             )}
           >
             <TriangleArrowUp onClick={scrollToTop} />
@@ -86,8 +87,10 @@ const About = () => {
 
       </div>
       {/* mobile arrow */}
-      <div id='mobile-arrow-container' className='p-8 pt-8 pb-24 order-4 justify-center xl:hidden'>
-        <TriangleArrowUp onClick={scrollToTop} />
+      <div id='mobile-arrow-container' className='p-8 pt-8 pb-24 order-4 items-center justify-center xl:hidden'>
+        <div id='inner-mobile-arrow-container' className='flex items-center justify-center'>
+          <TriangleArrowUp onClick={scrollToTop} />
+        </div>
       </div>
     </section>
   )

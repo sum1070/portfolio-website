@@ -35,9 +35,9 @@ const Hero = () => {
   ];
 
   const scrollNextPage = () => {
-    const MainPageSection = document.getElementById(pageIDs.about);
-    if (MainPageSection) {
-      MainPageSection.scrollIntoView({
+    const NextSection = document.getElementById(pageIDs.about);
+    if (NextSection) {
+      NextSection.scrollIntoView({
         behavior: 'smooth'
       });
     }

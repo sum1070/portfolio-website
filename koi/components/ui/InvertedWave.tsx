@@ -15,7 +15,7 @@ const InvertedWave = ({ className }: InvertedWaveProps) => {
                 fill="var(--color-milky-white)"
                 paused={false}
                 options={{
-                    height: 68,
+                    height: 80,
                     amplitude: 20,
                     speed: 0.3,
                     points: 4
