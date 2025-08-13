@@ -75,8 +75,8 @@ const TechSkills = () => {
               {category.toUpperCase()}
             </button>
           </div>
-
-          <div id='skills-container' className="flex flex-row flex-wrap px-2">
+          {/* skills in the category */}
+          <div id='skills-container' className="flex flex-row flex-wrap gap-2 md:gap-4 lg:gap-8 px-2">
             {skillsByType[category].map((skill: Skill) => (
               <div
                 className={cn(
