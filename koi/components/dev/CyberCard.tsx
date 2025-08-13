@@ -11,7 +11,7 @@ const DevCool = () => {
   return (
     <div className="cyber-card-container">
       <div className={cn(
-        "bg-Mauve flex justify-center items-center p-4 font-fira-code cyber-glitch-wrapper ",
+        "flex justify-center items-center p-4 font-fira-code cyber-glitch-wrapper ",
       )}>
 
         <button
@@ -35,7 +35,7 @@ const DevCool = () => {
           <div id='scan' className="z-20 absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/20 to-transparent opacity-50 animate-scanMove" />
 
           <div id='banner' className={cn(
-            "h-20 bg-gradient-to-tr from-[#0061f21a] to-[#0d0d0da8] ", // Increased from h-14 to h-20
+            "h-20 bg-gradient-to-tr from-[#0061f21a] to-[#0d0d0da8] ",
             "border-b border-black2",
           )} />
 
@@ -60,11 +60,15 @@ const DevCool = () => {
             <div className="mb-3">
               <div
                 className={cn(
-                  "cyber-profile-name ",
-                  "hover:text-transparent relative cursor-pointer text-3xl font-bold uppercase m-0 tracking-widest",
-                  isHovered ? "text-[rgba(0,242,234,0.9)]" : "text-milky-white/90"
+                  "cyber-profile-name",
+                  "relative cursor-pointer text-3xl font-bold uppercase m-0 tracking-widest transition-all duration-300",
+                  isHovered 
+                    ? "bg-gradient-to-r from-[#00ffaa] to-[#00a2ff] bg-clip-text text-transparent filter drop-shadow-[0_0_10px_rgba(92,103,255,0.5)]" 
+                    : "text-milky-white/90"
                 )}
-                data-text={cardTitle}
+                style={{
+                  textShadow: isHovered ? '0 0 10px rgba(92,103,255,0.5), 0 0 20px rgba(92,103,255,0.3)' : 'none'
+                }}
               >
                 {cardTitle}
               </div>
