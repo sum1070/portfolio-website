@@ -2,14 +2,17 @@
   "contacts": [
     {
       "name": "GitHub",
+      "icon": "github",
       "link": "https://github.com/sum1070"
     },
     {
       "name": "Gmail",
+      "icon": "email",
       "link": "mailto:kitsum1070+contact@gmail.com"
     },
     {
       "name": "Discord",
+      "icon": "discord",
       "link": "https://discord.gg/bjH5mbW6"
     }
   ],
