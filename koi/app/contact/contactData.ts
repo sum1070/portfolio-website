@@ -1,6 +1,6 @@
 import { CardDetails } from "@/lib/types";
 import contactsJson from "@/data/data.json";
-import { iconImages, iconMap } from "@/utils";
+import { iconMap } from "@/utils";
 
 const contactData: CardDetails[] = contactsJson.contacts.map((contact) => {
   const name = contact.name.toLowerCase();
@@ -8,7 +8,7 @@ const contactData: CardDetails[] = contactsJson.contacts.map((contact) => {
   return {
     name: contact.name,
     url: contact.link,
-    icon: iconMap[name as keyof typeof iconMap] || iconImages.cat1,
+    icon: name in iconMap ? name : "cat1",
     iconAlt: `${contact.name} icon`,
     isSensitive: true,
   };
