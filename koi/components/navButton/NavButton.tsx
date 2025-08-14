@@ -134,17 +134,17 @@ const NavButton = ({
                 </div>
 
                 {LiquidGlass(isHovering, mousePosition)}
-
-                {/* title */}
                 <div
-                    className="absolute right-1/2 bottom-1/2 translate-x-1/2 translate-y-1/2 transition-all duration-700 ease-in-out group-hover:opacity-0 z-20 "
+                    className={cn(
+                        "absolute right-1/2 bottom-1/2 translate-x-1/2 translate-y-1/2 transition-all duration-700 ease-in-out z-20",
+                        titleCN,
+                        "font-titillium-web text-3xl",
+                        button === 'contact' && "group-hover:opacity-0"
+                    )}
                 >
-                    <div className={cn(titleCN, "font-titillium-web text-3xl ")}>
-                        {title}
-                    </div>
+                    {title}
                 </div>
 
-                {/* only show < ContactPills/> if button is "contact" */}
                 {button === 'contact' && (
                     <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center ">
                         <ContactPills />
