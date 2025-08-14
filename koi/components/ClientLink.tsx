@@ -21,14 +21,12 @@ const ClientLink = ({ name, url, icon, iconAlt, isSensitive, className }: Client
     const renderIcon = () => {
         if (!icon) return null;
 
-        // Try to use React icon first
         const IconComponent = icon && getIconComponent(icon.replace(/^\/icons\/|\.svg$/g, ''));
 
         if (IconComponent) {
             return <IconComponent className="flex-shrink-0 w-5 h-5" />;
         }
 
-        // Fall back to image
         return (
             <div className="flex-shrink-0 w-5 h-5 relative">
                 <Image
