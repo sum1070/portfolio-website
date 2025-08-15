@@ -2,7 +2,6 @@
 import { About, Hero, MouseTrail } from "@/components";
 
 export default function Home() {
-
   return (
     <>
       <MouseTrail />
@@ -15,3 +14,4 @@ export default function Home() {
 
   );
 }
+
