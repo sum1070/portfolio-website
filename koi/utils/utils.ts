@@ -26,7 +26,7 @@ export const pageIDs = {
 }
 
 export const navLinks = [
-  { name: "Home", href: `/${pageIDs.home}` },
+  { name: "Home", href: `/` },
   { name: "About", href: `/#${pageIDs.about}` },
   { name: "Projects", href: `/${pageIDs.projects}` },
   { name: "Contact", href: `/${pageIDs.contact}` },

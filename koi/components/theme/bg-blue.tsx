@@ -3,6 +3,7 @@ import { positionClasses, TBaseProps } from '@/lib/types';
 import { cn } from '@/utils'
 import React from 'react'
 import Wave from 'react-wavify';
+import { bgPrimary } from './bg-primary';
 
 type TWaveOptions = {
     height?: number;
@@ -31,6 +32,8 @@ const BlueBackground = ({
             style={style}
         >
             <BDeco />
+            {bgPrimary()}
+            
             <div className={cn()} id='LicencesWave'>
                 <Wave
                     fill="url(#gradient)"

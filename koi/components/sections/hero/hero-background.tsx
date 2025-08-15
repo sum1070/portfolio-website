@@ -5,6 +5,7 @@ import { FadeIn, Pattern, CodeTextSVG } from "@/components";
 import HeroHeader from "./hero-header";
 import { springY } from "@/lib/hooks/useSpring";
 import { animationTime, borderColor, boxShadow } from "@/utils";
+import { bgPrimary } from "@/components/theme/bg-primary";
 
 export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
@@ -61,21 +62,7 @@ export default function BackgroundHero() {
             {/* Sound */}
             <FadeIn><HeroHeader /></FadeIn>
             {/* Background */}
-            <div
-                className="absolute inset-0 -z-40 "
-                style={{
-                    background: `
-                        radial-gradient(at 6% 8%, var(--color-purple2) 0%, transparent 50%),
-                        radial-gradient(at 95% 75%, var(--color-pink1) 0%, transparent 50%),
-                        radial-gradient(at 95% 15%, var(--color-blue2) 0%, transparent 50%),
-                        radial-gradient(at 50% 15%, var(--color-pale-purple3) 0%, transparent 50%),
-                        radial-gradient(at 52% 100%, var(--color-sky-blue) 0%, transparent 50%),
-                        radial-gradient(at 9% 88%, var(--color-pale-purple2) 0%, transparent 50%)
-                        `,
-                    backgroundColor: "var(--color-pale-purple1)",
-
-                }}
-            ></div>
+            {bgPrimary()}
             <FadeIn className="absolute inset-x-0 bottom-0">
                 <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-milky-white to-transparent"></div>
                 {/* white dots grid */}
@@ -257,4 +244,5 @@ export default function BackgroundHero() {
 
     );
 };
+
 
