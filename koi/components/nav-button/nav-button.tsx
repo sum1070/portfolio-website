@@ -139,7 +139,7 @@ const NavButton = ({
                         "absolute right-1/2 bottom-1/2 translate-x-1/2 translate-y-1/2 transition-all duration-700 ease-in-out z-20",
                         titleCN,
                         "font-titillium-web text-3xl",
-                        button === 'contact' && "group-hover:opacity-0"
+                        button === 'contact' && "group-hover:opacity-[0.01]"
                     )}
                 >
                     {title}
