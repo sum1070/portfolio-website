@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { getIconComponent } from '@/utils/iconMapping';
+import { getIconComponent } from '@/utils/icon-mapping';
 
 interface ClientLinkProps {
     name: string;

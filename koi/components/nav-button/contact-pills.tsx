@@ -1,6 +1,6 @@
 "use client";
 import { cn } from '@/utils';
-import FetchImage from '@/utils/fetchImage';
+import FetchImage from '@/utils/fetch-images';
 import React from 'react';
 
 const pillsTransition = "transition-transform duration-1100 ease-in-out ";

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { useVolume } from '@/lib/context/VolumeContext';
+import { useVolume } from '@/lib/context/volume-context';
 import { cn, soundButtonImages } from '@/utils';
 
   // TODO: theme change button

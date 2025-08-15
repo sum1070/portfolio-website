@@ -1,7 +1,7 @@
 import { cn } from '@/utils';
 import React from 'react';
 import Image from 'next/image';
-import ClientLink from './ClientLink';
+import ClientLink from './client-link';
 
 interface CardProps {
     cardContainerCN?: string;

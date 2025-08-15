@@ -1,9 +1,9 @@
 "use client";
 import { cn } from '@/utils';
 import React, { useState } from 'react';
-import Corner from './Corner';
+import Corner from './corner';
 import { TBaseProps } from '@/lib/types';
-import Avatar from './Avatar';
+import Avatar from './avatar';
 
 interface Props extends TBaseProps {
   cardCN?: string;

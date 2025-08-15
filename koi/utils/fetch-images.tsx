@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
-import { iconMap } from './imageUtils';
+import { iconMap } from './images-utils';
 import { cn } from '@/utils';
 import { TBaseProps } from '@/lib/types';
-import { getIconComponent } from './iconMapping';
+import { getIconComponent } from './icon-mapping';
 import { FaQuestion } from "react-icons/fa";
 
 interface FetchImageProps extends TBaseProps {

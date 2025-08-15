@@ -16,7 +16,7 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
                 />
             );
         }
-        if (iconKey === 'blueZZZ') {
+        if (iconKey === 'zzzBlue') {
             return (
                 <DotLottieReact
                     className={className}
@@ -56,6 +56,6 @@ export const {
     Cat1,
     ArrowDown,
     Sleepy,
-    BlueZZZ,
+    ZZZBlue,
 } = svgComponents;
 

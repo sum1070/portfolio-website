@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { fraunces } from '../lib/fonts';
-import { VolumeProvider } from "@/lib/context/VolumeContext";
+import { VolumeProvider } from "@/lib/context/volume-context";
 
 export const metadata: Metadata = {
   title: "koi",

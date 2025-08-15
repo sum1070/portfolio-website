@@ -9,8 +9,8 @@ export const myImages = {
 
 export const iconImages = {
   nekoSleep: "/images/neko-sleep.svg", // https://www.svgrepo.com/svg/368239/neko-sleep
-  sleepZZZ: "/animation/zzz.webm", // https://www.svgrepo.com/svg/479301/sleep
-  blueZZZ: "/animation/blue-zzz.webm",
+  sleepZZZ: "/animation/zzz-purple.webm", // https://www.svgrepo.com/svg/479301/sleep
+  zzzBlue: "/animation/zzz-blue.webm",
   attr4: "/images/attr4.svg", // https://www.svgrepo.com/svg/353062/creative-commons-attribution
   medal: "/images/medal.svg", // https://www.svgrepo.com/svg/495465/medal-star
   watching: "/images/watching.svg", // https://www.svgrepo.com/svg/28048/watching

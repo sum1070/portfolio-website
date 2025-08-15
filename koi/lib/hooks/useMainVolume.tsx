@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { useVolume } from "../context/VolumeContext";
+import { useVolume } from "../context/volume-context";
 import { Howl } from "howler";
 import { sounds } from "@/utils";
 
