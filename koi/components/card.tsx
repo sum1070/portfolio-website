@@ -77,7 +77,7 @@ const Card = ({
                 animated && "transition-all duration-300 ease-in-out hover:translate-y-[-5px] hover:shadow-xl"
             )}>
                 {animated && (
-                    <div className="absolute inset-0 rounded-lg transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100"
+                    <div className="absolute inset-0 rounded-lg transition-all duration-300 ease-in-out opacity-[0.01] group-hover:opacity-100"
                         style={{
                             boxShadow: "inset 8px -8px 0 0 rgba(116, 107, 166, 1)",
                             pointerEvents: "none"

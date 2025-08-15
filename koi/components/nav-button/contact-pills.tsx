@@ -5,7 +5,7 @@ import React from 'react';
 
 const pillsTransition = "transition-transform duration-1100 ease-in-out ";
 const pillsBase = "absolute z-30 w-[24%] h-full p-3 text-center border-t-2 border-r-2 border-sky-50 rounded-[45%_45%_45%_45%/15%_15%_15%_15%] origin-bottom-left relative overflow-hidden pill-group ";
-const pillsBefore = "before:content-[''] before:absolute before:inset-0 before:rounded-inherit before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 group-focus-within:before:opacity-100 ";
+const pillsBefore = "before:content-[''] before:absolute before:inset-0 before:rounded-inherit before:opacity-[0.01] before:transition-opacity before:duration-500 hover:before:opacity-100 group-focus-within:before:opacity-100 ";
 const pillsBGBase = "from-violet-950/[var(--bg-opacity)] via-violet-900/[var(--bg-opacity)]  to-violet-300/[var(--bg-opacity)] [--bg-opacity:30%] shadow-[1px_8px_18px_0px_#d285ff] ";
 const pillsBG = {
     bottom: `bg-linear-to-b ${pillsBGBase}`,
@@ -49,7 +49,7 @@ export default function ContactPills() {
                     // show on hover from BL
                     "group-hover:translate-x-[64%] group-hover:translate-y-[-20%]",
                     // gradient bg when hovered on this pill
-                    "before:bg-[linear-gradient(115deg,#ffd84d,#e95d98,#855cd6)]",
+                    "before:bg-[linear-gradient(115deg,#8189aa,#4867cc,#273044)]",
                     // flex to align the icon to the bottom
                     "flex flex-col justify-end items-center"
                 )}
@@ -62,7 +62,7 @@ export default function ContactPills() {
                 </span>
             </div>
             <div
-                id='github-pill'
+                id='email-pill'
                 className={cn(
                     pills.bottom,
                     // hidden by default
@@ -70,7 +70,7 @@ export default function ContactPills() {
                     // show on hover from BL
                     "group-hover:translate-x-[92%] group-hover:translate-y-[20%]",
                     // gradient bg when hovered on this pill
-                    "before:bg-[linear-gradient(115deg,#ffd84d,#e95d98,#855cd6)]",
+                    "before:bg-[linear-gradient(115deg,#50e7f1,#cd82f3,#f84f79)]",
                     // flex to align the icon to the bottom
                 )}
             >
