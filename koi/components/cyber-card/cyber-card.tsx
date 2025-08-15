@@ -32,7 +32,7 @@ const CyberCard = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div id='scan' className="z-20 absolute inset-0 opacity-20 animate-scanMove" />
+        <div id='scan' className="z-20 absolute inset-0 opacity-40 animate-scanMove" />
 
         <Corner isHovered={isHovered} />
 

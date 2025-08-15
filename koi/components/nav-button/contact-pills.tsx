@@ -17,6 +17,7 @@ const pills = {
 }
 
 export default function ContactPills() {
+    const imagesCN = "transition-all duration-500 ease-in-out group-hover:drop-shadow-[0_0_5px_white] pill-group-hover:scale-125";
     return (
     <>
         {/* pills 8 28 28 28 8 */}
@@ -35,7 +36,7 @@ export default function ContactPills() {
             >
                 <span className=" inline-block relative z-20">
                     <FetchImage
-                        className=" transition-all duration-500 ease-in-out group-hover:drop-shadow-[0_0_5px_white] pill-group-hover:scale-125"
+                        className= {imagesCN}
                         src="instagram"
                     />
                 </span>
@@ -56,7 +57,7 @@ export default function ContactPills() {
             >
                 <span className=" inline-block relative z-20 mb-2">
                     <FetchImage
-                        className=" transition-all duration-500 ease-in-out group-hover:drop-shadow-[0_0_5px_white] pill-group-hover:scale-125"
+                        className= {imagesCN}
                         src="github"
                     />
                 </span>
@@ -76,7 +77,7 @@ export default function ContactPills() {
             >
                 <span className=" inline-block relative z-20 mb-2">
                     <FetchImage
-                        className=" transition-all duration-500 ease-in-out group-hover:drop-shadow-[0_0_5px_white] pill-group-hover:scale-125"
+                        className= {imagesCN}
                         src="gmail"
                     />
                 </span>
