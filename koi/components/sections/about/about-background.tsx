@@ -1,5 +1,5 @@
 import { Pattern } from '@/components';
-import BlurredBlobsAbout from './BlurredBlobsAbout';
+import BlurredBlobsAbout from './about-blobs';
 
 export default function BackgroundAbout() {
     return (

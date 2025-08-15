@@ -1,7 +1,6 @@
 // Components
 export { TriangleArrowDown, TriangleArrowUp } from "./TriangleArrow";
 export { default as CenterContainer } from "./CenterContainer";
-export { default as Button } from "./Button";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as PinkBackground } from "./theme/PinkBackground";
 export { default as BlueBackground } from "./theme/BlueBackground";

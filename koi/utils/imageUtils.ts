@@ -1,34 +1,11 @@
-export const buttonImages = {
-  contact: {
-    normal: "/images/btn-contact.svg",
-    clicked: "/images/btnC-contact.svg",
-  },
-  wip: {
-    normal: "/images/btn-wip.svg",
-    clicked: "/images/btnC-wip.svg",
-  },
-  projects: {
-    normal: "/images/btn-proj.svg",
-    clicked: "/images/btnC-proj.svg",
-  },
-  github: {
-    normal: "/images/btn-github.svg",
-    clicked: "/images/btnC-github.svg",
-  },
-  certificates: {
-    normal: "/images/btn-certificates.svg",
-    clicked: "/images/btnC-certificates.svg",
-  },
-  licences: {
-    normal: "/images/btn-licences.svg",
-    clicked: "/images/btnC-licences.svg",
-  },
-};
-
 export const soundButtonImages = {
   soundOn: "/images/sound-on.svg",
   soundOff: "/images/sound-off.svg",
 };
+
+export const myImages = {
+  avatar: "/images/avatar.webp",
+}
 
 export const iconImages = {
   nekoSleep: "/images/neko-sleep.svg", // https://www.svgrepo.com/svg/368239/neko-sleep

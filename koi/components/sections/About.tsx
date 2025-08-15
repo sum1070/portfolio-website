@@ -2,10 +2,9 @@
 import React from 'react'
 import { InvertedWave, TriangleArrowUp } from '@/components'
 import { cn, pageIDs } from '@/utils'
-import BackgroundAbout from './about/BackgroundAbout'
-import TechSkills from '@/components/sections/about/TechSkills';
-import BrElements from './about/BrElements';
-import TrElements from './about/TrElements';
+import BackgroundAbout from './about/about-background'
+import TechSkills from '@/components/sections/about/tech-skills';
+import { TrElements, BrElements } from './about/about-elements';
 
 // xl: desktop
 const About = () => {

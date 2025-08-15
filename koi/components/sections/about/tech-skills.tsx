@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import FetchImage from '@/utils/fetchImage';
-import { getSkillsByType, Skill } from '@/components/sections/about/SkillsData';
+import { getSkillsByType, Skill } from '@/components/sections/about/skills-data';
 import { cn } from '@/utils';
 
 const TechSkills = () => {
