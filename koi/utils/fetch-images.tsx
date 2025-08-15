@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import { iconMap } from './images-utils';
+import { iconMap } from './image-utils';
 import { cn } from '@/utils';
 import { TBaseProps } from '@/lib/types';
 import { getIconComponent } from './icon-mapping';
