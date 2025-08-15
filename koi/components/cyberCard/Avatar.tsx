@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@/utils';
+import { cn, myImages } from '@/utils';
 
 interface CornerProps {
     isHovered?: boolean;
@@ -19,7 +19,7 @@ const Avatar = ({ isHovered = false }: CornerProps) => {
             )}
         >
             <img
-                src="/images/avatar.png"
+                src={myImages.avatar}
                 alt="icon"
                 className={cn(
                     "w-full h-full object-cover rounded-full",

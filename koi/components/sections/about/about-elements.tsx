@@ -1,15 +1,27 @@
 "use client";
 import NavButton from '@/components/navButton/NavButton';
+import CyberCard from '@/components/cyberCard/CyberCard';
 import { cn, gradient, pageIDs } from '@/utils';
 import React from 'react';
 
-const xlGap = 'xl:gap-y-10 xl:gap-x-16 ';
+const xlGap = 'xl:gap-y-8 xl:gap-x-16 ';
 const mbGap = 'gap-y-8 gap-x-12 ';
 const gap = xlGap + mbGap;
 const xlContainer = "xl:flex-row " + xlGap;
 const mbContainer = "flex-col " + mbGap;
 
-export default function BrElements() {
+export const TrElements = () => {
+    return (
+        <div className={cn(
+            xlContainer, mbContainer,
+            "w-full h-full flex items-center justify-center ",
+        )}>
+            <CyberCard />
+        </div>
+    );
+}
+
+export const BrElements = () => {
     return (
         <div className={cn(
             xlContainer, mbContainer,
@@ -28,6 +40,5 @@ export default function BrElements() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
-

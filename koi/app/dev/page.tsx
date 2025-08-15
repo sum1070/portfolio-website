@@ -1,5 +1,5 @@
 import { CenterContainer } from '@/components'
-import BackgroundAbout from '@/components/sections/about/BackgroundAbout'
+import BackgroundAbout from '@/components/sections/about/about-background'
 import React from 'react'
 
 
