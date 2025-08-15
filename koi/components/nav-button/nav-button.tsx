@@ -1,11 +1,11 @@
 "use client";
 import { cn, sounds } from '@/utils';
 import React, { useState, useRef, useEffect } from 'react';
-import { LiquidGlass } from './LiquidGlass';
+import { LiquidGlass } from './liquid-glass';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';
 import Link from 'next/link';
 import useSound from 'use-sound';
-import ContactPills from './ContactPills';
+import ContactPills from './contact-pills';
 import { TButton } from '@/lib/types';
 
 interface ButtonProps {

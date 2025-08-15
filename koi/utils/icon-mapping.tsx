@@ -3,7 +3,7 @@ import { RiNextjsFill, RiReactjsLine, RiTailwindCssFill, RiNodejsFill  } from "r
 import { FaQuestion, FaAws } from "react-icons/fa";
 import { FaHtml5, FaCss3Alt, FaDocker  } from "react-icons/fa6";
 import { SiOracle } from "react-icons/si";
-import { iconMap } from './imageUtils';
+import { iconMap } from './images-utils';
 import Image from 'next/image';
 import { BiLogoGoogleCloud } from "react-icons/bi";
 

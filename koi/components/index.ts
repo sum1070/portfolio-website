@@ -1,22 +1,22 @@
 // Components
-export { TriangleArrowDown, TriangleArrowUp } from "./TriangleArrow";
-export { default as CenterContainer } from "./CenterContainer";
-export { default as Navbar } from "./navbar/Navbar";
-export { default as PinkBackground } from "./theme/PinkBackground";
-export { default as BlueBackground } from "./theme/BlueBackground";
-export { default as GreenBackground } from "./theme/GreenBackground";
-export { default as Card } from "./Card";
-export { default as CyberCard } from "./cyberCard/CyberCard";
+export { TriangleArrowDown, TriangleArrowUp } from "./triangle-arrow";
+export { default as CenterContainer } from "./center-container";
+export { default as Navbar } from "./nav-bar/nav-bar";
+export { default as PinkBackground } from "./theme/bg-pink";
+export { default as BlueBackground } from "./theme/bg-blue";
+export { default as GreenBackground } from "./theme/bg-green";
+export { default as Card } from "./card";
+export { default as CyberCard } from "./cyber-card/cyber-card";
 
 export * from "./decorations";
 export * from "./sections";
 
-export { default as Typewriter } from "./ui/Typewriter";
-export { default as MouseTrail } from "./ui/MouseTrail";
-export { default as FadeIn } from "./ui/FadeIn";
-export { default as KoiUrl } from "./ui/KoiUrl";
-export { default as Reveal } from "./ui/Reveal";
-export { default as InvertedWave } from "./ui/InvertedWave";
+export { default as Typewriter } from "./ui/typewriter";
+export { default as MouseTrail } from "./ui/mouse-trial";
+export { default as FadeIn } from "./ui/fade-in";
+export { default as KoiUrl } from "./ui/koi-url";
+export { default as Reveal } from "./ui/reveal";
+export { default as InvertedWave } from "./ui/inverted-wave";
 
 export {
   NekoSleep,
@@ -27,5 +27,5 @@ export {
   Cat1,
   Sleepy,
   ArrowDown,
-  BlueZZZ,
-} from "./Svg";
+  ZZZBlue,
+} from "./svg-creater";

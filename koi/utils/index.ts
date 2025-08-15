@@ -1,4 +1,4 @@
-export * from './imageUtils';
-export * from './colorUtils';
-export * from './motionUtils';
+export * from './images-utils';
+export * from './color-utils';
+export * from './motion-utils';
 export * from './utils';

@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { cn, navLinks } from '@/utils';
-import Hamburger from './Hamburger';
-import NavMenu from './NavMenu';
+import Hamburger from './hamburger';
+import NavMenu from './nav-menu';
 
 interface NavbarProps {
     currentPage?: string;

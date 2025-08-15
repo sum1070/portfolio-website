@@ -2,7 +2,7 @@ import { Bar, Dot, LineCircle, Triangle } from "@/components/decorations";
 import { motion, useAnimate, useScroll } from "framer-motion";
 import { useEffect } from "react";
 import { FadeIn, Pattern, CodeTextSVG } from "@/components";
-import HeroHeader from "./HeroHeader";
+import HeroHeader from "./hero-header";
 import { springY } from "@/lib/hooks/useSpring";
 import { animationTime, borderColor, boxShadow } from "@/utils";
 

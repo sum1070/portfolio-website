@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from 'react';
-import FetchImage from '@/utils/fetchImage';
+import FetchImage from '@/utils/fetch-images';
 import { getSkillsByType, Skill } from '@/components/sections/about/skills-data';
 import { cn } from '@/utils';
 
