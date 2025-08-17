@@ -103,13 +103,13 @@ set "defaultMsg=Back up works with small non-breaking changes"
 echo.
 powershell -Command "Write-Host 'Master~ Select a commit tag meow:' -ForegroundColor Cyan"
 powershell -Command "Write-Host '[0] Show help' -ForegroundColor Yellow"
-powershell -Command "Write-Host '[1] [GIT]   [2] [FEAT]   [3] [FIX]   [4] [DOC]   [5] [STYLE]   [6] [CHORES]' -ForegroundColor Green"
+powershell -Command "Write-Host '[1] [GIT]   [2] [FEAT]   [3] [FIX]   [4] [DOC]   [5] [STYLE]   [6] [CHORES] [9] [QuickGit]' -ForegroundColor Green"
 powershell -Command "Write-Host 'Time to press the number key meow~ (or q to quit)' -ForegroundColor Cyan"
 
 set "commitTag="
 powershell -Command ^
     "$key = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');" ^
-    "if ($key.Character -match '^[0-6qQ]$') { Write-Output $key.Character } else { Write-Output '' }" > tag_choice.tmp
+    "if ($key.Character -match '^[0-69qQ]$') { Write-Output $key.Character } else { Write-Output '' }" > tag_choice.tmp
 set /p commitTag=<tag_choice.tmp
 if exist tag_choice.tmp del tag_choice.tmp
 
@@ -121,6 +121,15 @@ if /i "%commitTag%"=="q" (
     goto :Unstaged
 )
 
+:: if 9 is selected (quick git script updates)
+if "%commitTag%"=="9" (
+    set "prefix=[QuickGit] "
+    set "commitMsg=Update the quick git script"
+    echo.
+    goto :DoCommit
+)
+
+
 :: Handle help
 if "%commitTag%"=="0" (
     echo.
@@ -131,6 +140,7 @@ if "%commitTag%"=="0" (
     powershell -Command "Write-Host '[DOC]   documentation changes' -ForegroundColor Green"
     powershell -Command "Write-Host '[STYLE] formatting, indentation, style' -ForegroundColor Green"
     powershell -Command "Write-Host '[CHORES] cleanup, refactor, misc' -ForegroundColor Green"
+    powershell -Command "Write-Host '[QuickGit] Updates to quick git script' -ForegroundColor Green"
     echo.
     goto :SelectTag
 )
@@ -180,6 +190,7 @@ if "%commitMsg%"=="" (
 )
 
 :: Final commit string
+:DoCommit
 git commit -m "!prefix!!commitMsg!"
 
 if errorlevel 1 (
