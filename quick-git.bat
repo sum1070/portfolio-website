@@ -133,14 +133,14 @@ if "%commitTag%"=="9" (
 :: Handle help
 if "%commitTag%"=="0" (
     echo.
-    powershell -Command "Write-Host '♡ Tag meanings meow:' -ForegroundColor Cyan"
-    powershell -Command "Write-Host '[GIT]   gitignore, config, setup' -ForegroundColor Green"
-    powershell -Command "Write-Host '[FEAT]  new feature or enhancement' -ForegroundColor Green"
-    powershell -Command "Write-Host '[FIX]   bug fix' -ForegroundColor Green"
-    powershell -Command "Write-Host '[DOC]   documentation changes' -ForegroundColor Green"
-    powershell -Command "Write-Host '[STYLE] formatting, indentation, style' -ForegroundColor Green"
-    powershell -Command "Write-Host '[CHORES] cleanup, refactor, misc' -ForegroundColor Green"
-    powershell -Command "Write-Host '[QuickGit] Updates to quick git script' -ForegroundColor Green"
+    powershell -Command "Write-Host '♡ Tag meanings meow:'"
+    powershell -Command "Write-Host '[GIT]   gitignore, config, setup' "
+    powershell -Command "Write-Host '[FEAT]  new feature or enhancement' "
+    powershell -Command "Write-Host '[FIX]   bug fix' "
+    powershell -Command "Write-Host '[DOC]   documentation changes' "
+    powershell -Command "Write-Host '[STYLE] formatting, indentation, style' "
+    powershell -Command "Write-Host '[CHORES] cleanup, refactor, misc' "
+    powershell -Command "Write-Host '[QuickGit] Updates to quick git script' "
     echo.
     goto :SelectTag
 )
@@ -159,7 +159,7 @@ powershell -Command "Write-Host \"Master's selected tag: !prefix!\" -ForegroundC
 :: Ask for commit message
 :AskCommit
 echo.
-powershell -Command "Write-Host \"Master's commit message: !prefix! (type 'q' to quit, '0' for help)'\" -ForegroundColor Green"
+powershell -Command "Write-Host \"Master's commit message: !prefix! ('q' to quit)'\" -ForegroundColor Green"
 set /p "commitMsg="
 
 :: Handle quit
@@ -173,18 +173,18 @@ if /i "%commitMsg%"=="q" (
 :: Handle tag help
 if "%commitMsg%"=="0" (
     echo.
-    powershell -Command "Write-Host '♡ Tag meanings meow:' -ForegroundColor Cyan"
-    powershell -Command "Write-Host '[GIT]   gitignore, config, setup' -ForegroundColor Green"
-    powershell -Command "Write-Host '[FEAT]  new feature or enhancement' -ForegroundColor Green"
-    powershell -Command "Write-Host '[FIX]   bug fix' -ForegroundColor Green"
-    powershell -Command "Write-Host '[DOC]   documentation changes' -ForegroundColor Green"
-    powershell -Command "Write-Host '[STYLE] formatting, indentation, style' -ForegroundColor Green"
-    powershell -Command "Write-Host '[CHORES] cleanup, refactor, misc' -ForegroundColor Green"
+    powershell -Command "Write-Host '♡ Tag meanings meow:' "
+    powershell -Command "Write-Host '[GIT]   gitignore, config, setup' "
+    powershell -Command "Write-Host '[FEAT]  new feature or enhancement' "
+    powershell -Command "Write-Host '[FIX]   bug fix' "
+    powershell -Command "Write-Host '[DOC]   documentation changes' "
+    powershell -Command "Write-Host '[STYLE] formatting, indentation, style' "
+    powershell -Command "Write-Host '[CHORES] cleanup, refactor, misc' "
     echo.
     goto :AskCommit
 )
 
-:: Handle empty → fallback to default
+:: Use default message if empty
 if "%commitMsg%"=="" (
     set "commitMsg=%defaultMsg%"
 )
