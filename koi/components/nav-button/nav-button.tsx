@@ -85,11 +85,12 @@ const NavButton = ({
     };
 
     return (
-        <Link className="relative rounded-[2rem] " href={href} passHref >
+        <Link className="relative rounded-[2rem] cursor-pointer" href={href} passHref >
             <button
                 ref={buttonRef}
                 className={cn(
                     btnSize || defaultBtnSize,
+                    "cursor-pointer select-none ",
                     "relative overflow-hidden rounded-[2rem] group shadow-xl shadow-cyan-500 ",
                     "transition-all duration-1000 ease-in-out hover:scale-110  focus:scale-100 ",
                     "bg-[rgb(193,228,248)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ",

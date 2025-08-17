@@ -60,10 +60,10 @@ const HeroHeader = () => {
           />
         </button>
         {/* Volume control button */}
-        <div className="ml-2 flex items-center gap-2">
+        <div className="ml-2 flex items-center gap-2 ">
           <button
             onClick={handleDecrement}
-            className={cn(isAtMinVolume ? disabledButtonClassName : buttonClassName)}
+            className={cn(isAtMinVolume ? disabledButtonClassName : buttonClassName, "cursor-pointer ")}
             aria-label="Decrease volume"
             disabled={isAtMinVolume}
           >
@@ -74,7 +74,7 @@ const HeroHeader = () => {
           </span>
           <button
             onClick={handleIncrement}
-            className={cn(isAtMaxVolume ? disabledButtonClassName : buttonClassName)}
+            className={cn(isAtMaxVolume ? disabledButtonClassName : buttonClassName, "cursor-pointer ")}
             aria-label="Increase volume"
             disabled={isAtMaxVolume}
           >

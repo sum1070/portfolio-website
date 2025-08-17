@@ -44,7 +44,7 @@ const Hero = () => {
   };
 
   return (
-    <section ref={heroRef} id={pageID} className="overflow-hidden relative">
+    <section ref={heroRef} id={pageID} className="overflow-hidden relative select-none ">
       <BackgroundHero />
       <BlurredBlobsHero />
       <CenterContainer className="min-h-dvh relative z-20 p-10">
@@ -71,7 +71,7 @@ const Hero = () => {
           <div className={cn(`${Text.typingContainer}`, `${Text.txtMono}`)}>
             {startTyping && !finishTyping && (
               <Typewriter
-                speed={60}
+                speed={70}
                 deleteSpeed={50}
                 delay={animationTime.delayTypewriter}
                 onComplete={() => { setFinishTyping(true); }}
@@ -91,7 +91,7 @@ const Hero = () => {
             )}
           </div>
           {/* Fixed height container as placeholder */}
-          <div id="arrow-container" className="mt-12 pt-12 flex justify-center w-full h-10">
+          <div id="arrow-container" className="mt-12 pt-12 flex justify-center w-full h-10 ">
             {revealArrow && (
               <Reveal
                 key="arrow"

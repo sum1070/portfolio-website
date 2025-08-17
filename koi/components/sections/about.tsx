@@ -53,7 +53,7 @@ const About = () => {
             "order-1", // mobile 1st
             "xl:row-start-1 xl:col-start-2", // x = 1, y = 1
             "flex ",
-            "pt-3 sm:pt-12 pb-2 xl:pt-18 ",
+            "pt-3 sm:pt-12 pb-8 md:pb-4 xl:pt-18",
             "justify-center items-center w-full h-full",
           )}
         >

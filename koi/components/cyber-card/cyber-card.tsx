@@ -21,7 +21,7 @@ const CyberCard = ({
 
   return (
     <div className={cn(
-      "flex justify-center items-center w-full h-full font-titillium-web cyber-glitch-wrapper ",
+      "flex justify-center items-center w-full h-full font-titillium-web cyber-glitch-wrapper select-none",
     )}>
 
       <button
