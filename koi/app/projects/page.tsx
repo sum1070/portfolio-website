@@ -1,4 +1,4 @@
-import { CenterContainer, Navbar, PinkBackground, Watching } from '@/components'
+import { Navbar, PinkBackground, SleepZZZ } from '@/components'
 import { cn, iconImages, pageIDs } from '@/utils'
 import React from 'react'
 
@@ -18,7 +18,7 @@ const Project = () => {
             <span className='stairs' />
             <h2>In construction...</h2>
             <h3 className=''>
-              <span className="inline-flex items-center gap-x-2">trust me i will make sth this summer <img src={iconImages.sleepZZZ} alt="sleepZZZ" /> </span>
+              <span className="inline-flex items-center gap-x-2">trust me i will make sth this summer <SleepZZZ className="-ml-3 md:-ml-2 w-[32px] md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " /> </span>
             </h3>
           </div>
         </div>

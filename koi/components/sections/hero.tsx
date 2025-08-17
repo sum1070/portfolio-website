@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useRef } from "react";
 import BackgroundHero from "@/components/sections/hero/hero-background";
@@ -62,7 +62,7 @@ const Hero = () => {
             <h1 className={cn(`${Text.txtMain}`, "textBlurAnimation",)}>HELLO</h1>
             <div
               className={cn(`${Text.txtMid}`)}>
-              I'm&nbsp;<span className={cn("text-nice-purple3 font-medium")}>Margaret</span>
+              I'm&nbsp;<span className={"text-nice-purple3 font-medium"}>Margaret</span>
               <NekoSleep className="w-[32px] md:w-12 xl:w-16 inline-block ml-2 object-contain "/>
               <SleepZZZ className="-ml-1 md:-ml-2 w-[32px] md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " />
             </div>

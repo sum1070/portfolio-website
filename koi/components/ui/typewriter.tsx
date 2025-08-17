@@ -175,11 +175,11 @@ export default function Typewriter({
 
 
 
-  // ///////////////////// Render /////////////////////
+  // ///////////////////// Rendering /////////////////////
   return (
     <motion.span
       className={className}
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0.01 }}
       animate={{ opacity: hasStarted ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
