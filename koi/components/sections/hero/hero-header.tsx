@@ -52,6 +52,7 @@ const HeroHeader = () => {
             alt="sound button"
             width={100}
             height={100}
+            priority={true}
             className={cn(
               "w-10 h-10 sm:w-8 sm:h-8 md:w-10 md:h-10",
               "cursor-pointer",

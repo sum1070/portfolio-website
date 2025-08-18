@@ -31,6 +31,7 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
                 className={className}
                 alt={`${iconKey} icon`}
                 src={iconSrc}
+                priority={true}
                 width={48}
                 height={48}
             />
