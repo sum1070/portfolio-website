@@ -27,7 +27,7 @@ export default function RootLayout({
           {children}
           <SpeedInsights />
           <Analytics />
-          <div id="page-transition-overlay" className="min-w-screen min-h-screen flex items-center justify-center relative">
+          <div id="page-transition-overlay" className="min-w-screen min-h-screen flex items-center justify-center relative opacity-0 pointer-events-none">
             {bgPrimary()}
             <div className="flex flex-col items-center justify-center gap-8">
               <div className="min-h-[180px] flex flex-col items-center justify-center gap-4">
