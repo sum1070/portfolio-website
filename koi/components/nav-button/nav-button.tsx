@@ -7,6 +7,7 @@ import Link from 'next/link';
 import useSound from 'use-sound';
 import ContactPills from './contact-pills';
 import { TButton } from '@/lib/types';
+import TransitionLink from '../ui/transition-link';
 
 interface ButtonProps {
     href: string;
@@ -85,7 +86,7 @@ const NavButton = ({
     };
 
     return (
-        <Link className="relative rounded-[2rem] cursor-pointer" href={href} passHref >
+        <TransitionLink className="relative rounded-[2rem] cursor-pointer" href={href} passHref >
             <button
                 ref={buttonRef}
                 className={cn(
@@ -152,7 +153,7 @@ const NavButton = ({
                     </div>
                 )}
             </button>
-        </Link>
+        </TransitionLink>
     );
 }
 

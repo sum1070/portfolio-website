@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn, navLinks } from '@/utils';
 import Hamburger from './hamburger';
 import NavMenu from './nav-menu';
+import TransitionLink from '../ui/transition-link';
 
 interface NavbarProps {
     currentPage?: string;
@@ -58,7 +59,7 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                 {/* desktop buttons */}
                 <div id='desktop-nav' className="hidden md:flex flex-row gap-4 mr-4">
                     {filteredNavLinks.map((link) => (
-                        <Link
+                        <TransitionLink
                             key={link.name}
                             href={link.href}
                             className={cn(
@@ -68,7 +69,7 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                             )}
                         >
                             {link.name}
-                        </Link>
+                        </TransitionLink>
                     ))}
                 </div>
                 {/* mobile hamburger */}
