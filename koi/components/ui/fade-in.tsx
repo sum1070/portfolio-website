@@ -30,7 +30,7 @@ function FadeIn({
         <motion.div
             className={className}
             initial={{
-                opacity: 0,
+                opacity: 0.01,
                 ...(yTranslation ? { y: 50 } : {})
             }}
             animate={{

@@ -4,15 +4,13 @@ import { positionClasses } from '@/lib/types'
 
 const BlobsClasses = "absolute rounded-full mix-blend-multiply filter"
 
-const BlobsOpacity1 = "opacity-70 sm:opacity-60"
 const BlobsOpacity2 = "opacity-50 sm:opacity-50"
-const BlobsOpacity3 = "opacity-20 sm:opacity-50"
 const BlobsOpacity4 = "opacity-10 sm:opacity-50"
 
 // HERO
 const BlurredBlobsHero = () => {
   return (
-    <div className="-z-20 absolute inset-0 overflow-hidden pointer-events-none  will-change-transform">
+    <div className="md:block hidden -z-20 absolute inset-0 overflow-hidden pointer-events-none  will-change-transform">
       {/* C */}
       <div
         id='centerBlob'
