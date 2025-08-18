@@ -26,7 +26,7 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const navFontColor = "text-nice-purple2";
-    const navFontClassName = "px-3 py-2 rounded-md font-medium transition-colors " + navFontColor;
+    const navFontClassName = "px-3 py-2 rounded-md transition-colors " + navFontColor;
 
     // filter curr page if params is provided
     const filteredNavLinks = currentPage
@@ -49,9 +49,9 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                     id='nav-logo'
                     className={cn(
                         navFontClassName,
-                        "ml-4",
+                        "ml-4 font-semibold",
                         "text-nice-purple3",
-                        "hover:font-black transition-all duration-300 ease-in-out"
+                        "hover:font-black focus:text-purple-500 transition-all duration-300 ease-in-out"
                     )} >
                     Meow
                 </Link>
@@ -63,7 +63,8 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                             href={link.href}
                             className={cn(
                                 navFontClassName,
-                                "hover:text-purple2 hover:bg-purple0/10"
+                                "font-medium ",
+                                "hover:text-purple2 hover:bg-purple-400/10"
                             )}
                         >
                             {link.name}
