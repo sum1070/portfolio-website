@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { fraunces } from '../lib/fonts';
 import { VolumeProvider } from "@/lib/context/volume-context";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "koi",
@@ -21,6 +23,8 @@ export default function RootLayout({
       <VolumeProvider>
         <body>
           {children}
+          <SpeedInsights />
+          <Analytics />
         </body>
       </VolumeProvider>
     </html>

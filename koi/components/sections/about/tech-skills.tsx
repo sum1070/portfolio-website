@@ -25,29 +25,47 @@ const TechSkills = () => {
     return titleColors[i % titleColors.length];
   }
 
+  // h1,h2,h3 size settings in globals.css
   const xlScreen = {
-    title: "xl:text-3xl xl:text-left ",
-    catoName: "xl:gap-12 xl:flex-row ",
-    skills: "xl:text-lg ",
+    title: "xl:text-left xl:block ",
+    catoName: "xl:pb-2 2xl:pb-4 xl:flex-row ",
+    skills: "xl:text-base 2xl:text-lg ",
+    overallGapY: "2xl:gap-8 xl:gap-6",
+    skillsContainer: "2xl:gap-8 ",
+    logo: "lg:w-7 lg:h-7 2xl:w-8 2xl:h-8 ",
 
   }
+
   const mdScreen = {
-    title: "hidden md:block text-center ",
+    title: "text-center ",
     catoName: "text-lg ",
     skills: "md:text-base ",
+    // overallGapY: " ",
+    skillsContainer: "md:gap-4 ",
+    logo: "md:w-6 md:h-6 ",
   }
 
   const screen = {
     catoName: "text-lg ",
     title: "hidden ",
     skills: "text-sm ",
+    overallGapY: "gap-4 ",
+    skillsContainer: "gap-2 ",
+    logo: "w-4 h-4 ",
   }
 
   return (
-    <div id='category-container' className="flex flex-col gap-4 xl:gap-8 justify-center ">
+    <div
+      id='category-container'
+      className={cn(
+        "flex flex-col justify-center ",
+        xlScreen.overallGapY,
+        screen.overallGapY,
+      )}>
       <h2
         id='skills-section-title'
-        className={cn(xlScreen.title, mdScreen.title, screen.title, "")}>
+        className={cn(xlScreen.title, mdScreen.title, screen.title, "")}
+      >
         Skills
       </h2>
       {/* skill labels */}
@@ -76,7 +94,15 @@ const TechSkills = () => {
             </button>
           </div>
           {/* skills in the category */}
-          <div id='skills-container' className="flex flex-row flex-wrap gap-2 md:gap-4 lg:gap-8 px-2">
+          <div
+            id='skills-container'
+            className={cn(
+              "flex flex-row flex-wrap px-2",
+              xlScreen.skillsContainer,
+              mdScreen.skillsContainer,
+              screen.skillsContainer,
+            )}
+          >
             {skillsByType[category].map((skill: Skill) => (
               <div
                 className={cn(
@@ -85,7 +111,15 @@ const TechSkills = () => {
                 )}
                 key={skill.name}
               >
-                <div id='skills-logo' className="flex items-center justify-center w-8 h-8 mr-2">
+                <div
+                  id='skills-logo'
+                  className={cn(
+                    "flex items-center justify-center mr-2",
+                    xlScreen.logo,
+                    mdScreen.logo,
+                    screen.logo,
+                  )}
+                >
                   <FetchImage
                     src={skill.icon}
                     size={24}

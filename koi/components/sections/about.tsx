@@ -6,7 +6,7 @@ import BackgroundAbout from './about/about-background'
 import TechSkills from '@/components/sections/about/tech-skills';
 import { TrElements, BrElements } from './about/about-elements';
 
-// xl: desktop
+// Update (18/08/2025): use xl and 2xl for desktop layout
 const About = () => {
   const pageID = pageIDs.about;
   const gapY = 'gap-y-2 xs:gap-y-8 md:gap-y-8 xl:gap-y-12';
@@ -30,11 +30,12 @@ const About = () => {
         className={cn(
           "-mt-4 md:-mt-0 relative min-w-svw z-[60]",
           "pb-18",
-          "xl:pb-21"
+          "xl:pb-21 2xl:pb-30"
         )}
       >
         <InvertedWave className="w-full" />
       </div>
+      {/* Mobile layout: a-b-c; desktop (xl): b-(a-c) */}
       <div
         id='components-grid'
         className={cn(
@@ -65,7 +66,7 @@ const About = () => {
           className={cn(
             "order-2 relative",
             "xl:row-span-2 xl:col-start-1 ", // desktop: left col spanning both rows
-            "xl:pl-4 xl:pt-2",
+            "pt-1 xl:pl-4 xl:pt-2",
           )}
         >
           <TechSkills />
@@ -98,7 +99,7 @@ const About = () => {
 
       </div>
       {/* mobile arrow */}
-      <div id='mobile-arrow-container' className='p-8 pt-8 pb-24 order-4 items-center justify-center xl:hidden'>
+      <div id='mobile-arrow-container' className='p-8 pt-8 pb-30 order-4 items-center justify-center xl:hidden'>
         <div id='inner-mobile-arrow-container' className='flex items-center justify-center'>
           <TriangleArrowUp onClick={scrollToTop} />
         </div>
