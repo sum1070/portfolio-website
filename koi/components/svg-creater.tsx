@@ -6,6 +6,7 @@ import { JSX } from "react";
 
 function createSvgComponent(iconKey: string, iconSrc: string) {
     return ({ className }: { className?: string }) => {
+        // lottie
         if (iconKey === 'sleepZZZ') {
             return (
                 <DotLottieReact
