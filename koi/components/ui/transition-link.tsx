@@ -44,6 +44,28 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
     return () => clearTimeout(timeoutId);
   }, [pathname, isNavigating, targetPath]);
 
+  useEffect(() => {
+    // Preload the overlay
+    const preloadOverlay = () => {
+      const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");
+      if (overlay) {
+        // Create and append elements if they don't exist
+        if (!overlay.querySelector(".spinner")) {
+          const spinner = document.createElement("span");
+          spinner.className = "spinner";
+          overlay.appendChild(spinner);
+        }
+        if (!overlay.querySelector(".eyes")) {
+          const eyes = document.createElement("span");
+          eyes.className = "eyes";
+          overlay.appendChild(eyes);
+        }
+      }
+    };
+
+    preloadOverlay();
+  }, []);
+
   const handleTransition = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
 
@@ -51,14 +73,30 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
     if (isNavigating) return;
 
     const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");
+    if (!overlay) return;
+    
+    // Force immediate rendering before transition starts
+    overlay.style.display = "flex";
+    
+    // Force a reflow to ensure immediate visual update
+    void overlay.offsetWidth;
+    
+    // Add active class to trigger animation
     overlay?.classList.add("active");
+
+    // Start animations immediately
+    const spinner = overlay.querySelector(".spinner");
+    const eyes = overlay.querySelector(".eyes");
+    if (spinner) spinner.classList.add("animate-spin");
+    if (eyes) eyes.classList.add("animate-blink");
 
     setIsNavigating(true);
 
     let path: string;
     if (typeof href === "string") {
       path = href;
-      router.push(href);
+      // Small delay to ensure animation starts before navigation
+      setTimeout(() => router.push(href), 10);
     } else if (typeof href === "object" && href !== null && "pathname" in href) {
       path =
         href.pathname +
