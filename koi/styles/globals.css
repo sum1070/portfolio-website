@@ -102,20 +102,15 @@ p {
 }
 
 #page-transition-overlay.active {
-  opacity: 1;
+  opacity: 1!important;
   transform: scale(1);
   pointer-events: auto;
 }
 
-#page-transition-overlay:not(.active) .eyes,
-#page-transition-overlay:not(.active) .spinner {
-  animation-play-state: paused;
-}
-
-#page-transition-overlay.active {
-  opacity: 1 !important;
-  transform: scale(1);
-
+#page-transition-overlay.active .spinner,
+#page-transition-overlay.active .eyes {
+  animation-play-state: running;
+  animation-delay: 0s !important;
 }
 
 .animate-scanMove {
