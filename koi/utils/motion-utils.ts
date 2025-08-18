@@ -12,6 +12,6 @@ export const animationTime = {
   durationMainTxt: 0.2,
   delayTriangleArrow: 0.5,
   durationTriangleArrow: 0.4,
-  delayTypewriter: 200, // 3 digits
-  durationTypewriter: 500, // 3 digits
+  delayTypewriter: 200, // 3 digits (ms)
+  durationTypewriter: 500, // 3 digits (ms)
 };

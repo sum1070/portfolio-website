@@ -100,20 +100,20 @@ export default function BackgroundHero() {
                     <motion.div style={{ y: sprBar1, position: "absolute", left: "70%", top: "80%" }}>
                         <Bar width="500px" length="80px" rotate="135deg" />
                     </motion.div>
-                    <motion.div style={{ y: sprBar2, position: "absolute", left: "4%", top: "90%" }}>
+                    <motion.div className="hidden md:block" style={{ y: sprBar2, position: "absolute", left: "4%", top: "90%" }}>
                         <Bar width="400px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="315deg" className="mask-luminance mask-r-from-black mask-r-from-5% mask-r-to-white" />
                     </motion.div>
-                    <motion.div style={{ y: sprBar1, position: "absolute", left: "-5%", top: "80%" }}>
+                    <motion.div className="hidden md:block" style={{ y: sprBar1, position: "absolute", left: "-5%", top: "80%" }}>
                         <Bar width="220px" length="15px" color="var(--color-sky-blue)" endColor="var(--color-pale-purple0)" rotate="135deg" />
                     </motion.div>
-                    <motion.div style={{ y: sprBar2, position: "absolute", left: "20%", top: "10%" }}>
+                    <motion.div className="hidden md:block" style={{ y: sprBar2, position: "absolute", left: "20%", top: "10%" }}>
                         <Bar width="300px" length="10px" color="var(--color-Mauve)" endColor="var(--color-sky-blue)" rotate="135deg" />
                     </motion.div>
                 </div>
             </FadeIn>
             {/* X */}
             <FadeIn yTranslation={true} duration={animationTime.durationBars} delayOffset={0.8} className={`${shapeClasses}`}>
-                <motion.div style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
+                <motion.div className="hidden md:block" style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
                     <Bar width="60px" length="10px" rotate="145deg  " />
                     <Bar width="60px" length="10px" rotate="55deg  " />
                 </motion.div>
@@ -149,8 +149,8 @@ export default function BackgroundHero() {
                     <motion.div style={{ y: sprNormal, position: "absolute", left: "10%", bottom: "35%" }}>
                         <Dot size="20px" border={7} blur={true} color="var(--color-pale-purple0)" />
                     </motion.div>
-                    {/* Hyper white dot owo */}
-                    <motion.div style={{ y: sprFlex, position: "absolute", left: "92%", top: "75%" }}>
+                    {/* Hyper white dot owo big screen only*/}
+                    <motion.div className="hidden md:block" style={{ y: sprFlex, position: "absolute", left: "92%", top: "75%" }}>
                         <Dot size="15px" border={7} color="var(--color-pale-purple0)" />
                     </motion.div>
                     {/* pink with purple shadow (big screen) */}
@@ -162,7 +162,6 @@ export default function BackgroundHero() {
                             <Dot size="36px" border={7} color="var(--color-pink0)" />
                         </motion.div>
                     </div>
-
                     {/* pink with purple shadow (big screen) */}
                     <div className="hidden md:block" >
                         <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
@@ -181,15 +180,18 @@ export default function BackgroundHero() {
                             <Dot size="26px" blur={true} color="var(--color-pink0)" />
                         </motion.div>
                     </div>
-                    <motion.div style={{ y: sprNormal, position: "absolute", left: "79.8%", top: "65%" }}>
-                        <Dot size="42px" blur={true} color="var(--color-pink1)  border={7} " />
-                    </motion.div>
-                    <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
-                        <Dot size="39px" blur={true} color="var(--color-milky-white)" />
-                    </motion.div>
-                    <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
-                        <Dot size="38px" blur={true} />
-                    </motion.div>
+                    {/* blue big dots (big screen) */}
+                    <div className="hidden md:block">
+                        <motion.div style={{ y: sprNormal, position: "absolute", left: "79.8%", top: "65%" }}>
+                            <Dot size="42px" blur={true} color="var(--color-pink1)  border={7} " />
+                        </motion.div>
+                        <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
+                            <Dot size="39px" blur={true} color="var(--color-milky-white)" />
+                        </motion.div>
+                        <motion.div style={{ y: sprNormal, position: "absolute", left: "80%", top: "65%" }}>
+                            <Dot size="38px" blur={true} />
+                        </motion.div>
+                    </div>
                 </div>
             </FadeIn>
             {/* code text */}
