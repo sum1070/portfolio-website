@@ -107,6 +107,17 @@ p {
   pointer-events: auto;
 }
 
+#page-transition-overlay:not(.active) .eyes,
+#page-transition-overlay:not(.active) .spinner {
+  animation-play-state: paused;
+}
+
+#page-transition-overlay.active {
+  opacity: 1 !important;
+  transform: scale(1);
+
+}
+
 .animate-scanMove {
   background-size: 100% 200%;
   background-repeat: no-repeat;
