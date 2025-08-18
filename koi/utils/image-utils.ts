@@ -4,7 +4,7 @@ export const soundButtonImages = {
 };
 
 export const myImages = {
-  avatar: "/images/avatar.webp",
+  avatar: "/images/avatar.m.webp",
 }
 
 export const iconImages = {

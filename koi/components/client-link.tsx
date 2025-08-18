@@ -34,6 +34,7 @@ const ClientLink = ({ name, url, icon, iconAlt, isSensitive, className }: Client
                     alt={iconAlt || `${name} icon`}
                     width={20}
                     height={20}
+                    priority={true}
                     className="object-contain"
                 />
             </div>
