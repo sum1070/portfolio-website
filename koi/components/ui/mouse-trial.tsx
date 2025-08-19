@@ -125,7 +125,7 @@ export default function MouseAnimated() {
         position: "fixed",
         top: 0,
         left: 0,
-        zIndex: -1, // make it behind other content
+        zIndex: 500,
         pointerEvents: "none",
       }}
     />

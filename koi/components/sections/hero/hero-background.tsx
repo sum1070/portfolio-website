@@ -12,7 +12,7 @@ export default function BackgroundHero() {
     const { scrollY } = useScroll();
 
     const sprBar1 = springY(scrollY, [0, -115], [0, 500], { stiffness: 80, damping: 20 });
-    const sprBar2 = springY(scrollY, [0, -150], [0, 500], { stiffness: 100, damping: 25 });
+    const sprBar2 = springY(scrollY, [0, -150], [0, 500], { stiffness: 60, damping: 25 });
     const triangleY = springY(scrollY, [0, -180], [0, 500], { stiffness: 90, damping: 20 });
     const spr5 = springY(scrollY, [0, -220], [0, 500], { stiffness: 80, damping: 10 });
     const sprStiff = springY(scrollY, [0, -90], [0, 500], { stiffness: 120, damping: 15 });
@@ -153,15 +153,6 @@ export default function BackgroundHero() {
                     <motion.div className="hidden md:block" style={{ y: sprFlex, position: "absolute", left: "92%", top: "75%" }}>
                         <Dot size="15px" border={7} color="var(--color-pale-purple0)" />
                     </motion.div>
-                    {/* pink with purple shadow (big screen) */}
-                    <div className="hidden md:block" >
-                        <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
-                            <Dot size="38px" blur={true} color="var(--color-purple0)" />
-                        </motion.div>
-                        <motion.div style={{ y: sprStiff, position: "absolute", left: "10%", top: "19%" }}>
-                            <Dot size="36px" border={7} color="var(--color-pink0)" />
-                        </motion.div>
-                    </div>
                     {/* pink with purple shadow (big screen) */}
                     <div className="hidden md:block" >
                         <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
