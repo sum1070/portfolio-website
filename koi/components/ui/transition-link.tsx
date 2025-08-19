@@ -20,13 +20,22 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
     if (!isNavigating) return;
     if (targetPath) {
       // minimum animation display time
-      const minDisplayTime = 500; // ms
+      const minDisplayTime = 400; // ms
       const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");
 
       setTimeout(() => {
-        overlay?.classList.remove("active");
-        setIsNavigating(false);
-        setTargetPath(null);
+        // First add fade-out class for smooth transition
+        if (overlay) {
+          overlay.classList.add('fade-out');
+          
+          // Wait for fade-out transition to complete before removing active class
+          setTimeout(() => {
+            overlay.classList.remove("active");
+            overlay.classList.remove("fade-out");
+            setIsNavigating(false);
+            setTargetPath(null);
+          }, 600); // Match this with the CSS transition time
+        }
       }, minDisplayTime);
     }
 
@@ -35,11 +44,16 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
       const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");
       if (overlay?.classList.contains("active")) {
         console.log("Fallback: removing transition overlay after timeout");
-        overlay.classList.remove("active");
-        setIsNavigating(false);
-        setTargetPath(null);
+        overlay.classList.add('fade-out');
+        
+        setTimeout(() => {
+          overlay.classList.remove("active");
+          overlay.classList.remove("fade-out");
+          setIsNavigating(false);
+          setTargetPath(null);
+        }, 600);
       }
-    }, 2000);
+    }, 5000);
 
     return () => clearTimeout(timeoutId);
   }, [pathname, isNavigating, targetPath]);
@@ -74,13 +88,13 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
 
     const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");
     if (!overlay) return;
-    
+
     // Force immediate rendering before transition starts
     overlay.style.display = "flex";
-    
+
     // Force a reflow to ensure immediate visual update
-    void overlay.offsetWidth;
-    
+    const _ = overlay.offsetWidth;
+
     // Add active class to trigger animation
     overlay?.classList.add("active");
 
@@ -96,7 +110,7 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
     if (typeof href === "string") {
       path = href;
       // Small delay to ensure animation starts before navigation
-      setTimeout(() => router.push(href), 10);
+      setTimeout(() => router.push(href), 100);
     } else if (typeof href === "object" && href !== null && "pathname" in href) {
       path =
         href.pathname +
