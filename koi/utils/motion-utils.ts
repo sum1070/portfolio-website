@@ -2,8 +2,8 @@
 export const animationTime = {
   delayOrbitIntro: 0,
   durationOrbitIntro: 0.3,
-  delayOrbitColor: 2,
-  durationOrbitColor: 2,
+  delayOrbitColor: 1,
+  durationOrbitColor: 1,
   delayBG: 0.6,
   durationBG: 0.4,
   durationBars: 1,
