@@ -8,6 +8,7 @@ const BlobsOpacity2 = "opacity-50 sm:opacity-50"
 const BlobsOpacity4 = "opacity-10 sm:opacity-50"
 
 // HERO
+// only show on screen >= md
 const BlurredBlobsHero = () => {
   return (
     <div className="md:block hidden -z-20 absolute inset-0 overflow-hidden pointer-events-none  will-change-transform">
