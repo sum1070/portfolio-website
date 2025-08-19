@@ -21,12 +21,16 @@ const firstTypewriterSequences = [
   {
     text: "Welcome to my website...",
     deleteCount: 11,
-    pauseBeforeDelete: 1000, // 1 sec
+    pauses: {
+      beforeDelete: 1000, // 1 sec
+    }
   },
   {
     text: " WORLD!",
     deleteCount: 0,
-    pauseBeforeDelete: 1000
+    pauses: {
+      beforeDelete: 1000
+    }
   },
 ];
 
@@ -88,13 +92,16 @@ const Hero = () => {
     };
   }, []);
 
-  // If not in view, slow down animations
+  // If not in view, slow down animations - with debounce
   useEffect(() => {
-    if (!isInView) {
-      document.documentElement.style.setProperty('--animation-speed-multiplier', '0.3');
-    } else {
-      document.documentElement.style.setProperty('--animation-speed-multiplier', '1');
-    }
+    const updateAnimationSpeed = () => {
+      document.documentElement.style.setProperty(
+        '--animation-speed-multiplier', 
+        isInView ? '1' : '0.3'
+      );
+    };
+    
+    updateAnimationSpeed();
   }, [isInView]);
 
   // memoized scroll handler
