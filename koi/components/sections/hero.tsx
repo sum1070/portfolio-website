@@ -51,7 +51,7 @@ const Hero = () => {
       <CenterContainer className="min-h-dvh relative z-20 p-10">
         <div className="text-center ">
           <motion.div
-            initial={{ opacity: 0.1, filter: "blur(15px)", letterSpacing: "-0.5em" }}
+            initial={{ opacity: 0.1, filter: "blur(12px)", letterSpacing: "0.5em" }}
             animate={{ opacity: 1, filter: "blur(0px)", letterSpacing: "normal" }}
             transition={{
               delay: animationTime.delayMainTxt,

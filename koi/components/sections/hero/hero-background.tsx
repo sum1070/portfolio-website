@@ -202,13 +202,6 @@ export default function BackgroundHero() {
             {/* SVG */}
             <FadeIn yTranslation={true} className={`${shapeClasses}`} >
                 <div >
-                    <motion.div style={{ y: spr5, position: "absolute", left: "0%", bottom: "24%" }}>
-                        <LineCircle size="200px" className="mx-auto " />
-                    </motion.div>
-                    <motion.div style={{ y: spr5, position: "absolute", right: "20%", bottom: "84%" }}>
-                        {/* TODO: ???where r u */}
-                        <LineCircle size="90px" className="mx-auto absolute " />
-                    </motion.div>
                     {/* Triangle */}
                     <motion.div style={{ y: triangleY }} className="absolute left-0 bottom-6/12">
                         <Triangle size="100px" image="big" rotate="330deg" />
@@ -221,7 +214,31 @@ export default function BackgroundHero() {
                     </motion.div>
                 </div>
             </FadeIn>
-
+            {/* SVG (big screen only)*/}
+            <FadeIn yTranslation={true} className={`${shapeClasses}, hidden md:block`} >
+                <div >
+                    <motion.div
+                        style={{
+                            y: spr5,
+                            position: "absolute",
+                            left: "0%",
+                            bottom: "24%",
+                            translateZ: 0
+                        }}>
+                        <LineCircle size="200px" className="mx-auto " />
+                    </motion.div>
+                    <motion.div
+                        style={{
+                            y: spr5,
+                            position: "absolute",
+                            right: "20%",
+                            bottom: "84%",
+                            translateZ: 0
+                        }}>
+                        <LineCircle size="90px" className="mx-auto absolute " />
+                    </motion.div>
+                </div>
+            </FadeIn>
             {/* Centre orbit */}
             <motion.div
                 ref={scope}
