@@ -3,7 +3,17 @@
 ## Framework and Libraries
 
 - Framework: Next.js (App Router)
+  - libs + tools + conventions
 - Libraries: React, TailwindCSS
+  - react: interactive UI libraries
+
+### Compiler, CLI and Node.js
+
+- Compiler: transform & minify JS code
+- CLI: build and start apps, `npm run build`, `npm run dev`
+- Node.js: Runtime, execute JS code on the server
+
+---
 
 ### Installation
 
@@ -55,10 +65,6 @@ Use `xl` for large screen
 - `useRouter` hook: Client
   - event handlers
   - recommended to use `<link>`
-
-### useEffect
-
-- Example usage in typewriter: [typewiter.md](./typewriter.md)
 
 ## Deployment errors
 
