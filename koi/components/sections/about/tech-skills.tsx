@@ -2,8 +2,7 @@
 
 import React, { useMemo } from 'react';
 import FetchImage from '@/utils/fetch-images';
-import { getSkillsByType, Skill } from '@/components/sections/about/skills-data';
-import { cn } from '@/utils';
+import { getSkillsByType, Skill, getCategoryColor } from '@/components/sections/about/skills-data';
 
 const TechSkills = () => {
   const skillsByType = useMemo(() => getSkillsByType(), []);
@@ -13,135 +12,75 @@ const TechSkills = () => {
     document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // must use 0c4a6e for tools
-  const titleColors = [
-    "#112C7B",
-    "#0F3677",
-    "#0E4072",
-    "#0c4a6e",
-  ]
+  const categoryDisplayNames = {
+    frameworks: "Frameworks & Libraries",
+    languages: "Languages",
+    backend: "Backend",
+    tools: "Tools"
+  };
 
-  const getColor = (i: number): string => {
-    return titleColors[i % titleColors.length];
-  }
-
-  // h1,h2,h3 size settings in globals.css
-  const xlScreen = {
-    title: "xl:text-left xl:block ",
-    catoName: "xl:pb-2 2xl:pb-4 xl:flex-row ",
-    skills: "xl:text-base 2xl:text-lg ",
-    overallGapY: "2xl:gap-8 xl:gap-6",
-    skillsContainer: "2xl:gap-8 ",
-    logo: "lg:w-7 lg:h-7 2xl:w-8 2xl:h-8 ",
-
-  }
-
-  const mdScreen = {
-    title: "text-center ",
-    catoName: "text-lg ",
-    skills: "md:text-base ",
-    // overallGapY: " ",
-    skillsContainer: "md:gap-4 ",
-    logo: "md:w-6 md:h-6 ",
-  }
-
-  const screen = {
-    catoName: "text-lg ",
-    title: "hidden ",
-    skills: "text-sm ",
-    overallGapY: "gap-4 ",
-    skillsContainer: "gap-2 ",
-    logo: "w-4 h-4 ",
-  }
+  /**
+   * Hide cato name; centre section title
+   * md: category name left, sticky;
+   * xl: section title left
+   */
+  const styles = {
+    container: "flex flex-col justify-center gap-4 md:gap-4 xl:gap-6 2xl:gap-8",
+    sectionTitle: "text-center xl:text-left",
+    categoryWrapper: "flex flex-col gap-2",
+    categoryNameContainer: "md:sticky md:w-40 xl:w-56",
+    categoryName: "hidden md:block font-bold cursor-pointer hover:text-white transition text-lg md:text-lg xl:pb-2 2xl:pb-4 xl:flex-row whitespace-nowrap",
+    skillsContainer: "flex flex-row flex-wrap px-2 gap-2 md:gap-4 2xl:gap-8",
+    skillItem: "flex items-center bg-white/20 rounded-md px-2 py-1 hover:scale-105 xl:hover:scale-108 transition-transform duration-200",
+    skillLogo: "flex items-center justify-center mr-2 w-4 h-4 md:w-6 md:h-6 lg:w-7 lg:h-7 2xl:w-8 2xl:h-8",
+    skillText: "whitespace-nowrap text-sm md:text-base xl:text-base 2xl:text-lg"
+  };
 
   return (
-    <div
-      id='category-container'
-      className={cn(
-        "flex flex-col justify-center ",
-        xlScreen.overallGapY,
-        screen.overallGapY,
-      )}>
-      <h2
-        id='skills-section-title'
-        className={cn(xlScreen.title, mdScreen.title, screen.title, "")}
-      >
-        Skills
+    <div id="category-container" className={styles.container}>
+      <h2 id="skills-section-title" className={styles.sectionTitle}>
+        My Skills
       </h2>
-      {/* skill labels */}
-      {skillCategories.map((category, i) => (
-        <div
-          className={cn(
-            "flex flex-col gap-2 "
-          )}
-          id={category}
-          key={category}
-        >
-          {/* category name e.g. frameworks */}
-          <div id='category-name-container' className=" md:sticky px-4 xl:px-8 md:w-24 xl:w-32">
-            <button
-              id='category-name'
-              className={cn(
-                "font-bold cursor-pointer hover:text-white transition",
-                xlScreen.catoName,
-                mdScreen.catoName,
-                screen.catoName
-              )}
-              onClick={() => scrollToSection(category)}
-              style={{ color: getColor(i) }}
-            >
-              {category.toUpperCase()}
-            </button>
-          </div>
-          {/* skills in the category */}
-          <div
-            id='skills-container'
-            className={cn(
-              "flex flex-row flex-wrap px-2",
-              xlScreen.skillsContainer,
-              mdScreen.skillsContainer,
-              screen.skillsContainer,
-            )}
-          >
-            {skillsByType[category].map((skill: Skill) => (
-              <div
-                className={cn(
-                  "flex items-center bg-white/20 rounded-md px-2 py-1",
-                  "hover:scale-105 xl:hover:scale-108 transition-transform duration-200"
-                )}
-                key={skill.name}
+
+      {skillCategories.map((category) => {
+        const categoryColor = getCategoryColor(category);
+        const displayName = categoryDisplayNames[category as keyof typeof categoryDisplayNames] ||
+          category.charAt(0).toUpperCase() + category.slice(1);
+
+        return (
+          <div className={styles.categoryWrapper} id={category} key={category}>
+            {/* Category name */}
+            <div id="category-name-container" className={styles.categoryNameContainer}>
+              <button
+                id="category-name"
+                className={styles.categoryName}
+                onClick={() => scrollToSection(category)}
+                style={{ color: categoryColor }}
               >
-                <div
-                  id='skills-logo'
-                  className={cn(
-                    "flex items-center justify-center mr-2",
-                    xlScreen.logo,
-                    mdScreen.logo,
-                    screen.logo,
-                  )}
-                >
-                  <FetchImage
-                    src={skill.icon}
-                    size={24}
-                    alt={`${skill.name} icon`}
-                    useReactIcon={true}
-                    iconColor={getColor(i)}
-                  />
+                {displayName.toUpperCase()}
+              </button>
+            </div>
+
+            {/* Skills in the category */}
+            <div id="skills-container" className={styles.skillsContainer}>
+              {skillsByType[category].map((skill: Skill) => (
+                <div className={styles.skillItem} key={skill.name}>
+                  <div id="skills-logo" className={styles.skillLogo}>
+                    <FetchImage
+                      src={skill.icon}
+                      size={24}
+                      alt={`${skill.name} icon`}
+                      useReactIcon={true}
+                      iconColor={categoryColor}
+                    />
+                  </div>
+                  <span className={styles.skillText}>{skill.name}</span>
                 </div>
-                <span
-                  className={cn(
-                    "whitespace-nowrap",
-                    xlScreen.skills,
-                    mdScreen.skills,
-                    screen.skills
-                  )}>
-                  {skill.name}
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
