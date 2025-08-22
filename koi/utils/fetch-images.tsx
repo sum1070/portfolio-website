@@ -22,7 +22,7 @@ const FetchImage = ({
     size = 24,
     alt = `${src} icon`,
     useReactIcon = true,
-    iconColor,
+    iconColor = "#0c4a6e",
 }: FetchImageProps) => {
     const lowerSrc = src.toLowerCase();
 
