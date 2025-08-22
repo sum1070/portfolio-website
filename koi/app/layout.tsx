@@ -5,7 +5,7 @@ import { VolumeProvider } from "@/lib/context/volume-context";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 import { cn } from "@/utils";
-import { bgPrimary } from "@/components/theme/bg-primary";
+import { bgPrimary } from "@/components";
 
 export const metadata: Metadata = {
   title: "koi",
