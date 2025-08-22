@@ -78,7 +78,7 @@ Folders/files naming convention: `kebab-case`
         ├── center-container.tsx
         ├── client-link.tsx
         ├── index.ts
-        ├── svg-creater.tsx
+        ├── svg-creator.tsx
         ├── triangle-arrow.tsx
     └── 📁data
         ├── data.json
