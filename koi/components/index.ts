@@ -1,4 +1,5 @@
 // Components
+export { default as CenterContainer } from "./center-container";
 export { default as Navbar } from "./nav-bar/nav-bar";
 export { default as NavButton } from "./nav-button/nav-button";
 export { default as PinkBackground } from "./theme/bg-pink";
@@ -7,7 +8,7 @@ export { default as GreenBackground } from "./theme/bg-green";
 export { bgPrimary } from "./theme/bg-primary";
 export { default as Card } from "./card";
 export { default as CyberCard } from "./cyber-card/cyber-card";
-export { default as CenterContainer } from "./center-container";
+export { TriangleArrowDown, TriangleArrowUp } from "./triangle-arrow";
 
 export * from "./decorations";
 export * from "./sections";
