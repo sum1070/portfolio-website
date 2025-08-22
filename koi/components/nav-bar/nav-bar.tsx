@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { cn, navLinks } from '@/utils';
 import Hamburger from './hamburger';
 import NavMenu from './nav-menu';
-import TransitionLink from '../ui/transition-link';
+import { TransitionLink } from "@/components";
 
 interface NavbarProps {
     currentPage?: string;
