@@ -2,6 +2,7 @@
 export { TriangleArrowDown, TriangleArrowUp } from "./triangle-arrow";
 export { default as CenterContainer } from "./center-container";
 export { default as Navbar } from "./nav-bar/nav-bar";
+export { default as NavButton } from "./nav-button/nav-button";
 export { default as PinkBackground } from "./theme/bg-pink";
 export { default as BlueBackground } from "./theme/bg-blue";
 export { default as GreenBackground } from "./theme/bg-green";

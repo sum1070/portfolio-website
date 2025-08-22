@@ -1,6 +1,5 @@
 "use client";
-import NavButton from '@/components/nav-button/nav-button';
-import CyberCard from '@/components/cyber-card/cyber-card';
+import { CyberCard, NavButton } from '@/components';
 import { cn, gradient, pageIDs } from '@/utils';
 import React from 'react';
 
