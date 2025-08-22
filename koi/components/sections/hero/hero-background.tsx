@@ -58,8 +58,6 @@ export default function BackgroundHero() {
 
     return (
         <>
-            {/* Sound */}
-            <FadeIn><HeroHeader /></FadeIn>
             {/* Background */}
             {bgPrimary()}
             <FadeIn className="absolute inset-x-0 bottom-0">

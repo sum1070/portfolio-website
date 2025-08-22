@@ -2,10 +2,11 @@
 
 import { useState, useRef, useEffect, memo, useCallback } from "react";
 import BackgroundHero from "@/components/sections/hero/hero-background";
-import { TriangleArrowDown, CenterContainer, Typewriter, Reveal, NekoSleep, SleepZZZ } from "@/components";
+import { TriangleArrowDown, CenterContainer, Typewriter, Reveal, NekoSleep, SleepZZZ, FadeIn } from "@/components";
 import { cn, animationTime, pageIDs } from "@/utils";
 import { motion, useInView } from "motion/react";
 import BlurredBlobsHero from "./hero/hero-blobs";
+import HeroHeader from "./hero/hero-header";
 
 const MemoizedBackgroundHero = memo(BackgroundHero);
 const MemoizedBlurredBlobs = memo(BlurredBlobsHero);
@@ -96,11 +97,11 @@ const Hero = () => {
   useEffect(() => {
     const updateAnimationSpeed = () => {
       document.documentElement.style.setProperty(
-        '--animation-speed-multiplier', 
+        '--animation-speed-multiplier',
         isInView ? '1' : '0.3'
       );
     };
-    
+
     updateAnimationSpeed();
   }, [isInView]);
 
@@ -129,6 +130,8 @@ const Hero = () => {
         {loadedElements.background && <MemoizedBackgroundHero />}
         {loadedElements.blobs && <MemoizedBlurredBlobs />}
       </div>
+      {/* Sound */}
+      <FadeIn><HeroHeader /></FadeIn>
 
       <CenterContainer className="min-h-dvh relative z-20 p-10">
         <div className="text-center">
