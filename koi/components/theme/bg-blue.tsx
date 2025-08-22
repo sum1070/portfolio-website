@@ -1,9 +1,8 @@
-import { Bar, Dot } from '@/components'
+import { Bar, bgPrimary, Dot } from '@/components'
 import { positionClasses, TBaseProps } from '@/lib/types';
 import { cn } from '@/utils'
 import React from 'react'
-import Wave from 'react-wavify';
-import { bgPrimary } from './bg-primary';
+import Wave from 'react-wavify'
 
 type TWaveOptions = {
     height?: number;

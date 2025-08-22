@@ -1,4 +1,5 @@
-import { bgPrimary } from "@/components/theme/bg-primary";
+
+import { bgPrimary } from "@/components";
 import { cn } from "@/utils";
 
 export default function Loading() {
@@ -11,11 +12,11 @@ export default function Loading() {
                     <span className="spinner"></span>
                 </div>
                 <div>
-                    <div 
-                    className={cn(
-                        "loading loading04",
-                        "text-4xl lg:text-8xl font-extrabold tracking-wider",
-                    )}
+                    <div
+                        className={cn(
+                            "loading loading04",
+                            "text-4xl lg:text-8xl font-extrabold tracking-wider",
+                        )}
                     >
                         <span>L</span>
                         <span>O</span>

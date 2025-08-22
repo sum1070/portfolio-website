@@ -6,6 +6,7 @@ export { default as NavButton } from "./nav-button/nav-button";
 export { default as PinkBackground } from "./theme/bg-pink";
 export { default as BlueBackground } from "./theme/bg-blue";
 export { default as GreenBackground } from "./theme/bg-green";
+export { bgPrimary } from "./theme/bg-primary";
 export { default as Card } from "./card";
 export { default as CyberCard } from "./cyber-card/cyber-card";
 
