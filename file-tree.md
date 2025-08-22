@@ -2,6 +2,7 @@
 
 Folders/files naming convention: `kebab-case`
 
+```md
 └── 📁koi
     └── 📁app
         └── 📁contact
@@ -109,3 +110,4 @@ Folders/files naming convention: `kebab-case`
         ├── index.ts
         ├── motion-utils.ts
         ├── utils.ts
+```
