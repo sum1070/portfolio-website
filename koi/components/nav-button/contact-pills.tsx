@@ -59,6 +59,7 @@ export default function ContactPills() {
                     <FetchImage
                         className= {imagesCN}
                         src="github"
+                        size={30}
                     />
                 </span>
             </div>

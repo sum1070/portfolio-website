@@ -35,11 +35,9 @@ export const contactImages = {
 };
 
 export const iconMap = {
-  github: contactImages.github,
   discord: contactImages.discord,
   gmail: contactImages.email,
   instagram: contactImages.instagram,
-
   motion: techImages.motion,
   c: techImages.c,
   git: techImages.git,

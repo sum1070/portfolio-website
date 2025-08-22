@@ -33,7 +33,7 @@ const BlueBackground = ({
         >
             <BDeco />
             {bgPrimary()}
-            
+
             <div className={cn()} id='LicencesWave'>
                 <Wave
                     fill="url(#gradient)"
@@ -91,7 +91,7 @@ const BDeco = () => {
                     <Bar width="30px" length="10px" rotate="50deg" color="var(--color-pale-purple2)" endColor="var(--color-purple1)" />
                     <Bar width="30px" length="10px" rotate="140deg" color="var(--color-pale-purple1)" endColor="var(--color-pale-purple2)" />
                 </div>
-                
+
             </div>
         </>
     );
