@@ -89,7 +89,7 @@ I encountered deployment errors on Vercel even though `npm run build` worked loc
 git rm -r --cached .
 git add --all .
 git commit -a -m "Versioning untracked files"
-git push origin master
+git push origin main
 ```
 
 ---
