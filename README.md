@@ -1,22 +1,5 @@
 # Website Dev Notes
 
-- [Website Dev Notes](#website-dev-notes)
-  - [Framework and Libraries](#framework-and-libraries)
-    - [Compiler, CLI and Node.js](#compiler-cli-and-nodejs)
-    - [Installation](#installation)
-  - [Development](#development)
-    - [File Structure](#file-structure)
-    - [Rendering](#rendering)
-    - [Useful shortcuts](#useful-shortcuts)
-    - [Screen size](#screen-size)
-    - [Next.js redirect](#nextjs-redirect)
-  - [Deployment errors](#deployment-errors)
-  - [Reflections](#reflections)
-    - [Design on Figma](#design-on-figma)
-    - [Thoughts about TailwindCSS](#thoughts-about-tailwindcss)
-
----
-
 ## Framework and Libraries
 
 - **Routing**: Next.js App Router
