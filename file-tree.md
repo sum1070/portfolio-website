@@ -1,4 +1,7 @@
-```
+# File Structure
+
+Folders/files naming convention: `kebab-case`
+
 └── 📁koi
     └── 📁app
         └── 📁contact
@@ -15,6 +18,7 @@
         └── 📁wip
             ├── page.tsx
         ├── layout.tsx
+        ├── loading.tsx
         ├── page.tsx
     └── 📁components
         └── 📁cyber-card
@@ -51,13 +55,15 @@
                 ├── hero-header.tsx
             └── 📁wip
                 ├── Wip.tsx
-            ├── About.tsx
-            ├── Hero.tsx
+            ├── about.tsx
+            ├── hero.tsx
             ├── index.ts
+            ├── load-countdown.tsx
         └── 📁theme
             ├── bg-blue.tsx
             ├── bg-green.tsx
             ├── bg-pink.tsx
+            ├── bg-primary.tsx
         └── 📁ui
             ├── fade-in.tsx
             ├── inverted-wave.tsx
@@ -65,6 +71,7 @@
             ├── mouse-trial.tsx
             ├── reveal.tsx
             ├── stars.tsx
+            ├── transition-link.tsx
             ├── typewriter.tsx
         ├── card.tsx
         ├── center-container.tsx
@@ -87,47 +94,18 @@
             ├── zzz-blue.webm
             ├── zzz-purple.webm
         └── 📁images
-            ├── arrow-down.svg
-            ├── attr4.svg
-            ├── avatar.webp
-            ├── c.svg
-            ├── cat1.svg
-            ├── circle-bars-palep-p.webp
-            ├── discord.svg
-            ├── email.svg
-            ├── flat-icon.svg
-            ├── git.svg
-            ├── github.svg
-            ├── instagram.svg
-            ├── medal.svg
-            ├── motion.svg
-            ├── neko-sleep.svg
-            ├── sleep-zzz.svg
-            ├── sleepy.svg
-            ├── sound-off.svg
-            ├── sound-on.svg
-            ├── triangle-big.webp
-            ├── triangle-mid.webp
-            ├── watching.svg
+            ├── images in `.svg` or `webp`
         └── 📁sounds
-            ├── bell.wav
-            ├── bubble.mp3
-            ├── glimmer.wav
-            ├── music_DeepTheme_Audio_Spring_Hazes_34.mp3
-            ├── sparkle.mp3
-            ├── sweetsaw.wav
-            ├── tinkle.flac
+            ├── audio files in `.mp3`, `.wav`, `.flac`
         ├── favicon.ico
     └── 📁styles
         ├── globals.css
-        ├── TriangleArrow.module.css
+        ├── components.module.css
     └── 📁utils
         ├── color-utils.ts
         ├── fetch-images.tsx
         ├── icon-mapping.tsx
-        ├── images-utils.ts
+        ├── image-utils.ts
         ├── index.ts
         ├── motion-utils.ts
         ├── utils.ts
-
-```
