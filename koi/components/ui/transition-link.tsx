@@ -27,7 +27,7 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
         // First add fade-out class for smooth transition
         if (overlay) {
           overlay.classList.add('fade-out');
-          
+
           // Wait for fade-out transition to complete before removing active class
           setTimeout(() => {
             overlay.classList.remove("active");
@@ -45,7 +45,7 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
       if (overlay?.classList.contains("active")) {
         console.log("Fallback: removing transition overlay after timeout");
         overlay.classList.add('fade-out');
-        
+
         setTimeout(() => {
           overlay.classList.remove("active");
           overlay.classList.remove("fade-out");
