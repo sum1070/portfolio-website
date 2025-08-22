@@ -65,6 +65,7 @@ const TechSkills = () => {
             <div id="skills-container" className={styles.skillsContainer}>
               {skillsByType[category].map((skill: Skill) => (
                 <div className={styles.skillItem} key={skill.name}>
+                  {/* fetch the icon images */}
                   <div id="skills-logo" className={styles.skillLogo}>
                     <FetchImage
                       src={skill.icon}
@@ -74,6 +75,7 @@ const TechSkills = () => {
                       iconColor={categoryColor}
                     />
                   </div>
+                  {/* skills */}
                   <span className={styles.skillText}>{skill.name}</span>
                 </div>
               ))}

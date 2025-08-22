@@ -53,6 +53,16 @@
       "icon": "c"
     },
     {
+      "name": "Rust",
+      "type": "languages",
+      "icon": "rust"
+    },
+    {
+      "name": "TypeScript",
+      "type": "languages",
+      "icon": "typescript"
+    },
+    {
       "name": "Python",
       "type": "languages",
       "icon": "python"
