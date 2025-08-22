@@ -1,6 +1,6 @@
 import React from 'react';
 import { RiNextjsFill, RiReactjsLine, RiTailwindCssFill, RiNodejsFill } from "react-icons/ri";
-import { FaGithub, FaQuestion, FaAws, FaRust } from "react-icons/fa";
+import { FaGithub, FaQuestion, FaAws, FaRust, FaPython  } from "react-icons/fa";
 import { FaHtml5, FaCss3Alt, FaDocker } from "react-icons/fa6";
 import { SiOracle, SiTypescript } from "react-icons/si";
 import { iconMap } from './image-utils';
@@ -16,7 +16,7 @@ export const reactIconMap: Record<string, React.ComponentType<any>> = {
   css: FaCss3Alt,
 
   // Languages
-  python: RiNextjsFill,
+  python: FaPython ,
   rust: FaRust,
   typescript: SiTypescript,
 
