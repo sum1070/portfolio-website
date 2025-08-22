@@ -18,19 +18,35 @@
   ],
   "skills": [
     {
+      "name": "C",
+      "type": "languages",
+      "icon": "c"
+    },
+    {
+      "name": "Python",
+      "type": "languages",
+      "icon": "python"
+    },
+    {
+      "name": "Java",
+      "type": "languages",
+      "icon": "java"
+    },
+    {
+      "name": "Rust",
+      "type": "languages",
+      "icon": "rust"
+    },
+    {
+      "name": "TypeScript",
+      "type": "languages",
+      "icon": "typescript"
+    },
+
+    {
       "name": "Javascript",
       "type": "languages",
       "icon": "javascript"
-    },
-    {
-      "name": "React",
-      "type": "frameworks",
-      "icon": "react"
-    },
-    {
-      "name": "Tailwind CSS",
-      "type": "frameworks",
-      "icon": "tailwind"
     },
     {
       "name": "HTML",
@@ -43,34 +59,19 @@
       "icon": "css"
     },
     {
+      "name": "React",
+      "type": "frameworks",
+      "icon": "react"
+    },
+    {
+      "name": "Tailwind CSS",
+      "type": "frameworks",
+      "icon": "tailwind"
+    },
+    {
       "name": "Motion",
       "type": "frameworks",
       "icon": "motion"
-    },
-    {
-      "name": "C",
-      "type": "languages",
-      "icon": "c"
-    },
-    {
-      "name": "Rust",
-      "type": "languages",
-      "icon": "rust"
-    },
-    {
-      "name": "TypeScript",
-      "type": "languages",
-      "icon": "typescript"
-    },
-    {
-      "name": "Python",
-      "type": "languages",
-      "icon": "python"
-    },
-    {
-      "name": "Node.js",
-      "type": "backend",
-      "icon": "nodejs"
     },
     {
       "name": "Next.js",
@@ -81,6 +82,11 @@
       "name": "Oracle",
       "type": "backend",
       "icon": "oracle"
+    },
+    {
+      "name": "Node.js",
+      "type": "backend",
+      "icon": "nodejs"
     },
     {
       "name": "Git",
