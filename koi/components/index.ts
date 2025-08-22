@@ -29,4 +29,4 @@ export {
   Sleepy,
   ArrowDown,
   ZZZBlue,
-} from "./svg-creater";
+} from "./svg-creator";
