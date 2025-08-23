@@ -36,24 +36,44 @@ const InvertedWave = ({ className }: InvertedWaveProps) => {
                     </linearGradient>
                 </defs>
             </Wave>
-            <Wave
-                fill="url(#mainGradient)"
-                className="min-w-svw z-60 absolute inset-x-0 bottom-0"
-                options={{
-                    height: 80,
-                    amplitude: 20,
-                    speed: 0.2,
-                    points: 4
-                }}
-            >
-                <defs>
-                    <linearGradient id="mainGradient" gradientTransform="rotate(90)">
-                        <stop offset="10%" stopColor="var(--color-pale-purple0)" />
-                        <stop offset="90%" stopColor="var(--color-milky-white)" />
-                    </linearGradient>
-                </defs>
-            </Wave>
-
+            <div className="dark:hidden">
+                <Wave
+                    fill="url(#lightGradient)"
+                    className="min-w-svw z-60 absolute inset-x-0 bottom-0"
+                    options={{
+                        height: 80,
+                        amplitude: 20,
+                        speed: 0.2,
+                        points: 4
+                    }}
+                >
+                    <defs>
+                        <linearGradient id="lightGradient" gradientTransform="rotate(90)">
+                            <stop offset="10%" stopColor="var(--color-pale-purple0)" />
+                            <stop offset="90%" stopColor="var(--color-milky-white)" />
+                        </linearGradient>
+                    </defs>
+                </Wave>
+            </div>
+            <div className="hidden dark:block">
+                <Wave
+                    fill="url(#darkGradient)"
+                    className="min-w-svw z-60 absolute inset-x-0 bottom-0"
+                    options={{
+                        height: 80,
+                        amplitude: 20,
+                        speed: 0.2,
+                        points: 4
+                    }}
+                >
+                    <defs>
+                        <linearGradient id="darkGradient" gradientTransform="rotate(90)">
+                            <stop offset="10%" stopColor="#000000" />
+                            <stop offset="90%" stopColor="#1a1a1a" />
+                        </linearGradient>
+                    </defs>
+                </Wave>
+            </div>
         </div>
     );
 }

@@ -9,6 +9,7 @@ export { bgPrimary } from "./theme/bg-primary";
 export { default as Card } from "./card";
 export { default as CyberCard } from "./cyber-card/cyber-card";
 export { TriangleArrowDown, TriangleArrowUp } from "./triangle-arrow";
+export { default as ThemeToggle } from "./ui/theme-toggle";
 
 export * from "./decorations";
 export * from "./sections";

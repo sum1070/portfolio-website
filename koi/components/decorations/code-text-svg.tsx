@@ -3,7 +3,7 @@ import React from "react";
 const CodeTextSVG = () => {
     return (
 
-        <svg className="h-[360px] w-[96px] sm:h-[600px] sm:w-[296px] xl:h-[840px] xl:w-[414px]" viewBox="0 0 296 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="dark:opacity-55 h-[360px] w-[96px] sm:h-[600px] sm:w-[296px] xl:h-[840px] xl:w-[414px]" viewBox="0 0 296 600" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.6">
                 <mask id="path-1-outside-1_318_25" maskUnits="userSpaceOnUse" x="0" y="0" width="296" height="600" fill="black">
                     <rect fill="white" width="296" height="600" />

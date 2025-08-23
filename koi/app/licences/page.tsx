@@ -9,7 +9,9 @@ const licences = () => {
     return (
         <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative")} id={pageID}>
             <Navbar currentPage={pageID} />
-            <PinkBackground
+            <PinkBackground />
+            <div
+                className="absolute inset-0 -z-10 dark:hidden"
                 style={{
                     background: `
                         radial-gradient(at 6% 8%, var(--color-purple1) 0%, transparent 40%),

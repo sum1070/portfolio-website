@@ -1,14 +1,38 @@
 import { Bar, Dot, LineCircle, Triangle } from "@/components/decorations";
 import { motion, useAnimate, useScroll } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FadeIn, Pattern, CodeTextSVG, bgPrimary } from "@/components";
-import HeroHeader from "./hero-header";
 import { springY } from "@/lib/hooks/useSpring";
 import { animationTime, borderColor, boxShadow } from "@/utils";
 
 export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
     const { scrollY } = useScroll();
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // Check if dark mode is enabled
+    useEffect(() => {
+        const updateThemeMode = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setIsDarkMode(isDark);
+        };
+
+        // Initial check
+        updateThemeMode();
+
+        // Set up a MutationObserver to detect class changes on the html element
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                if (mutation.attributeName === 'class') {
+                    updateThemeMode();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, { attributes: true });
+
+        return () => observer.disconnect();
+    }, []);
 
     const sprBar1 = springY(scrollY, [0, -115], [0, 500], { stiffness: 80, damping: 20 });
     const sprBar2 = springY(scrollY, [0, -150], [0, 500], { stiffness: 60, damping: 25 });
@@ -23,49 +47,76 @@ export default function BackgroundHero() {
 
     const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";
 
+    // Modified border and shadow arrays for dark mode
+    const darkModeBorderColor = borderColor.map(color => {
+        // Adjust opacity for dark mode borders
+        return color.replace(/solid\s+#([A-F0-9]+)/i, 'solid rgba($1, 0.4)');
+    });
+
+    const darkModeBoxShadow = boxShadow.map(shadow => {
+        // Reduce shadow intensity for dark mode
+        return shadow.replace(/0\s+0\s+(\d+)px\s+#([A-F0-9]+)/i, '0 0 $1px rgba($2, 0.3)');
+    });
+
     useEffect(() => {
         const animateOrbit = async () => {
+            // Reset the orbit
             await animate(scope.current, { opacity: 0, boxShadow: "none", border: "0px solid transparent" }, { duration: 0 });
-            // fade in the orbit
+
+            // Different initial styles based on theme
+            const initialBorder = isDarkMode
+                ? "4px solid rgba(134, 221, 255, 0.3)"
+                : "4px solid #86DDFF";
+
+            const initialShadow = isDarkMode
+                ? "0 0 40px rgba(134, 221, 255, 0.2)"
+                : "0 0 70px #86DDFF";
+
+            // Fade in the orbit
             await animate(scope.current, {
                 opacity: 1,
-                border: "4px solid #86DDFF",
-                boxShadow: "0 0 70px #86DDFF"
+                border: initialBorder,
+                boxShadow: initialShadow
             }, {
                 duration: animationTime.durationOrbitIntro,
                 delay: animationTime.delayOrbitIntro,
                 ease: "easeInOut"
             });
-            // color change
+
+            // Color change
             let index = 0;
             const cycleColors = async () => {
+                const currentBorderArray = isDarkMode ? darkModeBorderColor : borderColor;
+                const currentShadowArray = isDarkMode ? darkModeBoxShadow : boxShadow;
+
                 await animate(scope.current, {
-                    border: borderColor[index],
-                    boxShadow: boxShadow[index]
+                    border: currentBorderArray[index],
+                    boxShadow: currentShadowArray[index]
                 }, {
                     delay: animationTime.delayOrbitColor,
                     duration: animationTime.durationOrbitColor,
                     ease: "easeInOut"
                 });
 
-                index = (index + 1) % borderColor.length;
+                index = (index + 1) % currentBorderArray.length;
                 cycleColors(); // recursive call
             };
             cycleColors();
         };
+
         animateOrbit();
-    }, [animate]);
+    }, [animate, isDarkMode]);
 
     return (
         <>
             {/* Background */}
             {bgPrimary()}
-            <FadeIn className="absolute inset-x-0 bottom-0">
-                <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-milky-white to-transparent"></div>
+            <FadeIn className=" absolute inset-x-0 bottom-0">
+                <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-milky-white dark:from-[#1a1a1a] to-transparent"></div>
                 {/* white dots grid */}
                 <Pattern
                     type="dots"
-                    className="w-full h-[10svh] sm:h-[10svh] md:h-[15svh] z-40"
+                    className="w-full dark:opacity-70 dark:h-[8svh] h-[10svh] sm:h-[10svh] md:h-[15svh] z-40"
                     position="bottom"
                     color="#fefaf3"
                     width="100%"
@@ -78,13 +129,13 @@ export default function BackgroundHero() {
                     color="#fefaf3"
                     spacing={13}
                     stroke={3}
-                    className="z-40 bottom-[10svh] h-2/5 sm:bottom-[10svh] md:bottom-[15svh] sm:w-[10svw] "
+                    className="z-40 bottom-[10svh] h-2/5 sm:bottom-[10svh] md:bottom-[15svh] sm:w-[10svw] dark:opacity-70 dark:hidden"
                 />
             </FadeIn>
             {/* Bar */}
             <FadeIn duration={animationTime.durationBars} delayOffset={1.5} className={`${shapeClasses}`} >
                 {/* Bars */}
-                <div >
+                <div className="dark:hidden" >
                     {/* Hollow bar (bigger screen)*/}
                     <motion.div style={{ y: sprBar2, position: "absolute" }} className="top-40 left-0 hidden md:block">
                         <Bar width="300px" type="hollow" borderWidth="3px" length="70px" rotate="135deg" />
@@ -151,7 +202,7 @@ export default function BackgroundHero() {
                         <Dot size="15px" border={7} color="var(--color-pale-purple0)" />
                     </motion.div>
                     {/* pink with purple shadow (big screen) */}
-                    <div className="hidden md:block" >
+                    <div className="hidden dark:hidden md:block" >
                         <motion.div style={{ y: sprStiff, position: "absolute", left: "9.8%", top: "18.9%" }}>
                             <Dot size="38px" blur={true} color="var(--color-purple0)" />
                         </motion.div>
@@ -169,7 +220,7 @@ export default function BackgroundHero() {
                         </motion.div>
                     </div>
                     {/* blue big dots (big screen) */}
-                    <div className="hidden md:block">
+                    <div className="dark:hidden hidden md:block">
                         <motion.div style={{ y: sprNormal, position: "absolute", left: "79.8%", top: "65%" }}>
                             <Dot size="42px" blur={true} color="var(--color-pink1)  border={7} " />
                         </motion.div>
@@ -227,10 +278,10 @@ export default function BackgroundHero() {
                     </motion.div>
                 </div>
             </FadeIn>
-            {/* Centre orbit */}
+            {/* Centre orbit - now with dark mode considerations */}
             <motion.div
                 ref={scope}
-                className="z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  "
+                className="z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                     position: "absolute",
                     y: sprOrbit,
@@ -238,14 +289,13 @@ export default function BackgroundHero() {
                     rotate: -30,
                     borderRadius: "50%",
                     border: "0px solid transparent",
-                    boxShadow: "none"
+                    boxShadow: "none",
+                    opacity: isDarkMode ? 0.7 : 1, // Reduce overall opacity in dark mode
                 }}
                 initial={{ opacity: 0, border: "0px solid transparent", boxShadow: "none" }}
             >
-                <div className="w-[288px] h-[108px]  sm:w-[480px] sm:h-[180px] md:w-[800px] md:h-[300px] xl:w-[960px] xl:h-[360px]" />
+                <div className="w-[288px] h-[108px] sm:w-[480px] sm:h-[180px] md:w-[800px] md:h-[300px] xl:w-[960px] xl:h-[360px]" />
             </motion.div>
-
-
         </>
 
 

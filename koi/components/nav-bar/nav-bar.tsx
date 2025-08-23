@@ -42,7 +42,7 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
             id='navbar'
             className={cn(
                 "fixed w-full z-50 transition-all duration-200 ease-in-out ",
-                isScrolled ? "rounded-b-xl bg-milky-white backdrop-blur-md shadow-md " : "bg-transparent",
+                isScrolled ? "rounded-b-xl bg-milky-white dark:bg-dark-black backdrop-blur-md shadow-md " : "bg-transparent",
             )}>
             <div id='nav-container' className="p-2 flex flex-row justify-between text-xl " >
                 <Link

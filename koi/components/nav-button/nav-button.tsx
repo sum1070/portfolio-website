@@ -1,5 +1,5 @@
 "use client";
-import { cn, sounds } from '@/utils';
+import { cn, gradient, sounds } from '@/utils';
 import React, { useState, useRef, useEffect } from 'react';
 import { LiquidGlass } from './liquid-glass';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';
@@ -15,6 +15,7 @@ interface ButtonProps {
     title?: string;
     titleCN?: string;
     background?: string;
+    darkBackground?: string;
     btnSize?: string;
 }
 
@@ -25,6 +26,7 @@ const NavButton = ({
     title = "Koito",
     titleCN,
     background = "",
+    darkBackground = "",
     btnSize
 }: ButtonProps) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -120,11 +122,13 @@ const NavButton = ({
                         id='nav-btn-BG'
                         className={cn(
                             "absolute ",
-                            background || " bg-gradient-to-r from-[#ff0077] via-[#ddbaff] to-[#2e4dff] ",
+                            background || gradient.default,
+                            "dark:hidden",
                             "rounded-[40rem] ",
                             "filter blur-[8px] ",
                             "[animation:rotation_6s_linear_infinite] ",
                         )}
+
                         style={{
                             width: `${bgSize}%`,
                             height: `${bgSize}%`,
@@ -133,7 +137,23 @@ const NavButton = ({
                         }}
                     />
                 </div>
-
+                <div
+                    id='nav-btn-BG-dark'
+                    className={cn(
+                        "absolute ",
+                        darkBackground || gradient.deepBlue,
+                        "hidden dark:block",
+                        "rounded-[40rem] ",
+                        "filter blur-[8px] ",
+                        "[animation:rotation_6s_linear_infinite] ",
+                    )}
+                    style={{
+                        width: `${bgSize}%`,
+                        height: `${bgSize}%`,
+                        top: `-${(bgSize - 100) / 2}%`,
+                        left: `-${(bgSize - 100) / 2}%`,
+                    }}
+                />
                 {LiquidGlass(isHovering, mousePosition)}
                 <div
                     className={cn(

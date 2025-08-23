@@ -29,7 +29,7 @@ export const BrElements = () => {
             <div className={cn(
                 ' flex flex-col md:flex-row justify-center items-center pt-16 ' + gap,
             )}>
-                <NavButton href={pageIDs.contact} button='contact' title='Contact' />
+                <NavButton href={pageIDs.contact} button='contact' background={gradient.default} title='Contact' />
                 <div className={cn(
                     'flex flex-col ' + gap,
                 )}>
