@@ -25,7 +25,7 @@ const BlueBackground = ({
     return (
         <div
             className={cn(
-                "bg-blue-50 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
+                "bg-blue-50 dark:bg-dark-black pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
                 bgContainerCN,
             )}
             style={style}

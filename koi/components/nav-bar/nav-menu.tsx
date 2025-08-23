@@ -34,7 +34,7 @@ export default function NavMenu({
                 isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-[0.01]"
             )}
         >
-            <div id='mobile-nav-Links' className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-milky-white/90 backdrop-blur-sm">
+            <div id='mobile-nav-Links' className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-milky-white/90 dark:bg-dark-black/70 backdrop-blur-sm">
                 {filteredNavLinks.map((link) => (
                     <Link
                         key={link.name}

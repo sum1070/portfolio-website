@@ -11,7 +11,7 @@ const GreenBackground = ({
     return (
         <div
             className={cn(
-                "bg-green-50 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
+                "bg-green-50 dark:bg-dark-black pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
             )}
             style={style}
         >

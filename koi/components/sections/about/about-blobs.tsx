@@ -24,6 +24,7 @@ const BlurredBlobsAbout = () => {
                         "h-210 w-210",
                         "[animation:blob_7s_infinite_1s_ease-in-out] -translate-x-1/2 -translate-y-1/2",
                         "bg-conic from-sky-blue via-violet-400 to-fuchsia-300",
+                        "dark:hidden",
                         "blur-3xl"
                     )}
                 ></div>
@@ -36,7 +37,8 @@ const BlurredBlobsAbout = () => {
                         "bg-radial-[at_25%_25%] from-pink1 via-purple-300 to-pink-200 to-90%",
                         "blur-3xl",
                         positionClasses.right,
-                        "w-160 h-160 xl:w-210 xl:h-210"
+                        "w-160 h-160 xl:w-210 xl:h-210",
+                        "dark:hidden",
                     )}
                 ></div>
             </div>

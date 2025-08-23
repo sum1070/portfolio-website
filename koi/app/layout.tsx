@@ -29,8 +29,15 @@ export default function RootLayout({
           <SpeedInsights />
           <Analytics />
           <div id="page-transition-overlay" className="min-w-screen min-h-screen flex items-center justify-center relative opacity-0 pointer-events-none">
-            {bgPrimary()}
-            <div className="flex flex-col items-center justify-center gap-8">
+            {/* Light mode background */}
+            <div className="dark:hidden">
+              {bgPrimary()}
+            </div>
+
+            {/* Dark mode background - solid color */}
+            <div className="hidden dark:block absolute inset-0 bg-[#0e0d0d] -z-40"></div>
+
+            <div className="flex flex-col items-center justify-center gap-8 bg">
               <div className="min-h-[180px] flex flex-col items-center justify-center gap-4">
                 <span className="eyes"></span>
                 <span className="spinner"></span>

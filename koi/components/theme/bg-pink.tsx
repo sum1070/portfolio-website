@@ -11,7 +11,7 @@ const PinkBackground = ({
     return (
         <div
             className={cn(
-                "bg-pale-purple1 pointer-events-none absolute inset-0 overflow-hidden -z-10 ",
+                "bg-pale-purple1 pointer-events-none absolute inset-0 overflow-hidden -z-50 ",
             )}
             style={style}
         >
@@ -60,8 +60,8 @@ const PinkBackground = ({
                 >
                     <defs>
                         <linearGradient id="gradient" gradientTransform="rotate(90)">
-                            <stop offset="10%" stopColor="#F18EC9" />
-                            <stop offset="90%" stopColor="#97025B" />
+                            <stop offset="10%" stopColor="var(--color-pink4)" />
+                            <stop offset="90%" stopColor="var(--color-pink5)" />
                         </linearGradient>
                     </defs>
                 </Wave>

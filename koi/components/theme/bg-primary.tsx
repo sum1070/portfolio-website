@@ -1,6 +1,6 @@
 export function bgPrimary() {
     return <div
-        className="absolute inset-0 -z-40 "
+        className="absolute inset-0 -z-40 dark:hidden "
         style={{
             background: `
                         radial-gradient(at 6% 8%, var(--color-purple2) 0%, transparent 50%),

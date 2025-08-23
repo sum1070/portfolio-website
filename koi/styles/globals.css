@@ -25,15 +25,76 @@
   --color-pink1: #fcb0ff;
   --color-pink2: #fed6ff;
   --color-pink3: #ff8fea;
+  --color-pink4: #f18ec9; /* pink bg wave */
+  --color-pink5: #97025b; /* pink bg wave */
   --color-bright-pink: #ff56aa;
   --color-phlox: #c04cfd;
   --color-Mauve: #e2baff;
   --color-Mauve2: #e8c7ff;
+  --color-MauveContact: #e8c7ff;
   --color-purblue: #aab1f2;
+
+  --color-dark-black: #121212;
 
   --font-titillium-web: "Titillium Web", sans-serif;
   --font-fraunces: "Fraunces", serif;
   --font-fira-code: "Fira Code", monospace;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer theme {
+  :root,
+  :host {
+    /* default (light) */
+    --color-bg-primary: var(--color-pale-purple1);
+    --color-text-primary: var(--color-nice-purple2);
+    --color-text-secondary: var(--color-nice-purple1);
+    --color-accent: var(--color-purple2);
+    --color-card-bg: var(--color-Mauve2);
+
+    @variant dark {
+      /* Dark theme */
+      --color-bg-primary: var(--color-dark-black);
+      --color-text-primary: #f8f8f8e0;
+      --color-text-secondary: #d1d1d1;
+      --color-accent: #746ba6;
+      --color-card-bg: #1a1a1a;
+
+      --color-black: #0a0a0a;
+      --color-black2: #0e0d0d;
+      --color-pale-purple1: var(
+        --color-dark-black
+      ); /* theme background color */
+      /* --color-white: #ffffff;
+      --color-pale-purple0: #f3e9fd;
+      --color-pale-purple2: #c4b9f9;
+      --color-pale-purple3: #c1c0ff;
+      --color-purple0: #ffffff; */
+      --color-purple1: #1d0233;
+      --color-purple2: #1c0330e7;
+      /* --color-nice-purple0: #ffffff99;
+      --color-nice-purple1: #ffffff80;
+       */
+      --color-nice-purple2: #bb86fc;
+      --color-nice-purple3: #cd61ff;
+      --color-sky-blue: #2e1cac;
+      --color-blue2: #456f8b;
+      --color-Mauve: #e2baff;
+      --color-Mauve2: #06010a;
+      --color-pink4: #ac5f8c; /* pink bg wave */
+      --color-pink5: #4f0c34; /* pink bg wave */
+      --color-MauveContact: #513f66;
+      /* 
+      --color-pink0: #ffffffff;
+      --color-pink1: #ffffffcc;
+      --color-pink2: #ffffff99;
+      --color-pink3: #ffffff66;
+      --color-phlox: #ffffffcc;
+      --color-Mauve: #ffffff99;
+      --color-purblue: #ffffff33; */
+    }
+  }
 }
 
 @layer base {
@@ -61,7 +122,8 @@
 }
 
 body {
-  background-color: var(--color-pale-purple0);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -347,22 +409,18 @@ p {
 .gradient-deep-blue {
   background: hsla(235, 100%, 78%, 1);
 
-  background: linear-gradient(
-    90deg,
-    hsla(235, 100%, 78%, 1) 0%,
-    hsla(222, 77%, 33%, 1) 100%
-  );
+  background: linear-gradient(90deg, rgb(90, 28, 148) 0%, rgb(0, 7, 102) 100%);
 
   background: -moz-linear-gradient(
     90deg,
-    hsla(235, 100%, 78%, 1) 0%,
-    hsla(222, 77%, 33%, 1) 100%
+    rgb(90, 28, 148) 0%,
+    rgb(0, 7, 102) 100%
   );
 
   background: -webkit-linear-gradient(
     90deg,
-    hsla(235, 100%, 78%, 1) 0%,
-    hsla(222, 77%, 33%, 1) 100%
+    rgb(90, 28, 148) 0%,
+    rgb(0, 7, 102) 100%
   );
 
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#919BFF", endColorstr="#133A94", GradientType=1 );
