@@ -4,7 +4,7 @@ export const animationTime = {
   durationOrbitIntro: 0.3,
   delayOrbitColor: 0.6,
   durationOrbitColor: 0.8,
-  delayBG: 0.45,
+  delayBG: 0,
   durationBG: 0.3,
   durationBars: 1,
   durationDots: 0.8,
