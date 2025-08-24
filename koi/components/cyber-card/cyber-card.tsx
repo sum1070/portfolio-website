@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Corner from './corner';
 import { TBaseProps } from '@/lib/types';
 import Avatar from './avatar';
+import contactsJson from "@/data/data.json";
 
 interface Props extends TBaseProps {
   cardCN?: string;
@@ -18,6 +19,14 @@ const CyberCard = ({
   const cardSize = "w-80 h-60 md:h-65 xl:w-80 xl:h-80";
   const titleDefaultSize = "text-2xl xl:text-3xl";
   const [isHovered, setIsHovered] = useState(false);
+  
+  // Get GitHub URL from contacts data
+  const githubContact = contactsJson.contacts.find(contact => contact.name === "GitHub");
+  const githubUrl = githubContact?.link || "https://github.com";
+  
+  const handleCardClick = () => {
+    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className={cn(
@@ -25,9 +34,12 @@ const CyberCard = ({
     )}>
 
       <button
+        onClick={handleCardClick}
         className={cn(
           "relative bg-[#9dceee] rounded-2xl outline border border-[hsla(178,100%,47%,0)] shadow-[0_0_1.5rem_rgba(0,242,234,0.1),inset_0_0_1rem_rgba(0,0,0,0.5)] overflow-hidden flex flex-col",
           cardCN || cardSize,
+          "cursor-pointer hover:shadow-[0_0_2rem_rgba(0,242,234,0.2),inset_0_0_1rem_rgba(0,0,0,0.5)]",
+          "transition-shadow duration-300"
         )}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -36,20 +48,17 @@ const CyberCard = ({
 
         <Corner isHovered={isHovered} />
 
-
-
         <div id='banner' className={cn(
           "h-20 bg-gradient-to-tr from-[#0061f21a] to-[#0d0d0da8] ",
           "border-b border-black2",
         )} />
         <Avatar isHovered={isHovered} />
 
-
         <div
           id='card-body'
           className=" p-4 pt-4 md:pt-10 bg-linear-45 from-[#0a0a0a] to-[#303030] flex flex-col grow items-center text-center"
         >
-          <div >
+          <div>
             <div
               className={cn(
                 "xl:mt-2 ",
@@ -74,7 +83,6 @@ const CyberCard = ({
             </p>
           </div>
         </div>
-
       </button>
     </div>
   );
