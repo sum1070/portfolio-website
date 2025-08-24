@@ -13,9 +13,9 @@ See package.json for more details.
 
 ### Compiler, CLI and Node.js
 
-- Compiler: transforms & minifies JS code
-- CLI: builds and starts apps, `npm run build`, `npm run dev`
-- Node.js: Runtime, executes JS code on the server
+- Compiler: Transforms & minifies JS code
+- CLI: Builds and starts apps, `npm run build`, `npm run dev`
+- Node.js: JavaScript runtime, executes code on the server
 
 ---
 
@@ -72,13 +72,15 @@ Use `xl` for large screen
   - event handlers
   - recommended to use `<Link>`
 
+---
+
 ## Deployment errors
 
-I encountered deployment errors on Vercel even though `npm run build` worked locally.
+I ran into deployment errors on Vercel even though `npm run build` worked fine locally.
 
 ![Deployment Errors](./assets/deploy-error-resolve.png)
 
-(And i ignored the error and kept pushing other changes lmao)
+(~~And i ignored the error and just kept pushing other changes~~ Don't do this lol)
 ![Deployment Errors](./assets/deploy-errors.png)
 
 **Cause**: Git cache didn't track changes in file name casing, so parts of the remote repos were outdated.
@@ -100,16 +102,52 @@ This is my second time working on a React/Next.js project. My first experience w
 
 ### Design on Figma
 
-I definitely spent too much time on the design... probably procrastinating on the coding part. Did I actually improve my Figma skills? Maybe just a little. Did I waste time that I could’ve used for coding and starting other projects earlier? Yes.
+I definitely spent too much time on the design... probably procrastinating on the coding part. I wasted a lot of time I could’ve spent coding or starting other projects earlier, and only learned the basics of Figma 🔪
 
 ![Design on Figma](./assets/design-figma.png)
 
-Spent quite a lot of time to solve performance issues because code I wrote at the beginning wasn't optimised and wasn't clear. After many refactors I managed to get a "better" code structure and lighthouse score. But still have a large room for improvement especially on mobile performance.
+Spent quite a lot of time fixing performance issues because code I wrote at the beginning wasn't optimised or clear. After many refactors I managed to get a "better" code structure and lighthouse score. But still have a large room for improvement especially on mobile performance.
 
-### Thoughts about TailwindCSS
+### My Thoughts about TailwindCSS
 
-It works well if the design is simple and doesn't require a lot of custom styles. Many people says it make the code messy but I usually store `classNames` as string in constants and use `cn` function to merge them, so it hasn't really been a problem for me.
+Many people say Tailwind makes the code messy but I usually store `classNames` as string in constants and use `cn` function to merge them, so it hasn't really been a problem for me. I think it works well for simple designs that don't require lots of custom styles. However, since I am doing pastel gradient designs, I often end up using traditional CSS or inline styling. Probably TailwindCSS isn't necessary for my case.
 
-However, since I am doing pastel gradient designs, I often end up using traditional CSS or inline styling. Probably TailwindCSS isn't necessary for my case.
+Update on (24/08/2025): After refactoring and centralising colors in `globals.css`, I find Tailwind is still useful for organising layout in my opinion. Probably opposite to what most people think.
 
 #### Dark mode
+
+My styling approach mixed with Tailwind, inline css and traditional css in `globals.css` file. Before refactoring, I has a lot of locally declared color code scattered across many files, which made maintenance difficult. By centralising all colors in `globals.css`, nearly all dark mode are handled automatically by Tailwind's `dark:` variant.
+
+- Using global css variables in non-Tailwind css by passing `var(--color-name)`.
+
+Besides centralising colors, the only main issue that give me a headache was the coloring in local svg. See [svg issues](#svg-issues) section.
+
+### SVG issues
+
+In my project, I use both React Icons and local SVG files for displaying icons. React Icons are great and very easy to style, but some icons are missing such as C language.
+
+#### Handling Local SVGs and Dark Mode
+
+My initial implementation of FetchImage returns `<Image>` component from Next.js, which works well for raster images (PNG, JPG) but it doesn't support SVG styling so I had to change it to accommodate dark mode.
+
+By default, loading SVGs as images (using `<img>` or Next.js `<Image>`) does **not** allow CSS styling for color or dark mode, because the SVG is rendered as an external resource. To solve this, I implemented a custom [FetchImage](koi/utils/fetch-images.tsx) component that fetches the SVG file, injects its content directly into the DOM using `dangerouslySetInnerHTML`, and applies CSS classes and inline styles.
+
+This approach allows me to:
+
+- **Apply CSS color and fill**: The SVG is part of the DOM, so global CSS (including Tailwind’s `dark:` variant and custom classes) can style the icon.
+- **Support dark mode automatically**: By centralizing color variables in [`globals.css`](koi/styles/globals.css) and using CSS classes, SVG icons update their color when the theme changes.
+- **Cache SVG content**: To avoid redundant network requests, I cache fetched SVGs in memory.
+
+For icons that have a dark mode variant (e.g. `icon-dark.svg`), I can extend the logic to fetch and render the appropriate SVG based on the current theme.
+
+### Lighthouse performance
+
+I had very poor performance on mobile at LCP (Largest Contentful Paint). There were two main reasons:
+
+- Opacity set to 0 led to Lighthouse error
+  - fixed by setting opacity to 0.01 instead of 0
+- Motion animations delay the rendering of main content
+  - fixed by reducing the delay and duration of animations, especially for main text
+  - (faster animations actually looks better)
+- Too many elements loading at once
+  - fixed by progressively loading elements
