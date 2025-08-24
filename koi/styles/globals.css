@@ -87,9 +87,11 @@
       --color-blueWave2: #183c66; /* blue bg wave */
       --color-Mauve: #e2baff;
       --color-Mauve2: #06010a;
-      --color-pink4: #ac5f8c; /* pink bg wave */
-      --color-pink5: #4f0c34; /* pink bg wave */
+      --color-pinkWave1: #bb6195; /* pink bg wave */
+      --color-pinkWave2: #681b45; /* pink bg wave */
       --color-MauveContact: #513f66;
+      --color-bright-pink: rgb(167, 63, 123);
+
       /* 
       --color-pink0: #ffffffff;
       --color-pink1: #ffffffcc;
