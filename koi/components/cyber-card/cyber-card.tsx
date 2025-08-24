@@ -16,7 +16,7 @@ const CyberCard = ({
   titleSize = "",
 }: Props) => {
   const cardTitle = "Margaret Chan";
-  const cardSize = "w-80 h-60 md:h-65 xl:w-80 xl:h-80";
+  const cardSize = "w-80 h-50 md:h-65 xl:w-80 xl:h-80";
   const titleDefaultSize = "text-2xl xl:text-3xl";
   const [isHovered, setIsHovered] = useState(false);
 
@@ -49,7 +49,7 @@ const CyberCard = ({
         <Corner isHovered={isHovered} />
 
         <div id='banner' className={cn(
-          "h-20 bg-gradient-to-tr from-[#0061f21a] to-[#0d0d0da8] ",
+          "h-18 bg-gradient-to-tr from-[#0061f21a] to-[#0d0d0da8] ",
           "border-b border-black2",
         )} />
         <Avatar isHovered={isHovered} />
@@ -60,8 +60,9 @@ const CyberCard = ({
         >
           <div>
             <div
+              id='cyber-card-title'
               className={cn(
-                "xl:mt-2 ",
+                "mt-4",
                 "relative cursor-pointer font-bold uppercase tracking-widest transition-all duration-300",
                 titleSize || titleDefaultSize,
                 isHovered
