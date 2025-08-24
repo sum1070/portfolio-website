@@ -41,7 +41,7 @@ const About = () => {
         className={cn(
           // dont use item center otherwise it push skills to middle
           "min-h-svh min-w-svw justify-center",
-          "gap-x-4 px-24 ",
+          "gap-x-4 px-10 md:px-24 ",
           // desktop: 2 cols
           "xl:grid xl:grid-cols-[1.4fr_1fr] xl:grid-rows-[1fr_1.2fr] ",
           // mobile: one flex col

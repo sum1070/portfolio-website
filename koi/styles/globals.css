@@ -35,6 +35,10 @@
   --color-Mauve2: #e8c7ff;
   --color-MauveContact: #e8c7ff;
   --color-purblue: #aab1f2;
+  --color-deep-blue0: #112c7b;
+  --color-deep-blue1: #0f3677;
+  --color-deep-blue2: #0e4072;
+  --color-deep-blue3: #0c4a6e;
 
   --color-dark-black: #121212;
   --color-dark-text: #bfbfbf;
@@ -92,6 +96,11 @@
       --color-MauveContact: #513f66;
       --color-bright-pink: rgb(167, 63, 123);
 
+      --color-deep-blue0: #47a9d0;
+      --color-deep-blue1: #5FA3DD;
+      --color-deep-blue2: #769DEA;
+      --color-deep-blue3: #8e97f7;
+
       /* 
       --color-pink0: #ffffffff;
       --color-pink1: #ffffffcc;
@@ -134,14 +143,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-}
-
-.neko-sleep-icon {
-  color: var(--color-nice-purple3);
-}
-
-:is(.dark) .neko-sleep-icon {
-  color: #a991d4; /* Lighter purple for dark mode */
 }
 
 /* Only apply text size and weight, no padding/margin, no positioning, no color */
