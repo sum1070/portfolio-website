@@ -111,3 +111,5 @@ Spent quite a lot of time to solve performance issues because code I wrote at th
 It works well if the design is simple and doesn't require a lot of custom styles. Many people says it make the code messy but I usually store `classNames` as string in constants and use `cn` function to merge them, so it hasn't really been a problem for me.
 
 However, since I am doing pastel gradient designs, I often end up using traditional CSS or inline styling. Probably TailwindCSS isn't necessary for my case.
+
+#### Dark mode
