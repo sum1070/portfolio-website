@@ -15,6 +15,7 @@ export const sounds = {
   music: "/sounds/music_DeepTheme_Audio_Spring_Hazes_34.mp3", // https://www.zapsplat.com/music/spring-hazes-slow-dreamy-and-carefree-musical-bumper-stinger-intro-outro/
   // NOT USED:
   sweetsaw: "/sounds/sweetsaw.wav", //https://freesound.org/people/newlocknew/sounds/515830/
+  switch: "/sounds/switch-toggle.wav", // https://freesound.org/people/Rudmer_Rotteveel/sounds/457458/
 };
 
 export const pageIDs = {
@@ -23,7 +24,7 @@ export const pageIDs = {
   projects: "projects",
   contact: "contact",
   licences: "licences",
-}
+};
 
 export const navLinks = [
   { name: "Home", href: `/` },
@@ -37,10 +38,10 @@ export const gradient = {
   purple: " gradient-purple ",
   deepBlue: " gradient-deep-blue ",
   limeBlue: " gradient-lime-blue ",
-  insta : " gradient-insta ",
+  insta: " gradient-insta ",
   paleBlue: " gradient-pale-blue ",
   ssr: " gradient-ssr ",
   one: " gradient-1 ",
   two: " gradient-2 ",
   default: " gradient-default ",
-}
+};
