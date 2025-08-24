@@ -46,7 +46,7 @@ const PinkBackground = ({
                 </div>
 
             </div>
-            <div className={cn()} id='LicencesWave'>
+            <div className={cn()} id='PinkWave'>
                 <Wave
                     fill="url(#gradient)"
                     className={cn(positionClasses.bottom, "min-w-svw z-0")}
@@ -60,8 +60,8 @@ const PinkBackground = ({
                 >
                     <defs>
                         <linearGradient id="gradient" gradientTransform="rotate(90)">
-                            <stop offset="10%" stopColor="var(--color-pink4)" />
-                            <stop offset="90%" stopColor="var(--color-pink5)" />
+                            <stop offset="10%" stopColor="var(--color-pinkWave1)" />
+                            <stop offset="90%" stopColor="var(--color-pinkWave2)" />
                         </linearGradient>
                     </defs>
                 </Wave>

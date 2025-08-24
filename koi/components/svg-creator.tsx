@@ -30,6 +30,7 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
         return (
             <Image
                 className={className}
+                color="#7dd3fc"
                 alt={`${iconKey} icon`}
                 src={iconSrc}
                 priority={true}

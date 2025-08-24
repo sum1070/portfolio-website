@@ -33,7 +33,7 @@ const BlueBackground = ({
             <BDeco />
             {bgPrimary()}
 
-            <div className={cn()} id='LicencesWave'>
+            <div className={cn()} id='BlueWave'>
                 <Wave
                     fill="url(#gradient)"
                     className={cn(positionClasses.bottom, "min-w-svw z-0")}
@@ -47,8 +47,8 @@ const BlueBackground = ({
                 >
                     <defs>
                         <linearGradient id="gradient" gradientTransform="rotate(90)">
-                            <stop offset="10%" stopColor="#8FDBF2" />
-                            <stop offset="90%" stopColor="#025696" />
+                            <stop offset="10%" stopColor="var(--color-blueWave1)" />
+                            <stop offset="90%" stopColor="var(--color-blueWave2)" />
                         </linearGradient>
                     </defs>
                 </Wave>
