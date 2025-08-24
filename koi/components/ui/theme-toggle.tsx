@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { cn } from '@/utils';
+import { useMainVolume } from '@/lib/hooks/useMainVolume';
+import useSound from 'use-sound';
 
 export default function ThemeToggle() {
     const [isDark, setIsDark] = useState(false);
@@ -30,9 +32,30 @@ export default function ThemeToggle() {
         setIsDark(!isDark);
     };
 
+    // sound effect
+    const { volume, isMuted } = useMainVolume();
+    const [isClicked, setIsClicked] = useState(false);
+
+    const [switchSound, { stop: stopSwitch }] = useSound("/sounds/switch-toggle.wav", {
+        volume: isMuted ? 0 : volume,
+    });
+
+    const toggleSound = () => {
+        setIsClicked(true);
+        setTimeout(() => {
+            setIsClicked(false);
+        }, 300);
+        if (!isMuted) switchSound();
+    }
+
+    const handleToggleClick = () => {
+        toggleTheme();
+        toggleSound();
+    };
+
     return (
         <button
-            onClick={toggleTheme}
+            onClick={handleToggleClick}
             className={cn(
                 "relative rounded-full w-12 h-6 flex items-center transition-colors duration-300 focus:outline-none",
                 isDark ? "bg-gray-600" : "bg-violet-300"
