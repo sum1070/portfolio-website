@@ -14,10 +14,10 @@ export interface SkillsByType {
 }
 
 export const SKILL_COLORS = {
-  languages: "#112C7B",
-  frameworks: "#0F3677",
-  backend: "#0E4072",
-  tools: "#0c4a6e",
+  languages: "var(--color-deep-blue0)",
+  frameworks: "var(--color-deep-blue1)",
+  backend: "var(--color-deep-blue2)",
+  tools: "var(--color-deep-blue3)",
 };
 
 /**
