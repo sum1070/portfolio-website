@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.64067 93.591774">
-   <path fill="currentColor"
-      d="M204.33454 132.38818c-2.34597-22.84232-17.53303-36.300767-44.69687-36.300767-24.81787 0-44.32644 17.903437-44.32644 46.672417 0 28.89245 17.77996 46.91936 47.1663 46.91936 23.45968 0 39.88146-13.82886 42.47437-36.79466h-28.02815c-1.11124 8.51957-5.55624 15.06359-14.94011 15.06359-14.81664 0-17.53302-11.72984-17.53302-24.20051 0-17.16261 6.1736-25.92912 16.42177-25.92912 9.13693 0 14.94012 5.30929 15.80442 14.56969z"
-      font-family="Helvetica LT Std" font-size="123.472" font-weight="900"
-      style="-inkscape-font-specification:&quot;Helvetica LT Std Heavy&quot;"
-      transform="translate(-115.31123 -96.087414)" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 94">
+   <path fill="#112c7b"
+      d="M204 132c-2-22-17-36-44-36-25 0-45 18-45 47s18 47 47 47c24 0 40-14 43-37h-28c-1 8-6 15-15 15-15 0-18-12-18-24 0-17 7-26 17-26 9 0 15 5 16 14z"
+      font-family="Helvetica LT Std" font-size="123.5" font-weight="900"
+      style="-inkscape-font-specification:&quot;Helvetica LT Std Heavy&quot;" transform="translate(-115 -96)" />
 </svg>
