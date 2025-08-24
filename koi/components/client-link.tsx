@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { getIconComponent } from '@/utils/icon-mapping';
+import FetchImage from '@/utils/fetch-images';
 
 interface ClientLinkProps {
     name: string;
@@ -11,9 +10,10 @@ interface ClientLinkProps {
     iconAlt?: string;
     isSensitive?: boolean;
     className?: string;
+    iconColor?: string;
 }
 
-const ClientLink = ({ name, url, icon, iconAlt, isSensitive, className }: ClientLinkProps) => {
+const ClientLink = ({ name, url, icon, iconAlt, isSensitive, className, iconColor }: ClientLinkProps) => {
     const handleNavigation = () => {
         window.open(url, '_blank', 'noopener,noreferrer');
     };
@@ -21,23 +21,17 @@ const ClientLink = ({ name, url, icon, iconAlt, isSensitive, className }: Client
     const renderIcon = () => {
         if (!icon) return null;
 
-        const IconComponent = icon && getIconComponent(icon.replace(/^\/icons\/|\.svg$/g, ''));
-
-        if (IconComponent) {
-            return <IconComponent className="flex-shrink-0 w-5 h-5" />;
-        }
-
         return (
-            <div className="flex-shrink-0 w-5 h-5 relative">
-                <Image
+            <span className="flex-shrink-0 w-5 h-5 mr-2">
+                <FetchImage
                     src={icon}
                     alt={iconAlt || `${name} icon`}
-                    width={20}
-                    height={20}
-                    priority={true}
+                    size={20}
+                    useReactIcon={true}
+                    iconColor={iconColor || "currentColor"}
                     className="object-contain"
                 />
-            </div>
+            </span>
         );
     };
 
@@ -48,7 +42,7 @@ const ClientLink = ({ name, url, icon, iconAlt, isSensitive, className }: Client
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={className}
+                className={`flex items-center ${className || ''}`}
             >
                 {icon && renderIcon()}
                 <span>{name}</span>
@@ -60,7 +54,7 @@ const ClientLink = ({ name, url, icon, iconAlt, isSensitive, className }: Client
     return (
         <button
             onClick={handleNavigation}
-            className={className}
+            className={`flex items-center ${className || ''}`}
         >
             {icon && renderIcon()}
             <span>{name}</span>

@@ -31,7 +31,7 @@ export default function MouseAnimated() {
     function click(e: MouseEvent) {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-      hue += 8; 
+      hue += 8;
       for (let i = 0; i < 20; i++) particles.push(createParticle());
       for (let i = 0; i < 20; i++) {
         if (particles.length < MAX_PARTICLES) {
@@ -62,9 +62,9 @@ export default function MouseAnimated() {
         speedY: Math.random() * 3 - 0.9,
         color: `hsla(${hue},100%, 70%, 0.7)`,
         growFactor: Math.random() * 0.05 + 0.05,
-        maxSize: Math.random() % 20 + 10,
+        maxSize: Math.random() % 20 + 4,
         life: 1,
-        decay: Math.random() * 0.02 + 0.015,
+        decay: Math.random() * 0.02 + 0.025,
       };
     }
 
@@ -79,7 +79,7 @@ export default function MouseAnimated() {
         p.life -= p.decay;
 
         // Skip drawing if particle is offscreen
-        if(!p || !canvas) continue;
+        if (!p || !canvas) continue;
         if (p.x < 0 || p.x > canvas.width || p.y < 0 || p.y > canvas.height) {
           particles.splice(i, 1);
           continue;
@@ -138,7 +138,7 @@ function applyBlur(ctx: CanvasRenderingContext2D) {
 }
 
 function clearParticles(p: any, particles: any[], i: number) {
-  if (p.size <= 0.2 || p.life <= 0) {
+  if (p.size <= 0.25|| p.life <= 0) {
     particles.splice(i, 1);
   }
 }
