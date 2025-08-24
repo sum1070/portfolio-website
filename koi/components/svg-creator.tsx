@@ -2,11 +2,37 @@
 import { iconImages } from "@/utils";
 import Image from "next/image";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { JSX } from "react";
+import { JSX, useEffect, useState } from "react";
 
 function createSvgComponent(iconKey: string, iconSrc: string) {
     return ({ className }: { className?: string }) => {
-        // lottie
+        const [isDarkMode, setIsDarkMode] = useState(false);
+
+        // Check for dark mode
+        useEffect(() => {
+            const updateThemeMode = () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                setIsDarkMode(isDark);
+            };
+
+            // Initial check
+            updateThemeMode();
+
+            // Set up observer to detect theme changes
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    if (mutation.attributeName === 'class') {
+                        updateThemeMode();
+                    }
+                });
+            });
+
+            observer.observe(document.documentElement, { attributes: true });
+
+            return () => observer.disconnect();
+        }, []);
+
+        // Handle Lottie animations
         if (iconKey === 'sleepZZZ') {
             return (
                 <DotLottieReact
@@ -27,12 +53,18 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
                 />
             );
         }
+
+        // For regular SVGs, determine which version to use based on dark mode
+        // Automatically check for dark version without needing a specific color
+        const imageSrc = isDarkMode
+            ? `${iconSrc.split('.')[0]}-dark.svg`
+            : iconSrc;
+
         return (
             <Image
                 className={className}
-                color="#7dd3fc"
                 alt={`${iconKey} icon`}
-                src={iconSrc}
+                src={imageSrc}
                 priority={true}
                 width={48}
                 height={48}
