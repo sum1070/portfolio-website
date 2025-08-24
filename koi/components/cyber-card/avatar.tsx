@@ -12,7 +12,7 @@ const Avatar = ({ isHovered = false }: CornerProps) => {
             id="avatar"
             className={cn(
                 "md:w-[5.5rem] md:h-[5.5rem] w-[4rem] h-[4rem] ",
-                "absolute left-1/2 md:left-[20%] -translate-x-1/2 top-7 z-10 bg-black2 rounded-full p-0.5 border transition-colors ease-in-out duration-500 overflow-hidden",
+                "absolute left-1/2 md:left-[20%] -translate-x-1/2 top-8 z-10 bg-black2 rounded-full p-0.5 border transition-colors ease-in-out duration-500 overflow-hidden",
                 isHovered
                     /* h-offset v-offset blur spread color |inset|initial|inherit; */
                     ? "border-[rgba(0,242,234,0.8)] shadow-[0_0_4px_1px_rgba(0,242,234,0.6)]"
