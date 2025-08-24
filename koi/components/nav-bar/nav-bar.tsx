@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { cn, navLinks } from '@/utils';
 import Hamburger from './hamburger';
 import NavMenu from './nav-menu';
-import { TransitionLink } from "@/components";
+import { ThemeToggle, TransitionLink } from "@/components";
 
 interface NavbarProps {
     currentPage?: string;
@@ -26,8 +26,10 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
-    const navFontColor = "text-nice-purple2";
+    const navFontColor = "text-nice-purple2 ";
     const navFontClassName = "px-3 py-2 rounded-md transition-colors " + navFontColor;
+    const desktopOnly = "hidden md:flex ";
+    const onMobileOnly = "flex md:hidden ";
 
     // filter curr page if params is provided
     const filteredNavLinks = currentPage
@@ -56,13 +58,10 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                     )} >
                     Meow
                 </Link>
-                {/* <div className="flex flex-row gap-4">
-                    <div>pages</div>
-                    <div>pages</div>
-                    <div>pages</div>
-                </div> */}
-                {/* desktop buttons */}
-                <div id='desktop-nav' className="hidden md:flex flex-row gap-4 mr-4">
+                <div
+                    id='desktop-nav'
+                    className={cn(desktopOnly, "flex-row gap-4 xl:gap-8")}
+                >
                     {filteredNavLinks.map((link) => (
                         <TransitionLink
                             key={link.name}
@@ -77,9 +76,15 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                         </TransitionLink>
                     ))}
                 </div>
+                {/* desktop buttons */}
+                <div className={cn(desktopOnly, "flex-row gap-4 mr-4")}>
+                    <div className='flex items-center justify-center py-3.5 px-3'>
+                        <ThemeToggle />
+                    </div>
+                </div>
                 {/* mobile hamburger */}
                 <Hamburger
-                    containerCN="md:hidden flex flex-row gap-4 mr-4"
+                    containerCN={cn(onMobileOnly, "flex-row gap-4 mr-4")}
                     buttonCN={navFontClassName}
                     isOpen={isOpen}
                     toggleMenu={toggleMenu}
