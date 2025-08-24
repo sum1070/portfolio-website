@@ -134,6 +134,14 @@ body {
   background-attachment: fixed;
 }
 
+.neko-sleep-icon {
+  color: var(--color-nice-purple3);
+}
+
+:is(.dark) .neko-sleep-icon {
+  color: #a991d4; /* Lighter purple for dark mode */
+}
+
 /* Only apply text size and weight, no padding/margin, no positioning, no color */
 h1 {
   @apply text-3xl sm:text-4xl md:text-5xl xl:text-7xl;
