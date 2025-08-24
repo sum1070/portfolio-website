@@ -20,9 +20,7 @@ const Contact = () => {
           <h1 className={cn(
             "font-black text-center ",
           )}>
-            <Watching
-              className="w-[16svw] md:w-[10svw] inline-block ml-2 object-contain"
-            />
+            <Watching className="w-[16svw] md:w-[10svw] inline-block ml-2 object-contain" darkModeEnabled={true} />
           </h1>
           <h2 className={cn(
             "mb-1 text-center dark:text-[#7dd3fc]",

@@ -5,11 +5,29 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { JSX, useEffect, useState } from "react";
 
 function createSvgComponent(iconKey: string, iconSrc: string) {
-    return ({ className }: { className?: string }) => {
+    return ({ className, darkModeEnabled = false }: { className?: string, darkModeEnabled?: boolean }) => {
         const [isDarkMode, setIsDarkMode] = useState(false);
+        const [darkImageExists, setDarkImageExists] = useState(false);
 
-        // Check for dark mode
+        // Create path for dark version
+        const darkSrc = `${iconSrc.split('.')[0]}-dark.svg`;
+
+        // Check for dark mode and if dark version exists
         useEffect(() => {
+            // Check if dark image exists
+            if (darkModeEnabled) {
+                fetch(darkSrc, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            setDarkImageExists(true);
+                        }
+                    })
+                    .catch(() => {
+                        // Image doesn't exist or couldn't be fetched
+                        console.log(`Dark version of ${iconKey} not found`);
+                    });
+            }
+
             const updateThemeMode = () => {
                 const isDark = document.documentElement.classList.contains('dark');
                 setIsDarkMode(isDark);
@@ -30,7 +48,7 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
             observer.observe(document.documentElement, { attributes: true });
 
             return () => observer.disconnect();
-        }, []);
+        }, [darkModeEnabled, darkSrc, iconKey]);
 
         // Handle Lottie animations
         if (iconKey === 'sleepZZZ') {
@@ -54,11 +72,8 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
             );
         }
 
-        // For regular SVGs, determine which version to use based on dark mode
-        // Automatically check for dark version without needing a specific color
-        const imageSrc = isDarkMode
-            ? `${iconSrc.split('.')[0]}-dark.svg`
-            : iconSrc;
+        // Determine which SVG to use based on dark mode and availability
+        const imageSrc = (darkModeEnabled && isDarkMode && darkImageExists) ? darkSrc : iconSrc;
 
         return (
             <Image
@@ -80,7 +95,7 @@ const svgComponents = Object.entries(iconImages).reduce((acc, [key, src]) => {
         ...acc,
         [componentName]: createSvgComponent(key, src)
     };
-}, {} as Record<string, ({ className }: { className?: string }) => JSX.Element>);
+}, {} as Record<string, ({ className, darkModeEnabled }: { className?: string, darkModeEnabled?: boolean }) => JSX.Element>);
 
 export const {
     NekoSleep,
