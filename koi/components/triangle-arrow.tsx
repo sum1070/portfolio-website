@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import useSound from 'use-sound';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';
 
-const bounceClassName = "cursor-pointer p-0 bg-transparent border-0 outline-none transition-transform hover:scale-110 duration-200";
+const bounceClassName = "cursor-pointer px-8 py-6 bg-transparent border-0 outline-none transition-transform hover:scale-110 duration-200";
 
 export const TriangleArrowDown = ({ onClick, bounce = true }: { onClick?: () => void, bounce?: boolean }) => {
   const [isClicked, setIsClicked] = useState(false);
