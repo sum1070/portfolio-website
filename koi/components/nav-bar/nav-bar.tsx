@@ -56,6 +56,11 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                     )} >
                     Meow
                 </Link>
+                {/* <div className="flex flex-row gap-4">
+                    <div>pages</div>
+                    <div>pages</div>
+                    <div>pages</div>
+                </div> */}
                 {/* desktop buttons */}
                 <div id='desktop-nav' className="hidden md:flex flex-row gap-4 mr-4">
                     {filteredNavLinks.map((link) => (
