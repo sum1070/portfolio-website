@@ -3,7 +3,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { iconMap } from './image-utils';
 import { cn } from '@/utils';
 import { TBaseProps } from '@/lib/types';
-import { getIconComponent, IconResult } from './icon-mapping';
+import { getIconComponent } from './icon-mapping';
 import { FaQuestion } from "react-icons/fa";
 
 // global cache for SVG content to prevent duplicate fetches

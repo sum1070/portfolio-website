@@ -13,6 +13,19 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
         const darkSrc = `${iconSrc.split('.')[0]}-dark.svg`;
 
         // Check for dark mode and if dark version exists
+        const handleMutations: MutationCallback = (mutations) => {
+            mutations.forEach(mutation => {
+                if (mutation.attributeName === 'class') {
+                    updateThemeMode();
+                }
+            });
+        };
+
+        const updateThemeMode = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setIsDarkMode(isDark);
+        };
+
         useEffect(() => {
             // Check if dark image exists
             if (darkModeEnabled) {
@@ -28,22 +41,11 @@ function createSvgComponent(iconKey: string, iconSrc: string) {
                     });
             }
 
-            const updateThemeMode = () => {
-                const isDark = document.documentElement.classList.contains('dark');
-                setIsDarkMode(isDark);
-            };
-
             // Initial check
             updateThemeMode();
 
             // Set up observer to detect theme changes
-            const observer = new MutationObserver(mutations => {
-                mutations.forEach(mutation => {
-                    if (mutation.attributeName === 'class') {
-                        updateThemeMode();
-                    }
-                });
-            });
+            const observer = new MutationObserver(handleMutations);
 
             observer.observe(document.documentElement, { attributes: true });
 

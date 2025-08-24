@@ -32,7 +32,7 @@ export default function NavMenu({
             className={cn(
                 "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
                 "bg-milky-white/60 dark:bg-dark-black/70 backdrop-blur-sm",
-                "rounded-xl p-4",
+                "rounded-xl px-4",
                 containerCN,
                 isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-[0.01]"
             )}
