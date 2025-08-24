@@ -19,11 +19,11 @@ const CyberCard = ({
   const cardSize = "w-80 h-60 md:h-65 xl:w-80 xl:h-80";
   const titleDefaultSize = "text-2xl xl:text-3xl";
   const [isHovered, setIsHovered] = useState(false);
-  
+
   // Get GitHub URL from contacts data
   const githubContact = contactsJson.contacts.find(contact => contact.name === "GitHub");
   const githubUrl = githubContact?.link || "https://github.com";
-  
+
   const handleCardClick = () => {
     window.open(githubUrl, '_blank', 'noopener,noreferrer');
   };
