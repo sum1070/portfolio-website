@@ -7,7 +7,10 @@ const Contact = () => {
   const pageID = pageIDs.contact;
 
   return (
-    <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative text-sky-900")} id={pageID}>
+    <div className={cn(
+      "flex overflow-hidden min-w-dvw min-h-dvh relative text-sky-900",
+      "dark:text-dark-text",
+    )} id={pageID}>
       <Navbar currentPage={pageID} />
       <BlueBackground
         wavePaused={true}
@@ -17,7 +20,10 @@ const Contact = () => {
           <h1 className={cn(
             "font-black text-center",
           )}>
-            <Watching className=" w-[16svw] md:w-[10svw] inline-block ml-2 object-contain " />
+            <Watching
+              className="w-[16svw] md:w-[10svw] inline-block ml-2 object-contain"
+              // darkModeColor="#7dd3fc" // light sky-300 color for dark mode
+            />
           </h1>
           <h2 className={cn(
             "mb-1 text-center",

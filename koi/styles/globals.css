@@ -21,12 +21,14 @@
   --color-nice-purple3: #6b3d8b; /* svg color */
   --color-sky-blue: #a9e8f2;
   --color-blue2: #6cbbfd;
+  --color-blueWave1: #8fdbf2; /* blue bg wave */
+  --color-blueWave2: #025696; /* blue bg wave */
   --color-pink0: #ffc2f9;
   --color-pink1: #fcb0ff;
   --color-pink2: #fed6ff;
   --color-pink3: #ff8fea;
-  --color-pink4: #f18ec9; /* pink bg wave */
-  --color-pink5: #97025b; /* pink bg wave */
+  --color-pinkWave1: #f18ec9; /* pink bg wave */
+  --color-pinkWave2: #97025b; /* pink bg wave */
   --color-bright-pink: #ff56aa;
   --color-phlox: #c04cfd;
   --color-Mauve: #e2baff;
@@ -35,6 +37,7 @@
   --color-purblue: #aab1f2;
 
   --color-dark-black: #121212;
+  --color-dark-text: #bfbfbf;
 
   --font-titillium-web: "Titillium Web", sans-serif;
   --font-fraunces: "Fraunces", serif;
@@ -80,6 +83,8 @@
       --color-nice-purple3: #cd61ff;
       --color-sky-blue: #2e1cac;
       --color-blue2: #456f8b;
+      --color-blueWave1: #647ab8; /* blue bg wave */
+      --color-blueWave2: #123e70; /* blue bg wave */
       --color-Mauve: #e2baff;
       --color-Mauve2: #06010a;
       --color-pink4: #ac5f8c; /* pink bg wave */
