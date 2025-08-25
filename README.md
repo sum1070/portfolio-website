@@ -37,9 +37,42 @@ npx create-next-app@latest
 
 ---
 
-## Development
+## npm commands
 
-### File Structure
+- `npm i`: install dependencies
+- `npm run dev`: start development server
+- `npm run lint`: check for linting errors
+- `npm run build`: build for production
+  - `npm start`: start production server
+
+### Updating npm packages
+
+- `-g`: global
+- `--save`: update package.json
+
+#### Use `npm-check-updates` (breaking changes)
+
+```powershell
+npm i -g npm-check-updates && ncu -u && npm i
+```
+
+This include major version updates so might have breaking changes.
+
+#### Safer approach
+
+```powershell
+npm outdated
+```
+
+```powershell
+npm update --save
+```
+
+---
+
+## Development notes
+
+### File structure
 
 See [file structure](./file-tree.md).
 
