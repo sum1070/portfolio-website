@@ -1,6 +1,6 @@
 import { BlueBackground, Navbar, Watching } from '@/components'
 import React from 'react'
-import ContactCard from './ContactCard';
+import ContactCard from './contact-card';
 import { cn, pageIDs } from '@/utils';
 
 const Contact = () => {

@@ -1,6 +1,6 @@
 import { KoiUrl, Navbar, NekoSleep, PinkBackground, SleepZZZ } from '@/components'
 import React from 'react'
-import LicenceCard from './LicenceCard';
+import LicenceCard from './licence-card';
 import { cn, pageIDs } from '@/utils';
 
 const licences = () => {
