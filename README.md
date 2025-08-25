@@ -139,13 +139,11 @@ I definitely spent too much time on the design... probably procrastinating on th
 
 ![Design on Figma](./assets/design-figma.png)
 
-Spent quite a lot of time fixing performance issues because code I wrote at the beginning wasn't optimised or clear. After many refactors I managed to get a "better" code structure and lighthouse score. But still have a large room for improvement especially on mobile performance.
-
 ### My Thoughts about TailwindCSS
 
 Many people say Tailwind makes the code messy but I usually store `classNames` as string in constants and use `cn` function to merge them, so it hasn't really been a problem for me. I think it works well for simple designs that don't require lots of custom styles. However, since I am doing pastel gradient designs, I often end up using traditional CSS or inline styling. Probably TailwindCSS isn't necessary for my case.
 
-Update on (24/08/2025): After refactoring and centralising colors in `globals.css`, I find Tailwind is still useful for organising layout in my opinion. Probably opposite to what most people think.
+Update on (24/08/2025): After refactoring and centralising colors in `globals.css`, I find Tailwind is still useful for organising layout in my opinion. Probably opposite to what most people think. But I doubt if it is really necessary.
 
 #### Dark mode
 
@@ -153,7 +151,7 @@ My styling approach mixed with Tailwind, inline css and traditional css in `glob
 
 - Using global css variables in non-Tailwind css by passing `var(--color-name)`.
 
-Besides centralising colors, the only main issue that give me a headache was the coloring in local svg. See [svg issues](#svg-issues) section.
+Besides centralising colors, the only main issue that give me a headache was the coloring in local svg. See [svg issues](#svg-issues).
 
 ### SVG issues
 
@@ -163,19 +161,15 @@ In my project, I use both React Icons and local SVG files for displaying icons. 
 
 My initial implementation of FetchImage returns `<Image>` component from Next.js, which works well for raster images (PNG, JPG) but it doesn't support SVG styling so I had to change it to accommodate dark mode.
 
-By default, loading SVGs as images (using `<img>` or Next.js `<Image>`) does **not** allow CSS styling for color or dark mode, because the SVG is rendered as an external resource. To solve this, I implemented a custom [FetchImage](koi/utils/fetch-images.tsx) component that fetches the SVG file, injects its content directly into the DOM using `dangerouslySetInnerHTML`, and applies CSS classes and inline styles.
+By default, loading SVGs as images (using `<img>` or Next.js `<Image>`) does **not** allow CSS styling for color or dark mode, because the SVG is rendered as an external resource.
 
-This approach allows me to:
+Solution: I implemented a custom [FetchImage](koi/utils/fetch-images.tsx) component that fetches the SVG file, injects its content directly into the DOM using `dangerouslySetInnerHTML`, and applies CSS classes and inline styles.
 
-- **Apply CSS color and fill**: The SVG is part of the DOM, so global CSS (including Tailwind’s `dark:` variant and custom classes) can style the icon.
-- **Support dark mode automatically**: By centralizing color variables in [`globals.css`](koi/styles/globals.css) and using CSS classes, SVG icons update their color when the theme changes.
-- **Cache SVG content**: To avoid redundant network requests, I cache fetched SVGs in memory.
-
-For icons that have a dark mode variant (e.g. `icon-dark.svg`), I can extend the logic to fetch and render the appropriate SVG based on the current theme.
+My method works but probably not the most efficient/overcomplicated. Will make a cleaner version if I have time. (~~i.e. never~~)
 
 ### Lighthouse performance
 
-I had very poor performance on mobile at LCP (Largest Contentful Paint). There were two main reasons:
+I had very poor performance on mobile for LCP (Largest Contentful Paint) at the beginning. Two main reasons:
 
 - Opacity set to 0 led to Lighthouse error
   - fixed by setting opacity to 0.01 instead of 0
