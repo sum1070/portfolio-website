@@ -1,7 +1,7 @@
 import { Card, KoiUrl } from '@/components'
 import React from 'react'
-import soundLicenceLinks from './SoundLicence'
-import svgLicenceLinks from './SvgLicence'
+import soundLicenceLinks from './audio-licences'
+import svgLicenceLinks from './svg-licences'
 import { Spoiler } from 'spoiled'
 
 export const LicenceCard = () => {

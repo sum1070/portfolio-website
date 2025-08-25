@@ -1,7 +1,7 @@
 "use client";
 import { Card } from '@/components'
 import React from 'react'
-import contactData from './contactData';
+import contactData from './contact-data';
 
 const ContactCard = () => {
     const darkModeCard = "dark:bg-[#002136] dark:from-transparent dark:to-transparent ";
