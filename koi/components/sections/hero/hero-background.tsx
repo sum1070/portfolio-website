@@ -173,7 +173,7 @@ export default function BackgroundHero() {
                 </motion.div>
             </FadeIn>
             {/* Dots */}
-            <FadeIn yTranslation={true} duration={animationTime.durationDots} delayOffset={0.8} className={`${shapeClasses}`} >
+            <FadeIn yTranslation={true} duration={animationTime.durationDots} delayOffset={0.2} className={`${shapeClasses}`} >
                 <div className="opacity-70 sm:opacity-100">
                     {/* Hollow dot small r */}
                     <motion.div style={{ y: sprStiff, position: "absolute", right: "25%", top: "47%" }}>
