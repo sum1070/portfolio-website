@@ -233,7 +233,7 @@ export default function BackgroundHero() {
                 {/* <CodeText /> */}
             </FadeIn>
             {/* SVG */}
-            <FadeIn yTranslation={true} className={`${shapeClasses}`} >
+            <FadeIn delayOffset={1} yTranslation={true} className={`${shapeClasses}`} >
                 <div >
                     {/* Triangle */}
                     <motion.div style={{ y: triangleY }} className="absolute left-0 bottom-6/12">
