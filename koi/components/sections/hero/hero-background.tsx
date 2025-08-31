@@ -127,7 +127,7 @@ export default function BackgroundHero() {
                 />
             </FadeIn>
             {/* Bar */}
-            <FadeIn duration={animationTime.durationBars} delayOffset={1.5} className={`${shapeClasses}`} >
+            <FadeIn duration={animationTime.durationBars} delayOffset={0.4} className={`${shapeClasses}`} >
                 {/* Bars */}
                 <div className="dark:hidden" >
                     {/* Hollow bar (bigger screen)*/}
@@ -154,7 +154,7 @@ export default function BackgroundHero() {
                 </div>
             </FadeIn>
             {/* X */}
-            <FadeIn yTranslation={true} duration={animationTime.durationBars} delayOffset={0.8} className={`${shapeClasses}`}>
+            <FadeIn yTranslation={true} duration={animationTime.durationBars} delayOffset={0.2} className={`${shapeClasses}`}>
                 <motion.div className="hidden md:block" style={{ y: sprFlex2, position: "absolute", left: "18%", bottom: "56%" }}>
                     <Bar width="60px" length="10px" rotate="145deg  " />
                     <Bar width="60px" length="10px" rotate="55deg  " />
@@ -228,7 +228,7 @@ export default function BackgroundHero() {
                 </div>
             </FadeIn>
             {/* code text */}
-            <FadeIn yTranslation={true} delayOffset={1} className="z-10 absolute top-0 right-0">
+            <FadeIn yTranslation={true} delayOffset={0.4} className="z-10 absolute top-0 right-0">
                 <CodeTextSVG />
                 {/* <CodeText /> */}
             </FadeIn>
