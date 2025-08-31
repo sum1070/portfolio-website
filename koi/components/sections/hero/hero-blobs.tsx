@@ -56,10 +56,8 @@ const BlurredBlobsHero = () => {
       {/* TR */}
       <div
         id='TRBlob'
-        style={{
-          background: "radial-gradient(63.62% 69.52% at 100% 0%, rgba(247, 214, 98, 0.8) 0%, rgba(247, 214, 98, 0.168) 52.08%, rgba(247, 214, 98, 0) 100%), linear-gradient(208.42deg, #fcb0ff 7.46%, rgba(240, 88, 42, 0.18) 42.58%, rgba(240, 101, 42, 0) 64.13%), radial-gradient(114.51% 122.83% at 0% -15.36%, #e2baff 0%, rgba(231, 79, 106, 0.22) 66.72%, rgba(231, 79, 106, 0) 100%), linear-gradient(333.95deg, rgba(83, 208, 236, 0.85) -7.76%, rgba(83, 208, 236, 0.204) 19.67%, rgba(138, 137, 190, 0) 35.42%), radial-gradient(109.15% 148.57% at 4.46% 98.44%, #A9E8F2 0%, rgba(27, 49, 128, 0) 100%), linear-gradient(141.57deg, #A9E8F2 19.08%, rgba(78, 173, 235, 0) 98.72%)",
-        }}
         className={cn(
+          "bg-conic from-sky-blue via-blue-400 to-blueWave1",
           BlobsClasses, BlobsOpacity4,
           "[animation:blob3_6s_infinite_2s]",
           "blur-2xl",
