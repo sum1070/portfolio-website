@@ -10,17 +10,16 @@ export default function BackgroundHero() {
     const { scrollY } = useScroll();
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    // Check if dark mode is enabled
+    // detect dark mode changes
     useEffect(() => {
         const updateThemeMode = () => {
             const isDark = document.documentElement.classList.contains('dark');
             setIsDarkMode(isDark);
         };
 
-        // Initial check
         updateThemeMode();
 
-        // Set up a MutationObserver to detect class changes on the html element
+        // detects `class` changes on the html element
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
                 if (mutation.attributeName === 'class') {
@@ -47,14 +46,11 @@ export default function BackgroundHero() {
 
     const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";
 
-    // Modified border and shadow arrays for dark mode
     const darkModeBorderColor = borderColor.map(color => {
-        // Adjust opacity for dark mode borders
         return color.replace(/solid\s+#([A-F0-9]+)/i, 'solid rgba($1, 0.4)');
     });
 
     const darkModeBoxShadow = boxShadow.map(shadow => {
-        // Reduce shadow intensity for dark mode
         return shadow.replace(/0\s+0\s+(\d+)px\s+#([A-F0-9]+)/i, '0 0 $1px rgba($2, 0.3)');
     });
 
@@ -109,8 +105,6 @@ export default function BackgroundHero() {
 
     return (
         <>
-            {/* Background */}
-            {bgPrimary()}
             <FadeIn className=" absolute inset-x-0 bottom-0">
                 <div className="absolute bottom-0 left-0 w-full py-8 bg-gradient-to-t from-milky-white dark:from-[#1a1a1a] to-transparent"></div>
                 {/* white dots grid */}
@@ -278,7 +272,7 @@ export default function BackgroundHero() {
                     </motion.div>
                 </div>
             </FadeIn>
-            {/* Centre orbit - now with dark mode considerations */}
+            {/* centre orbit */}
             <motion.div
                 ref={scope}
                 className="z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -290,7 +284,7 @@ export default function BackgroundHero() {
                     borderRadius: "50%",
                     border: "0px solid transparent",
                     boxShadow: "none",
-                    opacity: isDarkMode ? 0.7 : 1, // Reduce overall opacity in dark mode
+                    opacity: isDarkMode ? 0.7 : 1,
                 }}
                 initial={{ opacity: 0, border: "0px solid transparent", boxShadow: "none" }}
             >
