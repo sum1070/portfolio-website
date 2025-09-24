@@ -16,7 +16,7 @@ const CyberCard = ({
   titleSize = "",
 }: Props) => {
   const cardTitle = "Margaret Chan";
-  const cardSize = "w-80 h-50 md:h-65 xl:w-80 xl:h-80";
+  const cardSize = "w-80 h-50 md:h-65 xl:w-90 xl:h-68";
   const titleDefaultSize = "text-2xl xl:text-3xl";
   const [isHovered, setIsHovered] = useState(false);
 
