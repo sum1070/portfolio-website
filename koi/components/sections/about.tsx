@@ -66,7 +66,7 @@ const About = () => {
           className={cn(
             "order-2 relative",
             "xl:row-span-2 xl:col-start-1 ", // desktop: left col spanning both rows
-            "pt-1 xl:pl-4 xl:pt-2",
+            "pt-1 xl:pl-4 xl:pt-8 ",
           )}
         >
           <TechSkills />
@@ -76,7 +76,7 @@ const About = () => {
             className={cn(
               "absolute left-1/2 -translate-x-1/2",
               "xl:flex hidden items-center justify-center",
-              "mt-18"
+              "mt-12"
             )}
           >
             <TriangleArrowUp onClick={scrollToTop} />
