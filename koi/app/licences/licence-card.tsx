@@ -10,6 +10,10 @@ export const LicenceCard = () => {
             <Card
                 title="Sounds"
                 bgGradient={false}
+                animated={false}
+                backgroundColor="bg-transparent"
+                headerBackground="bg-transparent"
+                cardContainerCN="shadow-none"
                 description={
                     <p>
                         Sounds and music used in this website are from <KoiUrl href="https://freesound.org/">Freesound</KoiUrl>.
@@ -20,6 +24,10 @@ export const LicenceCard = () => {
             <Card
                 title="SVGs"
                 bgGradient={false}
+                animated={false}
+                backgroundColor="bg-transparent"
+                headerBackground="bg-transparent"
+                cardContainerCN="shadow-none"
                 description={
                     <p>
                         Most of the SVGs I used were from <KoiUrl href="https://www.svgrepo.com/">SVG Repo</KoiUrl>.
@@ -30,6 +38,9 @@ export const LicenceCard = () => {
             <Card
                 variant="compact"
                 bgGradient={false}
+                animated={false}
+                backgroundColor="bg-transparent"
+                cardContainerCN="shadow-none"
                 title="Tools"
                 description={
                     <div>
