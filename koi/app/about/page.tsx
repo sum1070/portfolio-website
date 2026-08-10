@@ -100,14 +100,12 @@ const About = () => {
               </div>
             </div>
             <div id="intro-text" className="flex flex-col gap-2">
-              {/* ********** TODO ********** */}
               <p className="bullet-arrow-heart">
                 BSc Computer Science with AI Graduate (University of
                 Nottingham).
               </p>
               <p className="bullet-arrow-heart">
-                Currently studying MSc Artificial Intelligence at the University
-                of Leeds.
+                Starting an MSc in Artificial Intelligence this autumn.
               </p>
               <p className="bullet-arrow">
                 Specialising in AI related fields. Also interested in UX/UI
@@ -115,7 +113,7 @@ const About = () => {
               </p>
               <p className="bullet-arrow">
                 If I'm offline... perhaps I'm patting my dog or drawing
-                anime/game characters (like my GitHub pfp~).
+                anime/game characters (like this pfp~).
               </p>
             </div>
           </div>
