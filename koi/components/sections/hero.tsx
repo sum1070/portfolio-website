@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect, memo, useCallback } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import BackgroundHero from "@/components/sections/hero/hero-background";
-import { TriangleArrowDown, CenterContainer, Typewriter, Reveal, NekoSleep, SleepZZZ, FadeIn } from "@/components";
-import { cn, animationTime, pageIDs } from "@/utils";
+import { CenterContainer, Typewriter, Reveal, NekoSleep, SleepZZZ, FadeIn, NavButton } from "@/components";
+import { cn, animationTime, pageIDs, gradient } from "@/utils";
 import { motion, useInView } from "motion/react";
 import BlurredBlobsHero from "./hero/hero-blobs";
 import HeroHeader from "./hero/hero-header";
@@ -18,12 +18,20 @@ const Text = {
   typingContainer: "mt-2 pt-2 flex justify-center w-full h-10 ",
 };
 
+const heroNavButtons = [
+  { name: "About", href: `/${pageIDs.about}`, background: gradient.insta, titleCN: 'text-milky-white' },
+  { name: "Projects", href: `/${pageIDs.projects}`, background: gradient.limeBlue, titleCN: 'text-milky-white' },
+  { name: "Contact", href: `/${pageIDs.contact}`, background: gradient.default, titleCN: '' },
+];
+
+const heroBtnSize = ' w-44 h-14 xl:w-52 xl:h-16 ';
+
 const firstTypewriterSequences = [
   {
     text: "Welcome to my website...",
     deleteCount: 11,
     pauses: {
-      beforeDelete: 1000, // 1 sec
+      beforeDelete: 500, // 0.5 sec
     }
   },
   {
@@ -54,8 +62,8 @@ const HeroTitle = memo(({ onAnimationComplete }: HeroTitleProps) => (
     <h1 className={cn(`${Text.txtMain}`, "textBlurAnimation")}>HELLO</h1>
     <div className={cn(`${Text.txtMid}`)}>
       I'm&nbsp;<span className={"text-nice-purple3 font-medium"}>Margaret</span>
-      <NekoSleep className="w-[32px] md:w-12 xl:w-16 inline-block ml-2 object-contain" />
-      <SleepZZZ className="-ml-1 md:-ml-2 w-[32px] md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " />
+      <NekoSleep className="w-8 md:w-12 xl:w-16 inline-block ml-2 object-contain" />
+      <SleepZZZ className="-ml-1 md:-ml-2 w-8 md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " />
     </div>
   </motion.div>
 ));
@@ -66,7 +74,7 @@ HeroTitle.displayName = "HeroTitle";
 const Hero = () => {
   const pageID = pageIDs.home;
   const heroRef = useRef<HTMLDivElement>(null);
-  const [revealArrow, setRevealArrow] = useState(false);
+  const [revealBtn, setRevealBtn] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
   const [finishTyping, setFinishTyping] = useState(false);
   const [loadedElements, setLoadedElements] = useState({
@@ -105,16 +113,6 @@ const Hero = () => {
     updateAnimationSpeed();
   }, [isInView]);
 
-  // memoized scroll handler
-  const scrollNextPage = useCallback(() => {
-    const NextSection = document.getElementById(pageIDs.about);
-    if (NextSection) {
-      NextSection.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  }, []);
-
   return (
     <section
       ref={heroRef}
@@ -135,7 +133,7 @@ const Hero = () => {
 
       <CenterContainer className="min-h-dvh relative z-20 p-10">
         <div className="text-center">
-          <HeroTitle onAnimationComplete={() => setStartTyping(true)} />
+          <HeroTitle onAnimationComplete={() => { setStartTyping(true); setRevealBtn(true); }} />
 
           {/* typewriter */}
           <div className={cn(`${Text.typingContainer}`, `${Text.txtMono}`)}>
@@ -155,25 +153,36 @@ const Hero = () => {
                 deleteSpeed={40}
                 delay={animationTime.delayTypewriter}
                 sequences={[{ text: "Let's explore together..." }]}
-                onTypeComplete={() => { setRevealArrow(true); }}
+                onTypeComplete={() => { setRevealBtn(true); }}
               />
             )}
           </div>
 
-          {/* arrow container */}
+          {/* nav buttons container */}
           <div
-            id="arrow-container"
-            className="mt-12 pt-12 flex justify-center w-full h-10"
-            aria-hidden={!revealArrow}
+            id="hero-buttons-container"
+            className="mt-8 flex justify-center w-full min-h-52 xl:min-h-60"
+            aria-hidden={!revealBtn}
           >
-            {revealArrow && (
+            {revealBtn && (
               <Reveal
-                key="arrow"
-                delay={animationTime.delayTriangleArrow}
-                duration={animationTime.durationTriangleArrow}
+                key="hero-buttons"
+                delay={animationTime.delayHeroBtn}
+                duration={animationTime.durationHeroBtn}
                 className="flex justify-center w-full"
               >
-                <TriangleArrowDown onClick={scrollNextPage} />
+                <div id='hero-nav-buttons' className="flex flex-col items-center gap-5">
+                  {heroNavButtons.map((link) => (
+                    <NavButton
+                      key={link.name}
+                      btnSize={heroBtnSize}
+                      background={link.background}
+                      href={link.href}
+                      title={link.name}
+                      titleCN={link.titleCN}
+                    />
+                  ))}
+                </div>
               </Reveal>
             )}
           </div>

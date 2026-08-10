@@ -1,7 +1,6 @@
 "use client";
 import { cn } from '@/utils';
 import FetchImage from '@/utils/fetch-images';
-import React from 'react';
 
 const pillsTransition = "transition-transform duration-1100 ease-in-out ";
 const pillsBase = "absolute z-30 w-[24%] h-full p-3 text-center border-t-2 border-r-2 border-sky-50 rounded-[45%_45%_45%_45%/15%_15%_15%_15%] origin-bottom-left relative overflow-hidden pill-group ";

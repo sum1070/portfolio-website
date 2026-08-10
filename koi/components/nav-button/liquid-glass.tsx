@@ -1,13 +1,12 @@
 "use client";
 import { cn } from '@/utils';
-import React from 'react';
 
 export function LiquidGlass(isHovering: boolean, mousePosition: { x: number; y: number; }) {
     return <div
         id='liquid-glass-effect'
         className={cn(
             "absolute inset-0 transition-all duration-500 z-10",
-            "rounded-[2rem]",
+            "rounded-4xl",
             "opacity-80 group-hover:opacity-100"
         )}
         style={{

@@ -119,6 +119,31 @@ export interface TypewriterProps extends TAnimation {
   loop?: boolean;
 }
 
+export type TProjectContent =
+  | { source: "manual"; content: string }
+  | { source: "file"; file?: string }
+  | { source: "github-file"; file?: string }
+  | { source: "github-description" };
+
+export interface TProject {
+  slug: string; // URL id, e.g. /projects/portfolio-website
+  visible: boolean; // only shown on the website when true
+  title: string;
+  shortDescription: string | TProjectContent;
+  description?: string; // longer intro shown on the project page
+  tags: string[]; // filter tags, e.g. WebDev / AI / Utilities
+  technologies: string[];
+  previewImg: string[]; // preview images; first one is the card thumbnail
+  github?: string; // public repo URL; leave undefined to show "Private"
+  demo?: string; // live demo / GitHub Pages URL
+  writeup?: TProjectContent;
+  lastUpdate?: string; // manual override; auto-filled from GitHub when repo is set
+}
+
+export type TProjectResolved = Omit<TProject, "shortDescription"> & {
+  shortDescription: string;
+};
+
 export interface CardDetails {
   name: string;
   url: string;

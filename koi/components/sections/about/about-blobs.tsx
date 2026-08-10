@@ -1,5 +1,4 @@
 import { cn } from '@/utils'
-import React from 'react'
 import { positionClasses } from '@/lib/types'
 
 const BlobsClasses = "absolute rounded-full mix-blend-multiply filter"
@@ -22,7 +21,7 @@ const BlurredBlobsAbout = () => {
                         positionClasses.left,
                         BlobsOpacity1,
                         "h-210 w-210",
-                        "[animation:blob_7s_infinite_1s_ease-in-out] -translate-x-1/2 -translate-y-1/2",
+                        "animate-[blob_7s_infinite_1s_ease-in-out] -translate-x-1/2 -translate-y-1/2",
                         "bg-conic from-sky-blue via-violet-400 to-fuchsia-300",
                         "dark:hidden",
                         "blur-3xl"
@@ -32,7 +31,7 @@ const BlurredBlobsAbout = () => {
                 <div
                     className={cn(
                         BlobsClasses, BlobsOpacity2,
-                        "[animation:blob2_6s_infinite_2s]",
+                        "animate-[blob2_6s_infinite_2s]",
                         "translate-x-52",
                         "bg-radial-[at_25%_25%] from-pink1 via-purple-300 to-pink-200 to-90%",
                         "blur-3xl",
@@ -43,7 +42,7 @@ const BlurredBlobsAbout = () => {
                 ></div>
             </div>
             {/* Mobile */}
-            <div className={cn(BlobsContainerClasses, "block sm:hidden")}>
+            <div className={cn(BlobsContainerClasses, "block sm:hidden -z-10")}>
                 {/* L */}
                 <div
                     id='centerBlob'
@@ -52,7 +51,7 @@ const BlurredBlobsAbout = () => {
                         positionClasses.top,
                         BlobsOpacity1,
                         "h-110 w-110",
-                        "[animation:blob_7s_infinite_1s_ease-in-out] -translate-x-1/2 -translate-y-1/2",
+                        "animate-[blob_7s_infinite_1s_ease-in-out] -translate-x-1/2 -translate-y-1/2",
                         "bg-conic from-sky-blue via-violet-400 to-fuchsia-300",
                         "blur-3xl"
                     )}
@@ -65,7 +64,7 @@ const BlurredBlobsAbout = () => {
                         positionClasses.bottom,
                         BlobsOpacity1,
                         "h-110 w-110",
-                        "[animation:blob_7s_infinite_1s_ease-in-out] translate-y-52",
+                        "animate-[blob_7s_infinite_1s_ease-in-out] translate-y-52",
                         "bg-conic from-sky-blue via-violet-400 to-fuchsia-300",
                         "blur-3xl"
                     )}

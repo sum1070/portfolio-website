@@ -6,31 +6,40 @@
       "link": "https://github.com/sum1070"
     },
     {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "link": "https://www.linkedin.com/in/kit-sum-chan-7b6294325"
+    },
+    {
       "name": "Gmail",
       "icon": "email",
       "link": "mailto:kitsum1070+contact@gmail.com"
-    },
-    {
-      "name": "Discord",
-      "icon": "discord",
-      "link": "https://discord.gg/bjH5mbW6"
     }
   ],
   "skills": [
     {
-      "name": "C",
-      "type": "languages",
-      "icon": "c"
-    },
-    {
       "name": "Python",
       "type": "languages",
-      "icon": "python"
+      "icon": "python",
+      "show": true
     },
     {
       "name": "Java",
       "type": "languages",
-      "icon": "java"
+      "icon": "java",
+      "show": true
+    },
+    {
+      "name": "C",
+      "type": "languages",
+      "icon": "c",
+      "show": true
+    },
+    {
+      "name": "TypeScript",
+      "type": "languages",
+      "icon": "typescript",
+      "show": true
     },
     {
       "name": "Rust",
@@ -38,13 +47,7 @@
       "icon": "rust"
     },
     {
-      "name": "TypeScript",
-      "type": "languages",
-      "icon": "typescript"
-    },
-
-    {
-      "name": "Javascript",
+      "name": "JavaScript",
       "type": "languages",
       "icon": "javascript"
     },
@@ -61,7 +64,14 @@
     {
       "name": "React",
       "type": "frameworks",
-      "icon": "react"
+      "icon": "react",
+      "show": true
+    },
+    {
+      "name": "Next.js",
+      "type": "frameworks",
+      "icon": "nextjs",
+      "show": true
     },
     {
       "name": "Tailwind CSS",
@@ -73,11 +83,7 @@
       "type": "frameworks",
       "icon": "motion"
     },
-    {
-      "name": "Next.js",
-      "type": "frameworks",
-      "icon": "nextjs"
-    },
+
     {
       "name": "Oracle",
       "type": "backend",
@@ -91,7 +97,8 @@
     {
       "name": "Git",
       "type": "tools",
-      "icon": "git"
+      "icon": "git",
+      "show": true
     },
     {
       "name": "Docker",
@@ -102,16 +109,6 @@
       "name": "GitHub",
       "type": "tools",
       "icon": "github"
-    },
-    {
-      "name": "Google Cloud",
-      "type": "tools",
-      "icon": "googlecloud"
-    },
-    {
-      "name": "AWS",
-      "type": "tools",
-      "icon": "aws"
     }
   ]
 }

@@ -10,8 +10,8 @@ export const animationTime = {
   durationDots: 0.8,
   delayMainTxt: 0.4,
   durationMainTxt: 0.2,
-  delayTriangleArrow: 0.4,
-  durationTriangleArrow: 0.4,
+  delayHeroBtn: 0.2,
+  durationHeroBtn: 0.4,
   delayTypewriter: 200, // 3 digits (ms)
   durationTypewriter: 500, // 3 digits (ms)
 };

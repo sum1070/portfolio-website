@@ -12,7 +12,7 @@ export const LicenceCard = () => {
                 bgGradient={false}
                 description={
                     <p>
-                        Sound effects used in this website are from <KoiUrl href="https://freesound.org/">Freesound</KoiUrl> and <KoiUrl href="https://www.zapsplat.com/" >ZAPSPLAT</KoiUrl>.
+                        Sounds and music used in this website are from <KoiUrl href="https://freesound.org/">Freesound</KoiUrl>.
                     </p>
                 }
                 links={soundLicenceLinks}

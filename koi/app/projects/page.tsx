@@ -1,30 +1,13 @@
-import { Navbar, PinkBackground, SleepZZZ } from '@/components'
-import { cn, iconImages, pageIDs } from '@/utils'
-import React from 'react'
+import { projects } from "@/data/projects";
+import { resolveProject } from "@/lib/project-content";
+import ProjectsList from "./projects-list";
 
-const Project = () => {
-  const pageID = pageIDs.projects
+const Project = async () => {
+  const resolvedProjects = await Promise.all(
+    projects.map((project) => resolveProject(project)),
+  );
 
-  return (
-    <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative ")} id={pageID}>
-      <Navbar currentPage={pageID} />
-      <PinkBackground />
-      <div className="w-full pt-16 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
-        <div id='contact-text' className="gap-4 flex-col flex justify-center items-center md:mb-12 sm:mb-8 mb-4">
-          <h1 className="font-black mb-4 text-center">
-            Projects
-          </h1>
-          <div className='pt-32 gap-9 flex flex-col items-center justify-center text-center'>
-            <span className='stairs' />
-            <h2>In construction...</h2>
-            <h3 className=''>
-              <span className="inline-flex items-center gap-x-2">trust me i will make sth this summer <SleepZZZ className="-ml-3 md:-ml-2 w-[32px] md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " /> </span>
-            </h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+  return <ProjectsList projects={resolvedProjects} />;
+};
 
-export default Project
+export default Project;
