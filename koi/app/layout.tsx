@@ -23,7 +23,7 @@ export default function RootLayout({
         <link rel="preload" href="/images/circle-bars-palep-p.webp" as="image" />
       </head>
       <VolumeProvider>
-        <body>
+        <body suppressHydrationWarning>
           <div id="light-bg" className="fixed inset-0 -z-50">
             {bgPrimary()}
             <div id="dark-bg" className="hidden dark:block absolute inset-0 bg-[#0e0d0d] -z-40"/>

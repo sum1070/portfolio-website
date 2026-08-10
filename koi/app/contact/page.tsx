@@ -1,4 +1,4 @@
-import { BlueBackground, Navbar, Watching } from '@/components'
+import { BlueBackground, LineCircle, Navbar } from '@/components'
 import React from 'react'
 import ContactCard from './contact-card';
 import { cn, pageIDs } from '@/utils';
@@ -15,20 +15,20 @@ const Contact = () => {
       <BlueBackground
         wavePaused={true}
       />
-      <div className="w-full pt-16 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
-        <div id='contact-text' className="md:mb-12 sm:mb-8 mb-4">
+      <div id='contact-deco' className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+        <LineCircle size="32rem" x="-16rem" y="30%" className="opacity-70" />
+        <LineCircle size="18rem" x="calc(100% - 9rem)" y="-7rem" className="opacity-70 hidden sm:block" />
+      </div>
+      <div id='contact-content' className="w-full pt-28 md:pt-36 pb-48 px-8 sm:px-12 md:px-16 lg:px-24 max-w-6xl mx-auto">
+        <div id='contact-text' className="text-center mb-10 md:mb-16">
           <h1 className={cn(
-            "font-black text-center ",
+            "text-3xl sm:text-4xl md:text-5xl font-semibold mb-3 md:mb-5",
+            "dark:text-[#7dd3fc]",
           )}>
-            <Watching className="w-[16svw] md:w-[10svw] inline-block ml-2 object-contain" darkModeEnabled={true} />
+            Wanna have a chat?
           </h1>
-          <h2 className={cn(
-            "mb-1 text-center dark:text-[#7dd3fc]",
-          )}>
-            You wanna find me, huh?
-          </h2>
-          <p className="mb-2 text-center">
-            I think putting something here would look nice, but idk what to write.
+          <p className="text-lg md:text-xl">
+            Feel free to contact me through:
           </p>
         </div>
         <ContactCard />

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { cn } from '@/utils';
+import { cn, sounds } from '@/utils';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';
 import useSound from 'use-sound';
 
@@ -36,7 +36,7 @@ export default function ThemeToggle() {
     const { volume, isMuted } = useMainVolume();
     const [isClicked, setIsClicked] = useState(false);
 
-    const [switchSound, { stop: stopSwitch }] = useSound("/sounds/switch-toggle.wav", {
+    const [switchSound, { stop: stopSwitch }] = useSound(sounds.switch, {
         volume: isMuted ? 0 : volume,
     });
 

@@ -20,10 +20,7 @@ export default function NavMenu({
 }: Readonly<NavMenuProps>) {
     // filter nav links
     const filteredNavLinks = currentPage
-        ? navLinks.filter(link =>
-            !link.href.endsWith(currentPage) &&
-            !(currentPage === "MainPage" && link.href.endsWith("#MainPage"))
-        )
+        ? navLinks.filter(link => !link.href.endsWith(currentPage))
         : navLinks;
 
     return (
