@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, memo } from "react";
 import BackgroundHero from "@/components/sections/hero/hero-background";
-import { CenterContainer, Typewriter, Reveal, NekoSleep, SleepZZZ, FadeIn, NavButton } from "@/components";
+import { CenterContainer, Typewriter, NekoSleep, SleepZZZ, FadeIn, NavButton } from "@/components";
 import { cn, animationTime, pageIDs, gradient } from "@/utils";
 import { motion, useInView } from "motion/react";
 import BlurredBlobsHero from "./hero/hero-blobs";
@@ -74,7 +74,6 @@ HeroTitle.displayName = "HeroTitle";
 const Hero = () => {
   const pageID = pageIDs.home;
   const heroRef = useRef<HTMLDivElement>(null);
-  const [revealBtn, setRevealBtn] = useState(false);
   const [startTyping, setStartTyping] = useState(false);
   const [finishTyping, setFinishTyping] = useState(false);
   const [loadedElements, setLoadedElements] = useState({
@@ -133,7 +132,7 @@ const Hero = () => {
 
       <CenterContainer className="min-h-dvh relative z-20 p-10">
         <div className="text-center">
-          <HeroTitle onAnimationComplete={() => { setStartTyping(true); setRevealBtn(true); }} />
+          <HeroTitle onAnimationComplete={() => setStartTyping(true)} />
 
           {/* typewriter */}
           <div className={cn(`${Text.typingContainer}`, `${Text.txtMono}`)}>
@@ -153,7 +152,6 @@ const Hero = () => {
                 deleteSpeed={40}
                 delay={animationTime.delayTypewriter}
                 sequences={[{ text: "Let's explore together..." }]}
-                onTypeComplete={() => { setRevealBtn(true); }}
               />
             )}
           </div>
@@ -162,29 +160,22 @@ const Hero = () => {
           <div
             id="hero-buttons-container"
             className="mt-8 flex justify-center w-full min-h-52 xl:min-h-60"
-            aria-hidden={!revealBtn}
           >
-            {revealBtn && (
-              <Reveal
-                key="hero-buttons"
-                delay={animationTime.delayHeroBtn}
-                duration={animationTime.durationHeroBtn}
-                className="flex justify-center w-full"
-              >
-                <div id='hero-nav-buttons' className="flex flex-col items-center gap-5">
-                  {heroNavButtons.map((link) => (
-                    <NavButton
-                      key={link.name}
-                      btnSize={heroBtnSize}
-                      background={link.background}
-                      href={link.href}
-                      title={link.name}
-                      titleCN={link.titleCN}
-                    />
-                  ))}
-                </div>
-              </Reveal>
-            )}
+            <div
+              id='hero-nav-buttons'
+              className="flex flex-col items-center gap-5 [animation:heroBtnReveal_0.8s_ease-out_1.2s_both]"
+            >
+              {heroNavButtons.map((link) => (
+                <NavButton
+                  key={link.name}
+                  btnSize={heroBtnSize}
+                  background={link.background}
+                  href={link.href}
+                  title={link.name}
+                  titleCN={link.titleCN}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </CenterContainer>

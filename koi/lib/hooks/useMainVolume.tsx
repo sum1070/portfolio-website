@@ -1,43 +1,35 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useVolume } from "../context/volume-context";
 import { Howl } from "howler";
 import { sounds } from "@/utils";
 
+let bgMusic: Howl | null = null;
+
 export function useMainVolume() {
   const { volume, isMuted } = useVolume();
-  const bgMusicRef = useRef<Howl | null>(null);
 
   useEffect(() => {
-    // initialize background music
-    if (!bgMusicRef.current) {
-      bgMusicRef.current = new Howl({
+    if (!bgMusic && !isMuted) {
+      bgMusic = new Howl({
         src: [sounds.music],
         loop: true,
-        volume: isMuted ? 0 : volume*0.2,
-        autoplay: !isMuted,
+        volume: volume * 0.2,
+        autoplay: true,
         html5: true,
       });
-    } else {
-      // update volume if exist instance
-      bgMusicRef.current.volume(isMuted ? 0 : volume*0.1);
+    } else if (bgMusic) {
+      bgMusic.volume(isMuted ? 0 : volume * 0.2);
 
-      if (!isMuted && !bgMusicRef.current.playing()) {
-        bgMusicRef.current.play();
-      } else if (isMuted && bgMusicRef.current.playing()) {
-        bgMusicRef.current.pause();
+      if (!isMuted && !bgMusic.playing()) {
+        bgMusic.play();
+      } else if (isMuted && bgMusic.playing()) {
+        bgMusic.pause();
       }
     }
 
     // global volume for other SE
     window._SoundManagerVolume = isMuted ? 0 : volume;
-
-    // cleanup
-    return () => {
-      if (bgMusicRef.current) {
-        bgMusicRef.current.unload();
-      }
-    };
   }, [volume, isMuted]);
 
   return { volume, isMuted };
