@@ -1,11 +1,11 @@
 // Import skills data from the central data.json file
 import skillsJson from "@/data/data.json";
 
-// e.g. { name: "JavaScript", type: "languages", icon: "javascript" }
 export interface Skill {
   name: string;
   type: string;
   icon: string;
+  show?: boolean;
 }
 
 // object to hold skills grouped by category
@@ -42,10 +42,27 @@ export const getSkillsByType = (): SkillsByType => {
 };
 
 /**
+ * Gets skills to be displayed
+ * @returns An array of skills that are marked to be shown
+ */
+export const getSkills = (): Skill[] => {
+  const skills: Skill[] = skillsJson.skills || [];
+  return skills.filter((skill) => skill.show);
+};
+
+/**
  * Gets the display color for a specific skill category
  * @param category - The skill category name (e.g., "languages", "frameworks")
  * @returns The hex color code associated with the category, or a default blue if not found
  */
 export const getCategoryColor = (category: string): string => {
   return SKILL_COLORS[category as keyof typeof SKILL_COLORS] || "#112C7B";
+};
+
+export const getSkillColor = (name: string): string => {
+  const skills: Skill[] = skillsJson.skills || [];
+  const skill = skills.find(
+    (s) => s.name.toLowerCase() === name.toLowerCase(),
+  );
+  return skill ? getCategoryColor(skill.type) : getCategoryColor("");
 };

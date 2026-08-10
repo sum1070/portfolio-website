@@ -1,99 +1,73 @@
-:: ============== Quick Git Push (Uni notes repos ITAI)) ==============
-:: This script cannot be named `git.bat` as it will conflict with the real git command.
-:: Up-to-date version located at ckcksum/Hello repository.
-
 @echo off
 setlocal EnableDelayedExpansion
-:: Allow printing Unicode characters
+:: Enable UTF-8 output
 chcp 65001 >nul
 cls
 
-echo Master, Master~ welcome back meow ! ᓚ₍⑅..₎♡
-echo.
-
-echo --- ♡ Master, pulling changes meow... ---
+echo ============================================
 echo.
 git pull
+echo.
 
 git status
 echo.
 
+:: Check for unstaged, staged, and untracked changes.
+:: "git diff --quiet" exits with 0 when there are no changes.
 git diff --quiet --exit-code
-if %errorlevel% equ 0 (
-    git diff --staged --quiet --exit-code
-    if %errorlevel% equ 0 (
-        echo Master, you have nothing to commit meow. ´｡• ω •｡`
-        goto :EndScript
-    )
-)
+if errorlevel 1 goto :HasChanges
 
-goto :HasChanges
+git diff --staged --quiet --exit-code
+if errorlevel 1 goto :HasChanges
 
-:: ================== Functions ==================
-:: Commit/Push Failed
-:Failed
-echo [ERROR] ???Master!!! something went wrong meow... (´;ω;`)
+:: Detect untracked files (not reported by "git diff")
+for /f "delims=" %%F in ('git ls-files --others --exclude-standard') do goto :HasChanges
+
+echo Nothing to commit. The working tree is clean.
 goto :EndScript
 
-:: (Commit cancelled) Ask if unstaged or not
-:Unstaged
-echo.
-choice /c YN /n /m "Master, do you want to unstage the changes meow? (Y/N): "
-if errorlevel 2 (
-    echo Understood, staged changes remained meow!
-    echo.
-    goto :EndScript
-)
-git reset
-echo.
-echo ♡ Master, changes unstaged meow!
-echo.
-goto :EndScript
-
-:: ====== Main Script ======
+:: ================== Main Script ==================
 :HasChanges
 echo.
-echo.
-choice /c YN /n /m "Master, continue meow? (Y/N)"
-if errorlevel 2 (
-    goto :EndScript
-)
+choice /c YN /n /m "Continue with staging and commit? (Y/N): "
+if errorlevel 2 goto :EndScript
 
-:: Stage all files
+:: Stage all changes
 echo.
 git add .
-echo ♡ Master, changes staged meow.
+echo All changes staged.
 
-:: Ask for commit type
-set "defaultMsg=Back up works with small non-breaking changes"
+set "defaultMsg=Back up work with small non-breaking changes"
 
-:: ====== Tag Selection ======
+:: ================== Tag Selection ==================
 :SelectTag
 echo.
-echo ♡ Select a commit tag meow~ ('q' to quit)
-echo [1] [WIP]   wip/back up pushes
+echo Select a commit tag ('q' to quit):
+echo [1] [WIP]   work in progress / backup pushes
 echo [2] [FEAT]  new features
 echo [3] [FIX]   bug fixes
 echo [4] [REF]   code refactoring (no functional change)
 echo [5] [STYLE] formatting, indentation, or style changes (no code change)
 echo [6] [DOCS]  documentation or README updates
 echo [7] [CHORE] maintenance, minor setup, or utility scripts
-echo .
+echo.
 
-:: get user keypress
-set /p "commitTag="
+set "commitTag="
+set /p "commitTag=Selection: "
+
 if /i "%commitTag%"=="q" (
-    echo Cancelling commit meow...
-    echo.
-    goto :Unstaged
+    echo Cancelling commit...
+    goto :Unstage
 )
-:: if 9 is selected (quick git script updates)
+
+:: Reserved option 9: quick update of this script itself
 if "%commitTag%"=="9" (
     set "prefix=[QuickGit] "
     set "commitMsg=Update the quick git script"
     echo.
     goto :DoCommit
 )
+
 set "tag1=[WIP] "
 set "tag2=[FEAT] "
 set "tag3=[FIX] "
@@ -101,53 +75,71 @@ set "tag4=[REF] "
 set "tag5=[STYLE] "
 set "tag6=[DOCS] "
 set "tag7=[CHORE] "
-set "prefix=!tag%commitTag%!"
-echo Master's selected tag: !prefix!
 
+:: Validate the selection (must be 1-7)
+echo %commitTag%| findstr /r "^[1-7]$" >nul
+if errorlevel 1 (
+    echo Invalid selection. Please choose 1-7 or 'q'.
+    goto :SelectTag
+)
+
+set "prefix=!tag%commitTag%!"
+echo Selected tag: !prefix!
+
+:: ================== Commit Message ==================
 :AskCommit
 echo.
-echo Master's commit message: !prefix! ('q' to quit)
+echo Commit message: !prefix! ('q' to quit, leave blank for the default message)
+set "commitMsg="
 set /p "commitMsg="
 
 if /i "%commitMsg%"=="q" (
-    echo Cancelling commit meow...
-    echo.
-    goto :Unstaged
+    echo Cancelling commit...
+    goto :Unstage
 )
 
-:: default message if empty
+:: Fall back to the default message if none was given
 if "%commitMsg%"=="" (
     set "commitMsg=%defaultMsg%"
 )
 
-:: final commit string
+:: ================== Commit and Push ==================
 :DoCommit
 git commit -m "!prefix!!commitMsg!"
-
-if errorlevel 1 (
-    goto :Failed
-)
+if errorlevel 1 goto :Failed
 echo.
-echo ♡ Changes committed meow! ✧
+echo Changes committed.
 echo.
 
 git push
-if errorlevel 1 (
-    goto :Failed
-)
+if errorlevel 1 goto :Failed
 echo.
-echo hehe~ Job done meow! ฅ(◕ヮ◕)ฅ
-
+echo Push complete.
 goto :EndScript
 
-:: ================== Exit Scripts ==================
-:: Exit Script
+:: ================== Helper Sections ==================
+:: Commit or push failed
+:Failed
+echo.
+echo [ERROR] An error occurred during commit or push. Please review the output above.
+goto :EndScript
+
+:: Offer to unstage changes after a cancelled commit
+:Unstage
+echo.
+choice /c YN /n /m "Unstage the staged changes? (Y/N): "
+if errorlevel 2 (
+    echo Staged changes have been kept.
+    goto :EndScript
+)
+git reset
+echo.
+echo Changes unstaged.
+goto :EndScript
+
+:: ================== Exit ==================
 :EndScript
 echo.
-echo Otsukare, Master ♡ ᓚ₍⑅..₎zzz
+echo Done. This window will close in 30 seconds.
 timeout /t 30
 exit
-
-:EndErrorScript
-echo.
-echo Otsukare, Master ♡ ᓚ₍⑅..₎zzz (Check for errors!)

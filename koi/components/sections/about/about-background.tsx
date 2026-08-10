@@ -10,7 +10,7 @@ export default function BackgroundAbout() {
             <div id='about-pattern-container' className='w-full' >
                 <Pattern
                     type="grid"
-                    className="dark:hidden w-full h-[6svh] sm:h-[8svh]  md:hidden z-40"
+                    className="dark:hidden w-full h-[6svh] sm:h-[8svh]  md:hidden z-0"
                     position="bottom"
                     color="#fefaf3"
                     width="100%"
@@ -19,7 +19,7 @@ export default function BackgroundAbout() {
                 />
                 <Pattern
                     type="grid"
-                    className="dark:block hidden w-full h-[6svh] sm:h-[8svh] md:h-[9svh] z-40"
+                    className="dark:block hidden w-full h-[6svh] sm:h-[8svh] md:h-[9svh] z-0"
                     position="bottom"
                     color="#9b9b9b"
                     width="100%"

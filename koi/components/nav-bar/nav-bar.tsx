@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { cn, navLinks } from '@/utils';
 import Hamburger from './hamburger';
 import NavMenu from './nav-menu';
-import { ThemeToggle, TransitionLink } from "@/components";
+import { ThemeToggle, TransitionLink, VolumeControl } from "@/components";
 
 interface NavbarProps {
     currentPage?: string;
@@ -33,10 +32,7 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
 
     // filter curr page if params is provided
     const filteredNavLinks = currentPage
-        ? navLinks.filter(link =>
-            !link.href.endsWith(currentPage) &&
-            !(currentPage === "MainPage" && link.href.endsWith("#MainPage"))
-        )
+        ? navLinks.filter(link => !link.href.endsWith(currentPage))
         : navLinks;
 
     return (
@@ -47,17 +43,9 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                 isScrolled ? "rounded-b-xl bg-milky-white dark:bg-dark-black backdrop-blur-md shadow-md " : "bg-transparent",
             )}>
             <div id='nav-container' className="p-2 flex flex-row justify-between text-xl " >
-                <Link
-                    href="/"
-                    id='nav-logo'
-                    className={cn(
-                        navFontClassName,
-                        "ml-4 font-semibold",
-                        "text-nice-purple3",
-                        "hover:font-black focus:text-purple-500 transition-all duration-300 ease-in-out"
-                    )} >
-                    Meow
-                </Link>
+                <div id='nav-volume' className="ml-4 flex items-center">
+                    <VolumeControl variant="nav" />
+                </div>
                 <div
                     id='desktop-nav'
                     className={cn(desktopOnly, "flex-row gap-4 xl:gap-8")}

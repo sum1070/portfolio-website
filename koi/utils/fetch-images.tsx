@@ -68,7 +68,6 @@ const SVGComponent = ({
     if (isLoading) {
         return (
             <div className={className} style={{ ...style, width: size, height: size }}>
-                {/* Optional: Add a simple loading indicator here */}
             </div>
         );
     }

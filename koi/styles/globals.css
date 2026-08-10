@@ -601,6 +601,14 @@ p {
   background: linear-gradient(90deg, #ff0077 0%, #ddbaff 50%, #2e4dff 100%);
 }
 
+.bullet-arrow-heart::before {
+  content: "➳❥ ";
+}
+
+.bullet-arrow::before {
+  content: "➳ ";
+}
+
 /* /////////////////// */
 .cyber-name:hover::before,
 .cyber-name:hover::after {

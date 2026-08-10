@@ -12,7 +12,7 @@ interface CardProps {
         url: string;
         icon?: string;
         iconAlt?: string;
-        isSensitive?: boolean;  // Add this property
+        isSensitive?: boolean;
     }>;
     headerBackground?: string;
     headerImage?: string;
