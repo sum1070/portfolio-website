@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMarkdown, { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Spoiler } from "spoiled";
+import ThemedSpoiler from "@/components/ui/themed-spoiler";
 import { cn } from "@/utils";
 
 /**
@@ -16,9 +16,9 @@ interface MarkdownProps {
 
 const styles = {
   container: "flex flex-col gap-4 leading-relaxed",
-  h1: "text-2xl md:text-3xl font-semibold mt-4",
-  h2: "text-xl md:text-2xl font-semibold mt-3",
-  h3: "text-lg md:text-xl font-semibold mt-2",
+  h1: "text-2xl md:text-3xl font-semibold mt-4 scroll-mt-20",
+  h2: "text-xl md:text-2xl font-semibold mt-3 scroll-mt-20",
+  h3: "text-lg md:text-xl font-semibold mt-2 scroll-mt-20",
   ul: "list-disc pl-6 flex flex-col gap-1",
   ol: "list-decimal pl-6 flex flex-col gap-1",
   code: "font-mono text-sm bg-white/40 dark:bg-white/10 rounded px-1.5 py-0.5",
@@ -35,6 +35,22 @@ const styles = {
   hr: "border-nice-purple1/30",
   blockquote: "border-l-4 border-nice-purple1/50 pl-4 italic opacity-90",
   mark: "bg-pink1/70 dark:bg-purple2/50 text-inherit rounded px-1",
+};
+
+export const slugify = (text: string): string =>
+  text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
+    .trim()
+    .replace(/\s+/g, "-");
+
+const textOf = (children: React.ReactNode): string => {
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(textOf).join("");
+  if (React.isValidElement(children)) {
+    return textOf((children.props as { children?: React.ReactNode }).children);
+  }
+  return "";
 };
 
 const richColors: Record<string, string> = {
@@ -59,7 +75,9 @@ const parseRichText = (text: string): React.ReactNode => {
     }
     const token = match[0];
     if (token.startsWith("||")) {
-      nodes.push(<Spoiler key={key++}>{token.slice(2, -2)}</Spoiler>);
+      nodes.push(
+        <ThemedSpoiler key={key++}>{token.slice(2, -2)}</ThemedSpoiler>,
+      );
     } else if (token.startsWith("==")) {
       nodes.push(
         <mark key={key++} className={styles.mark}>
@@ -100,16 +118,16 @@ const renderRichText = (children: React.ReactNode): React.ReactNode => {
 
 const markdownComponents: Components = {
   h1: ({ node, children, ...props }) => (
-    <h2 className={styles.h1} {...props}>{renderRichText(children)}</h2>
+    <h2 id={slugify(textOf(children))} className={styles.h1} {...props}>{renderRichText(children)}</h2>
   ),
   h2: ({ node, children, ...props }) => (
-    <h3 className={styles.h2} {...props}>{renderRichText(children)}</h3>
+    <h3 id={slugify(textOf(children))} className={styles.h2} {...props}>{renderRichText(children)}</h3>
   ),
   h3: ({ node, children, ...props }) => (
-    <h4 className={styles.h3} {...props}>{renderRichText(children)}</h4>
+    <h4 id={slugify(textOf(children))} className={styles.h3} {...props}>{renderRichText(children)}</h4>
   ),
   h4: ({ node, children, ...props }) => (
-    <h4 className={styles.h3} {...props}>{renderRichText(children)}</h4>
+    <h4 id={slugify(textOf(children))} className={styles.h3} {...props}>{renderRichText(children)}</h4>
   ),
   p: ({ node, children, ...props }) => (
     <p {...props}>{renderRichText(children)}</p>

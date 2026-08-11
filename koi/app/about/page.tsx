@@ -96,13 +96,13 @@ const About = () => {
                     style={{ animationDelay: "0.5s" }}
                   />
                 </div>
-                <h1 className="tracking-tight ">Margaret Chan</h1>
+                <h1 className="tracking-tight ">Kit Sum Chan</h1>
               </div>
             </div>
             <div id="intro-text" className="flex flex-col gap-2">
+              Hello! I'm Kit Sum. You can also call me Margaret :)
               <p className="bullet-arrow-heart">
-                BSc Computer Science with AI Graduate (University of
-                Nottingham).
+                BSc Computer Science with AI, University of Nottingham.
               </p>
               <p className="bullet-arrow-heart">
                 Starting an MSc in Artificial Intelligence this autumn.

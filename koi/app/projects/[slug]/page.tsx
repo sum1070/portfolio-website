@@ -9,6 +9,26 @@ import {
 } from "@/lib/project-content";
 import { glassCN, TagPill } from "../project-card";
 import { getSkillColor } from "@/components/sections/about/skills-data";
+import { slugify } from "@/components/ui/markdown";
+import WriteupToc, { TocItem } from "./writeup-toc";
+
+const getTocItems = (markdown: string): TocItem[] => {
+  const items: TocItem[] = [];
+  let inFence = false;
+  for (const line of markdown.replace(/\r\n/g, "\n").split("\n")) {
+    if (line.trim().startsWith("```")) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    const match = /^(#{2,3})\s+(.*)$/.exec(line);
+    if (match) {
+      const text = match[2].replace(/[*_`]/g, "").trim();
+      items.push({ id: slugify(text), text, level: match[1].length });
+    }
+  }
+  return items;
+};
 
 export const generateStaticParams = () =>
   projects.map((project) => ({ slug: project.slug }));
@@ -23,6 +43,7 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
     resolveContent(project, project.writeup),
     resolveLastUpdate(project),
   ]);
+  const tocItems = getTocItems(writeup);
 
   return (
     <div
@@ -107,6 +128,8 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             ))}
           </div>
         )} */}
+
+        {tocItems.length > 1 && <WriteupToc items={tocItems} />}
 
         {writeup && <Markdown content={writeup} className="px-2 md:px-4" />}
       </div>
