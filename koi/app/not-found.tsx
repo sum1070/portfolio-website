@@ -24,9 +24,13 @@ const NotFound = () => {
     const speed = 70; // px per second
     const hopHeight = 14; // px
     const hopSpeed = 7; // skip frequency
+    const flipDuration = 0.7; // seconds per backflip
+    const flipJump = 42; // extra height during a backflip, px
     let direction = 1; // dog.png faces right; 1 = walking right, -1 = walking left
     let x = (window.innerWidth - dog.offsetWidth) / 2;
     let hopPhase = 0;
+    let flipProgress = -1; // -1 = not flipping, otherwise 0..1
+    let nextFlipAt = performance.now() + 2000 + Math.random() * 4000;
     let last = performance.now();
     let rafId = 0;
 
@@ -58,8 +62,25 @@ const NotFound = () => {
 
       // skipping: small hops while moving; walking left = flipped image
       hopPhase += dt * hopSpeed;
-      const hop = Math.abs(Math.sin(hopPhase)) * hopHeight;
-      dog.style.transform = `translateX(${x}px) translateY(${-hop}px) scaleX(${direction === 1 ? 1 : -1})`;
+      let lift = Math.abs(Math.sin(hopPhase)) * hopHeight;
+
+      // every few seconds: a backflip (360° backwards with a bigger jump)
+      let rotation = 0;
+      if (flipProgress >= 0) {
+        flipProgress += dt / flipDuration;
+        if (flipProgress >= 1) {
+          flipProgress = -1;
+          nextFlipAt = now + 2500 + Math.random() * 2300;
+        } else {
+          // rotate() after scaleX() spins backwards relative to facing direction
+          rotation = -360 * flipProgress;
+          lift = Math.sin(flipProgress * Math.PI) * flipJump;
+        }
+      } else if (now >= nextFlipAt) {
+        flipProgress = 0;
+      }
+
+      dog.style.transform = `translateX(${x}px) translateY(${-lift}px) scaleX(${direction === 1 ? 1 : -1}) rotate(${rotation}deg)`;
       rafId = requestAnimationFrame(step);
     };
 
