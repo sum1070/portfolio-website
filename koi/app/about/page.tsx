@@ -105,7 +105,7 @@ const About = () => {
                 BSc Computer Science with AI, University of Nottingham.
               </p>
               <p className="bullet-arrow-heart">
-                Starting an MSc in Artificial Intelligence this autumn.
+                Starting MSc Advanced CS (AI) at University of Leeds this autumn!
               </p>
               <p className="bullet-arrow">
                 Specialising in AI related fields. Also interested in UX/UI

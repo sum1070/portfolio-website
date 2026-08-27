@@ -2,7 +2,7 @@
 
 Built with Next.js + TypeScript.
 
-- Live demo: <https://sum1070.vercel.app>
+- Live demo: <[kitsumchan.com](https://kitsumchan.com/)>
 
 [![Website screenshot (Home and About)](./assets/screenshot-home-about.png)](https://sum1070.vercel.app)
 
