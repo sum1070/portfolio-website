@@ -1,5 +1,5 @@
 "use client";
-import { cn, gradient, sounds } from '@/utils';
+import { cn, gradient, sounds, soundGains } from '@/utils';
 import React, { useState, useRef, useEffect } from 'react';
 import { LiquidGlass } from './liquid-glass';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';
@@ -70,11 +70,13 @@ const NavButton = ({
     const [isClicked, setIsClicked] = useState(false);
 
     const [bell, { stop: stopBell }] = useSound(sounds.bell, {
-        volume: isMuted ? 0 : volume,
+        // volume: isMuted ? 0 : volume,
+        volume: isMuted ? 0 : volume * soundGains.se,
     });
 
     const [bubble, { stop: stopBubble }] = useSound(sounds.bubble, {
-        volume: isMuted ? 0 : volume,
+        // volume: isMuted ? 0 : volume,
+        volume: isMuted ? 0 : volume * soundGains.se,
     });
 
     const resetDelay = 300; // ms

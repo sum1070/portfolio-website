@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useVolume } from "@/lib/context/volume-context";
 import { cn, soundButtonImages } from "@/utils";
@@ -8,39 +8,166 @@ interface VolumeControlProps {
   variant?: "hero" | "nav";
 }
 
+const LEAVE_GRACE_MS = 300; // pointer can travel icon -> slider without collapse
+const AUTO_HIDE_MS = 3000; // lifetime of the transient reveal on touch
+
 const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
-  const { isMuted, toggleMute, volume, incrementVolume, decrementVolume } =
-    useVolume();
+  const { isMuted, toggleMute, volume, setNewVolume } = useVolume();
+
+  const [revealed, setRevealed] = useState(false);
+  const [isTransient, setIsTransient] = useState(false); //Auto-hides
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const speakerRef = useRef<HTMLButtonElement>(null);
+  const hideTimerRef = useRef<number | null>(null);
+  const lastPointerTypeRef = useRef("mouse");
+  const suppressFocusRevealRef = useRef(false);
+
+  const clearHideTimer = () => {
+    if (hideTimerRef.current !== null) {
+      window.clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+  };
+
+  const hideSlider = () => {
+    clearHideTimer();
+    setRevealed(false);
+    setIsTransient(false);
+  };
+
+  const scheduleHide = (delayMs: number) => {
+    clearHideTimer();
+    hideTimerRef.current = window.setTimeout(() => {
+      setRevealed(false);
+      setIsTransient(false);
+    }, delayMs);
+  };
+
+  const revealTransiently = () => {
+    setRevealed(true);
+    setIsTransient(true);
+    scheduleHide(AUTO_HIDE_MS);
+  };
+
+  useEffect(() => clearHideTimer, []);
 
   useEffect(() => {
-    if (volume === 0 && !isMuted) {
-      toggleMute();
+    if (!(revealed && isTransient)) return;
+    const onOutsidePointerDown = (e: PointerEvent) => {
+      if (!containerRef.current?.contains(e.target as Node)) hideSlider();
+    };
+    document.addEventListener("pointerdown", onOutsidePointerDown);
+    return () =>
+      document.removeEventListener("pointerdown", onOutsidePointerDown);
+  }, [revealed, isTransient]);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    lastPointerTypeRef.current = e.pointerType;
+    if (isTransient) scheduleHide(AUTO_HIDE_MS);
+  };
+
+  const handlePointerEnter = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    clearHideTimer();
+    setRevealed(true);
+    setIsTransient(false);
+  };
+
+  const handlePointerLeave = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse" || isTransient) return;
+    scheduleHide(LEAVE_GRACE_MS);
+  };
+
+  // Click to mute/unmute
+  const handleSpeakerClick = () => {
+    const isTouch =
+      lastPointerTypeRef.current === "touch" ||
+      lastPointerTypeRef.current === "pen";
+    toggleMute();
+    if (!isTouch) return;
+    if (isMuted) {
+      revealTransiently(); // unmuting on touch reveals the slider
+    } else {
+      hideSlider(); // muting: hide slider
     }
-  }, [volume, isMuted, toggleMute]);
+  };
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = Number(e.target.value) / 100;
+    if (newVolume === 0) {
+      if (!isMuted) toggleMute(); // dragging to zero mutes
+    } else {
+      setNewVolume(newVolume); // context un-mutes on its own when > 0
+    }
+    if (isTransient) scheduleHide(AUTO_HIDE_MS);
+  };
+
+  const handleFocus = () => {
+    if (suppressFocusRevealRef.current) {
+      suppressFocusRevealRef.current = false;
+      return;
+    }
+    if (!isTransient) clearHideTimer();
+    setRevealed(true);
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!containerRef.current?.contains(e.relatedTarget as Node)) hideSlider();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key !== "Escape" || !revealed) return;
+    hideSlider();
+    if (document.activeElement !== speakerRef.current) {
+      suppressFocusRevealRef.current = true;
+      speakerRef.current?.focus();
+    }
+  };
 
   const isNav = variant === "nav";
+  const sliderPercent = Math.round(volume * 100);
 
-  const buttonClassName = isNav
-    ? "min-w-7 md:min-w-8 p-1.5 bg-purple-400/10 text-nice-purple2 rounded hover:bg-purple-400/25 dark:bg-white/10 dark:text-dark-text dark:hover:bg-white/25"
-    : "min-w-8 md:min-w-10 p-2 bg-black/20 dark:bg-white/10 text-white rounded hover:bg-black/40 dark:hover:bg-white/40";
-  const disabledButtonClassName = cn(
-    buttonClassName,
-    "opacity-32 cursor-not-allowed",
+  const sliderWrapClassName = cn(
+    "absolute left-full top-1/2 -translate-y-1/2 ml-1 z-10",
+    "flex items-center rounded-full px-2.5 backdrop-blur-sm",
+    isNav ? "bg-purple-400/10 dark:bg-white/10" : "bg-black/20 dark:bg-white/10",
+    "origin-left transition-all duration-200 motion-reduce:transition-none",
+    revealed
+      ? "opacity-100 scale-x-100"
+      : "opacity-0 scale-x-95 pointer-events-none",
   );
-  const textClassName = isNav
-    ? "text-nice-purple2 dark:text-dark-text font-titillium-web text-lg px-1 min-w-[40px] text-center"
-    : "text-white/80 font-titillium-web text-xl px-1 min-w-[40px] text-center";
 
-  const isAtMinVolume = volume === 0;
-  const isAtMaxVolume = volume === 1;
+  // thin track, but the input is 40px tall for a comfortable touch target
+  const sliderClassName = cn(
+    isNav ? "w-20 md:w-24" : "w-24 md:w-28",
+    "h-10 appearance-none bg-transparent cursor-pointer",
+    "[&::-webkit-slider-runnable-track]:h-1.5 [&::-webkit-slider-runnable-track]:rounded-full",
+    "[&::-webkit-slider-runnable-track]:[background:linear-gradient(to_right,var(--slider-color)_var(--vol),color-mix(in_srgb,var(--slider-color)_25%,transparent)_var(--vol))]",
+    "[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:-mt-1 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[var(--slider-color)]",
+    "[&::-moz-range-track]:h-1.5 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-[color-mix(in_srgb,var(--slider-color)_25%,transparent)]",
+    "[&::-moz-range-progress]:h-1.5 [&::-moz-range-progress]:rounded-full [&::-moz-range-progress]:bg-[var(--slider-color)]",
+    "[&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[var(--slider-color)]",
+  );
 
   return (
-    <div id="volume-control" className="flex items-center gap-2">
+    <div
+      id="volume-control"
+      ref={containerRef}
+      className="relative flex items-center"
+      onPointerDown={handlePointerDown}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
+    >
       <button
-        onClick={toggleMute}
+        ref={speakerRef}
+        onClick={handleSpeakerClick}
         className={cn(
           "bg-transparent p-0 border-0 flex items-center justify-center",
-        isNav && "bg-nice-purple1/70 dark:bg-transparent rounded-full p-1",
+          isNav && "bg-nice-purple1/70 dark:bg-transparent rounded-full p-1",
         )}
         aria-label={isMuted ? "Unmute" : "Mute"}
       >
@@ -56,30 +183,24 @@ const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
           )}
         />
       </button>
-      <div className="ml-2 flex items-center gap-2">
-        <button
-          onClick={decrementVolume}
-          className={cn(
-            isAtMinVolume ? disabledButtonClassName : buttonClassName,
-            "cursor-pointer",
-          )}
-          aria-label="Decrease volume"
-          disabled={isAtMinVolume}
-        >
-          -
-        </button>
-        <span className={textClassName}>{Math.round(volume * 100)}%</span>
-        <button
-          onClick={incrementVolume}
-          className={cn(
-            isAtMaxVolume ? disabledButtonClassName : buttonClassName,
-            "cursor-pointer",
-          )}
-          aria-label="Increase volume"
-          disabled={isAtMaxVolume}
-        >
-          +
-        </button>
+      <div id="volume-slider" className={sliderWrapClassName}>
+        <input
+          type="range"
+          min={0}
+          max={100}
+          step={5}
+          value={sliderPercent}
+          onChange={handleSliderChange}
+          aria-label="Volume"
+          aria-valuetext={`${sliderPercent}%`}
+          className={sliderClassName}
+          style={
+            {
+              "--vol": `${sliderPercent}%`,
+              "--slider-color": isNav ? "var(--color-nice-purple2)" : "#ffffff",
+            } as React.CSSProperties
+          }
+        />
       </div>
     </div>
   );

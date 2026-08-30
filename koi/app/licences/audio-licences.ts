@@ -7,12 +7,7 @@ const soundLicenceLinks: CardDetails[] = [
     icon: "attr4", // Changed to match key name instead of direct path
     iconAlt: "Attribution 4.0",
   },
-  {
-    name: "Menu Click-Sparkle by Soughtaftersounds ",
-    url: "https://freesound.org/people/Soughtaftersounds/sounds/145459/",
-    icon: "attr4", // Changed to match key name instead of direct path
-    iconAlt: "Attribution 3.0",
-  },
+
 ];
 
 export default soundLicenceLinks;

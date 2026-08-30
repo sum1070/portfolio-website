@@ -9,10 +9,14 @@ export function cn(...inputs: ClassValue[]) {
 export const sounds = {
   bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
   bubble: "/sounds/bubble.mp3", // https://freesound.org/people/mokasza/sounds/810164/
-  glimmer: "/sounds/glimmer.wav", //https://freesound.org/people/opticaillusions/sounds/521873/
-  sparkle: "/sounds/sparkle.mp3", // https://freesound.org/people/Soughtaftersounds/sounds/145459/
   switch: "/sounds/switch-toggle.wav", // https://freesound.org/people/Rudmer_Rotteveel/sounds/457458/
   music: "/sounds/groovy-beat.mp3", // https://freesound.org/people/Seth_Makes_Sounds/sounds/659748/
+};
+
+// relative loudness of music vs sound effects, applied on top of the master volume
+export const soundGains = {
+  music: 0.5,
+  se: 0.7,
 };
 
 export const pageIDs = {

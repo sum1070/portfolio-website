@@ -18,7 +18,10 @@ export const VolumeProvider = ({ children }: { children: React.ReactNode }) => {
     const toggleMute = () => {
         if (isMuted) {
             setIsMuted(false);
-            setVolume(previousVolume);
+            // fall back to the default level if volume hit 0 before muting,
+            // otherwise unmute restores silence and the button appears dead
+            // setVolume(previousVolume);
+            setVolume(previousVolume > 0 ? previousVolume : INITIAL_VOLUME);
         } else {
             setPreviousVolume(volume);
             setIsMuted(true);

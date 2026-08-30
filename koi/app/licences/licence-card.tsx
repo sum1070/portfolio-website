@@ -48,7 +48,6 @@ export const LicenceCard = () => {
                     </div>
 
                 }
-                links={soundLicenceLinks}
             />
         </>
 
