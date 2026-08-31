@@ -1,12 +1,8 @@
-import { Markdown, Navbar, PinkBackground, ScrollToTop } from "@/components";
+import { Markdown, Navbar, PinkBackground, ScrollToTop, TransitionLink } from "@/components";
 import { cn, contactImages, pageIDs } from "@/utils";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/data/projects";
-import {
-  resolveContent,
-  resolveLastUpdate,
-  resolveShortDescription,
-} from "@/lib/project-content";
+import { resolveContent, resolveLastUpdate } from "@/lib/project-content";
 import { glassCN, TagPill } from "../project-card";
 import { getSkillColor } from "@/components/sections/about/skills-data";
 import { slugify } from "@/components/ui/markdown";
@@ -38,8 +34,7 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  const [shortDescription, writeup, lastUpdate] = await Promise.all([
-    resolveShortDescription(project),
+  const [writeup, lastUpdate] = await Promise.all([
     resolveContent(project, project.writeup),
     resolveLastUpdate(project),
   ]);
@@ -53,13 +48,19 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
       <Navbar currentPage={pageIDs.projects} />
       <PinkBackground />
       <div className="w-full pt-24 pb-40 px-8 sm:px-12 md:px-16 max-w-5xl mx-auto relative z-10 flex flex-col gap-4">
-        <h1 className="font-titillium-web">{project.title}</h1>
-
-        {shortDescription && (
-          <p id="project-description" className="-mt-2 text-xs md:text-sm opacity-70 italic">
-            {shortDescription}
-          </p>
-        )}
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="font-titillium-web">{project.title}</h1>
+          <TransitionLink
+            id="project-back"
+            href="/projects"
+            className={cn(
+              "font-titillium-web text-sm md:text-base",
+              "underline underline-offset-2 hover:text-purple2 transition-colors",
+            )}
+          >
+            <span aria-hidden={true}>←</span> Back
+          </TransitionLink>
+        </div>
 
         <div id="project-meta" className="flex flex-wrap items-center gap-2 md:gap-3">
           {project.tags.map((tag) => (
@@ -111,23 +112,6 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
         </div>
 
         <hr className="border-nice-purple1/40 my-2" />
-
-        {/* gallery removed: previewImg[] is only the card preview, the write-up owns this page
-        {project.previewImg.length > 0 && (
-          <div
-            id="project-gallery"
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2"
-          >
-            {project.previewImg.map((src) => (
-              <img
-                key={src}
-                src={src}
-                alt={`${project.title} screenshot`}
-                className={cn(glassCN, "snap-center max-h-80 object-cover")}
-              />
-            ))}
-          </div>
-        )} */}
 
         {tocItems.length > 1 && <WriteupToc items={tocItems} />}
 
