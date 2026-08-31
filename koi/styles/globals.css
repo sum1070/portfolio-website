@@ -826,6 +826,79 @@ p {
   }
 }
 
+/* dog orbit loading screen — gentler wave for the smaller LOADING text
+   (per-letter delays still come from the .loading span:nth-child rules) */
+.loading-wave span {
+  animation-name: animloading-wave;
+  animation-duration: 1.1s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes animloading-wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* loading trail stroke — light mode mirrors .gradient-default (nav button);
+   dark mode mirrors .gradient-2 (.gradient-deep-blue is too dark on the dark bg) */
+.loading-trail-stop1 {
+  stop-color: #ff0077;
+}
+.loading-trail-stop2 {
+  stop-color: #ddbaff;
+}
+.loading-trail-stop3 {
+  stop-color: #2e4dff;
+}
+.dark .loading-trail-stop1 {
+  stop-color: hsla(187, 83%, 65%, 1);
+}
+.dark .loading-trail-stop2 {
+  stop-color: hsla(301, 84%, 81%, 1);
+}
+.dark .loading-trail-stop3 {
+  stop-color: hsla(347, 75%, 61%, 1);
+}
+
+/* the whole SVG hops so the ball + trail stay glued to the card */
+.loading-dog-bump {
+  transform-origin: 50% 100%;
+  animation: loading-dog-bump 1.4s ease-in-out infinite;
+}
+
+@keyframes loading-dog-bump {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  15% {
+    transform: translateY(0) scale(1.05, 0.92);
+  }
+  40% {
+    transform: translateY(-12px) scale(0.98, 1.04);
+  }
+  70% {
+    transform: translateY(0) scale(1.03, 0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* SMIL animations ignore CSS pausing, so hide the orbiting ball entirely */
+  .orbit-trail,
+  .orbit-ball {
+    display: none;
+  }
+  .loading-wave span,
+  .loading-dog-bump {
+    animation: none;
+  }
+}
+
 /* stairs */
 .stairs {
   position: relative;
