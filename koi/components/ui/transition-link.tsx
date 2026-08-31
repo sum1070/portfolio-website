@@ -9,15 +9,46 @@ interface TransitionProps extends LinkProps, AnchorProps {
   children: React.ReactNode;
 }
 
+const SPLASH_KEY = "loading-splash-shown";
+// first navigation of the session gets a full showing of the loading animation
+const SPLASH_MIN_DISPLAY = 1600; // ms
+const NAV_MIN_DISPLAY = 400; // ms
+// later navigations only show the overlay once they take longer than this
+const SHOW_DELAY = 200; // ms
+
 // Dismissal timers are shared by every TransitionLink and the watcher below.
 // A new navigation must be able to cancel timers left over from a previous
 // one, otherwise a stale timer strips the overlay in the middle of the next
 // navigation.
 let overlayTimers: ReturnType<typeof setTimeout>[] = [];
+let overlayShownAt = 0;
+let overlayMinDisplay = NAV_MIN_DISPLAY;
 
 function clearOverlayTimers() {
   overlayTimers.forEach(clearTimeout);
   overlayTimers = [];
+}
+
+// sessionStorage can be blocked (privacy modes, embedded contexts); fall back
+// to "already shown" so a blocked store never replays the splash on every click
+function splashAlreadyShown() {
+  try {
+    if (sessionStorage.getItem(SPLASH_KEY)) return true;
+    sessionStorage.setItem(SPLASH_KEY, "1");
+    return false;
+  } catch {
+    return true;
+  }
+}
+
+function showOverlay(overlay: HTMLElement) {
+  overlay.style.display = "flex";
+
+  // Force a reflow to ensure immediate visual update
+  void overlay.offsetWidth;
+
+  overlay.classList.add("active");
+  overlayShownAt = Date.now();
 }
 
 function fadeOutOverlay(overlay: HTMLElement) {
@@ -41,11 +72,15 @@ export const TransitionOverlayWatcher = () => {
 
   useEffect(() => {
     const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");
-    if (!overlay || !overlay.classList.contains("active")) return;
+    if (!overlay) return;
 
-    // minimum animation display time
-    const minDisplayTime = 400; // ms
-    overlayTimers.push(setTimeout(() => fadeOutOverlay(overlay), minDisplayTime));
+    // cancels a still-pending delayed show when the page rendered fast enough
+    clearOverlayTimers();
+
+    if (!overlay.classList.contains("active")) return;
+
+    const remaining = overlayMinDisplay - (Date.now() - overlayShownAt);
+    overlayTimers.push(setTimeout(() => fadeOutOverlay(overlay), Math.max(remaining, 0)));
   }, [pathname]);
 
   return null;
@@ -54,28 +89,6 @@ export const TransitionOverlayWatcher = () => {
 const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
   const router = useRouter();
   const pathname = usePathname();
-
-  useEffect(() => {
-    // Preload the overlay
-    const preloadOverlay = () => {
-      const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");
-      if (overlay) {
-        // Create and append elements if they don't exist
-        if (!overlay.querySelector(".spinner")) {
-          const spinner = document.createElement("span");
-          spinner.className = "spinner";
-          overlay.appendChild(spinner);
-        }
-        if (!overlay.querySelector(".eyes")) {
-          const eyes = document.createElement("span");
-          eyes.className = "eyes";
-          overlay.appendChild(eyes);
-        }
-      }
-    };
-
-    preloadOverlay();
-  }, []);
 
   const handleTransition = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -109,20 +122,7 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
     clearOverlayTimers();
     overlay.classList.remove("fade-out");
 
-    // Force immediate rendering before transition starts
-    overlay.style.display = "flex";
-
-    // Force a reflow to ensure immediate visual update
-    const _ = overlay.offsetWidth;
-
-    // Add active class to trigger animation
-    overlay.classList.add("active");
-
-    // Start animations immediately
-    const spinner = overlay.querySelector(".spinner");
-    const eyes = overlay.querySelector(".eyes");
-    if (spinner) spinner.classList.add("animate-spin");
-    if (eyes) eyes.classList.add("animate-blink");
+    const firstNavigation = !splashAlreadyShown();
 
     // fallback to remove the overlay after a timeout (nav failed or took too long)
     overlayTimers.push(
@@ -134,8 +134,17 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
       }, 5000)
     );
 
-    // Small delay to ensure animation starts before navigation
-    setTimeout(() => router.push(path), 100);
+    if (firstNavigation) {
+      overlayMinDisplay = SPLASH_MIN_DISPLAY;
+      showOverlay(overlay);
+
+      // Small delay to ensure animation starts before navigation
+      setTimeout(() => router.push(path), 100);
+    } else {
+      overlayMinDisplay = NAV_MIN_DISPLAY;
+      overlayTimers.push(setTimeout(() => showOverlay(overlay), SHOW_DELAY));
+      router.push(path);
+    }
   };
 
   return (
