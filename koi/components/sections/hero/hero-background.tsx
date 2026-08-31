@@ -55,9 +55,12 @@ export default function BackgroundHero() {
     });
 
     useEffect(() => {
+        let stopped = false;
+
         const animateOrbit = async () => {
             // Reset the orbit
             await animate(scope.current, { opacity: 0, boxShadow: "none", border: "0px solid transparent" }, { duration: 0 });
+            if (stopped) return;
 
             // Different initial styles based on theme
             const initialBorder = isDarkMode
@@ -82,6 +85,7 @@ export default function BackgroundHero() {
             // Color change
             let index = 0;
             const cycleColors = async () => {
+                if (stopped) return;
                 const currentBorderArray = isDarkMode ? darkModeBorderColor : borderColor;
                 const currentShadowArray = isDarkMode ? darkModeBoxShadow : boxShadow;
 
@@ -101,6 +105,10 @@ export default function BackgroundHero() {
         };
 
         animateOrbit();
+
+        // stop the loop on unmount or theme change; without this every
+        // isDarkMode flip stacks another infinite loop on the same element
+        return () => { stopped = true; };
     }, [animate, isDarkMode]);
 
     return (

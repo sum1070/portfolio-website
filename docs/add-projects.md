@@ -51,7 +51,8 @@ export default myProject;
 - `github`: GitHub repo URL
 - `demo`: Live demo URL
 - `shortDescription`: Projects page short intro. Accept a string or a source object, e.g. `{ source: "github-description" }` to reuse the repo description.
-- `lastUpdate`: manual `"YYYY-MM"`; leave undefined with a repo URL to
+- `lastUpdate`: Three options:
+  - 1. manual `"YYYY-MM"`; 2. `{ source: "writeup-file" }` to use the local write-up file's modified date; 3. leave undefined with a repo URL to
   auto-fill from the last push; undefined without a repo hides the label.
 - `writeup`: where to get the project write-up (see below).
 

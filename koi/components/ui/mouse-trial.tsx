@@ -19,12 +19,32 @@ type Particle = {
 };
 
 const MAX_PARTICLES = 200;
+const LOW_POWER_PARTICLES = 80;
+const SLOW_FRAME_MS = 40; // ~25fps
+const SLOW_FRAME_LIMIT = 30; // this many slow frames (net) and the glow goes
 const CONNECT_DIST = 100;
 const CONNECT_DIST_SQ = CONNECT_DIST * CONNECT_DIST;
 const MAX_CONNECTIONS = 4;
 const SPAWN_INTERVAL_MS = 30; // same cadence the old every-other-frame gate gave at 60Hz
 const SPAWN_SPACING = 14; // px between spawn points when filling in a fast swipe
 const TELEPORT_DIST = 400; // a jump this big means the cursor left and came back
+
+// with hardware acceleration off, browsers rasterise canvas shadows on the
+// CPU and the glow alone drags the whole page below 20fps. Software GL is the
+// tell: no WebGL at all, or a software renderer string.
+function isSoftwareRendering() {
+  try {
+    const gl = document.createElement("canvas").getContext("webgl");
+    if (!gl) return true;
+    const dbg = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : "";
+    // SwiftShader = Chrome's software GL, Basic Render Driver = Windows WARP,
+    // llvmpipe/softpipe = Mesa's software paths on Linux
+    return /swiftshader|software|llvmpipe|softpipe|basic render/i.test(renderer);
+  } catch {
+    return true;
+  }
+}
 
 export default function MouseAnimated() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -35,6 +55,13 @@ export default function MouseAnimated() {
     const ctx = canvas.getContext("2d", { alpha: true })!;
     const particles: Particle[] = [];
     let hue = 0;
+
+    // glow costs nothing on a GPU but is brutal in software rendering: start
+    // degraded when that is detectable up front, and let the slow-frame
+    // counter in animate() catch weak machines the WebGL probe misses
+    let glowDisabled = isSoftwareRendering();
+    let slowFrames = 0;
+    let lastFrameTime = 0;
 
     function resize() {
       if (!canvas) return;
@@ -98,17 +125,26 @@ export default function MouseAnimated() {
       ensureAnimating();
     }
 
+    // taps teleport the pointer, and the browser fires a synthetic mousemove
+    // at the tap point right before click; without dropping the anchor here
+    // that mousemove draws a straight particle line between two taps
+    function touchStart() {
+      lastX = -1;
+      lastY = -1;
+    }
+
     // --- Particles Setting ---
     let recycleIdx = 0;
 
     function spawnParticle(x: number, y: number) {
-      if (particles.length < MAX_PARTICLES) {
+      const cap = glowDisabled ? LOW_POWER_PARTICLES : MAX_PARTICLES;
+      if (particles.length < cap) {
         particles.push(createParticle(x, y));
       } else {
         // at the cap, overwrite the oldest slots instead of refusing to
         // spawn; the fresh end of the trail matters more than the fading one
         particles[recycleIdx] = createParticle(x, y);
-        recycleIdx = (recycleIdx + 1) % MAX_PARTICLES;
+        recycleIdx = (recycleIdx + 1) % cap;
       }
     }
 
@@ -152,10 +188,10 @@ export default function MouseAnimated() {
     function drawParticles() {
       // glow only on the fills, never on the lines: blurred strokes are what
       // tanked mobile. Sprite caching was tried and lost to GPU shadows.
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = glowDisabled ? 0 : 10;
       for (const p of particles) {
         ctx.fillStyle = p.color;
-        ctx.shadowColor = p.color;
+        if (!glowDisabled) ctx.shadowColor = p.color;
         ctx.globalAlpha = p.life; // dying particles fade instead of blinking out
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -220,13 +256,23 @@ export default function MouseAnimated() {
     let animationId = 0;
     let running = false;
 
-    function animate() {
+    function animate(now: number) {
       if (!canvas) return;
+      // sustained slow frames mean this device cannot afford the glow either
+      if (!glowDisabled && lastFrameTime) {
+        if (now - lastFrameTime > SLOW_FRAME_MS) {
+          if (++slowFrames >= SLOW_FRAME_LIMIT) glowDisabled = true;
+        } else if (slowFrames > 0) {
+          slowFrames--;
+        }
+      }
+      lastFrameTime = now;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       updateParticles();
       if (particles.length === 0) {
         // canvas is already cleared, park the loop until the next spawn
         running = false;
+        lastFrameTime = 0; // the gap while parked is not a slow frame
         return;
       }
       drawParticles();
@@ -244,11 +290,13 @@ export default function MouseAnimated() {
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", move, { passive: true });
     window.addEventListener("click", click, { passive: true });
+    window.addEventListener("touchstart", touchStart, { passive: true });
 
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", move);
       window.removeEventListener("click", click);
+      window.removeEventListener("touchstart", touchStart);
       motionQuery.removeEventListener("change", onMotionChange);
       cancelAnimationFrame(animationId);
     };

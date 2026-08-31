@@ -196,6 +196,12 @@ p {
   animation-delay: 0s !important;
 }
 
+#page-transition-overlay:not(.active) *,
+#page-transition-overlay:not(.active) *::before,
+#page-transition-overlay:not(.active) *::after {
+  animation-play-state: paused;
+}
+
 .animate-scanMove {
   background-size: 100% 200%;
   background-repeat: no-repeat;

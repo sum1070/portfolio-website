@@ -4,7 +4,7 @@ import { fraunces } from '../lib/fonts';
 import { VolumeProvider } from "@/lib/context/volume-context";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import { bgPrimary, LoadingScreen } from "@/components";
+import { bgPrimary, LoadingScreen, TransitionOverlayWatcher } from "@/components";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sum1070.vercel.app"),
@@ -51,6 +51,7 @@ export default function RootLayout({
           <div id="page-transition-overlay" className="opacity-0 ">
             <LoadingScreen />
           </div>
+          <TransitionOverlayWatcher />
         </body>
       </VolumeProvider>
     </html>

@@ -19,6 +19,7 @@ export { default as Markdown } from "./ui/markdown";
 export { default as MouseTrail } from "./ui/mouse-trial";
 export { default as Reveal } from "./ui/reveal";
 export { default as TransitionLink } from "./ui/transition-link";
+export { TransitionOverlayWatcher } from "./ui/transition-link";
 export { default as Typewriter } from "./ui/typewriter";
 export { default as LoadingScreen } from "./ui/loading-screen";
 export { default as ScrollToTop } from "./ui/scroll-to-top";

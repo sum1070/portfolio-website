@@ -137,7 +137,7 @@ export interface TProject {
   github?: string; // public repo URL; leave undefined to show "Private"
   demo?: string; // live demo / GitHub Pages URL
   writeup?: TProjectContent;
-  lastUpdate?: string; // manual override; auto-filled from GitHub when repo is set
+  lastUpdate?: string | { source: "writeup-file" }; // "YYYY-MM" for manual date, {source: "writeup-file"} to use local writeup file's modified date, or leave it to auto-fill from GitHub repos
 }
 
 export type TProjectResolved = Omit<TProject, "shortDescription"> & {

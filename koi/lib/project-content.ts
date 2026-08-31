@@ -1,5 +1,5 @@
-import { promises as fs } from "fs";
-import path from "path";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import { TProject, TProjectContent, TProjectResolved } from "@/lib/types";
 
 const revalidateSeconds = 3600;
@@ -72,7 +72,22 @@ export const resolveShortDescription = async (project: TProject): Promise<string
   return resolveContent(project, project.shortDescription);
 };
 
+const writeupFileDate = async (project: TProject): Promise<string> => {
+  const writeup = project.writeup;
+  const file =
+    writeup?.source === "file" ? writeup.file ?? `${project.slug}.md` : `${project.slug}.md`;
+  try {
+    const stat = await fs.stat(path.join(contentDir, file));
+    return stat.mtime.toISOString().slice(0, 7);
+  } catch {
+    return "";
+  }
+};
+
 export const resolveLastUpdate = async (project: TProject): Promise<string> => {
+  if (typeof project.lastUpdate === "object") {
+    return writeupFileDate(project);
+  }
   if (project.lastUpdate) return project.lastUpdate;
   if (!parseRepo(project.github)) return "";
   const info = await fetchRepoInfo(project.github);

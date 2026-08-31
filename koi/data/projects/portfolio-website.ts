@@ -10,7 +10,7 @@ const portfolioWebsite: TProject = {
   previewImg: ["/images/projects/portfolio-website-home.webp"],
   github: "https://github.com/sum1070/portfolio-website",
   demo: undefined,
-  lastUpdate: undefined,
+  lastUpdate: { source: "writeup-file" },
   writeup: { source: "file" },
 };
 
