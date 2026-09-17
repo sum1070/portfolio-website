@@ -9,8 +9,8 @@ export default function ThemeToggle() {
 
     // Initialize theme on component mount
     useEffect(() => {
-        // Check if user has previously set a preference
-        const savedTheme = localStorage.getItem('theme');
+        // Check if user has set a preference during this visit
+        const savedTheme = sessionStorage.getItem('theme');
 
         if (savedTheme === 'dark') {
             document.documentElement.classList.add('dark');
@@ -24,10 +24,10 @@ export default function ThemeToggle() {
     const toggleTheme = () => {
         if (isDark) {
             document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
+            sessionStorage.setItem('theme', 'light');
         } else {
             document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
+            sessionStorage.setItem('theme', 'dark');
         }
         setIsDark(!isDark);
     };
