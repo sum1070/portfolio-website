@@ -131,12 +131,13 @@ export interface TProject {
   title: string;
   shortDescription: string | TProjectContent;
   description?: string; // longer intro shown on the project page
-  tags: string[]; // filter tags, e.g. WebDev / AI / Utilities
-  technologies: string[];
+  tags: string[]; // high-level filter groups, e.g. WebDev / AI / Uni (no languages here)
+  technologies: string[]; // tech stack, e.g. Java / Python / Next.js
   previewImg: string[]; // preview images; first one is the card thumbnail
   github?: string; // public repo URL; leave undefined to show "Private"
   demo?: string; // live demo / GitHub Pages URL
-  writeup?: TProjectContent;
+  linkTitle?: boolean; // card-only project: true makes the card title link to demo
+  writeup?: TProjectContent; // leave undefined for a card-only project (no detail page)
   lastUpdate?: string | { source: "writeup-file" }; // "YYYY-MM" for manual date, {source: "writeup-file"} to use local writeup file's modified date, or leave it to auto-fill from GitHub repos
 }
 

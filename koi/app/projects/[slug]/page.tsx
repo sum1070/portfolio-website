@@ -1,7 +1,7 @@
 import { Markdown, Navbar, PinkBackground, ScrollToTop, TransitionLink } from "@/components";
 import { cn, contactImages, pageIDs } from "@/utils";
 import { notFound } from "next/navigation";
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectBySlug, projectsWithPage } from "@/data/projects";
 import { resolveContent, resolveLastUpdate } from "@/lib/project-content";
 import { glassCN, TagPill } from "../project-card";
 import { getSkillColor } from "@/components/sections/about/skills-data";
@@ -27,7 +27,7 @@ const getTocItems = (markdown: string): TocItem[] => {
 };
 
 export const generateStaticParams = () =>
-  projects.map((project) => ({ slug: project.slug }));
+  projectsWithPage.map((project) => ({ slug: project.slug }));
 
 const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;

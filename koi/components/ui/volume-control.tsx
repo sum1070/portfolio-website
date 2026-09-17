@@ -130,8 +130,7 @@ const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
 
   const sliderWrapClassName = cn(
     "absolute left-full top-1/2 -translate-y-1/2 ml-1 z-10",
-    "flex items-center rounded-full px-2.5 backdrop-blur-sm",
-    isNav ? "bg-purple-400/10 dark:bg-white/10" : "bg-black/20 dark:bg-white/10",
+    "flex items-center rounded-full px-2.5",
     "origin-left transition-all duration-200 motion-reduce:transition-none",
     revealed
       ? "opacity-100 scale-x-100"

@@ -1,4 +1,4 @@
-import { KoiUrl, Navbar, NekoSleep, PinkBackground, SleepZZZ } from '@/components'
+import { KoiUrl, Navbar, NekoSleep, GreenBackground, SleepZZZ } from '@/components'
 import React from 'react'
 import LicenceCard from './licence-card';
 import { cn, pageIDs } from '@/utils';
@@ -9,7 +9,7 @@ const licences = () => {
     return (
         <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative")} id={pageID}>
             <Navbar currentPage={pageID} />
-            <PinkBackground />
+            <GreenBackground />
             <div
                 className="absolute inset-0 -z-10 dark:hidden"
                 style={{
