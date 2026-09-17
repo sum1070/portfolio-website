@@ -601,6 +601,54 @@ p {
   background: linear-gradient(90deg, #ff0077 0%, #ddbaff 50%, #2e4dff 100%);
 }
 
+/* nav speaker button: spinning filled gradient (volume-control.tsx)
+   light mode colour comes from a .speaker-gradient-* class, dark mode is always .gradient-deep-blue */
+.speaker-aurora {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.speaker-aurora::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--speaker-gradient);
+  animation: rotation 5s linear infinite;
+}
+.dark .speaker-aurora::before {
+  background: conic-gradient(rgb(90, 28, 148), rgb(0, 7, 102), rgb(90, 28, 148));
+}
+.speaker-aurora.is-muted::before {
+  background: #9ca3af;
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .speaker-aurora::before {
+    animation: none;
+  }
+}
+
+/* conic versions of the .gradient-* presets, first stop repeated so the spin has no seam */
+.speaker-gradient-lime-blue {
+  --speaker-gradient: conic-gradient(hsla(139, 72%, 83%, 1), hsla(229, 89%, 62%, 1), hsla(139, 72%, 83%, 1));
+}
+.speaker-gradient-1 {
+  --speaker-gradient: conic-gradient(hsla(138, 82%, 69%, 1), hsla(186, 100%, 50%, 1), hsla(138, 82%, 69%, 1));
+}
+/* .speaker-gradient-insta {
+  --speaker-gradient: conic-gradient(hsla(47, 100%, 87%, 1), hsla(334, 81%, 60%, 1), hsla(237, 64%, 56%, 1), hsla(47, 100%, 87%, 1));
+} */
+/* not a .gradient-* preset: pink0, pink3, phlox */
+.speaker-gradient-candy {
+  --speaker-gradient: conic-gradient(var(--color-pink0), var(--color-pink3), var(--color-phlox), var(--color-pink0));
+}
+/* not a .gradient-* preset: purple0, pink3, blue2 */
+.speaker-gradient-twilight {
+  --speaker-gradient: conic-gradient(var(--color-purple0), var(--color-pink3), var(--color-blue2), var(--color-purple0));
+}
+
 .bullet-arrow-heart::before {
   content: "➳❥ ";
 }

@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useVolume } from "@/lib/context/volume-context";
-import { cn, soundButtonImages } from "@/utils";
+import { cn, pageIDs, soundButtonImages } from "@/utils";
 
 interface VolumeControlProps {
   variant?: "hero" | "nav";
@@ -11,8 +12,22 @@ interface VolumeControlProps {
 const LEAVE_GRACE_MS = 300; // pointer can travel icon -> slider without collapse
 const AUTO_HIDE_MS = 3000; // lifetime of the transient reveal on touch
 
+const speakerGradients: Record<string, string> = {
+  [`/${pageIDs.contact}`]: "speaker-gradient-lime-blue", // BlueBackground
+  [`/${pageIDs.licences}`]: "speaker-gradient-1", // GreenBackground
+  "/wip": "speaker-gradient-1", // GreenBackground
+  [`/${pageIDs.projects}`]: "speaker-gradient-candy", // PinkBackground, includes write-ups
+};
+const DEFAULT_SPEAKER_GRADIENT = "speaker-gradient-twilight"; // pages on the layout bgPrimary
+
+const getSpeakerGradient = (pathname: string) =>
+  Object.entries(speakerGradients).find(
+    ([route]) => pathname === route || pathname.startsWith(`${route}/`),
+  )?.[1] ?? DEFAULT_SPEAKER_GRADIENT;
+
 const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
   const { isMuted, toggleMute, volume, setNewVolume } = useVolume();
+  const pathname = usePathname();
 
   const [revealed, setRevealed] = useState(false);
   const [isTransient, setIsTransient] = useState(false); //Auto-hides
@@ -127,6 +142,7 @@ const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
 
   const isNav = variant === "nav";
   const sliderPercent = Math.round(volume * 100);
+  const speakerGradient = isNav ? getSpeakerGradient(pathname) : undefined;
 
   const sliderWrapClassName = cn(
     "absolute left-full top-1/2 -translate-y-1/2 ml-1 z-10",
@@ -166,7 +182,8 @@ const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
         onClick={handleSpeakerClick}
         className={cn(
           "bg-transparent p-0 border-0 flex items-center justify-center",
-          isNav && "bg-nice-purple1/70 dark:bg-transparent rounded-full p-1",
+          // isNav && !speakerGradient && "bg-nice-purple1/70 dark:bg-transparent rounded-full p-1", // old purple circle, every nav page has a gradient now
+          speakerGradient && ["speaker-aurora rounded-full p-1.5", speakerGradient, isMuted && "is-muted"],
         )}
         aria-label={isMuted ? "Unmute" : "Mute"}
       >
@@ -179,6 +196,7 @@ const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
           className={cn(
             isNav ? "w-6 h-6 md:w-7 md:h-7" : "w-8 h-8 md:w-10 md:h-10",
             "cursor-pointer transition-transform hover:scale-110",
+            speakerGradient && "drop-shadow-[0_1px_1.2px_rgba(40,30,80,0.55)]", // keeps the white icon readable on pale stops
           )}
         />
       </button>

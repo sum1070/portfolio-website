@@ -30,6 +30,8 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
     "px-5 py-1 rounded-xl font-titillium-web text-lg md:text-xl cursor-pointer",
     "transition-all duration-200 hover:bg-nice-purple1/25",
   );
+  // active filter look, shared by "All" and selected tags
+  const selectedTagCN = "bg-white/50 border-nice-purple2";
 
   return (
     <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative")} id={pageID}>
@@ -42,12 +44,12 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
         {projects.length > 0 && (
           <div
             id="tag-filters"
-            className="flex flex-wrap justify-center gap-3 md:gap-8 mb-10 md:mb-14"
+            className="flex flex-wrap justify-center gap-2 mb-10 md:mb-14"
           >
             <button
               id="tag-all"
               onClick={() => setSelectedTags([])}
-              className={cn(tagButtonCN, !isAll && "opacity-40")}
+              className={cn(tagButtonCN, isAll ? selectedTagCN : "opacity-40")}
             >
               All
             </button>
@@ -59,7 +61,7 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
                   onClick={() => toggleTag(tag)}
                   className={cn(
                     tagButtonCN,
-                    isSelected && "bg-white/50 border-nice-purple2 scale-105",
+                    isSelected && selectedTagCN,
                     !isAll && !isSelected && "opacity-40",
                   )}
                 >
