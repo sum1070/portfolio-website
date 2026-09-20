@@ -7,18 +7,8 @@ import useSound from 'use-sound';
 export default function ThemeToggle() {
     const [isDark, setIsDark] = useState(false);
 
-    // Initialize theme on component mount
     useEffect(() => {
-        // Check if user has set a preference during this visit
-        const savedTheme = sessionStorage.getItem('theme');
-
-        if (savedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            setIsDark(true);
-        } else {
-            document.documentElement.classList.remove('dark');
-            setIsDark(false);
-        }
+        setIsDark(sessionStorage.getItem('theme') === 'dark');
     }, []);
 
     const toggleTheme = () => {

@@ -23,6 +23,7 @@ export { TransitionOverlayWatcher } from "./ui/transition-link";
 export { default as Typewriter } from "./ui/typewriter";
 export { default as LoadingScreen } from "./ui/loading-screen";
 export { default as ScrollToTop } from "./ui/scroll-to-top";
+export { default as ScrollCue } from "./ui/scroll-cue";
 export { default as VolumeControl } from "./ui/volume-control";
 
 export {

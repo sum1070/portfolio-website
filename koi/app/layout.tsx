@@ -39,15 +39,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.className} !p-0`}>
+    <html lang="en" className={`${fraunces.className} !p-0`} suppressHydrationWarning>
       <head>
-        {/* viewport now comes from the `viewport` export above. The manual tag below
-            duplicated the one Next injects by default and blocked pinch zoom. */}
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> */}
-        <meta name="color-scheme" content="light" />
-        {/* preload moved into LineCircle, the only consumer of this image, so it no
-            longer fires on the routes that never render it. */}
-        {/* <link rel="preload" href="/images/circle-bars-palep-p.webp" as="image" /> */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}",
+          }}
+        />
       </head>
       <VolumeProvider>
         <body suppressHydrationWarning>

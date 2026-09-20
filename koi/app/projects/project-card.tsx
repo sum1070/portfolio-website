@@ -13,6 +13,9 @@ export const glassCN =
 const urlCN =
   "text-purple2 dark:text-pale-purple2 underline underline-offset-2 hover:text-nice-purple1 transition-colors";
 
+// Preview image cn
+const previewCN = "w-full shrink-0 aspect-[2/1] max-h-32 xl:max-h-40";
+
 export const TagPill = ({ label, color }: { label: string; color?: string }) => (
   <span
     className={cn(
@@ -59,12 +62,12 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
         <img
           src={previewImage}
           alt={`${project.title} preview`}
-          className="w-full h-40 object-cover"
+          className={cn(previewCN, "object-cover")}
         />
       ) : (
         // fallback preview when no screenshot yet
-        <div className="w-full h-40 gradient-ssr flex items-center justify-center">
-          <NekoSleep className="w-16 opacity-70" />
+        <div className={cn(previewCN, "gradient-ssr flex items-center justify-center")}>
+          <NekoSleep className="w-12 md:w-14 opacity-70" />
         </div>
       )}
       <div id="project-card-body" className="relative z-20 p-4 pb-2 text-center font-titillium-web">
@@ -114,7 +117,7 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
       className={cn(
         glassCN,
         "rounded-4xl",
-        "relative group w-full max-w-sm overflow-hidden flex flex-col",
+        "relative group w-full max-w-md overflow-hidden flex flex-col",
         "transition-shadow duration-300 ease-in-out hover:shadow-xl",
       )}
       onMouseMove={handleMouseMove}

@@ -1,5 +1,5 @@
 "use client";
-import { Navbar, PinkBackground, SleepZZZ } from "@/components";
+import { Navbar, PinkBackground, ScrollCue, SleepZZZ } from "@/components";
 import { cn, pageIDs } from "@/utils";
 import { useState } from "react";
 import { TProjectResolved } from "@/lib/types";
@@ -37,7 +37,7 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
     <div className={cn("flex overflow-hidden min-w-dvw min-h-dvh relative")} id={pageID}>
       <Navbar currentPage={pageID} />
       <PinkBackground />
-      <div className="w-full pt-24 pb-40 px-8 sm:px-12 md:px-16 max-w-7xl mx-auto relative z-10">
+      <div className="w-full pt-24 pb-40 px-6 sm:px-10 md:px-12 max-w-7xl mx-auto relative z-10">
         <h1 className="font-titillium-web text-center mb-8 md:mb-10 font-semibold ">Project</h1>
 
         {/* tag filters: multi-select; selected highlighted, others dimmed */}
@@ -106,7 +106,7 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
             id="projects-grid"
             className={cn(
               "grid grid-cols-1 gap-10 justify-items-center",
-              "md:grid-cols-2 xl:grid-cols-4 md:gap-8",
+              "md:grid-cols-2 xl:grid-cols-3 md:gap-8",
             )}
           >
             {filteredProjects.map((project) => (
@@ -115,6 +115,8 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
           </div>
         )}
       </div>
+      {/* Hints to scroll down for more content */}
+      <ScrollCue label="More projects" />
     </div>
   );
 };

@@ -54,6 +54,8 @@
   :root,
   :host {
     /* default (light) */
+    /* keeps browser-rendered UI (scrollbars, form controls) in step with the theme */
+    color-scheme: light;
     --color-bg-primary: var(--color-pale-purple1);
     --color-text-primary: var(--color-nice-purple2);
     --color-text-secondary: var(--color-nice-purple1);
@@ -62,6 +64,7 @@
 
     @variant dark {
       /* Dark theme */
+      color-scheme: dark;
       --color-bg-primary: var(--color-dark-black);
       --color-text-primary: #f8f8f8e0;
       --color-text-secondary: #d1d1d1;
