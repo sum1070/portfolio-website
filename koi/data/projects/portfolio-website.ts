@@ -4,7 +4,7 @@ const portfolioWebsite: TProject = {
   slug: "portfolio-website",
   visible: true,
   title: "Portfolio",
-  shortDescription: "A pastel gradient personal website built on React and Next.js.",
+  shortDescription: "A pastel gradient personal website built on React and Next.js. (This website!)",
   tags: ["WebDev"],
   technologies: ["Next.js", "React", "TypeScript"],
   previewImg: ["/images/projects/portfolio-website-home.webp"],

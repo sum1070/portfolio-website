@@ -3,12 +3,14 @@ import portfolioWebsite from "./portfolio-website";
 import decoguide from "./decoguide";
 import xtsZodiacBlockCipher from "./xts-zodiac-block-cipher";
 import breastCancerTreatmentResponse from "./breast-cancer-treatment-response";
+import startUpPage from "./browser-startup";
 
 const allProjects: TProject[] = [
   portfolioWebsite,
   decoguide,
   xtsZodiacBlockCipher,
   breastCancerTreatmentResponse,
+  startUpPage,
 ];
 
 export const projects: TProject[] = allProjects.filter(

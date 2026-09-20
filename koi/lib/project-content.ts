@@ -72,13 +72,29 @@ export const resolveShortDescription = async (project: TProject): Promise<string
   return resolveContent(project, project.shortDescription);
 };
 
-const writeupFileDate = async (project: TProject): Promise<string> => {
+const portfolioRepo = "https://github.com/sum1070/portfolio-website";
+const siteContentDir = "koi/data/projects"; // Path to the writeup folder
+
+// Fetch the last commit date of the writeup file from this repo (koi) using the GitHub API
+// Return empty string if request fails/file not found.
+const fetchWriteupCommitDate = async (project: TProject): Promise<string> => {
+  const repo = parseRepo(portfolioRepo);
+  if (!repo) return "";
   const writeup = project.writeup;
   const file =
     writeup?.source === "file" ? writeup.file ?? `${project.slug}.md` : `${project.slug}.md`;
   try {
-    const stat = await fs.stat(path.join(contentDir, file));
-    return stat.mtime.toISOString().slice(0, 7);
+    const res = await fetch(
+      `https://api.github.com/repos/${repo.owner}/${repo.repo}/commits?path=${siteContentDir}/${file}&per_page=1`,
+      {
+        headers: { Accept: "application/vnd.github+json" },
+        next: { revalidate: revalidateSeconds },
+      },
+    );
+    if (!res.ok) return "";
+    const commits = await res.json();
+    const date = commits[0]?.commit?.committer?.date;
+    return date ? String(date).slice(0, 7) : "";
   } catch {
     return "";
   }
@@ -86,7 +102,7 @@ const writeupFileDate = async (project: TProject): Promise<string> => {
 
 export const resolveLastUpdate = async (project: TProject): Promise<string> => {
   if (typeof project.lastUpdate === "object") {
-    return writeupFileDate(project);
+    return fetchWriteupCommitDate(project);
   }
   if (project.lastUpdate) return project.lastUpdate;
   if (!parseRepo(project.github)) return "";

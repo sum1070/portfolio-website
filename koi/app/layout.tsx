@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import { fraunces } from '../lib/fonts';
 import { VolumeProvider } from "@/lib/context/volume-context";
@@ -8,24 +8,29 @@ import { bgPrimary, LoadingScreen, TransitionOverlayWatcher } from "@/components
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sum1070.vercel.app"),
-  title: "koi · Kit Sum Chan",
-  description: "Portfolio website of Kit Sum Chan (Margaret Chan)",
+  title: "koi Â· Kit Sum Chan",
+  description: "Portfolio website of Kit Sum (Margaret) Chan.",
   openGraph: {
     title: "Kit Sum Chan | Portfolio",
     description:
-      "Portfolio of Kit Sum (Margaret) Chan — AI graduate interested in UX/UI design and web development.",
+      "Portfolio of Kit Sum (Margaret) Chan, a Comp Sci (AI) master student interested in UX/UI design and web development.",
     images: [
       {
         url: "/images/og-card.png",
         width: 1200,
         height: 630,
-        alt: "Kit Sum's Portfolio — Hello, welcome to my world!",
+        alt: "Kit Sum's Portfolio - Hello, welcome to my world!",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -36,9 +41,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.className} !p-0`}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        {/* viewport now comes from the `viewport` export above. The manual tag below
+            duplicated the one Next injects by default and blocked pinch zoom. */}
+        {/* <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> */}
         <meta name="color-scheme" content="light" />
-        <link rel="preload" href="/images/circle-bars-palep-p.webp" as="image" />
+        {/* preload moved into LineCircle, the only consumer of this image, so it no
+            longer fires on the routes that never render it. */}
+        {/* <link rel="preload" href="/images/circle-bars-palep-p.webp" as="image" /> */}
       </head>
       <VolumeProvider>
         <body suppressHydrationWarning>
