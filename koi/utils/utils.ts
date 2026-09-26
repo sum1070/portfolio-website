@@ -13,10 +13,10 @@ export const sounds = {
   music: "/sounds/groovy-beat.mp3", // https://freesound.org/people/Seth_Makes_Sounds/sounds/659748/
 };
 
-// relative loudness of music vs sound effects, applied on top of the master volume
+// Applied on top of the master volume
 export const soundGains = {
-  music: 0.5,
-  se: 0.7,
+  music: 1,
+  se: 0.3,
 };
 
 export const pageIDs = {
