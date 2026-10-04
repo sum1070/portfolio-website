@@ -8,8 +8,8 @@ import startUpPage from "./browser-startup";
 const allProjects: TProject[] = [
   portfolioWebsite,
   decoguide,
-  xtsZodiacBlockCipher,
   breastCancerTreatmentResponse,
+  xtsZodiacBlockCipher,
   startUpPage,
 ];
 
