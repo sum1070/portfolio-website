@@ -134,7 +134,7 @@ export interface TProject {
   tags: string[]; // high-level filter groups, e.g. WebDev / AI / Uni (no languages here)
   technologies: string[]; // tech stack, e.g. Java / Python / Next.js
   previewImg: string[]; // preview images; first one is the card thumbnail
-  github?: string; // public repo URL; leave undefined to show "Private"
+  github?: string; // public repo URL; leave undefined for a private repo (no GitHub link shown)
   demo?: string; // live demo / GitHub Pages URL
   linkTitle?: boolean; // card-only project: true makes the card title link to demo
   writeup?: TProjectContent; // leave undefined for a card-only project (no detail page)

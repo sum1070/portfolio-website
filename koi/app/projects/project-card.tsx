@@ -16,6 +16,24 @@ const urlCN =
 // Preview image cn
 const previewCN = "w-full shrink-0 aspect-[2/1] max-h-32 xl:max-h-40";
 
+// "Writeup" button: the link's gradient shows through its p-0.5 as a border around the inner fill,
+// rounded-full on both keeps the two curves concentric
+const writeupLinkCN = cn(
+  "rounded-full p-0.5 shadow-md shadow-nice-purple1/20",
+  "bg-linear-to-r from-pink3 to-blue2 dark:from-nice-purple3 dark:to-deep-blue0",
+  // stretched link: ::after fills the card (nearest positioned ancestor), so the whole card is one link and one tab stop
+  "after:absolute after:inset-0",
+  "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-nice-purple2",
+);
+
+// inner fill turns translucent on card hover so the gradient tints through
+const writeupFillCN = cn(
+  "flex items-center gap-1.5 rounded-full px-5 py-1.5",
+  "font-semibold text-sm md:text-base text-nice-purple2",
+  "bg-pale-purple0 dark:bg-dark-black transition-colors duration-300",
+  "group-hover:bg-pale-purple0/60 dark:group-hover:bg-dark-black/60",
+);
+
 export const TagPill = ({ label, color }: { label: string; color?: string }) => (
   <span
     className={cn(
@@ -118,7 +136,9 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
         glassCN,
         "rounded-4xl",
         "relative group w-full max-w-md overflow-hidden flex flex-col",
-        "transition-shadow duration-300 ease-in-out hover:shadow-xl",
+        "transition-shadow duration-300 ease-in-out",
+        // only cards with a writeup react to hover, so hover means "clickable"
+        hasPage && "hover:shadow-xl",
       )}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
@@ -137,15 +157,28 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
       </div>
 
       <div id="project-card-content" className="flex flex-col grow">
-        {hasPage ? (
-          <TransitionLink href={`/projects/${project.slug}`} className="relative flex flex-col grow">
-            {cardBody}
-          </TransitionLink>
-        ) : (
-          <div className="relative flex flex-col grow">{cardBody}</div>
-        )}
+        <div className="relative flex flex-col grow">{cardBody}</div>
 
-        <div id="project-card-footer" className="relative z-20 p-4 pt-2 flex flex-col gap-2 items-center">
+        {/* not `relative`: the writeup link's ::after must reach past the footer to the card.
+            z-20 still applies because the footer is a flex item */}
+        <div id="project-card-footer" className="z-20 p-4 pt-2 flex flex-col gap-2 items-center">
+          {hasPage && (
+            <TransitionLink
+              href={`/projects/${project.slug}`}
+              aria-label={`Writeup: ${project.title}`}
+              className={cn(writeupLinkCN, "mb-1")}
+            >
+              <span className={writeupFillCN}>
+                Writeup
+                <span
+                  aria-hidden={true}
+                  className="transition-transform duration-300 motion-safe:group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </span>
+            </TransitionLink>
+          )}
           <div className="flex flex-wrap justify-center gap-1.5">
             {project.tags.map((tag) => (
               <TagPill key={tag} label={tag} />
@@ -158,34 +191,33 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
               ))}
             </div>
           )}
-          <div className="flex items-center gap-4 text-sm font-titillium-web">
-            {project.github ? (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-purple2 transition-colors"
-              >
-                <img src={contactImages.github} alt="GitHub" className="w-4 h-4" />
-                GitHub
-              </a>
-            ) : (
-              <span className="flex items-center gap-1.5 opacity-60">
-                <img src={contactImages.github} alt="GitHub" className="w-4 h-4" />
-                Private
-              </span>
-            )}
-            {hasPage && project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={urlCN}
-              >
-                Live demo
-              </a>
-            )}
-          </div>
+          {/* private repos show nothing, so the row only renders when it has a link.
+              relative z-10 on these links lifts them above the writeup link's ::after */}
+          {(project.github || (hasPage && project.demo)) && (
+            <div className="flex items-center gap-4 text-sm font-titillium-web">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-10 flex items-center gap-1.5 hover:text-purple2 transition-colors"
+                >
+                  <img src={contactImages.github} alt="GitHub" className="w-4 h-4" />
+                  GitHub
+                </a>
+              )}
+              {hasPage && project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(urlCN, "relative z-10")}
+                >
+                  Live demo <span aria-hidden={true}>↗</span>
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

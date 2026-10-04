@@ -81,35 +81,33 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
           )}
         </div>
 
-        <div id="project-links" className="flex items-center gap-6">
-          {project.github ? (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-purple2 transition-colors"
-            >
-              <img src={contactImages.github} alt="GitHub" className="w-5 h-5" />
-              GitHub
-              <span aria-hidden={true}>↗</span>
-            </a>
-          ) : (
-            <span className="flex items-center gap-2 opacity-60">
-              <img src={contactImages.github} alt="GitHub" className="w-5 h-5" />
-              Private
-            </span>
-          )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-purple2 transition-colors"
-            >
-              Live demo <span aria-hidden={true}>↗</span>
-            </a>
-          )}
-        </div>
+        {/* private repos show nothing, so the row only renders when it has a link */}
+        {(project.github || project.demo) && (
+          <div id="project-links" className="flex items-center gap-6">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-purple2 transition-colors"
+              >
+                <img src={contactImages.github} alt="GitHub" className="w-5 h-5" />
+                GitHub
+                <span aria-hidden={true}>↗</span>
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-purple2 transition-colors"
+              >
+                Live demo <span aria-hidden={true}>↗</span>
+              </a>
+            )}
+          </div>
+        )}
 
         <hr className="border-nice-purple1/40 my-2" />
 
