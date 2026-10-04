@@ -36,7 +36,7 @@ const TechSkills = ({ featuredOnly = false }: TechSkillsProps) => {
     categoryNameContainer: "md:sticky md:w-40 xl:w-56",
     categoryName: "hidden md:block font-bold cursor-pointer hover:text-white transition text-lg md:text-lg  xl:flex-row whitespace-nowrap",
     skillsContainer: "flex flex-row flex-wrap justify-center md:justify-start px-2 gap-2 md:gap-4 2xl:gap-8",
-    skillItem: "flex items-center bg-white/20 rounded-md px-2 py-1 hover:scale-105 xl:hover:scale-108 transition-transform duration-200",
+    skillItem: "flex items-center bg-white/20 rounded-md px-2 py-1",
     skillLogo: "flex items-center justify-center mr-2 w-4 md:w-6 md:h-6 lg:w-7 lg:h-7 2xl:w-8 2xl:h-8",
     skillText: "whitespace-nowrap text-sm md:text-base xl:text-base 2xl:text-lg"
   };

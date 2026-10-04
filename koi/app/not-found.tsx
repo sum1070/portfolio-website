@@ -103,7 +103,7 @@ const NotFound = () => {
           className={cn(
             "inline-block mt-6 px-5 py-1.5",
             "border rounded-md border-nice-purple1 text-nice-purple2 bg-milky-white/40",
-            "hover:bg-purple-400/10 hover:scale-105 transition-all duration-200",
+            "hover:bg-purple-400/10 transition-all duration-200",
           )}
         >
           Back to Home

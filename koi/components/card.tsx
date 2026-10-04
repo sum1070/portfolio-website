@@ -103,7 +103,7 @@ const Card = ({
                                         icon={link.icon}
                                         iconAlt={link.iconAlt}
                                         isSensitive={link.isSensitive}
-                                        className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:scale-105 hover:shadow-md"
+                                        className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:shadow-md"
                                     />
                                 ))}
                             </div>
@@ -160,7 +160,7 @@ const Card = ({
                                     icon={link.icon}
                                     iconAlt={link.iconAlt}
                                     isSensitive={link.isSensitive}
-                                    className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:scale-105 hover:shadow-md"
+                                    className="text-sm md:text-base bg-nice-purple1/20 hover:bg-nice-purple1/40 transition-all duration-200 p-3 rounded-md text-center flex items-center justify-center gap-2 hover:shadow-md"
                                 />
                             ))}
                         </div>
