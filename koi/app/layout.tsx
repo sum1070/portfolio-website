@@ -8,7 +8,7 @@ import { bgPrimary, LoadingScreen, TransitionOverlayWatcher } from "@/components
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sum1070.vercel.app"),
-  title: "koi Â· Kit Sum Chan",
+  title: "koi · Kit Sum Chan",
   description: "Portfolio website of Kit Sum (Margaret) Chan.",
   openGraph: {
     title: "Kit Sum Chan | Portfolio",
