@@ -32,7 +32,7 @@ const NavButton = ({
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
     const [buttonDimensions, setButtonDimensions] = useState({ width: 0, height: 0 });
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const buttonRef = useRef<HTMLDivElement>(null);
     const defaultBtnSize = " w-56 h-28 lg:w-64 lg:h-36 ";
 
     // get window size
@@ -89,15 +89,17 @@ const NavButton = ({
     };
 
     return (
-        <TransitionLink className="relative rounded-[2rem] cursor-pointer" href={href} passHref >
-            <button
+        // the link is the only focusable element: a <button> inside an <a> is
+        // invalid HTML and stops ctrl+click / middle click opening a new tab
+        <TransitionLink className="group relative rounded-[2rem] cursor-pointer" href={href} passHref >
+            <div
                 ref={buttonRef}
                 className={cn(
                     btnSize || defaultBtnSize,
-                    "cursor-pointer select-none ",
-                    "relative overflow-hidden rounded-[2rem] group shadow-xl shadow-cyan-500 ",
-                    "transition-all duration-1000 ease-in-out hover:scale-110  focus:scale-100 ",
-                    "bg-[rgb(193,228,248)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ",
+                    "block text-center cursor-pointer select-none ",
+                    "relative overflow-hidden rounded-[2rem] shadow-xl shadow-cyan-500 ",
+                    "transition-all duration-1000 ease-in-out group-hover:scale-110 group-focus:scale-100 ",
+                    "bg-[rgb(193,228,248)] ",
                     className,
                 )}
                 style={{
@@ -116,7 +118,6 @@ const NavButton = ({
                     setIsHovering(true);
                     if (!isMuted) bubble();
                 }}
-                tabIndex={0}
                 onClick={handleClick}
             >
                 <div id='nav-btn-BG-container' className="absolute inset-0 overflow-hidden rounded-[2rem] ">
@@ -173,7 +174,7 @@ const NavButton = ({
                         <ContactPills />
                     </div>
                 )}
-            </button>
+            </div>
         </TransitionLink>
     );
 }

@@ -2,6 +2,7 @@
 import Link, { LinkProps } from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import React, { useEffect } from "react";
+import { isModifiedClick } from "@/utils";
 
 type AnchorProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href">;
 
@@ -91,6 +92,10 @@ const TransitionLink = ({ children, href, ...props }: TransitionProps) => {
   const pathname = usePathname();
 
   const handleTransition = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    // new tab / new window requests: leave them to the browser, without the
+    // overlay (next/link also skips modified clicks unless we prevent default)
+    if (isModifiedClick(e)) return;
+
     e.preventDefault();
 
     const overlay = document.querySelector<HTMLElement>("#page-transition-overlay");

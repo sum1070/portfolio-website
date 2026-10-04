@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { cn } from "@/utils";
+import { cn, isModifiedClick } from "@/utils";
 
 export interface TocItem {
   id: string;
@@ -32,6 +32,7 @@ const WriteupToc = ({ items }: { items: TocItem[] }) => {
   }, [items]);
 
   const scrollTo = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (isModifiedClick(event)) return;
     event.preventDefault();
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };

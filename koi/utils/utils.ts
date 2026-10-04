@@ -6,6 +6,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// true when the browser should handle the click itself (ctrl/cmd click for a
+// new tab, shift click for a new window, alt click to download, non-left button)
+export function isModifiedClick(e: { ctrlKey: boolean; metaKey: boolean; shiftKey: boolean; altKey: boolean; button: number }) {
+  return e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0;
+}
+
 export const sounds = {
   bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
   bubble: "/sounds/bubble.mp3", // https://freesound.org/people/mokasza/sounds/810164/
