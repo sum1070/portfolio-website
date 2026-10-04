@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { NekoSleep, TransitionLink } from "@/components";
 import { LiquidGlass } from "@/components/nav-button/liquid-glass";
 import { TProjectResolved } from "@/lib/types";
-import { hasProjectPage } from "@/data/projects";
+import { getProjectContext, hasProjectPage } from "@/data/projects";
 import { getSkillColor } from "@/components/sections/about/skills-data";
 import { cn, contactImages } from "@/utils";
 
@@ -16,12 +16,9 @@ const urlCN =
 // Preview image cn
 const previewCN = "w-full shrink-0 aspect-[2/1] max-h-32 xl:max-h-40";
 
-// "Writeup" button: the link's gradient shows through its p-0.5 as a border around the inner fill,
-// rounded-full on both keeps the two curves concentric
 const writeupLinkCN = cn(
   "rounded-full p-0.5 shadow-md shadow-nice-purple1/20",
   "bg-linear-to-r from-pink3 to-blue2 dark:from-nice-purple3 dark:to-deep-blue0",
-  // stretched link: ::after fills the card (nearest positioned ancestor), so the whole card is one link and one tab stop
   "after:absolute after:inset-0",
   "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-nice-purple2",
 );
@@ -60,6 +57,7 @@ interface ProjectCardProps {
 const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) => {
   const previewImage = project.previewImg[0];
   const hasPage = hasProjectPage(project);
+  const context = getProjectContext(project);
   // smaller font size for long titles
   const isLongTitle = project.title.length > 30;
 
@@ -109,10 +107,10 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
             project.title
           )}
         </h2>
+        {context && <p className="-mt-1 mb-2 text-xs md:text-sm opacity-70">{context}</p>}
         <p className="text-sm md:text-base opacity-90">
           {project.shortDescription}
         </p>
-        {/* card-only project: demo link lives in the description, on its own line */}
         {!hasPage && project.demo && (
           <p className="mt-3 text-sm md:text-base">
             <a

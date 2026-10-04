@@ -6,8 +6,10 @@ const breastCancerTreatmentResponse: TProject = {
   title: "Breast Cancer Treatment Response Classification",
   shortDescription:
     "A machine learning group project using clinical and MRI data to predict breast cancer treatment response through classification and regression.",
-  tags: ["Uni", "Machine Learning", "Group Project"],
+  tags: ["Machine Learning"],
   technologies: ["Python"],
+  uni: true,
+  group: true,
   previewImg: ["/images/projects/breast-cancer-treatment-response-mae.webp"],
   github: undefined,
   demo: undefined,

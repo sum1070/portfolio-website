@@ -131,8 +131,10 @@ export interface TProject {
   title: string;
   shortDescription: string | TProjectContent;
   description?: string; // longer intro shown on the project page
-  tags: string[]; // high-level filter groups, e.g. WebDev / AI / Uni (no languages here)
+  tags: string[]; // topic filter groups, e.g. WebDev / Machine Learning (x languages, Uni or Group here)
   technologies: string[]; // tech stack, e.g. Java / Python / Next.js
+  uni?: boolean; // university coursework; shows "Uni project" (or "Uni · Group project") under the title
+    group?: boolean; // "Group project"
   previewImg: string[]; // preview images; first one is the card thumbnail
   github?: string; // public repo URL; leave undefined for a private repo (no GitHub link shown)
   demo?: string; // live demo / GitHub Pages URL

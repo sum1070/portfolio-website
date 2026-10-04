@@ -6,8 +6,9 @@ const xtsZodiacBlockCipher: TProject = {
   title: "XTS-Zodiac Block Cipher",
   shortDescription:
     "Implemented the Zodiac 128-bit block cipher and XTS mode in Java, including ciphertext stealing for partial blocks.",
-  tags: ["Uni", "Cryptography"],
+  tags: ["Cryptography"],
   technologies: ["Java", "JUnit"],
+  uni: true,
   previewImg: [],
   github: undefined,
   demo: undefined,

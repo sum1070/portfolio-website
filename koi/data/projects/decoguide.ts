@@ -6,8 +6,10 @@ const decoguide: TProject = {
   title: "DecoGuide",
   shortDescription:
     "A University software engineering group project developing a web-based assessment tool for examining decoloniality considerations in AI systems.",
-  tags: ["Uni", "WebDev", "Group Project", "Software Engineering"],
+  tags: ["WebDev", "Software Engineering"],
   technologies: ["Next.js", "TypeScript", "Vercel"],
+  uni: true,
+  group: true,
   previewImg: ["/images/projects/decoguide-home.webp"],
   github: undefined,
   demo: "https://decoguide.vercel.app/",

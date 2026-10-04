@@ -1,7 +1,7 @@
 import { Markdown, Navbar, PinkBackground, ScrollToTop, TransitionLink } from "@/components";
 import { cn, contactImages, pageIDs } from "@/utils";
 import { notFound } from "next/navigation";
-import { getProjectBySlug, projectsWithPage } from "@/data/projects";
+import { getProjectBySlug, getProjectContext, projectsWithPage } from "@/data/projects";
 import { resolveContent, resolveLastUpdate } from "@/lib/project-content";
 import { glassCN, TagPill } from "../project-card";
 import { getSkillColor } from "@/components/sections/about/skills-data";
@@ -39,6 +39,7 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
     resolveLastUpdate(project),
   ]);
   const tocItems = getTocItems(writeup);
+  const context = getProjectContext(project);
 
   return (
     <div
@@ -61,6 +62,13 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
             <span aria-hidden={true}>←</span> Back
           </TransitionLink>
         </div>
+
+        {/* same muted line as the card, pulled up towards the title */}
+        {context && (
+          <p id="project-context" className="-mt-3 font-titillium-web text-sm md:text-base opacity-70">
+            {context}
+          </p>
+        )}
 
         <div id="project-meta" className="flex flex-wrap items-center gap-2 md:gap-3">
           {project.tags.map((tag) => (
