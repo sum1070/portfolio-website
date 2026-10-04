@@ -6,14 +6,16 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 import { bgPrimary, LoadingScreen, TransitionOverlayWatcher } from "@/components";
 
+const siteDescription =
+  "I'm Kit Sum (Margaret) Chan, a Computer Science with AI master's student at the University of Leeds. This is where I share my projects and write-ups ♡";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://sum1070.vercel.app"),
   title: "koi · Kit Sum Chan",
-  description: "Portfolio website of Kit Sum (Margaret) Chan.",
+  description: siteDescription,
   openGraph: {
     title: "Kit Sum Chan | Portfolio",
-    description:
-      "Portfolio of Kit Sum (Margaret) Chan, a Comp Sci (AI) master student interested in UX/UI design and web development.",
+    description: siteDescription,
     images: [
       {
         url: "/images/og-card.png",
