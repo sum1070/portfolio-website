@@ -99,19 +99,22 @@ const About = () => {
                 <h1 className="tracking-tight ">Kit Sum Chan</h1>
               </div>
             </div>
+            {/* ----- Intro ----- */}
             <div id="intro-text" className="flex flex-col gap-2">
-              Hello! I'm Kit Sum. You can also call me Margaret :)
+              You can also call me Margaret :)
               <p className="bullet-arrow-heart">
-                BSc Computer Science with AI, University of Nottingham.
+                MSc Advanced Computer Science (AI) student at the University of Leeds.
               </p>
               <p className="bullet-arrow-heart">
-                Starting MSc Advanced CS (AI) at University of Leeds this autumn!
+                Graduated with a BSc in Computer Science with AI from the University of Nottingham. <br/> While my work focused on different fields of AI, including NLP, computer vision and model fine-tuning, I also gained experience in web development, system security analysis and identifying malware behaviour.
               </p>
               <p className="bullet-arrow">
-                Specialising in AI related fields. Also interested in UX/UI
-                design and web development.
+                Open to graduate roles from October 2027.
               </p>
-              <p className="bullet-arrow">
+              <p>
+                I like designing and building things...so I designed this website in Figma (yes, I'm a pastel enthusiast ❀), and built it with Next.js.
+              </p>
+              <p>
                 If I'm offline... perhaps I'm patting my dog or drawing
                 anime/game characters (like this pfp~).
               </p>
