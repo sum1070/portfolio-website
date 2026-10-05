@@ -1,5 +1,5 @@
 import { InvertedWave, Navbar, NavButton } from "@/components";
-import { cn, gradient, pageIDs } from "@/utils";
+import { cn, gradient, linkCN, pageIDs } from "@/utils";
 import BackgroundAbout from "@/components/sections/about/about-background";
 import TechSkills from "@/components/sections/about/tech-skills";
 import AboutAvatar from "@/components/sections/about/about-avatar";
@@ -102,21 +102,38 @@ const About = () => {
             {/* ----- Intro ----- */}
             <div id="intro-text" className="flex flex-col gap-2">
               You can also call me Margaret :)
-              <p className="bullet-arrow-heart">
-                MSc Advanced Computer Science (AI) student at the University of Leeds.
+              <p className="bullet-arrow-heart font-medium">
+                MSc Advanced Computer Science (AI) student at the University of
+                Leeds.
               </p>
-              <p className="bullet-arrow-heart">
-                Graduated with a BSc in Computer Science with AI from the University of Nottingham. <br/> While my work focused on different fields of AI, including NLP, computer vision and model fine-tuning, I also gained experience in web development, system security analysis and identifying malware behaviour.
+              <p className="bullet-arrow-heart font-medium">
+                Graduated with a BSc in Computer Science with AI from the
+                University of Nottingham.
               </p>
-              <p className="bullet-arrow">
+              <p className="bullet-arrow font-medium">
                 Open to graduate roles from October 2027.
               </p>
-              <p>
-                I like designing and building things...so I designed this website in Figma (yes, I'm a pastel enthusiast ❀), and built it with Next.js.
+              <p className="mt-3">
+                During my BSc, I worked on NLP, computer vision and model
+                fine-tuning, and picked up web development, system security
+                analysis and malware behaviour analysis along the way.
               </p>
               <p>
-                If I'm offline... perhaps I'm patting my dog or drawing
-                anime/game characters (like this pfp~).
+                I also love designing and building things, so I designed this website
+                in Figma (yes, I'm a pastel enthusiast ❀) and built it with Next.js.
+              </p>
+              <p>
+                If I'm offline, I'm probably patting my dog or drawing
+                anime/game characters (like this pfp~). I'm also a Cantopop and
+                J-pop enjoyer. If you have time, go check out{" "}
+                <a
+                  href="https://www.youtube.com/@backnumberchannel/videos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkCN}
+                >
+                  Back Number
+                </a>{"!"}
               </p>
             </div>
           </div>

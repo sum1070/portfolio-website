@@ -5,13 +5,10 @@ import { LiquidGlass } from "@/components/nav-button/liquid-glass";
 import { TProjectResolved } from "@/lib/types";
 import { getProjectContext, hasProjectPage } from "@/data/projects";
 import { getSkillColor } from "@/components/sections/about/skills-data";
-import { cn, contactImages } from "@/utils";
+import { cn, contactImages, linkCN } from "@/utils";
 
 export const glassCN =
   "bg-white/20 backdrop-blur-md border border-nice-purple1/60 rounded-2xl shadow-lg shadow-nice-purple1/10";
-
-const urlCN =
-  "text-purple2 dark:text-pale-purple2 underline underline-offset-2 hover:text-nice-purple1 transition-colors";
 
 // Preview image cn
 const previewCN = "w-full shrink-0 aspect-[2/1] max-h-32 xl:max-h-40";
@@ -117,7 +114,7 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(urlCN, "whitespace-nowrap")}
+              className={cn(linkCN,"whitespace-nowrap")}
             >
               Live demo <span aria-hidden={true}>↗</span>
             </a>
@@ -209,7 +206,7 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(urlCN, "relative z-10")}
+                  className={cn(linkCN,"relative z-10")}
                 >
                   Live demo <span aria-hidden={true}>↗</span>
                 </a>

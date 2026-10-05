@@ -2,7 +2,7 @@ import React from "react";
 import ReactMarkdown, { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import ThemedSpoiler from "@/components/ui/themed-spoiler";
-import { cn } from "@/utils";
+import { cn, linkCN } from "@/utils";
 
 /**
  * Markdown renderer built on react-markdown + remark-gfm (tables, strikethrough, ...).
@@ -27,7 +27,7 @@ const styles = {
     "font-mono text-sm bg-black2/90 text-milky-white rounded-lg p-4 overflow-x-auto",
     "[&_code]:bg-transparent [&_code]:p-0 [&_code]:rounded-none",
   ),
-  link: "text-purple2 dark:text-pale-purple2 underline underline-offset-2 hover:text-nice-purple1 transition-colors",
+  link: linkCN,
   img: "rounded-lg max-w-full",
   table: "w-full border-collapse text-left",
   th: "border border-nice-purple1/40 px-3 py-1.5 font-semibold bg-white/30 dark:bg-white/10",

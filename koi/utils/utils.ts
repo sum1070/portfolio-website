@@ -41,6 +41,10 @@ export const navLinks = [
   { name: "Licences", href: `/${pageIDs.licences}` },
 ];
 
+// accent coloured inline link
+export const linkCN =
+  "text-purple2 dark:text-pale-purple2 underline underline-offset-2 hover:text-nice-purple1 transition-colors";
+
 export const gradient = {
   purple: " gradient-purple ",
   deepBlue: " gradient-deep-blue ",
