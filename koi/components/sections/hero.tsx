@@ -146,10 +146,10 @@ const Hero = () => {
           >
             <div className={Text.txtInfo}>AI master's student at the University of Leeds</div>
             <TransitionLink id="hero-status" href={`/${pageIDs.contact}`} className={Text.txtStatus}>
-              <span>Open to 2027 graduate roles</span>
+              <span>Open to 2027 graduate roles!</span>
               <span aria-hidden="true" className="hidden sm:inline">·</span>
               <span className="inline-flex items-center gap-1">
-                <span>I'm happy to relocate!</span>
+                <span>Happy to relocate</span>
                 <span aria-hidden="true" className="relative size-4 xl:size-5 overflow-hidden text-nice-purple3">
                   <RxArrowTopRight className={cn(statusArrow, statusArrowOut)} />
                   <RxArrowTopRight className={cn(statusArrow, statusArrowIn)} />
