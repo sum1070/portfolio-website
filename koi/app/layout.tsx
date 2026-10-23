@@ -4,7 +4,7 @@ import { fraunces } from '../lib/fonts';
 import { VolumeProvider } from "@/lib/context/volume-context";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import { bgPrimary, LoadingScreen, TransitionOverlayWatcher } from "@/components";
+import { bgPrimary, IdleDog, LoadingScreen, TransitionOverlayWatcher } from "@/components";
 
 const siteDescription =
   "I'm Kit Sum (Margaret) Chan, a Computer Science with AI master's student at the University of Leeds. This is where I share my projects and write-ups ♡";
@@ -63,6 +63,7 @@ export default function RootLayout({
             <LoadingScreen />
           </div>
           <TransitionOverlayWatcher />
+          <IdleDog />
         </body>
       </VolumeProvider>
     </html>

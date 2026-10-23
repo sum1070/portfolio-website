@@ -12,10 +12,10 @@ interface TransitionProps extends LinkProps, AnchorProps {
 
 const SPLASH_KEY = "loading-splash-shown";
 // first navigation of the session gets a full showing of the loading animation
-const SPLASH_MIN_DISPLAY = 1600; // ms
-const NAV_MIN_DISPLAY = 400; // ms
+const SPLASH_MIN_DISPLAY = 900; // ms
+const NAV_MIN_DISPLAY = 250; // ms
 // later navigations only show the overlay once they take longer than this
-const SHOW_DELAY = 200; // ms
+const SHOW_DELAY = 300; // ms
 
 // Dismissal timers are shared by every TransitionLink and the watcher below.
 // A new navigation must be able to cancel timers left over from a previous
@@ -60,7 +60,7 @@ function fadeOutOverlay(overlay: HTMLElement) {
     setTimeout(() => {
       overlay.classList.remove("active");
       overlay.classList.remove("fade-out");
-    }, 600) // Match this with the CSS transition time
+    }, 350) // Match this with the CSS transition time
   );
 }
 

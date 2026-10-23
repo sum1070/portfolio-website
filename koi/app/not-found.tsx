@@ -1,93 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { TransitionLink } from "@/components";
+import { TransitionLink, WalkingDog } from "@/components";
 import { cn } from "@/utils";
 
-const dogImage = "/images/dog.png";
-
 const NotFound = () => {
-  const dogRef = useRef<HTMLImageElement>(null);
-
-  // walk the dog: rAF loop, flips at a random turn point before/at the edges
-  useEffect(() => {
-    const dog = dogRef.current;
-    if (!dog) return;
-
-    // keep the dog still if the user prefers reduced motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      dog.style.transform = `translateX(${(window.innerWidth - dog.offsetWidth) / 2}px)`;
-      return;
-    }
-
-    const edgeMargin = 8;
-    const speed = 70; // px per second
-    const hopHeight = 14; // px
-    const hopSpeed = 7; // skip frequency
-    const flipDuration = 0.7; // seconds per backflip
-    const flipJump = 42; // extra height during a backflip, px
-    let direction = 1; // dog.png faces right; 1 = walking right, -1 = walking left
-    let x = (window.innerWidth - dog.offsetWidth) / 2;
-    let hopPhase = 0;
-    let flipProgress = -1; // -1 = not flipping, otherwise 0..1
-    let nextFlipAt = performance.now() + 2000 + Math.random() * 4000;
-    let last = performance.now();
-    let rafId = 0;
-
-    // pick a random point ahead to turn around (may turn before the edge)
-    const pickTurnPoint = () => {
-      const maxX = window.innerWidth - dog.offsetWidth - edgeMargin;
-      const ahead = direction === 1 ? maxX - x : x - edgeMargin;
-      const distance = Math.max(120, Math.random() * ahead);
-      return direction === 1
-        ? Math.min(x + distance, maxX)
-        : Math.max(x - distance, edgeMargin);
-    };
-
-    let turnAt = pickTurnPoint();
-
-    const step = (now: number) => {
-      const dt = Math.min((now - last) / 1000, 0.05); // clamp big gaps (tab switch)
-      last = now;
-      x += direction * speed * dt;
-
-      const maxX = window.innerWidth - dog.offsetWidth - edgeMargin;
-      const reachedTurn =
-        direction === 1 ? x >= turnAt || x >= maxX : x <= turnAt || x <= edgeMargin;
-      if (reachedTurn) {
-        x = Math.min(Math.max(x, edgeMargin), maxX);
-        direction *= -1;
-        turnAt = pickTurnPoint();
-      }
-
-      // skipping: small hops while moving; walking left = flipped image
-      hopPhase += dt * hopSpeed;
-      let lift = Math.abs(Math.sin(hopPhase)) * hopHeight;
-
-      // every few seconds: a backflip (360° backwards with a bigger jump)
-      let rotation = 0;
-      if (flipProgress >= 0) {
-        flipProgress += dt / flipDuration;
-        if (flipProgress >= 1) {
-          flipProgress = -1;
-          nextFlipAt = now + 2500 + Math.random() * 2300;
-        } else {
-          // rotate() after scaleX() spins backwards relative to facing direction
-          rotation = -360 * flipProgress;
-          lift = Math.sin(flipProgress * Math.PI) * flipJump;
-        }
-      } else if (now >= nextFlipAt) {
-        flipProgress = 0;
-      }
-
-      dog.style.transform = `translateX(${x}px) translateY(${-lift}px) scaleX(${direction === 1 ? 1 : -1}) rotate(${rotation}deg)`;
-      rafId = requestAnimationFrame(step);
-    };
-
-    rafId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafId);
-  }, []);
-
   return (
     <div id="not-found" className="relative min-h-dvh min-w-dvw overflow-hidden select-none">
       <div id="not-found-text" className="px-8 pt-16 md:px-16 md:pt-24 font-titillium-web">
@@ -111,12 +27,7 @@ const NotFound = () => {
       </div>
 
       {/* the culprit */}
-      <img
-        ref={dogRef}
-        src={dogImage}
-        alt="A walking dog"
-        className="absolute bottom-[6svh] left-0 w-28 md:w-36 will-change-transform pointer-events-none"
-      />
+      <WalkingDog className="absolute bottom-[6svh] w-28 md:w-36" />
     </div>
   );
 };
