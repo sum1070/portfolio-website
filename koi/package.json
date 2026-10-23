@@ -37,7 +37,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/react-howler": "^5.2.3",
-    "baseline-browser-mapping": "^2.11.12",
+    "baseline-browser-mapping": "^2.11.31",
     "tailwindcss": "^4",
     "typescript": "^5.9.3"
   }

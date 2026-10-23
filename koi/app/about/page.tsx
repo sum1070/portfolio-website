@@ -38,7 +38,7 @@ const About = () => {
         <div
           id="left-container"
           className={cn(
-            "flex flex-col gap-4 xl:pt-16 2xl:p-32",
+            "flex flex-col gap-4 xl:pt-4 2xl:p-32",
             "xl:flex-[1.5]", // desktop col ratio (left : right = 1.5 : 1)
           )}
         >
