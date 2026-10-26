@@ -27,9 +27,10 @@ export { default as ScrollCue } from "./ui/scroll-cue";
 export { default as VolumeControl } from "./ui/volume-control";
 export { default as WalkingDog } from "./ui/walking-dog";
 export { default as IdleDog } from "./ui/idle-dog";
+export { default as PixelDog } from "./ui/pixel-dog";
+export { default as DogGuide } from "./ui/dog-guide";
 
 export {
-  NekoSleep,
   SleepZZZ,
   Attr4,
   Medal,

@@ -14,11 +14,12 @@ const Contact = () => {
       <Navbar currentPage={pageID} />
       <BlueBackground
         wavePaused={true}
-      />
-      <div id='contact-deco' className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-        <LineCircle size="32rem" x="-16rem" y="30%" className="opacity-70" />
-        <LineCircle size="18rem" x="calc(100% - 9rem)" y="-7rem" className="opacity-70 hidden sm:block" />
-      </div>
+      >
+        <div id='contact-deco' className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
+          <LineCircle size="32rem" x="-16rem" y="30%" className="opacity-70" />
+          <LineCircle size="18rem" x="calc(100% - 9rem)" y="-7rem" className="opacity-70 hidden sm:block" />
+        </div>
+      </BlueBackground>
       <div id='contact-content' className="w-full pt-28 md:pt-36 pb-48 px-8 sm:px-12 md:px-16 lg:px-24 max-w-6xl mx-auto">
         <div id='contact-text' className="text-center mb-10 md:mb-16">
           <h1 className={cn(

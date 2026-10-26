@@ -21,6 +21,7 @@ const BlueBackground = ({
     bgContainerCN = "",
     wavePaused = false,
     style = {},
+    children,
 }: Readonly<TColoredBackground>) => {
     return (
         <div
@@ -32,6 +33,7 @@ const BlueBackground = ({
         >
             <BDeco />
             {bgPrimary()}
+            {children}
 
             <div className={cn()} id='BlueWave'>
                 <Wave

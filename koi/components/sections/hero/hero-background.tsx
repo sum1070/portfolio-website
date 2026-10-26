@@ -1,13 +1,16 @@
 import { Bar, Dot, LineCircle, Triangle } from "@/components/decorations";
-import { motion, useAnimate, useScroll } from "framer-motion";
+import { motion, useAnimate, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FadeIn, Pattern, CodeTextSVG, bgPrimary } from "@/components";
 import { springY } from "@/lib/hooks/useSpring";
+import { useWheelImpulse } from "@/lib/hooks/useWheelImpulse";
 import { animationTime, borderColor, boxShadow } from "@/utils";
 
 export default function BackgroundHero() {
     const [scope, animate] = useAnimate();
     const { scrollY } = useScroll();
+    const impulse = useWheelImpulse();
+    const driver = useTransform(() => scrollY.get() + impulse.get());
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     // detect dark mode changes
@@ -33,15 +36,15 @@ export default function BackgroundHero() {
         return () => observer.disconnect();
     }, []);
 
-    const sprBar1 = springY(scrollY, [0, -115], [0, 500], { stiffness: 80, damping: 20 });
-    const sprBar2 = springY(scrollY, [0, -150], [0, 500], { stiffness: 60, damping: 25 });
-    const triangleY = springY(scrollY, [0, -180], [0, 500], { stiffness: 90, damping: 20 });
-    const spr5 = springY(scrollY, [0, -220], [0, 500], { stiffness: 80, damping: 10 });
-    const sprStiff = springY(scrollY, [0, -90], [0, 500], { stiffness: 120, damping: 15 });
-    const sprNormal = springY(scrollY, [0, -200], [0, 500], { stiffness: 90, damping: 20 });
-    const sprFlex = springY(scrollY, [0, -280], [0, 500], { stiffness: 70, damping: 10 });
-    const sprFlex2 = springY(scrollY, [0, -250], [0, 500], { stiffness: 70, damping: 10 });
-    const sprOrbit = springY(scrollY, [0, -120], [0, 500], { stiffness: 80, damping: 10 });
+    const sprBar1 = springY(driver, [115, -115], [-500, 500], { stiffness: 80, damping: 20 });
+    const sprBar2 = springY(driver, [150, -150], [-500, 500], { stiffness: 60, damping: 25 });
+    const triangleY = springY(driver, [180, -180], [-500, 500], { stiffness: 90, damping: 20 });
+    const spr5 = springY(driver, [220, -220], [-500, 500], { stiffness: 80, damping: 10 });
+    const sprStiff = springY(driver, [90, -90], [-500, 500], { stiffness: 120, damping: 15 });
+    const sprNormal = springY(driver, [200, -200], [-500, 500], { stiffness: 90, damping: 20 });
+    const sprFlex = springY(driver, [280, -280], [-500, 500], { stiffness: 70, damping: 10 });
+    const sprFlex2 = springY(driver, [250, -250], [-500, 500], { stiffness: 70, damping: 10 });
+    const sprOrbit = springY(driver, [120, -120], [-500, 500], { stiffness: 80, damping: 10 });
     const orbitScale = 1;
 
     const shapeClasses = "pointer-events-none absolute inset-0 overflow-hidden -z-10 ";

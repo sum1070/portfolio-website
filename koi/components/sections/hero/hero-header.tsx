@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/utils";
-import { ThemeToggle, VolumeControl } from "@/components";
+import { DogGuide, ThemeToggle, VolumeControl } from "@/components";
 
 const HeroHeader = () => {
   return (
@@ -9,7 +9,8 @@ const HeroHeader = () => {
         <div className="ml-5">
           <VolumeControl />
         </div>
-        <div className="mr-5">
+        <div className="mr-5 flex items-center gap-4">
+          <DogGuide />
           <ThemeToggle />
         </div>
       </div>

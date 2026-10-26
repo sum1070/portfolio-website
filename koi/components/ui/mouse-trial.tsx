@@ -28,6 +28,7 @@ const MAX_CONNECTIONS = 4;
 const SPAWN_INTERVAL_MS = 30; // same cadence the old every-other-frame gate gave at 60Hz
 const SPAWN_SPACING = 14; // px between spawn points when filling in a fast swipe
 const TELEPORT_DIST = 400; // a jump this big means the cursor left and came back
+const DIMMED_ALPHA = 0.35; // trail opacity over [data-trail-dim] elements
 
 // with hardware acceleration off, browsers rasterise canvas shadows on the
 // CPU and the glow alone drags the whole page below 20fps. Software GL is the
@@ -95,6 +96,8 @@ export default function MouseAnimated() {
 
     function move(e: MouseEvent) {
       if (reducedMotion) return;
+      const dimmed = !!(e.target as Element | null)?.closest?.("[data-trail-dim]");
+      canvas!.style.opacity = dimmed ? String(DIMMED_ALPHA) : "1";
       const currentTime = performance.now();
       if (currentTime - lastTime < SPAWN_INTERVAL_MS) return;
       lastTime = currentTime;
@@ -250,6 +253,22 @@ export default function MouseAnimated() {
       ctx.globalAlpha = 1;
     }
 
+    function eraseMasked() {
+      if (!canvas) return;
+      const masks = document.querySelectorAll<HTMLImageElement>("img[data-trail-mask]");
+      if (masks.length === 0) return;
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.imageSmoothingEnabled = false;
+      for (const img of masks) {
+        if (!img.complete) continue;
+        const r = img.getBoundingClientRect();
+        if (r.width === 0 || r.bottom < 0 || r.top > canvas.height) continue;
+        ctx.drawImage(img, r.left, r.top, r.width, r.height);
+      }
+      ctx.restore();
+    }
+
     // --- Animation loop ---
     // only runs while particles are alive; spawning starts it up again, so an
     // idle page burns no frames at all
@@ -277,6 +296,7 @@ export default function MouseAnimated() {
       }
       drawParticles();
       drawConnections();
+      eraseMasked();
       animationId = requestAnimationFrame(animate);
     }
 
@@ -311,6 +331,7 @@ export default function MouseAnimated() {
         top: 0,
         left: 0,
         zIndex: 500,
+        transition: "opacity 0.3s ease-out",
         pointerEvents: "none",
       }}
     />

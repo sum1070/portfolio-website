@@ -100,7 +100,6 @@ const svgComponents = Object.entries(iconImages).reduce((acc, [key, src]) => {
 }, {} as Record<string, ({ className, darkModeEnabled }: { className?: string, darkModeEnabled?: boolean }) => JSX.Element>);
 
 export const {
-    NekoSleep,
     SleepZZZ,
     Attr4,
     Medal,

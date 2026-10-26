@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { NekoSleep, TransitionLink } from "@/components";
+import { PixelDog, TransitionLink } from "@/components";
 import { LiquidGlass } from "@/components/nav-button/liquid-glass";
 import { TProjectResolved } from "@/lib/types";
 import { getProjectContext, hasProjectPage } from "@/data/projects";
@@ -80,7 +80,7 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
       ) : (
         // fallback preview when no screenshot yet
         <div className={cn(previewCN, "gradient-ssr flex items-center justify-center")}>
-          <NekoSleep className="w-12 md:w-14 opacity-70" />
+          <PixelDog className="w-12 md:w-16 opacity-70" />
         </div>
       )}
       <div id="project-card-body" className="relative z-20 p-4 pb-2 text-center font-titillium-web">

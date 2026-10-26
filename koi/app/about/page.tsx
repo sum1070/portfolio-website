@@ -101,14 +101,16 @@ const About = () => {
             </div>
             {/* ----- Intro ----- */}
             <div id="intro-text" className="flex flex-col gap-2">
-              You can also call me Margaret :)
+              <p className="bullet-arrow-heart font-medium">
+                You can also call me Margaret :)
+              </p>
               <p className="bullet-arrow-heart font-medium">
                 MSc Advanced Computer Science (AI) student at the University of
                 Leeds.
               </p>
-              <p className="bullet-arrow-heart font-medium">
+              <p className="bullet-arrow font-medium">
                 Graduated with a BSc in Computer Science with AI from the
-                University of Nottingham.
+                University of Nottingham in July 2026.
               </p>
               <p className="bullet-arrow font-medium">
                 Open to graduate roles from October 2027.

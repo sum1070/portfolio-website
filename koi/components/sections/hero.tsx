@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, memo } from "react";
 import BackgroundHero from "@/components/sections/hero/hero-background";
-import { CenterContainer, Typewriter, NekoSleep, SleepZZZ, FadeIn, NavButton, TransitionLink } from "@/components";
+import { CenterContainer, Typewriter, PixelDog, FadeIn, NavButton, TransitionLink } from "@/components";
 import { cn, animationTime, pageIDs, gradient } from "@/utils";
 import { motion, useInView } from "motion/react";
 import { RxArrowTopRight } from "react-icons/rx";
@@ -68,8 +68,11 @@ const HeroTitle = memo(({ onAnimationComplete }: HeroTitleProps) => (
     <h1 className={cn(`${Text.txtMain}`, "textBlurAnimation")}>HELLO</h1>
     <div className={cn(`${Text.txtMid}`)}>
       I'm&nbsp;<span className={"text-nice-purple3 font-medium"}>Kit Sum Chan</span>
-      <NekoSleep className="w-8 md:w-12 xl:w-16 inline-block ml-2 object-contain" />
-      <SleepZZZ className="-ml-1 md:-ml-2 w-8 md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 " />
+      <PixelDog
+        interactive
+        className="w-8 md:w-12 xl:w-16 ml-2"
+        zzzClassName="-ml-1 md:-ml-2 w-8 md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 "
+      />
     </div>
   </motion.div>
 ));
@@ -190,12 +193,14 @@ const Hero = () => {
           >
             <div
               id='hero-nav-buttons'
+              data-trail-dim
               className="flex flex-col lg:flex-row items-center gap-5 lg:gap-8 [animation:heroBtnReveal_0.8s_ease-out_1.2s_both]"
             >
               {heroNavButtons.map((link) => (
                 <NavButton
                   key={link.name}
                   btnSize={heroBtnSize}
+                  className="group-hover:scale-100"
                   background={link.background}
                   href={link.href}
                   title={link.name}
