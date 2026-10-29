@@ -35,7 +35,7 @@ const contactCardCN = cn(
     glassCN,
     "rounded-4xl",
     "group relative flex w-full flex-col items-center justify-center gap-3 overflow-hidden",
-    "py-12 sm:py-0 sm:aspect-[4/3] cursor-pointer",
+    "py-12 sm:py-0 sm:aspect-[4/3] cursor-pointer select-none",
     "dark:bg-sky-950/50 dark:border-sky-300/25",
     "transition-shadow duration-300 ease-in-out",
     "hover:shadow-[0_0_18px_3px_var(--color-blueWave1)] hover:shadow-blueWave1/70",

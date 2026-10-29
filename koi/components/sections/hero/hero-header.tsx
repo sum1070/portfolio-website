@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/utils";
-import { DogGuide, ThemeToggle, VolumeControl } from "@/components";
+import { DogGuide, ThemeToggle, TrailPicker, VolumeControl } from "@/components";
 
 const HeroHeader = () => {
   return (
@@ -10,6 +10,7 @@ const HeroHeader = () => {
           <VolumeControl />
         </div>
         <div className="mr-5 flex items-center gap-4">
+          <TrailPicker />
           <DogGuide />
           <ThemeToggle />
         </div>

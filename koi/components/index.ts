@@ -29,6 +29,8 @@ export { default as WalkingDog } from "./ui/walking-dog";
 export { default as IdleDog } from "./ui/idle-dog";
 export { default as PixelDog } from "./ui/pixel-dog";
 export { default as DogGuide } from "./ui/dog-guide";
+export { default as TrailPicker } from "./ui/trail-picker";
+export { default as DogCaller } from "./ui/dog-caller";
 
 export {
   SleepZZZ,

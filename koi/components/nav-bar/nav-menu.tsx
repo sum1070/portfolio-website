@@ -27,7 +27,7 @@ export default function NavMenu({
         <div
             id='mobile-nav'
             className={cn(
-                "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+                "md:hidden overflow-hidden transition-all duration-300 ease-in-out select-none",
                 "bg-milky-white/60 dark:bg-dark-black/70 backdrop-blur-sm",
                 "rounded-xl px-4",
                 containerCN,

@@ -76,7 +76,7 @@ const WriteupToc = ({ items }: { items: TocItem[] }) => {
           <button
             onClick={() => setSide(side === "right" ? "left" : "right")}
             aria-label="Move table of contents to the other side"
-            className="px-1.5 rounded cursor-pointer hover:bg-purple-400/20 transition-colors"
+            className="px-1.5 rounded cursor-pointer select-none hover:bg-purple-400/20 transition-colors"
           >
             {side === "right" ? "←" : "→"}
           </button>

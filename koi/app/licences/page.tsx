@@ -1,6 +1,6 @@
 import { KoiUrl, Navbar, PixelDog, GreenBackground } from '@/components'
 import React from 'react'
-import LicenceCard from './licence-card';
+import LicenceList from './licence-list';
 import { cn, pageIDs } from '@/utils';
 
 const licences = () => {
@@ -23,7 +23,7 @@ const licences = () => {
                         Information about the licences can be found on <KoiUrl href="https://creativecommons.org/share-your-work/cclicenses/" > Creative Commons (CC)</KoiUrl>
                     </div>
                 </div>
-                <LicenceCard />
+                <LicenceList />
             </div>
         </div>
     )

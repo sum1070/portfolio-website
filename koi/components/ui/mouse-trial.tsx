@@ -29,6 +29,52 @@ const SPAWN_INTERVAL_MS = 30; // same cadence the old every-other-frame gate gav
 const SPAWN_SPACING = 14; // px between spawn points when filling in a fast swipe
 const TELEPORT_DIST = 400; // a jump this big means the cursor left and came back
 const DIMMED_ALPHA = 0.35; // trail opacity over [data-trail-dim] elements
+const PIXEL = 3;
+const PIXEL_FADE_STEPS = 4;
+const HEART_SKIP_CHANCE = 0.5;
+const PIXEL_PALETTE = ["#ff8fea", "#c04cfd", "#8e61ff", "#6cbbfd", "#fcb0ff"];
+const PIXEL_PALETTE_LIGHT = ["#f0287f", "#a12cf0", "#5e3cf0", "#1478e6", "#cf2cbf"]; // PIXEL_PALETTE uses the light hero background's own colours
+const PIXEL_OUTLINE = "#613e54";
+const FADE_TARGET = { light: 0xffffff, dark: 0x121212 };
+const PIXEL_HUE_STEP = 24; // hue degrees per palette colour, close to how fast the glow visibly shifts
+
+type TrailVariant = "glow" | "pixel";
+type PixelShape = "star" | "heart" | "square" | "kawaii";
+
+const fadeCache = new Map<string, string>();
+function fadeToward(hex: string, target: number, t: number) {
+  const key = `${hex}${target}${t}`;
+  let colour = fadeCache.get(key);
+  if (!colour) {
+    const n = parseInt(hex.slice(1), 16);
+    const channel = (shift: number) => {
+      const v = (n >> shift) & 255;
+      return Math.round(v + (((target >> shift) & 255) - v) * t);
+    };
+    colour = `rgb(${channel(16)},${channel(8)},${channel(0)})`;
+    fadeCache.set(key, colour);
+  }
+  return colour;
+}
+
+const toRuns = (rows: string[]) =>
+  rows.flatMap((row, y) => [...row.matchAll(/X+/g)].map((m) => [m.index, y, m[0].length]));
+
+const HEART_SMALL = toRuns([
+  ".X.X.",
+  "XXXXX",
+  ".XXX.",
+  "..X..",
+]);
+
+const HEART_LARGE = toRuns([
+  ".XX.XX.",
+  "XXXXXXX",
+  "XXXXXXX",
+  ".XXXXX.",
+  "..XXX..",
+  "...X...",
+]);
 
 // with hardware acceleration off, browsers rasterise canvas shadows on the
 // CPU and the glow alone drags the whole page below 20fps. Software GL is the
@@ -47,7 +93,7 @@ function isSoftwareRendering() {
   }
 }
 
-export default function MouseAnimated() {
+export default function MouseAnimated({ variant = "glow", shape = "star" }: Readonly<{ variant?: TrailVariant; shape?: PixelShape }>) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -55,6 +101,8 @@ export default function MouseAnimated() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: true })!;
     const particles: Particle[] = [];
+    const pixel = variant === "pixel";
+    const isDark = () => document.documentElement.classList.contains("dark");
     let hue = 0;
 
     // glow costs nothing on a GPU but is brutal in software rendering: start
@@ -140,6 +188,7 @@ export default function MouseAnimated() {
     let recycleIdx = 0;
 
     function spawnParticle(x: number, y: number) {
+      if (pixel && shape === "heart" && Math.random() < HEART_SKIP_CHANCE) return;
       const cap = glowDisabled ? LOW_POWER_PARTICLES : MAX_PARTICLES;
       if (particles.length < cap) {
         particles.push(createParticle(x, y));
@@ -158,7 +207,9 @@ export default function MouseAnimated() {
         size: Math.random() * 14 + 2,
         speedX: Math.random() * 3 - 0.9,
         speedY: Math.random() * 3 - 0.9,
-        color: `hsla(${hue},100%, 70%, 0.7)`,
+        color: pixel
+          ? (shape === "kawaii" || isDark() ? PIXEL_PALETTE : PIXEL_PALETTE_LIGHT)[Math.floor(hue / PIXEL_HUE_STEP) % PIXEL_PALETTE.length]
+          : `hsla(${hue},100%, 70%, 0.7)`,
         growFactor: Math.random() * 0.05 + 0.05,
         maxSize: Math.random() * 20 + 4,
         life: 1,
@@ -188,7 +239,59 @@ export default function MouseAnimated() {
       particles.length = alive;
     }
 
+    const snap = (v: number) => Math.round(v / PIXEL) * PIXEL;
+
+    const fadeStep = (p: Particle) => Math.ceil(p.life * PIXEL_FADE_STEPS) / PIXEL_FADE_STEPS;
+
+    function drawPixelStars() {
+      if (shape === "kawaii") return drawOutlinedPixels();
+      const peakAlpha = isDark() ? 0.85 : 1;
+      for (const p of particles) {
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = fadeStep(p) * peakAlpha;
+        drawPixelShape(p, snap(p.x), snap(p.y));
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // fades toward the page colour instead of alpha, so the outline never
+    // shows through a half-transparent fill
+    function drawOutlinedPixels() {
+      const target = isDark() ? FADE_TARGET.dark : FADE_TARGET.light;
+      for (const p of particles) {
+        ctx.fillStyle = fadeToward(PIXEL_OUTLINE, target, 1 - fadeStep(p));
+        const x = snap(p.x), y = snap(p.y);
+        drawPixelShape(p, x - PIXEL, y);
+        drawPixelShape(p, x + PIXEL, y);
+        drawPixelShape(p, x, y - PIXEL);
+        drawPixelShape(p, x, y + PIXEL);
+      }
+      for (const p of particles) {
+        ctx.fillStyle = fadeToward(p.color, target, 1 - fadeStep(p));
+        drawPixelShape(p, snap(p.x), snap(p.y));
+      }
+    }
+
+    function drawPixelShape(p: Particle, x: number, y: number) {
+      if (shape === "heart") {
+        const runs = p.size < 10 ? HEART_SMALL : HEART_LARGE;
+        const half = (p.size < 10 ? 2 : 3) * PIXEL;
+        for (const [rx, ry, len] of runs) {
+          ctx.fillRect(x - half + rx * PIXEL, y - half + ry * PIXEL, len * PIXEL, PIXEL);
+        }
+      } else if (shape === "square" || shape === "kawaii") {
+        const side = Math.max(1, Math.round(p.size / 5)) * PIXEL;
+        ctx.fillRect(snap(x - side / 2), snap(y - side / 2), side, side);
+      } else {
+        const arm = Math.round(p.size / 6) * PIXEL;
+        ctx.fillRect(x - arm, y, arm * 2 + PIXEL, PIXEL);
+        ctx.fillRect(x, y - arm, PIXEL, arm * 2 + PIXEL);
+        if (arm >= PIXEL * 3) ctx.fillRect(x - PIXEL, y - PIXEL, PIXEL * 3, PIXEL * 3);
+      }
+    }
+
     function drawParticles() {
+      if (pixel) return drawPixelStars();
       // glow only on the fills, never on the lines: blurred strokes are what
       // tanked mobile. Sprite caching was tried and lost to GPU shadows.
       ctx.shadowBlur = glowDisabled ? 0 : 10;
@@ -320,7 +423,7 @@ export default function MouseAnimated() {
       motionQuery.removeEventListener("change", onMotionChange);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [variant, shape]);
 
   return (
     <canvas

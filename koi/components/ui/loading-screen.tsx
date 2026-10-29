@@ -19,7 +19,7 @@ export default function LoadingScreen({
 }: Readonly<LoadingScreenProps>) {
     return (
         <div className={cn(
-            "flex items-center justify-center relative pointer-events-none",
+            "flex items-center justify-center relative pointer-events-none select-none",
             fullPage && "min-w-screen min-h-screen",
             className
         )}>

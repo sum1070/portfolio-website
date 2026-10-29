@@ -62,7 +62,7 @@ const ScrollCue = ({ label = "More below" }: { label?: string }) => {
       tabIndex={visible ? 0 : -1}
       onClick={scrollDown}
       className={cn(
-        "fixed bottom-10 left-1/2 z-40 -translate-x-1/2 cursor-pointer md:bottom-6",
+        "fixed bottom-10 left-1/2 z-40 -translate-x-1/2 cursor-pointer select-none md:bottom-6",
         "flex items-center gap-2 rounded-full px-4 py-1.5",
         "border border-nice-purple1/50 bg-white/30 backdrop-blur-md",
         "shadow-lg shadow-nice-purple1/10 dark:bg-pale-purple1/60",

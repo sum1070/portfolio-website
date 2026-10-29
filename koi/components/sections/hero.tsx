@@ -8,6 +8,9 @@ import { motion, useInView } from "motion/react";
 import { RxArrowTopRight } from "react-icons/rx";
 import BlurredBlobsHero from "./hero/hero-blobs";
 import HeroHeader from "./hero/hero-header";
+import { pxIbmVga } from "@/lib/fonts";
+
+const heroPixelFont = cn(pxIbmVga.variable, "[font-family:var(--font-px-ibm-vga)]!");
 
 const MemoizedBackgroundHero = memo(BackgroundHero);
 const MemoizedBlurredBlobs = memo(BlurredBlobsHero);
@@ -52,9 +55,10 @@ const firstTypewriterSequences = [
 // memoize hero title to prevent re-renders
 type HeroTitleProps = {
   onAnimationComplete?: () => void;
+  dogWander?: boolean;
 };
 
-const HeroTitle = memo(({ onAnimationComplete }: HeroTitleProps) => (
+const HeroTitle = memo(({ onAnimationComplete, dogWander }: HeroTitleProps) => (
   <motion.div
     initial={{ opacity: 0.1, filter: "blur(12px)", letterSpacing: "0.5em" }}
     animate={{ opacity: 1, filter: "blur(0px)", letterSpacing: "normal" }}
@@ -65,11 +69,12 @@ const HeroTitle = memo(({ onAnimationComplete }: HeroTitleProps) => (
     }}
     onAnimationComplete={onAnimationComplete}
   >
-    <h1 className={cn(`${Text.txtMain}`, "textBlurAnimation")}>HELLO</h1>
+    <h1 className={cn(`${Text.txtMain}`, "textBlurAnimation", heroPixelFont)}>HELLO</h1>
     <div className={cn(`${Text.txtMid}`)}>
       I'm&nbsp;<span className={"text-nice-purple3 font-medium"}>Kit Sum Chan</span>
       <PixelDog
         interactive
+        wander={dogWander}
         className="w-8 md:w-12 xl:w-16 ml-2"
         zzzClassName="-ml-1 md:-ml-2 w-8 md:w-12 xl:-ml-4 xl:w-20 inline-block border-0 "
       />
@@ -85,6 +90,7 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [startTyping, setStartTyping] = useState(false);
   const [finishTyping, setFinishTyping] = useState(false);
+  const [doneTyping, setDoneTyping] = useState(false);
   const [loadedElements, setLoadedElements] = useState({
     background: false,
     blobs: false
@@ -141,7 +147,7 @@ const Hero = () => {
 
       <CenterContainer className="min-h-dvh relative z-20 px-5 py-10 sm:p-10">
         <div className="text-center">
-          <HeroTitle onAnimationComplete={() => setStartTyping(true)} />
+          <HeroTitle onAnimationComplete={() => setStartTyping(true)} dogWander={doneTyping} />
 
           <div
             id="hero-info"
@@ -163,7 +169,7 @@ const Hero = () => {
           </div>
 
           {/* typewriter */}
-          <div id="hero-typing" className={cn(`${Text.typingContainer}`, `${Text.txtMono}`)}>
+          <div id="hero-typing" className={cn(`${Text.typingContainer}`, `${Text.txtMono}`, heroPixelFont)}>
             {startTyping && !finishTyping && (
               <Typewriter
                 speed={70}
@@ -181,6 +187,7 @@ const Hero = () => {
                   speed={70}
                   delay={animationTime.delayTypewriter}
                   text={welcomeEnding}
+                  onTypeComplete={() => setDoneTyping(true)}
                 />
               </>
             )}
@@ -200,7 +207,6 @@ const Hero = () => {
                 <NavButton
                   key={link.name}
                   btnSize={heroBtnSize}
-                  className="group-hover:scale-100"
                   background={link.background}
                   href={link.href}
                   title={link.name}

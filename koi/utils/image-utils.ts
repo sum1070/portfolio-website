@@ -1,7 +1,7 @@
 // local images
 export const soundButtonImages = {
-  soundOn: "/images/sound-on.svg",
-  soundOff: "/images/sound-off.svg",
+  soundOn: "/images/ui/sound-on.png",
+  soundOff: "/images/ui/sound-off.png",
 };
 
 export const myImages = {

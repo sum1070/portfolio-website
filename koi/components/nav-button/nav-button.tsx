@@ -66,17 +66,17 @@ const NavButton = ({
         : 300;
 
     // sound effect
-    const { volume, isMuted } = useMainVolume();
+    const { volume, sfxMuted } = useMainVolume();
     const [isClicked, setIsClicked] = useState(false);
 
     const [bell, { stop: stopBell }] = useSound(sounds.bell, {
         // volume: isMuted ? 0 : volume,
-        volume: isMuted ? 0 : volume * soundGains.se,
+        volume: sfxMuted ? 0 : volume * soundGains.se,
     });
 
     const [bubble, { stop: stopBubble }] = useSound(sounds.bubble, {
         // volume: isMuted ? 0 : volume,
-        volume: isMuted ? 0 : volume * soundGains.se,
+        volume: sfxMuted ? 0 : volume * soundGains.se,
     });
 
     const resetDelay = 300; // ms
@@ -98,7 +98,7 @@ const NavButton = ({
                     btnSize || defaultBtnSize,
                     "block text-center cursor-pointer select-none ",
                     "relative overflow-hidden rounded-[2rem] shadow-xl shadow-cyan-500 ",
-                    "transition-all duration-1000 ease-in-out group-hover:scale-110 group-focus:scale-100 ",
+                    "transition-all duration-1000 ease-in-out ",
                     "bg-[rgb(193,228,248)] ",
                     className,
                 )}
@@ -112,11 +112,11 @@ const NavButton = ({
                     stopBubble();
                 }}
                 onMouseDown={() => {
-                    if (!isMuted) bell();
+                    if (!sfxMuted) bell();
                 }}
                 onMouseEnter={() => {
                     setIsHovering(true);
-                    if (!isMuted) bubble();
+                    if (!sfxMuted) bubble();
                 }}
                 onClick={handleClick}
             >

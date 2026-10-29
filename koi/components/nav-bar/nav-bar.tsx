@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { cn, navLinks } from '@/utils';
 import Hamburger from './hamburger';
 import NavMenu from './nav-menu';
-import { ThemeToggle, TransitionLink, VolumeControl } from "@/components";
+import { DogCaller, ThemeToggle, TransitionLink, VolumeControl } from "@/components";
 
 interface NavbarProps {
     currentPage?: string;
@@ -42,7 +42,7 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                 "fixed w-full z-50 transition-all duration-200 ease-in-out ",
                 isScrolled ? "rounded-b-xl bg-milky-white dark:bg-dark-black backdrop-blur-md shadow-md " : "bg-transparent",
             )}>
-            <div id='nav-container' className="p-2 flex flex-row justify-between text-xl " >
+            <div id='nav-container' className="p-2 flex flex-row justify-between text-xl select-none" >
                 <div id='nav-volume' className="ml-4 flex items-center">
                     <VolumeControl variant="nav" />
                 </div>
@@ -64,19 +64,22 @@ export default function Navbar({ currentPage }: Readonly<NavbarProps>) {
                         </TransitionLink>
                     ))}
                 </div>
-                {/* desktop buttons */}
-                <div className={cn(desktopOnly, "flex-row gap-4 mr-4")}>
-                    <div className='flex items-center justify-center py-3.5 px-3'>
-                        <ThemeToggle />
+                <div className="flex flex-row items-center gap-4 md:gap-8 mr-4">
+                    <DogCaller />
+                    {/* desktop buttons */}
+                    <div className={cn(desktopOnly, "flex-row")}>
+                        <div className='flex items-center justify-center py-3 pr-3'>
+                            <ThemeToggle />
+                        </div>
                     </div>
+                    {/* mobile hamburger */}
+                    <Hamburger
+                        containerCN={cn(onMobileOnly, "flex-row")}
+                        buttonCN={navFontClassName}
+                        isOpen={isOpen}
+                        toggleMenu={toggleMenu}
+                    />
                 </div>
-                {/* mobile hamburger */}
-                <Hamburger
-                    containerCN={cn(onMobileOnly, "flex-row gap-4 mr-4")}
-                    buttonCN={navFontClassName}
-                    isOpen={isOpen}
-                    toggleMenu={toggleMenu}
-                />
             </div>
             {/* mobile menu */}
             <NavMenu

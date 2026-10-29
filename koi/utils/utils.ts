@@ -16,6 +16,9 @@ export const sounds = {
   bell: "/sounds/bell.wav", //https://freesound.org/people/GabFitzgerald/sounds/625174/
   bubble: "/sounds/bubble.mp3", // https://freesound.org/people/mokasza/sounds/810164/
   switch: "/sounds/switch-toggle.wav", // https://freesound.org/people/Rudmer_Rotteveel/sounds/457458/
+  release: "/sounds/button-release.wav",
+  menuOpen: "/sounds/sci-fi-ui-button.wav",
+  tick: "/sounds/click-tick.wav",
   music: "/sounds/groovy-beat.mp3", // https://freesound.org/people/Seth_Makes_Sounds/sounds/659748/
 };
 

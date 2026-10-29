@@ -27,7 +27,7 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
 
   const tagButtonCN = cn(
     glassCN,
-    "px-5 py-1 rounded-xl font-titillium-web text-lg md:text-xl cursor-pointer",
+    "px-5 py-1 rounded-xl font-titillium-web text-lg md:text-xl cursor-pointer select-none",
     "transition-all duration-200 hover:bg-nice-purple1/25",
   );
   // active filter look, shared by "All" and selected tags
@@ -79,7 +79,7 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
             onClick={() => setSelectedTags([])}
             className={cn(
               "block -mt-6 mb-8 font-titillium-web text-sm md:text-base",
-              "underline underline-offset-2 cursor-pointer hover:text-purple2 transition-colors",
+              "underline underline-offset-2 cursor-pointer select-none hover:text-purple2 transition-colors",
             )}
           >
             Clear filter

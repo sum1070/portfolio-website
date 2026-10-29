@@ -191,7 +191,7 @@ export default function BackgroundHero() {
                         <Dot size="15px" type="hollow" border={2} color="var(--color-sky-blue)" />
                     </motion.div>
                     {/* Hollow dot bigger tl */}
-                    <motion.div style={{ y: sprNormal, position: "absolute", left: "5%", top: "7%" }}>
+                    <motion.div style={{ y: sprNormal, position: "absolute", left: "5%", top: "16%" }}>
                         <Dot size="36px" type="hollow" border={7} color="var(--color-milky-white)" />
                     </motion.div>
                     {/* Glowing pink dot bl */}

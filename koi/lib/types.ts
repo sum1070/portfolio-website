@@ -90,7 +90,11 @@ export type TButton =
 export type VolumeContextType = {
   volume: number;
   isMuted: boolean;
+  musicOn: boolean;
+  sfxOn: boolean;
   toggleMute: () => void;
+  toggleMusic: () => void;
+  toggleSfx: () => void;
   setNewVolume: (volume: number) => void;
   incrementVolume: () => void;
   decrementVolume: () => void;
