@@ -8,7 +8,7 @@ const startUpPage: TProject = {
     "A customisable browser start page with bookmark groups, flexible layouts, and notes, saved locally in your browser.",
   tags: ["WebDev"],
   technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
-  previewImg: [],
+  previewImg: ["/images/projects/startup-page-home.webp"],
   github: undefined,
   demo: "https://my-startpage-mu.vercel.app/",
   linkTitle: true,

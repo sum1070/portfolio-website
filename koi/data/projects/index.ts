@@ -9,8 +9,8 @@ const allProjects: TProject[] = [
   portfolioWebsite,
   decoguide,
   breastCancerTreatmentResponse,
-  xtsZodiacBlockCipher,
   startUpPage,
+  xtsZodiacBlockCipher,
 ];
 
 export const projects: TProject[] = allProjects.filter(
