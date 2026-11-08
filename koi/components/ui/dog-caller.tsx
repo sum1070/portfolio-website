@@ -6,8 +6,9 @@ import { animate, motion, useMotionValue, useReducedMotion, type AnimationPlayba
 import { cn } from "@/utils";
 import { pxIbmVga } from "@/lib/fonts";
 import useUiSounds from "@/lib/hooks/useUiSounds";
-import ChatBubble from "./chat-bubble";
-import PixelDog, { DOG_FRAMES } from "./pixel-dog";
+import usePreloadImages from "@/lib/hooks/usePreloadImages";
+import ChatBubble, { CHAT_BUBBLE_ART } from "./chat-bubble";
+import PixelDog, { DOG_ART, DOG_FRAMES } from "./pixel-dog";
 
 const pixelFont = cn(pxIbmVga.variable, "[font-family:var(--font-px-ibm-vga)] text-base");
 
@@ -22,6 +23,7 @@ const RETURN_DELAY_MS = 600;
 const BYE_MS = 1200;
 const DOG_SIZE = "w-12 md:w-16";
 const WALK_FRAMES = [...DOG_FRAMES.runRight, ...DOG_FRAMES.runLeft];
+const CALLER_ART = [...DOG_ART, ...CHAT_BUBBLE_ART];
 
 type Phase = "away" | "entering" | "here" | "leaving";
 
@@ -56,6 +58,7 @@ export default function DogCaller({ className }: Readonly<{ className?: string }
   const phaseRef = useRef<Phase>("away");
   const byeTimerRef = useRef<number | null>(null);
   const { playClick } = useUiSounds();
+  usePreloadImages(CALLER_ART);
 
   const go = useCallback((next: Phase) => {
     phaseRef.current = next;

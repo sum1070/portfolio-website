@@ -1,9 +1,9 @@
 "use client";
-import { cn, gradient, sounds, soundGains } from '@/utils';
+import { cn, gradient, sounds } from '@/utils';
 import React, { useState, useRef, useEffect } from 'react';
 import { LiquidGlass } from './liquid-glass';
 import { useMainVolume } from '@/lib/hooks/useMainVolume';
-import useSound from 'use-sound';
+import useSfx from '@/lib/hooks/useSfx';
 import ContactPills from './contact-pills';
 import { TransitionLink } from "@/components";
 import { TButton } from '@/lib/types';
@@ -66,18 +66,12 @@ const NavButton = ({
         : 300;
 
     // sound effect
-    const { volume, sfxMuted } = useMainVolume();
+    const { sfxMuted } = useMainVolume();
     const [isClicked, setIsClicked] = useState(false);
 
-    const [bell, { stop: stopBell }] = useSound(sounds.bell, {
-        // volume: isMuted ? 0 : volume,
-        volume: sfxMuted ? 0 : volume * soundGains.se,
-    });
+    const [bell, { stop: stopBell }] = useSfx(sounds.bell);
 
-    const [bubble, { stop: stopBubble }] = useSound(sounds.bubble, {
-        // volume: isMuted ? 0 : volume,
-        volume: sfxMuted ? 0 : volume * soundGains.se,
-    });
+    const [bubble, { stop: stopBubble }] = useSfx(sounds.bubble);
 
     const resetDelay = 300; // ms
 

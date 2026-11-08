@@ -64,7 +64,7 @@ export default function LoadingScreen({
                     </defs>
                     <rect x="18" y="18" width="224" height="224" rx="42" fill="#fff" />
                     <image
-                        href="/images/dog2.jpg"
+                        href="/images/dog2.webp"
                         x="26"
                         y="26"
                         width="208"

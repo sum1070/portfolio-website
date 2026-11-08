@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useVolume } from "@/lib/context/volume-context";
+import usePreloadImages from "@/lib/hooks/usePreloadImages";
 import { cn, pageIDs, soundButtonImages } from "@/utils";
 import { pxIbmVga } from "@/lib/fonts";
 
@@ -31,9 +32,12 @@ const getSpeakerGradient = (pathname: string) =>
     ([route]) => pathname === route || pathname.startsWith(`${route}/`),
   )?.[1] ?? DEFAULT_SPEAKER_GRADIENT;
 
+const SPEAKER_ART = Object.values(soundButtonImages);
+
 const VolumeControl = ({ variant = "hero" }: VolumeControlProps) => {
   const { isMuted, toggleMute, volume, setNewVolume, musicOn, sfxOn, toggleMusic, toggleSfx } = useVolume();
   const pathname = usePathname();
+  usePreloadImages(SPEAKER_ART);
 
   const [revealed, setRevealed] = useState(false);
   const [isTransient, setIsTransient] = useState(false); //Auto-hides

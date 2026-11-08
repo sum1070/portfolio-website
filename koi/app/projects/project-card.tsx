@@ -36,7 +36,7 @@ export const TagPill = ({ label, color }: { label: string; color?: string }) => 
       // Tag pill dark colors: page background (pale-purple1 is dark-black in dark mode)
       !color && "dark:bg-pale-purple1/70 dark:text-pale-purple0 dark:border-nice-purple1",
       // Tech pill colors
-      color && "text-(--pill-color) border-(--pill-color)",
+      color && "text-(--pill-color) border-(--pill-color) bg-(--pill-color)/10",
       color && "dark:text-Mauve dark:border-pinkWave1 dark:bg-pinkWave2/60",
     )}
     style={color ? ({ "--pill-color": color } as React.CSSProperties) : undefined}
@@ -79,8 +79,8 @@ const ProjectCard = ({ project, background, darkBackground }: ProjectCardProps) 
         />
       ) : (
         // fallback preview when no screenshot yet
-        <div className={cn(previewCN, "gradient-ssr flex items-center justify-center")}>
-          <PixelDog className="w-12 md:w-16 opacity-70" />
+        <div className="w-full shrink-0 h-20 xl:h-24 gradient-ssr flex items-center justify-center">
+          <PixelDog className="w-10 xl:w-12 opacity-70" />
         </div>
       )}
       <div id="project-card-body" className="relative z-20 p-4 pb-2 text-center font-titillium-web">

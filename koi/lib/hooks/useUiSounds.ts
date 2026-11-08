@@ -1,16 +1,15 @@
 "use client";
 
 import { useCallback } from "react";
-import useSound from "use-sound";
-import { sounds, soundGains } from "@/utils";
+import { sounds } from "@/utils";
 import { useMainVolume } from "./useMainVolume";
+import useSfx from "./useSfx";
 
 export default function useUiSounds() {
-  const { volume, sfxMuted } = useMainVolume();
-  const gain = sfxMuted ? 0 : volume * soundGains.se;
-  const [tick] = useSound(sounds.tick, { volume: gain, interrupt: true });
-  const [release] = useSound(sounds.release, { volume: gain, interrupt: true });
-  const [menuOpen] = useSound(sounds.menuOpen, { volume: gain, interrupt: true });
+  const { sfxMuted } = useMainVolume();
+  const [tick] = useSfx(sounds.tick, { interrupt: true });
+  const [release] = useSfx(sounds.release, { interrupt: true });
+  const [menuOpen] = useSfx(sounds.menuOpen, { interrupt: true });
 
   const playClick = useCallback(() => {
     if (!sfxMuted) tick();

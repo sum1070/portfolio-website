@@ -14,6 +14,7 @@ const BUBBLES = {
     dark: { body: `${CHAT_DIR}/chat_bubble_blue_dark.png`, tail: `${CHAT_DIR}/chat_bubble_tail_blue_flipped_dark.png` },
   },
 };
+export const CHAT_BUBBLE_ART = Object.values(BUBBLES).flatMap((side) => Object.values(side).flatMap(({ body, tail }) => [body, tail]));
 const THEMES = [
   ["light", "dark:hidden"],
   ["dark", "hidden dark:block"],

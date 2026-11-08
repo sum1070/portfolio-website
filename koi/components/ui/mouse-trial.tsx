@@ -4,6 +4,7 @@
 
 "use client";
 import React, { useEffect, useRef } from "react";
+import { isSoftwareRendering } from "@/utils";
 
 type Particle = {
   x: number;
@@ -28,7 +29,8 @@ const MAX_CONNECTIONS = 4;
 const SPAWN_INTERVAL_MS = 30; // same cadence the old every-other-frame gate gave at 60Hz
 const SPAWN_SPACING = 14; // px between spawn points when filling in a fast swipe
 const TELEPORT_DIST = 400; // a jump this big means the cursor left and came back
-const DIMMED_ALPHA = 0.35; // trail opacity over [data-trail-dim] elements
+const DIMMED_ALPHA = 0.35; // trail opacity over action items
+const ACTION_SELECTOR = "a[href], button:not(:disabled), [role='button'], [role='menuitem'], [role='menuitemradio'], [role='option'], [role='tab'], input:not(:disabled), select, textarea, label, summary, [data-trail-dim]";
 const PIXEL = 3;
 const PIXEL_FADE_STEPS = 4;
 const HEART_SKIP_CHANCE = 0.5;
@@ -75,23 +77,6 @@ const HEART_LARGE = toRuns([
   "..XXX..",
   "...X...",
 ]);
-
-// with hardware acceleration off, browsers rasterise canvas shadows on the
-// CPU and the glow alone drags the whole page below 20fps. Software GL is the
-// tell: no WebGL at all, or a software renderer string.
-function isSoftwareRendering() {
-  try {
-    const gl = document.createElement("canvas").getContext("webgl");
-    if (!gl) return true;
-    const dbg = gl.getExtension("WEBGL_debug_renderer_info");
-    const renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : "";
-    // SwiftShader = Chrome's software GL, Basic Render Driver = Windows WARP,
-    // llvmpipe/softpipe = Mesa's software paths on Linux
-    return /swiftshader|software|llvmpipe|softpipe|basic render/i.test(renderer);
-  } catch {
-    return true;
-  }
-}
 
 export default function MouseAnimated({ variant = "glow", shape = "star" }: Readonly<{ variant?: TrailVariant; shape?: PixelShape }>) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -142,10 +127,19 @@ export default function MouseAnimated({ variant = "glow", shape = "star" }: Read
     let lastX = -1;
     let lastY = -1; // where the trail last reached; -1 until the first event
 
+    let hoverTarget: EventTarget | null = null;
+
+    function updateDim(target: EventTarget | null) {
+      if (target === hoverTarget) return;
+      hoverTarget = target;
+      const el = target instanceof Element ? target : null;
+      const dimmed = !!el && (!!el.closest(ACTION_SELECTOR) || getComputedStyle(el).cursor === "pointer");
+      canvas!.style.opacity = dimmed ? String(DIMMED_ALPHA) : "1";
+    }
+
     function move(e: MouseEvent) {
       if (reducedMotion) return;
-      const dimmed = !!(e.target as Element | null)?.closest?.("[data-trail-dim]");
-      canvas!.style.opacity = dimmed ? String(DIMMED_ALPHA) : "1";
+      updateDim(e.target);
       const currentTime = performance.now();
       if (currentTime - lastTime < SPAWN_INTERVAL_MS) return;
       lastTime = currentTime;

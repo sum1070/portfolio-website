@@ -42,8 +42,15 @@ function splashAlreadyShown() {
   }
 }
 
+// SMIL ignores the CSS animation-play-state rule, so the hidden overlay
+// would otherwise keep re-laying out its SVG every frame
+function setOverlayAnimations(overlay: HTMLElement, running: boolean) {
+  overlay.querySelectorAll("svg").forEach((svg) => (running ? svg.unpauseAnimations() : svg.pauseAnimations()));
+}
+
 function showOverlay(overlay: HTMLElement) {
   overlay.style.display = "flex";
+  setOverlayAnimations(overlay, true);
 
   // Force a reflow to ensure immediate visual update
   void overlay.offsetWidth;
@@ -60,6 +67,7 @@ function fadeOutOverlay(overlay: HTMLElement) {
     setTimeout(() => {
       overlay.classList.remove("active");
       overlay.classList.remove("fade-out");
+      setOverlayAnimations(overlay, false);
     }, 350) // Match this with the CSS transition time
   );
 }
@@ -78,7 +86,10 @@ export const TransitionOverlayWatcher = () => {
     // cancels a still-pending delayed show when the page rendered fast enough
     clearOverlayTimers();
 
-    if (!overlay.classList.contains("active")) return;
+    if (!overlay.classList.contains("active")) {
+      setOverlayAnimations(overlay, false);
+      return;
+    }
 
     const remaining = overlayMinDisplay - (Date.now() - overlayShownAt);
     overlayTimers.push(setTimeout(() => fadeOutOverlay(overlay), Math.max(remaining, 0)));

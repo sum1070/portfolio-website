@@ -957,3 +957,62 @@ p {
     animation: none;
   }
 }
+
+.zzz-1 {
+  animation: zzz-1 5s linear infinite;
+}
+.zzz-2 {
+  animation: zzz-2 5s linear infinite;
+}
+.zzz-3 {
+  animation: zzz-3 5s linear infinite;
+}
+@keyframes zzz-1 {
+  0%,
+  6% {
+    opacity: 0;
+  }
+  10.67%,
+  84% {
+    opacity: 1;
+  }
+  84.01%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes zzz-2 {
+  0%,
+  24% {
+    opacity: 0;
+  }
+  28%,
+  84% {
+    opacity: 1;
+  }
+  84.01%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes zzz-3 {
+  0%,
+  40% {
+    opacity: 0;
+  }
+  44%,
+  84% {
+    opacity: 1;
+  }
+  84.01%,
+  100% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zzz-1,
+  .zzz-2,
+  .zzz-3 {
+    animation: none;
+  }
+}

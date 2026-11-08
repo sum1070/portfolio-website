@@ -41,4 +41,5 @@ export {
   Sleepy,
   ArrowDown,
   ZZZBlue,
+  ZzzGradients,
 } from "./svg-creator";

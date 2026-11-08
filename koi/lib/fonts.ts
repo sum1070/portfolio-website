@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 
 export const titilliumWeb = Titillium_Web({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "600", "700", "900"],
+  weight: ["400", "600", "700"],
   display: "swap",
   preload: true,
 });

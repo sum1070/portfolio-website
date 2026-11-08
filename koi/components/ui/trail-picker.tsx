@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { cn } from "@/utils";
 import useTrailStyle, { previewTrailStyle, setTrailStyle, TRAIL_STYLES, useSavedTrailStyle, type TrailStyle } from "@/lib/hooks/useTrailStyle";
 import useUiSounds from "@/lib/hooks/useUiSounds";
+import usePreloadImages from "@/lib/hooks/usePreloadImages";
 import { pxIbmVga } from "@/lib/fonts";
 
 const FACE_DIR = "/images/margaret";
@@ -41,6 +42,7 @@ const APPLY_ART = [
   ["/images/chat/chat_bubble_pink_deeper.png", "group-hover:invisible"],
   ["/images/chat/chat_bubble.png", "invisible group-hover:visible"],
 ] as const;
+const MENU_ART = [CLOSE_SRC, CLOSE_HOVER_SRC, ...APPLY_ART.map(([src]) => src)];
 
 const notch = (n: number) =>
   `polygon(0 ${n}px, ${n}px ${n}px, ${n}px 0, calc(100% - ${n}px) 0, calc(100% - ${n}px) ${n}px, 100% ${n}px, 100% calc(100% - ${n}px), calc(100% - ${n}px) calc(100% - ${n}px), calc(100% - ${n}px) 100%, ${n}px 100%, ${n}px calc(100% - ${n}px), 0 calc(100% - ${n}px))`;
@@ -70,6 +72,7 @@ export default function TrailPicker({ className }: Readonly<{ className?: string
   const applyRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const { playClick, playOpen, playSwitch } = useUiSounds();
+  usePreloadImages(MENU_ART);
 
   useEffect(() => {
     const id = window.setInterval(() => setIdleIndex((i) => (i + 1) % IDLE_FACES.length), IDLE_SWAP_MS);

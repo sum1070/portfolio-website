@@ -38,7 +38,7 @@ const ProjectsList = ({ projects }: { projects: TProjectResolved[] }) => {
       <Navbar currentPage={pageID} />
       <PinkBackground />
       <div className="w-full pt-24 pb-40 px-6 sm:px-10 md:px-12 max-w-7xl mx-auto relative z-10">
-        <h1 className="font-titillium-web text-center mb-8 md:mb-10 font-semibold ">Project</h1>
+        <h1 className="font-titillium-web text-center mb-8 md:mb-10 font-semibold text-2xl! sm:text-3xl! md:text-4xl! xl:text-5xl!">Project</h1>
 
         {/* tag filters: multi-select; selected highlighted, others dimmed */}
         {projects.length > 0 && (

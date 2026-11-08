@@ -4,7 +4,7 @@ import { fraunces } from '../lib/fonts';
 import { VolumeProvider } from "@/lib/context/volume-context";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import { bgPrimary, IdleDog, LoadingScreen, TransitionOverlayWatcher } from "@/components";
+import { bgPrimary, IdleDog, LoadingScreen, TransitionOverlayWatcher, ZzzGradients } from "@/components";
 
 const siteDescription =
   "I'm Kit Sum (Margaret) Chan, a Computer Science with AI master's student at the University of Leeds. This is where I share my projects and write-ups ♡";
@@ -52,6 +52,7 @@ export default function RootLayout({
       </head>
       <VolumeProvider>
         <body suppressHydrationWarning>
+          <ZzzGradients />
           <div id="light-bg" className="fixed inset-0 -z-50">
             {bgPrimary()}
             <div id="dark-bg" className="hidden dark:block absolute inset-0 bg-[#0e0d0d] -z-40"/>

@@ -4,8 +4,9 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { createPortal } from "react-dom";
 import { cn } from "@/utils";
 import useUiSounds from "@/lib/hooks/useUiSounds";
+import usePreloadImages from "@/lib/hooks/usePreloadImages";
 import { pxIbmVga } from "@/lib/fonts";
-import ChatBubble from "./chat-bubble";
+import ChatBubble, { CHAT_BUBBLE_ART } from "./chat-bubble";
 
 const BONE_SRC = "/images/doggy/doggy_bone.png";
 const CHAT_ENABLED = process.env.NEXT_PUBLIC_DOG_CHAT === "true";
@@ -89,6 +90,16 @@ const THEMES = [
   ["", "dark:hidden"],
   ["_dark", "hidden dark:block"],
 ] as const;
+const GUIDE_ART = CHAT_ENABLED
+  ? [
+      ...CHAT_BUBBLE_ART,
+      ...Object.values(FACES),
+      DOG_EMOJI_SRC,
+      CLOSE_SRC,
+      CLOSE_HOVER_SRC,
+      ...THEMES.flatMap(([suffix]) => [`${UI_DIR}/window_panel${suffix}.png`, `${UI_DIR}/resize_grip${suffix}.png`]),
+    ]
+  : CHAT_BUBBLE_ART;
 
 const pixelIcon = "w-8 h-8 shrink-0 [image-rendering:pixelated]";
 const menuFont = cn(pxIbmVga.variable, "[font-family:var(--font-px-ibm-vga)]");
@@ -145,6 +156,7 @@ export default function DogGuide({ className }: Readonly<{ className?: string }>
   const noticeTimerRef = useRef<number | null>(null);
   const noticeRef = useRef<HTMLSpanElement>(null);
   const { playClick, playOpen } = useUiSounds();
+  usePreloadImages(GUIDE_ART);
   const [unread, setUnread] = useState(false);
 
   useEffect(() => {
@@ -397,8 +409,8 @@ export default function DogGuide({ className }: Readonly<{ className?: string }>
               }}
               className={cn("group ml-auto mr-1 self-start shrink-0 grid cursor-pointer", focusRing)}
             >
-              <img src={CLOSE_SRC} alt="" width={10} height={10} draggable={false} className="col-start-1 row-start-1 size-5 [image-rendering:pixelated] group-hover:invisible group-focus-visible:invisible" />
-              <img src={CLOSE_HOVER_SRC} alt="" width={10} height={10} draggable={false} className="invisible col-start-1 row-start-1 size-5 [image-rendering:pixelated] group-hover:visible group-focus-visible:visible" />
+              <img src={CLOSE_SRC} alt="" width={10} height={10} draggable={false} className="col-start-1 row-start-1 size-7.5 [image-rendering:pixelated] group-hover:invisible group-focus-visible:invisible" />
+              <img src={CLOSE_HOVER_SRC} alt="" width={10} height={10} draggable={false} className="invisible col-start-1 row-start-1 size-7.5 [image-rendering:pixelated] group-hover:visible group-focus-visible:visible" />
             </button>
           </div>
 

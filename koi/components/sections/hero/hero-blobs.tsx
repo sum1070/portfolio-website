@@ -1,5 +1,5 @@
-import { cn } from '@/utils'
-import React from 'react'
+import { cn, isSoftwareRendering } from '@/utils'
+import React, { useEffect, useState } from 'react'
 import { positionClasses } from '@/lib/types'
 
 const BlobsClasses = "absolute rounded-full mix-blend-multiply filter"
@@ -10,8 +10,17 @@ const BlobsOpacity4 = "opacity-10 sm:opacity-50"
 // HERO
 // only show on screen >= md
 const BlurredBlobsHero = () => {
+  const [still, setStill] = useState(false);
+
+  // blurred, blended layers re-composited every frame stall software GPUs
+  useEffect(() => setStill(isSoftwareRendering()), []);
+
   return (
-    <div className="md:block dark:hidden hidden -z-20 absolute inset-0 overflow-hidden pointer-events-none  will-change-transform">
+    <div className={cn(
+      "md:block dark:hidden hidden -z-20 absolute inset-0 overflow-hidden pointer-events-none  will-change-transform",
+      "motion-reduce:[&>div]:[animation-play-state:paused]",
+      still && "[&>div]:[animation-play-state:paused]",
+    )}>
       {/* C */}
       <div
         id='centerBlob'

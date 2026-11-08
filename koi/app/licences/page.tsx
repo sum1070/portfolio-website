@@ -13,7 +13,7 @@ const licences = () => {
             <div className="w-full pt-20 pb-40 px-8 sm:px-12 md:px-24 max-w-6xl mx-auto">
                 <div id='license-text' className="">
                     <h1 className={cn(
-                        "font-semibold mb-4 text-center",
+                        "font-semibold mb-4 text-center text-2xl! sm:text-3xl! md:text-4xl! xl:text-5xl!",
                     )}>
                         Licences and Tools
                     </h1>

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { animate, motion, useAnimate, useMotionValue, useReducedMotion, type AnimationPlaybackControls, type PanInfo } from "motion/react";
 import { cn } from "@/utils";
+import usePreloadImages from "@/lib/hooks/usePreloadImages";
 import { SleepZZZ } from "../svg-creator";
 
 const DOG_DIR = "/images/doggy";
@@ -19,6 +20,8 @@ export const DOG_FRAMES = {
 const ALL_FRAMES = [...new Set(Object.values(DOG_FRAMES).flat())];
 
 const HEART_SRC = `${DOG_DIR}/doggy_heart.gif`;
+const HEART_ART = [HEART_SRC];
+export const DOG_ART = [...ALL_FRAMES, HEART_SRC];
 const MAX_HEARTS = 6;
 
 const FRAME_MS = { awake: 250, run: 180 };
@@ -83,6 +86,7 @@ export default function PixelDog({ className, interactive = false, startAwake = 
 
   const frozen = mode === "idle" && awake && still;
   const cycle = mode === "running" ? "run" : mode === "held" || awake ? "awake" : "sleep";
+  usePreloadImages(HEART_ART, interactive);
 
   useEffect(() => {
     if (cycle === "sleep" || frozen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
